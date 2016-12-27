@@ -1,0 +1,11 @@
+@import 'images.styl'
+
+
+spritePosition($image)
+  background-position $image[2] $image[3]
+
+sprite($image)
+  background-image url(../images/$image[8])
+  spritePosition($image)
+  width $image[4]
+  height $image[5]
