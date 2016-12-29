@@ -1,9 +1,11 @@
 import angular from 'angular';
 import router from './routes';
+import sidebar from './components/sidebar';
 
 
 angular
-  .module('app', [
+  .module('avarcom', [
     require('angular-ui-router')
   ])
-  .config(router);
+  .config(router)
+  .component('avarcomSidebar', sidebar);

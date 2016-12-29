@@ -1,0 +1,62 @@
+.sidebar
+  display flex
+  flex-direction column
+  min-width 320px
+  height 100%
+  background-color #515151
+  &__header
+    display flex
+    align-items center
+    justify-content space-between
+    min-height 5.313rem
+    padding-left 40px
+    padding-right 35px
+    background-color #383838
+  &__caption
+    width 9.875rem
+    height 2.313rem
+    margin-bottom .35rem
+    font-size 2.625rem
+    font-weight 200
+    color white
+  &__menuButton
+    sprite($menu-button)
+    cursor pointer
+    transition .4s
+    &:hover
+      opacity .5
+  &__body
+    flex 1
+    overflow auto
+    padding 25px
+    &_mini
+      display flex
+      flex-direction column
+      align-items center
+      width 74px
+      padding 20px 10px
+  &_minimize
+    align-items flex-end
+    animation minimizeSidebar .4s
+    animation-fill-mode forwards
+    .sidebar__header
+      padding-right 0
+    .sidebar__menuButton
+      margin-left 22px
+      margin-right 22px
+    .sidebar__body
+      display none
+  &_maximize
+    animation maximizeSidebar .4s
+    animation-fill-mode forwards
+
+  &__icon
+    cursor pointer
+    &_user
+      sprite($user)
+      margin-left -1px
+      margin-bottom 35px
+    &_calendar
+      sprite($calendar)
+      margin-left -1px
+

@@ -115,7 +115,9 @@ gulp.task('serve', function () {
         // files: 'public/**/*.*',
         server: './public',
         port: 8080,
-        middleware: [ historyApiFallback() ]
+        middleware: [historyApiFallback({
+            logger: gutil.log
+        })]
     });
 
     browserSync.watch('./public/**/*.*').on('change', browserSync.reload);
