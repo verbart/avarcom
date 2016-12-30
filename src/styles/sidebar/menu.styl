@@ -1,4 +1,14 @@
 .menu
+  position relative
+  margin-top 25px
+  padding-top 30px
+  &:after
+    separator()
+    content ' '
+    position absolute
+    left 0
+    right 0
+    top 0
   &__item
     display flex
     align-items center
@@ -27,3 +37,26 @@
         spritePosition($chart_active)
       &_check
         spritePosition($check_active)
+
+.sidebar__body_mini
+  .menu
+    margin-top 30px
+    padding-top 35px
+    &__item
+      margin-bottom 30px
+    &__icon
+      margin-right 0
+      &_car
+        sprite($car-big)
+      &_chart
+        sprite($chart-big)
+      &_check
+        sprite($check-big)
+    &__item_active
+      .menu__icon
+        &_car
+          spritePosition($car-big_active)
+        &_chart
+          spritePosition($chart-big_active)
+        &_check
+          spritePosition($check-big_active)
