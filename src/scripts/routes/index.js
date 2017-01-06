@@ -1,25 +1,34 @@
-function router($stateProvider, $urlRouterProvider, $locationProvider) {
+export default function ($stateProvider, $urlRouterProvider, $locationProvider) {
   $locationProvider.html5Mode(true).hashPrefix('!');
 
   $urlRouterProvider.otherwise('/404');
 
   $stateProvider
-    .state('accident', {
+    .state('accidents', {
+      abstract: true,
       url: '/',
-      templateUrl: 'pages/accident.html'
+      templateUrl: 'templates/pages/accidents/accidents.html'
     })
+      .state('accidents.create', {
+        url: '',
+        templateUrl: 'templates/pages/accidents/create.html'
+      })
+      .state('accidents.edit', {
+        url: 'edit/:id',
+        parent: 'accidents',
+        templateUrl: 'templates/pages/accidents/edit.html',
+        controller: 'AccidentEditCtrl as editCtrl'
+      })
     .state('completed', {
       url: '/completed',
-      templateUrl: 'pages/completed.html'
+      templateUrl: 'templates/pages/completed.html'
     })
     .state('statistics', {
       url: '/statistics',
-      templateUrl: 'pages/statistics.html'
+      templateUrl: 'templates/pages/statistics.html'
     })
     .state('404', {
       url: '/404',
-      templateUrl: 'pages/errors/404.html'
-    })
+      templateUrl: 'templates/pages/errors/404.html'
+    });
 }
-
-export default router;

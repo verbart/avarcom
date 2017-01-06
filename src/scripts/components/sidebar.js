@@ -1,5 +1,5 @@
 export default {
-    templateUrl: 'components/sidebar.html',
+    templateUrl: 'templates/components/sidebar.html',
     controller: function () {
         this.minimize = false;
         this.toggleInit = false;

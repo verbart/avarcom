@@ -86,7 +86,7 @@ gulp.task('sprite', function() {
         .pipe(tinypng())
         .pipe(gulp.dest('./public/images'));
 
-    spriteData.css.pipe(gulp.dest('./src/styles/sprites'));
+    spriteData.css.pipe(gulp.dest('./src/styles/core/sprites'));
 
     return spriteData;
 });

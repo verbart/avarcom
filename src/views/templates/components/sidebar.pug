@@ -18,7 +18,7 @@ section.sidebar(
     just-calendar(locale='ru' from-monday='true')
 
     .menu
-      a.menu__item(ui-sref='accident' ui-sref-active='menu__item_active')
+      a.menu__item(ui-sref='accidents.create' ui-sref-active='menu__item_active')
         span.menu__icon.menu__icon_car
         span.menu__text Аварии
 
@@ -32,11 +32,12 @@ section.sidebar(
 
 
   .sidebar__body_mini(ng-show='$ctrl.minimize')
-    .sidebar__icon.sidebar__icon_user(ng-click='$ctrl.minimize = !$ctrl.minimize;')
-    .sidebar__icon.sidebar__icon_calendar(ng-click='$ctrl.minimize = !$ctrl.minimize;')
+    .text_center
+      .sidebar__icon.sidebar__icon_user(ng-click='$ctrl.minimize = !$ctrl.minimize;')
+      .sidebar__icon.sidebar__icon_calendar(ng-click='$ctrl.minimize = !$ctrl.minimize;')
 
     .menu
-      a.menu__item(ui-sref='accident' ui-sref-active='menu__item_active')
+      a.menu__item(ui-sref='accidents.create' ui-sref-active='menu__item_active')
         span.menu__icon.menu__icon_car
 
       a.menu__item(ui-sref='statistics' ui-sref-active='menu__item_active')

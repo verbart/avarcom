@@ -1,0 +1,24 @@
+.accidentList
+  border none
+  td
+    vertical-align top
+    &:first-child
+      width 4rem
+  &__address
+    vertical-align middle
+    border-right none !important
+    padding-left 1.1rem
+  &__icon
+    padding .9rem .8rem 0 0
+    vertical-align top
+    div
+      sprite($right-chevron)
+  &__item
+    transition background .4s
+    &:hover
+      background #eee
+    &_active
+      color #f59c00
+      .accidentList__icon
+          div
+            spritePosition($left-chevron_active)

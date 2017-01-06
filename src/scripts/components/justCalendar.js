@@ -4,7 +4,7 @@ export default {
         fromMonday: '<?',
         weekdays: '<?'
     },
-    templateUrl: 'components/just-calendar.html',
+    templateUrl: 'templates/components/just-calendar.html',
     controller: class {
         constructor(moment) {
             this.$onInit = function () {

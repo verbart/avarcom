@@ -1,0 +1,42 @@
+header.main__header
+    h1.main__caption Регистрация аварии
+
+.main__right.text_center
+    .form
+        input.form__input(
+        placeholder='Адрес'
+        ng-model='ctrl.newAccident.address'
+        name='address'
+        )
+        input.form__input(
+        placeholder='Телефон'
+        ng-model='ctrl.newAccident.phone'
+        name='phone'
+        )
+        input.form__input(
+        placeholder='Марка машины'
+        ng-model='ctrl.newAccident.carBrand'
+        name='carBrand'
+        )
+        input.form__input(
+        placeholder='Имя'
+        ng-model='ctrl.newAccident.name'
+        name='name'
+        )
+        input.form__input(
+        placeholder='Дата'
+        ng-model='ctrl.newAccident.date'
+        name='date'
+        )
+        input.form__input(
+        placeholder='Время'
+        ng-model='ctrl.newAccident.time'
+        name='time'
+        )
+        input.form__input(
+        placeholder='ID комиссара'
+        ng-model='ctrl.newAccident.commissar'
+        name='commissar'
+        )
+
+        button.button.button_lg(ng-click='ctrl.addAccident()') ОТПРАВИТЬ
