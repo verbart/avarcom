@@ -1,0 +1,8 @@
+.datePicker(click-out='$ctrl.close()')
+    .datePicker__field(ng-click='$ctrl.toggle()') {{$ctrl.selected.format("DD.MM.YYYY")}}
+    just-calendar.datePicker__calendar(
+        selected='$ctrl.selected'
+        from-monday='true'
+        on-update='$ctrl.close()'
+        ng-show='$ctrl.isOpen'
+    )

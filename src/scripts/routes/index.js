@@ -25,7 +25,8 @@ export default function ($stateProvider, $urlRouterProvider, $locationProvider) 
     })
     .state('statistics', {
       url: '/statistics',
-      templateUrl: 'templates/pages/statistics.html'
+      templateUrl: 'templates/pages/statistics.html',
+      controller: 'StatisticsCtrl as statCtrl'
     })
     .state('404', {
       url: '/404',

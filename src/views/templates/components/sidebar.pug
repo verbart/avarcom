@@ -15,20 +15,20 @@ section.sidebar(
           a.userInfo__link(href='javascript:void(0)') Редактировать
           a.userInfo__link(href='javascript:void(0)') Выйти
 
-    just-calendar(locale='ru' from-monday='true')
+    just-calendar.sidebar__calendar(locale='ru')
 
     .menu
       a.menu__item(ui-sref='accidents.create' ui-sref-active='menu__item_active')
         span.menu__icon.menu__icon_car
         span.menu__text Аварии
 
-      a.menu__item(ui-sref='statistics' ui-sref-active='menu__item_active')
-        span.menu__icon.menu__icon_chart
-        span.menu__text Статистика
-
       a.menu__item(ui-sref='completed' ui-sref-active='menu__item_active')
         span.menu__icon.menu__icon_check
         span.menu__text Завершенное
+
+      a.menu__item(ui-sref='statistics' ui-sref-active='menu__item_active')
+        span.menu__icon.menu__icon_chart
+        span.menu__text Статистика
 
 
   .sidebar__body_mini(ng-show='$ctrl.minimize')
@@ -40,8 +40,8 @@ section.sidebar(
       a.menu__item(ui-sref='accidents.create' ui-sref-active='menu__item_active')
         span.menu__icon.menu__icon_car
 
-      a.menu__item(ui-sref='statistics' ui-sref-active='menu__item_active')
-        span.menu__icon.menu__icon_chart
-
       a.menu__item(ui-sref='completed' ui-sref-active='menu__item_active')
         span.menu__icon.menu__icon_check
+
+      a.menu__item(ui-sref='statistics' ui-sref-active='menu__item_active')
+        span.menu__icon.menu__icon_chart

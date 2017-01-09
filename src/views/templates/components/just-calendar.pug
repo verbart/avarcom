@@ -7,10 +7,10 @@ table.month
     thead.weekdays
         th.weekdays__day(ng-repeat='day in $ctrl.weekdays') {{day}}
 
-    tr(style='height: 5px;')
+    tr.rowSeparator
     tr.week(ng-repeat='week in $ctrl.weeks')
         td.week__day(
             ng-repeat='day in week.days'
-            ng-click='$ctrl.select(day)'
+            ng-click='$ctrl.select(day);'
             ng-class='{ week__day_today: day.isToday, week__day_otherMoth: !day.isCurrentMonth, week__day_selected: day.date.isSame($ctrl.selected) }'
-        ) {{day.number}}
+        ) {{day.date.date()}}

@@ -1,4 +1,4 @@
-just-calendar
+.sidebar__calendar
   display block
   max-width 320px
   margin auto
@@ -58,9 +58,12 @@ just-calendar
           top 50%
           left 50%
           transform translate(-50%, -50%)
-          width 90%
-          padding-bottom 90%
+          width 82%
+          padding-bottom @width
           background-color rgba(0, 0, 0, .1)
           border-radius 50%
       &_today:after
         border 1px solid white
+
+  .rowSeparator
+    height 5px

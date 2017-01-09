@@ -1,2 +1,21 @@
 .main__header
     h1.main__caption Статистика
+
+.statistics__section
+    .row
+        .col-xs-2
+            date-picker(selected='statCtrl.startDate')
+        .col-xs-2
+            date-picker
+
+    table.table.statisticsTable.text_center
+        tr.table__row
+            td.table__cell.statisticsTable__property Количество аварий
+            td.table__cell.statisticsTable__property Количество ложных аварий
+            td.table__cell.statisticsTable__property Количество взятых аварий
+            td.table__cell.statisticsTable__property Количество завершенных аварий
+        tr.table__row
+            td.table__cell.statisticsTable__value 123
+            td.table__cell.statisticsTable__value 27
+            td.table__cell.statisticsTable__value 98
+            td.table__cell.statisticsTable__value 104

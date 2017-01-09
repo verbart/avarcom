@@ -1,46 +1,48 @@
 export default {
     bindings: {
-        locale: '<?',
-        fromMonday: '<?',
-        weekdays: '<?'
+        locale: '@?',
+        weekdays: '<?',
+        selected: '=?',
+        onUpdate: '&'
     },
     templateUrl: 'templates/components/just-calendar.html',
     controller: class {
         constructor(moment) {
             this.$onInit = function () {
-                this.weekdays = ['ПН', 'ВТ', 'СР', 'ЧТ', 'ПТ', 'СБ', 'ВС'];
                 moment.locale(this.locale);
 
-                this.weekdays = this.weekdays || moment.weekdaysShort();
-                this.selected = moment();
+                this.firstDayOfWeek = moment.localeData().firstDayOfWeek();
+                this.weekdays = this.weekdays || moment.weekdaysMin(true);
+                this.selected = this.selected || moment();
                 this.month = this.selected.clone();
 
-                const start = this.selected.clone().date(this.fromMonday?0:1);
+                const start = this.selected.clone().date(0);
 
-                this.removeTime(start.day(0));
+                this.removeTime(start);
                 this.buildMonth(start, this.month);
             };
         }
         select(day) {
+            this.onUpdate({day});
             this.selected = day.date;
-            if (!day.isCurrentMonth) day.number < 7 ? this.changeMonth(+1) : this.changeMonth(-1);
+            if (!day.isCurrentMonth) day.date.date() < 7 ? this.changeMonth(+1) : this.changeMonth(-1);
         }
         changeMonth(changeTo) {
             const current = this.month.clone();
 
-            this.removeTime(current.month(current.month()+changeTo).date(this.fromMonday?0:1));
+            this.removeTime(current.month(current.month()+changeTo).date(0));
             this.month.month(this.month.month()+changeTo);
 
             this.buildMonth(current, this.month);
         }
         removeTime(date) {
-            return date.day(this.fromMonday?1:0).hour(0).minute(0).second(0).millisecond(0);
+            return date.startOf('week');
         }
         buildMonth(start, month) {
             this.weeks = [];
 
-            let done = false;
             const date = start.clone();
+            let done = false;
             let monthIndex = date.month();
             let count = 0;
 
@@ -56,8 +58,6 @@ export default {
 
             for (let i = 0; i < 7; i++) {
                 days.push({
-                    name: date.format('dd').substring(0, 1),
-                    number: date.date(),
                     isCurrentMonth: date.month() === month.month(),
                     isToday: date.isSame(new Date(), 'day'),
                     date: date
