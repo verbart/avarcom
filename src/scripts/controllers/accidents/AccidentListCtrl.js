@@ -1,5 +1,6 @@
-export default class AccidentListCtrl {
-    constructor(Accident) {
+export default class {
+    constructor($state, Accident) {
+        this.$state = $state;
         this.Accident = Accident;
         this.accidents = Accident.query();
         this.newAccident = {};
@@ -9,9 +10,7 @@ export default class AccidentListCtrl {
         if (!Object.keys(this.newAccident).length) return;
 
         this.Accident.save(this.newAccident, res => {
-            this.accidents.push(res);
-            this.newAccident = {};
-            console.log('Accident added!', res);
+            this.$state.go('accidents.edit', {id: res.id}, {reload: true});
         });
     }
 }

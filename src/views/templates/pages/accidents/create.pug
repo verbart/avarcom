@@ -5,38 +5,38 @@ header.main__header
     .form
         input.form__input(
         placeholder='Адрес'
-        ng-model='ctrl.newAccident.address'
+        ng-model='listCtrl.newAccident.address'
         name='address'
         )
         input.form__input(
         placeholder='Телефон'
-        ng-model='ctrl.newAccident.phone'
+        ng-model='listCtrl.newAccident.phone'
         name='phone'
         )
         input.form__input(
         placeholder='Марка машины'
-        ng-model='ctrl.newAccident.carBrand'
-        name='carBrand'
+        ng-model='listCtrl.newAccident.carBrand'
+        name='car_brand'
         )
         input.form__input(
         placeholder='Имя'
-        ng-model='ctrl.newAccident.name'
+        ng-model='listCtrl.newAccident.name'
         name='name'
         )
         input.form__input(
         placeholder='Дата'
-        ng-model='ctrl.newAccident.date'
+        ng-model='listCtrl.newAccident.date'
         name='date'
         )
         input.form__input(
         placeholder='Время'
-        ng-model='ctrl.newAccident.time'
+        ng-model='listCtrl.newAccident.time'
         name='time'
         )
         input.form__input(
         placeholder='ID комиссара'
-        ng-model='ctrl.newAccident.commissar'
+        ng-model='listCtrl.newAccident.commissar'
         name='commissar'
         )
 
-        button.button.button_lg(ng-click='ctrl.addAccident()') ОТПРАВИТЬ
+        button.button.button_lg(ng-click='listCtrl.addAccident()') ОТПРАВИТЬ

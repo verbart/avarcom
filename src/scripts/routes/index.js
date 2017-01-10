@@ -1,13 +1,15 @@
-export default function ($stateProvider, $urlRouterProvider, $locationProvider) {
+export default function ($stateProvider, $urlRouterProvider, $locationProvider, $urlMatcherFactoryProvider) {
   $locationProvider.html5Mode(true).hashPrefix('!');
+  $urlMatcherFactoryProvider.strictMode(false);
 
   $urlRouterProvider.otherwise('/404');
 
   $stateProvider
     .state('accidents', {
-      abstract: true,
       url: '/',
-      templateUrl: 'templates/pages/accidents/accidents.html'
+      abstract: true,
+      templateUrl: 'templates/pages/accidents/list.html',
+      controller: 'AccidentListCtrl as listCtrl'
     })
       .state('accidents.create', {
         url: '',
@@ -19,9 +21,16 @@ export default function ($stateProvider, $urlRouterProvider, $locationProvider) 
         templateUrl: 'templates/pages/accidents/edit.html',
         controller: 'AccidentEditCtrl as editCtrl'
       })
-    .state('completed', {
-      url: '/completed',
-      templateUrl: 'templates/pages/completed.html'
+    .state('closed', {
+      url: '/closed/:id',
+      params:  {
+        id: {
+          value: null,
+          squash: true
+        }
+      },
+      templateUrl: 'templates/pages/closed/list.html',
+      controller: 'ClosedListCtrl as listCtrl'
     })
     .state('statistics', {
       url: '/statistics',

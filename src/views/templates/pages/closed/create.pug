@@ -1,0 +1,70 @@
+header.main__header
+    h1.main__caption Регистрация аварии
+
+.main__right.text_center
+    .form
+        input.form__input(
+            placeholder='Имя'
+            ng-model='listCtrl.newAccident.victim.firstName'
+            name='name'
+        )
+        input.form__input(
+            placeholder='Фамилия'
+            ng-model='listCtrl.newAccident.victim.middleName'
+            name='name'
+        )
+        input.form__input(
+            placeholder='Отчество'
+            ng-model='listCtrl.newAccident.victim.lastName'
+            name='name'
+        )
+        input.form__input(
+            placeholder='Марка автомобиля'
+            ng-model='listCtrl.newAccident.victim.carBrand'
+            name='carBrand'
+        )
+        input.form__input(
+            placeholder='Номер автомобиля'
+            ng-model='listCtrl.newAccident.victim.carNumber'
+            name='carBrand'
+        )
+        input.form__input(
+            placeholder='Телефон'
+            ng-model='listCtrl.newAccident.victim.phone'
+            name='phone'
+        )
+
+        hr
+
+        input.form__input(
+            placeholder='Имя'
+            ng-model='listCtrl.newAccident.culprit.firstName'
+            name='name'
+        )
+        input.form__input(
+            placeholder='Фамилия'
+            ng-model='listCtrl.newAccident.culprit.middleName'
+            name='name'
+        )
+        input.form__input(
+            placeholder='Отчество'
+            ng-model='listCtrl.newAccident.culprit.lastName'
+            name='name'
+        )
+        input.form__input(
+            placeholder='Марка автомобиля'
+            ng-model='listCtrl.newAccident.culprit.carBrand'
+            name='carBrand'
+        )
+        input.form__input(
+            placeholder='Номер автомобиля'
+            ng-model='listCtrl.newAccident.culprit.carNumber'
+            name='carBrand'
+        )
+        input.form__input(
+            placeholder='Телефон'
+            ng-model='listCtrl.newAccident.culprit.phone'
+            name='phone'
+        )
+
+        button.button.button_lg(ng-click='listCtrl.addAccident()') ОТПРАВИТЬ

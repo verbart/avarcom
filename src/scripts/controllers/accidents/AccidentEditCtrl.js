@@ -1,16 +1,16 @@
-export default class AccidentListCtrl {
+export default class {
     constructor($stateParams, $state, Accident) {
         this.$state = $state;
         this.Accident = Accident;
 
         this.id = $stateParams.id;
         this.accidents = Accident.query(res => {
-            this.editable = this.accidents.find(e => e.id == this.id);
+            this.editable = res.find(e => e.id == this.id);
         });
     }
 
     editAccident() {
-        this.Accident.update(this.editable, res => {
+        this.Accident.update(this.editable, () => {
             this.$state.go('accidents.create', {}, {reload: true});
         });
     }

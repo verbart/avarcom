@@ -1,12 +1,12 @@
-.row.gutter_bottom(ng-controller='AccidentListCtrl as ctrl')
-    .col-md-7
+.row.gutter_bottom
+    .col-md-5
         header.main__header
             h1.main__caption Список аварий
 
         .main__left
             table.table.accidentList
                 tr.table__row.accidentList__item(
-                    ng-repeat='accident in ctrl.accidents'
+                    ng-repeat='accident in listCtrl.accidents'
                     ui-sref='accidents.edit({id: accident.id})'
                     ui-sref-active='accidentList__item_active'
                 )
@@ -15,5 +15,5 @@
                     td.table__cell.accidentList__icon.text_right
                         div
 
-    .col-md-5
+    .col-md-7
         ui-view
