@@ -15,15 +15,14 @@
     border-collapse collapse
     table-layout fixed
     th, td
-      height 30px
-      padding 5px
       text-align center
       font-weight inherit
+      padding .2rem
 
   .header
-    height 40px
+    height 2.5rem
     background-color rgba(27, 27, 27, .1)
-    font-size 1.7rem
+    font-size 1.2rem
     text-transform capitalize
     &__nav
       width 40px
@@ -45,21 +44,21 @@
 
   .week
     &__day
-      font-size 1.3rem
+      font-size 1rem
       &_otherMoth
         color #bfc4da
       &_selected
       &_today
         position relative
         &:after
-          content ' '
+          content ''
           display block
           position absolute
           top 50%
           left 50%
           transform translate(-50%, -50%)
-          width 82%
-          padding-bottom @width
+          width 1.9rem
+          height @width
           background-color rgba(0, 0, 0, .1)
           border-radius 50%
       &_today:after

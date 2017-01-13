@@ -26,8 +26,6 @@ module.exports = [
             carNumber: 'AB1234'
         },
         documents: [
-            '837439.jpg',
-            '934833.jpg'
         ]
     },
     {
@@ -57,8 +55,30 @@ module.exports = [
             carNumber: 'AB1234'
         },
         documents: [
-            '837439.jpg',
-            '934833.jpg'
+            {
+                thumb: '837439.png',
+                url: '837439.png'
+            },
+            {
+                thumb: '837439.png',
+                url: '837439.png'
+            },
+            {
+                thumb: '837439.png',
+                url: '837439.png'
+            },
+            {
+                thumb: '837439.png',
+                url: '837439.png'
+            },
+            {
+                thumb: '837439.png',
+                url: '837439.png'
+            },
+            {
+                thumb: '837439.png',
+                url: '837439.png'
+            }
         ]
     },
     {
@@ -88,8 +108,10 @@ module.exports = [
             carNumber: 'AB1234'
         },
         documents: [
-            '837439.jpg',
-            '934833.jpg'
+            {
+                thumb: '837439.png',
+                url: '837439.png'
+            }
         ]
     },
     {
@@ -105,8 +127,6 @@ module.exports = [
         victim: {},
         culprit: {},
         documents: [
-            '837439.jpg',
-            '934833.jpg'
         ]
     }
 ];

@@ -3,40 +3,43 @@ header.main__header
 
 .main__right.text_center
     .form
-        input.form__input(
-        placeholder='Адрес'
-        ng-model='listCtrl.newAccident.address'
-        name='address'
-        )
-        input.form__input(
-        placeholder='Телефон'
-        ng-model='listCtrl.newAccident.phone'
-        name='phone'
-        )
-        input.form__input(
-        placeholder='Марка машины'
-        ng-model='listCtrl.newAccident.carBrand'
-        name='car_brand'
-        )
-        input.form__input(
-        placeholder='Имя'
-        ng-model='listCtrl.newAccident.name'
-        name='name'
-        )
-        input.form__input(
-        placeholder='Дата'
-        ng-model='listCtrl.newAccident.date'
-        name='date'
-        )
-        input.form__input(
-        placeholder='Время'
-        ng-model='listCtrl.newAccident.time'
-        name='time'
-        )
-        input.form__input(
-        placeholder='ID комиссара'
-        ng-model='listCtrl.newAccident.commissar'
-        name='commissar'
-        )
+        .accidentForm
+            h3.form__caption Контакты
 
-        button.button.button_lg(ng-click='listCtrl.addAccident()') ОТПРАВИТЬ
+            input.form__input(
+                placeholder='Адрес'
+                ng-model='listCtrl.newAccident.address'
+                name='address'
+            )
+            input.form__input(
+                placeholder='Телефон'
+                ng-model='listCtrl.newAccident.phone'
+                name='phone'
+            )
+            input.form__input(
+                placeholder='Марка машины'
+                ng-model='listCtrl.newAccident.carBrand'
+                name='car_brand'
+            )
+            input.form__input(
+                placeholder='Имя'
+                ng-model='listCtrl.newAccident.name'
+                name='name'
+            )
+            input.form__input(
+                placeholder='Дата'
+                ng-model='listCtrl.newAccident.date'
+                name='date'
+            )
+            input.form__input(
+                placeholder='Время'
+                ng-model='listCtrl.newAccident.time'
+                name='time'
+            )
+            input.form__input(
+                placeholder='ID комиссара'
+                ng-model='listCtrl.newAccident.commissar'
+                name='commissar'
+            )
+
+            button.button.button_lg(ng-click='listCtrl.addAccident()') ОТПРАВИТЬ

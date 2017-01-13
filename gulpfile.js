@@ -78,6 +78,7 @@ gulp.task('sprite', function() {
             // retinaImgName: 'sprite@2x.png',
             cssName: 'images.styl',
             algorithm: 'binary-tree',
+            padding: 2,
             cssTemplate: 'stylus-sprite-template.mustache'
         }));
 

@@ -2,11 +2,12 @@ export default function ($stateProvider, $urlRouterProvider, $locationProvider, 
   $locationProvider.html5Mode(true).hashPrefix('!');
   $urlMatcherFactoryProvider.strictMode(false);
 
+  $urlRouterProvider.when('/', '/accidents');
   $urlRouterProvider.otherwise('/404');
 
   $stateProvider
     .state('accidents', {
-      url: '/',
+      url: '/accidents',
       abstract: true,
       templateUrl: 'templates/pages/accidents/list.html',
       controller: 'AccidentListCtrl as listCtrl'
@@ -16,8 +17,7 @@ export default function ($stateProvider, $urlRouterProvider, $locationProvider, 
         templateUrl: 'templates/pages/accidents/create.html'
       })
       .state('accidents.edit', {
-        url: 'edit/:id',
-        parent: 'accidents',
+        url: '/:id',
         templateUrl: 'templates/pages/accidents/edit.html',
         controller: 'AccidentEditCtrl as editCtrl'
       })
