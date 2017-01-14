@@ -2,7 +2,7 @@ module.exports = [
     {
         id: 11,
         closed: false,
-        commissar: '51431',
+        commissioner: '51431',
         name: 'John Doe',
         address: 'ул. М. Рыльского, 25',
         phone: '+1234567891011',
@@ -31,7 +31,7 @@ module.exports = [
     {
         id: 22,
         closed: true,
-        commissar: '14314',
+        commissioner: '14314',
         name: 'John Doe',
         address: 'пр. Ленина, 258',
         phone: '+1234567891011',
@@ -84,7 +84,7 @@ module.exports = [
     {
         id: 33,
         closed: false,
-        commissar: '97145',
+        commissioner: '97145',
         name: 'John Doe',
         address: 'ул. Бейкер-стрит, 221Б',
         phone: '+1234567891011',
@@ -117,7 +117,7 @@ module.exports = [
     {
         id: 44,
         closed: true,
-        commissar: '97145',
+        commissioner: '97145',
         name: 'John Doe',
         address: 'пер. Шевченко, 19А',
         phone: '+1234567891011',

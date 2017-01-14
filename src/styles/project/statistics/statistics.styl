@@ -1,11 +1,21 @@
 .statistics
-    &__section
+    text-align center
+    &Section
         padding 30px
         background #fff
+        & + &
+            margin-top 30px
+        &__header
+            display flex
+            justify-content space-between
+            flex-wrap wrap
     &Table
         margin-top 40px
-        border none
         &__property
             font-size 1.4rem
         &__value
             font-weight 300
+    &__datePicker
+        display inline-block
+        margin-left 10px
+        margin-right 10px

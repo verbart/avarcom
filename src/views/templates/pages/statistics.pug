@@ -1,21 +1,45 @@
-.main__header
-    h1.main__caption Статистика
+.statistics
+    .main__header
+        h1.main__caption Статистика
 
-.statistics__section
+    .gutter_bottom
+        .statisticsSection
+            section Данные с
+                | &nbsp;
+                date-picker.statistics__datePicker(selected='statCtrl.startDate')
+                | &nbsp;
+                | по
+                | &nbsp;
+                date-picker.statistics__datePicker
+
+            table.table.statisticsTable.text_center
+                tr.table__row
+                    td.table__cell.statisticsTable__property Количество аварий
+                    td.table__cell.statisticsTable__property Количество ложных аварий
+                    td.table__cell.statisticsTable__property Количество взятых аварий
+                    td.table__cell.statisticsTable__property Количество завершенных аварий
+                tr.table__row
+                    td.table__cell.statisticsTable__value 123
+                    td.table__cell.statisticsTable__value 27
+                    td.table__cell.statisticsTable__value 98
+                    td.table__cell.statisticsTable__value 104
+
     .row
-        .col-xs-2
-            date-picker(selected='statCtrl.startDate')
-        .col-xs-2
-            date-picker
+        .col-md-7
+            .statisticsSection
+                .statisticsSection__header
+                    h4 Статистика по комиссарам:
 
-    table.table.statisticsTable.text_center
-        tr.table__row
-            td.table__cell.statisticsTable__property Количество аварий
-            td.table__cell.statisticsTable__property Количество ложных аварий
-            td.table__cell.statisticsTable__property Количество взятых аварий
-            td.table__cell.statisticsTable__property Количество завершенных аварий
-        tr.table__row
-            td.table__cell.statisticsTable__value 123
-            td.table__cell.statisticsTable__value 27
-            td.table__cell.statisticsTable__value 98
-            td.table__cell.statisticsTable__value 104
+                    form.form
+                        .form__searchForm
+                            input.form__input(placeholder='Введите имя или ID...')
+                            button.button.button_sm НАЙТИ
+
+                    table.table
+                        tr
+                            td Имя
+                            td ID
+                            td Всего
+                            td Ложных
+                            td Завершенных
+                        tr(ng-repeat='com')
