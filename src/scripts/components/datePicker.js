@@ -2,6 +2,7 @@ export default {
     bindings: {
         selected: '=?',
         isOpen: '=?',
+        onUpdate: '&'
     },
     templateUrl: 'templates/components/date-picker.html',
     controller: class {

@@ -28,28 +28,29 @@ theme = #616161
     overflow auto
     z-index 100
     table
-      width 100%
-      min-width 240px
+      min-width 230px
       border-spacing 0
       border-collapse collapse
       table-layout fixed
       tr
         border 1px solid #bebebe
       th, td
-        height 30px
-        padding 5px
+        padding 2px 5px
         text-align center
         font-weight inherit
 
     .header
-      height 40px
+      line-height 1
+      font-size .9rem
       background theme
       color white
       text-transform capitalize
       tr
         border-bottom none
+      td, th
+        padding 8px
       &__nav
-        width 40px
+        width 30px
         cursor pointer
         transition .4s
         &:hover
@@ -59,6 +60,7 @@ theme = #616161
       background #fff
       cursor default
       th, td
+        font-size .8rem
         border-right 1px solid #bebebe
         &:last-child
           border-right 0
@@ -66,13 +68,15 @@ theme = #616161
     .weekdays
       &__day
         color theme
-        font-size .95rem
         font-weight 400
         text-transform uppercase
 
     .week
       &__day
-        font-size .85rem
+        cursor pointer
+        transition .4s
+        &:hover
+          background rgba(theme, .2)
         &_otherMoth
           color #c0c0c0
         &_today

@@ -6,11 +6,11 @@
         .statisticsSection
             section Данные с
                 | &nbsp;
-                date-picker.statistics__datePicker(selected='statCtrl.startDate')
+                date-picker.statistics__datePicker(selected='statCtrl.startDate' on-update='statCtrl.getStats()')
                 | &nbsp;
                 | по
                 | &nbsp;
-                date-picker.statistics__datePicker
+                date-picker.statistics__datePicker(selected='statCtrl.endDate' on-update='statCtrl.getStats()')
 
             table.table.statisticsTable.text_center
                 tr.table__row
@@ -19,10 +19,10 @@
                     td.table__cell.statisticsTable__property Количество взятых аварий
                     td.table__cell.statisticsTable__property Количество завершенных аварий
                 tr.table__row
-                    td.table__cell.statisticsTable__value 123
-                    td.table__cell.statisticsTable__value 27
-                    td.table__cell.statisticsTable__value 98
-                    td.table__cell.statisticsTable__value 104
+                    td.table__cell.statisticsTable__value {{statCtrl.general.all}}
+                    td.table__cell.statisticsTable__value {{statCtrl.general.lie}}
+                    td.table__cell.statisticsTable__value {{statCtrl.general.processedBy}}
+                    td.table__cell.statisticsTable__value {{statCtrl.general.closed}}
 
     .row
         .col-md-7
@@ -42,4 +42,9 @@
                             td Всего
                             td Ложных
                             td Завершенных
-                        tr(ng-repeat='com')
+                        tr(ng-repeat='commissioners in statCtrl.commissioners')
+                            td {{commissioners.name}}
+                            td {{commissioners.id}}
+                            td {{commissioners.accidents.all}}
+                            td {{commissioners.accidents.lie}}
+                            td {{commissioners.accidents.closed}}

@@ -8,6 +8,7 @@ import AccidentEditCtrl from './controllers/accidents/AccidentEditCtrl';
 import ClosedListCtrl from './controllers/closed/ClosedListCtrl';
 import Accident from './services/Accident';
 import Closed from './services/Closed';
+import Statistics from './services/Statistics';
 import clickOut from './directives/clickOut';
 import StatisticsCtrl from './controllers/StatisticsCtrl';
 
@@ -34,6 +35,7 @@ angular
   .controller('StatisticsCtrl', StatisticsCtrl)
   .factory('Accident', Accident)
   .factory('Closed', Closed)
+  .factory('Statistics', Statistics)
   .directive('clickOut', clickOut);
 
 

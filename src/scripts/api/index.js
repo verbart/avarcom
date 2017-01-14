@@ -1,4 +1,5 @@
 const accidents = require('./accidents');
+const statistics = require('./statistics');
 
 
 angular.module('avarcom').run(function($httpBackend) {
@@ -43,6 +44,11 @@ angular.module('avarcom').run(function($httpBackend) {
 
         return [200, data];
     });
+
+    //////////////// STATISTICS ///////////////////
+
+    $httpBackend.whenPOST('/api/statistics').respond(statistics);
+
 
 
     $httpBackend.whenGET(/\.html$/).passThrough();
