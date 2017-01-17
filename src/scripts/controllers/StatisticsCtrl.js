@@ -3,6 +3,7 @@ export default class StatisticsCtrl {
         this.Statistics = Statistics;
         this.startDate = moment().subtract(1, 'day');
         this.endDate = moment();
+        this.searchComInput = '';
 
         this.getStats();
     }
@@ -15,6 +16,13 @@ export default class StatisticsCtrl {
             console.log(res);
             this.general = res.general;
             this.commissioners = res.commissioners;
+            this.rating = angular.copy(res.commissioners);
+        });
+    }
+    searchCommissioners() {
+        this.Statistics.search({keyWord: this.searchComInput}, res => {
+            console.log(res);
+            this.commissioners = res;
         });
     }
 }

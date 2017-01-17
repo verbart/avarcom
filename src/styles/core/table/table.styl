@@ -1,13 +1,42 @@
 .table
-  background #fff
-  width 100%
-  color #383838
-  &__row:not(:last-child)
-    border-bottom 1px solid #bebebe
-  &__cell
-    padding 0.62rem
+  overflow auto
+  table
+    background #fff
+    width 100%
+    color #383838
     font-family 'Helvetica Neue Cyr'
+    vertical-align middle
+  tr
+    transition .4s
+    &:not(:last-child)
+      border-bottom 1px solid #bebebe
+  td
+    padding 0.5rem
     font-size 1.25rem
-    line-height 1
     &:not(:last-child)
       border-right 1px solid #bebebe
+  &_hover
+    tr:hover
+      background #eee
+
+  &sort
+    &-asc, &-desc
+      &:after
+        content ''
+        display inline-block
+        margin-left .8rem
+        border-left .4rem solid transparent
+        border-right .4rem solid transparent
+        border-top none
+        border-bottom .4rem solid #f59c00
+        transform translateY(-50%)
+        transition .2s
+    &-desc:after
+      border-top .4rem solid #f59c00
+      border-bottom none
+
+[ts-criteria]
+  cursor pointer
+  transition .4s
+  &:hover
+    background #eee

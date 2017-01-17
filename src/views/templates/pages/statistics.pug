@@ -12,39 +12,59 @@
                 | &nbsp;
                 date-picker.statistics__datePicker(selected='statCtrl.endDate' on-update='statCtrl.getStats()')
 
-            table.table.statisticsTable.text_center
-                tr.table__row
-                    td.table__cell.statisticsTable__property Количество аварий
-                    td.table__cell.statisticsTable__property Количество ложных аварий
-                    td.table__cell.statisticsTable__property Количество взятых аварий
-                    td.table__cell.statisticsTable__property Количество завершенных аварий
-                tr.table__row
-                    td.table__cell.statisticsTable__value {{statCtrl.general.all}}
-                    td.table__cell.statisticsTable__value {{statCtrl.general.lie}}
-                    td.table__cell.statisticsTable__value {{statCtrl.general.processedBy}}
-                    td.table__cell.statisticsTable__value {{statCtrl.general.closed}}
+            .table
+                table.statisticsTable.text_center
+                    tr
+                        td.statisticsTable__property Количество аварий
+                        td.statisticsTable__property Количество ложных аварий
+                        td.statisticsTable__property Количество взятых аварий
+                        td.statisticsTable__property Количество завершенных аварий
+                    tr
+                        td.statisticsTable__value {{statCtrl.general.all}}
+                        td.statisticsTable__value {{statCtrl.general.lie}}
+                        td.statisticsTable__value {{statCtrl.general.processedBy}}
+                        td.statisticsTable__value {{statCtrl.general.closed}}
 
     .row
-        .col-md-7
+        .col-lg-7.gutter_bottom
             .statisticsSection
-                .statisticsSection__header
-                    h4 Статистика по комиссарам:
+                .table
+                    .statisticsSection__header
+                        h4 Статистика по комиссарам:
 
-                    form.form
-                        .form__searchForm
-                            input.form__input(placeholder='Введите имя или ID...')
-                            button.button.button_sm НАЙТИ
+                        form.form(ng-submit='statCtrl.searchCommissioners()')
+                            .form__searchForm
+                                input.form__input(ng-model='statCtrl.searchComInput' placeholder='Введите имя или ID...')
+                                button.button.button_sm НАЙТИ
 
-                    table.table
+                    table(ts-wrapper)
                         tr
-                            td Имя
-                            td ID
-                            td Всего
-                            td Ложных
-                            td Завершенных
-                        tr(ng-repeat='commissioners in statCtrl.commissioners')
+                            td
+                            td(ts-criteria='name | lowercase' ts-default) Имя
+                            td(ts-criteria='id') ID
+                            td(ts-criteria='accidents.all | parseInt') Всего
+                            td(ts-criteria='accidents.lie | parseInt') Ложных
+                            td(ts-criteria='accidents.closed | parseInt') Завершенных
+                        tr(ng-repeat='commissioners in statCtrl.commissioners' ts-repeat ts-hide-no-data)
+                            td {{$index+1}}
                             td {{commissioners.name}}
                             td {{commissioners.id}}
                             td {{commissioners.accidents.all}}
                             td {{commissioners.accidents.lie}}
                             td {{commissioners.accidents.closed}}
+
+        .col-lg-5.gutter_bottom
+            .statisticsSection.text_center
+                .statisticsSection__header
+                    h4.container-fluid Рейтинг пользователей
+
+                .table
+                    table(ts-wrapper)
+                        tr
+                            td
+                            td(ts-criteria='id') ID
+                            td(ts-criteria='rating | parseInt' ts-default='descending') Рейтинг
+                        tr(ng-repeat='user in statCtrl.rating' ts-repeat ts-hide-no-data)
+                            td {{$index+1}}
+                            td {{user.id}}
+                            td {{user.rating}}

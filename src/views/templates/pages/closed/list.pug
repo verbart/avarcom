@@ -4,16 +4,17 @@
             h1.main__caption Завершённые
 
         .main__left
-            table.table.accidentList
-                tr.table__row.accidentList__item(
-                    ng-repeat='accident in listCtrl.accidents'
-                    ui-sref='closed({id: accident.id})'
-                    ui-sref-active='accidentList__item_active'
-                )
-                    td.table__cell.text_center {{$index+1}}.
-                    td.table__cell.accidentList__address {{accident.address}}
-                    td.table__cell.text_right
-                        .accidentList__icon
+            .table
+                table.table_hover.accidentList
+                    tr.accidentList__item(
+                        ng-repeat='accident in listCtrl.accidents'
+                        ui-sref='closed({id: accident.id})'
+                        ui-sref-active='accidentList__item_active'
+                    )
+                        td.text_center {{$index+1}}.
+                        td.accidentList__address {{accident.address}}
+                        td.text_right
+                            .accidentList__icon
 
     .col-md-5
         include edit

@@ -1,17 +1,14 @@
 .accidentList
   td
-    vertical-align top
     &:first-child
       width 2.75rem
+    &:last-child
+      line-height 1
   &__address
-    vertical-align middle
     border-right none !important
   &__icon
     sprite($right-chevron)
   &__item
-    transition background .4s
-    &:hover
-      background #eee
     &_active
       color #f59c00
       .accidentList__icon

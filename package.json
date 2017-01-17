@@ -35,6 +35,7 @@
     "angular-mocks": "^1.6.1",
     "angular-moment": "^1.0.1",
     "angular-resource": "^1.6.1",
+    "angular-tablesort": "^1.4.0",
     "angular-ui-router": "^0.3.2"
   }
 }

@@ -2,7 +2,7 @@ header.main__header
     button.button.button_sm.flex__item_end(ui-sref='accidents.create') ДОБАВИТЬ АВАРИЮ
 
 .main__right.text_center
-    .form
+    form.form(ng-submit='listCtrl.editAccident()')
         .accidentForm
             h3.form__caption Контакты
 
@@ -42,4 +42,4 @@ header.main__header
                 name='commissar'
             )
 
-            button.button.button_lg(ng-click='editCtrl.editAccident()') ОТПРАВИТЬ
+            button.button.button_lg ОТПРАВИТЬ

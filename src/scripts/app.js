@@ -16,6 +16,7 @@ require('../../node_modules/moment/locale/ru');
 require('angular-mocks');
 require('angular-resource');
 require('angular-file-upload');
+require('angular-tablesort');
 
 angular
   .module('avarcom', [
@@ -23,7 +24,8 @@ angular
     require('angular-moment'),
     'angularFileUpload',
     'ngMockE2E',
-    'ngResource'
+    'ngResource',
+    'tableSort'
   ])
   .config(router)
   .component('avarcomSidebar', sidebar)

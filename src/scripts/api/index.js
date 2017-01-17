@@ -48,6 +48,18 @@ angular.module('avarcom').run(function($httpBackend) {
     //////////////// STATISTICS ///////////////////
 
     $httpBackend.whenPOST('/api/statistics').respond(statistics);
+    $httpBackend.whenPOST('/api/commissioners').respond(function (method, url, data) {
+        data = JSON.parse(data);
+
+        const result = statistics.commissioners.filter(e => {
+            for (let prop in e) if(e.hasOwnProperty(prop)) {
+                if (e[prop].toString().toLowerCase().indexOf(data.keyWord.toLowerCase()) != -1) return true;
+            }
+            return false;
+        });
+
+        return [200, result];
+    });
 
 
 
