@@ -6,16 +6,25 @@ export default function ($stateProvider, $urlRouterProvider, $locationProvider, 
   $urlRouterProvider.otherwise('/404');
 
   $stateProvider
+    .state('main', {
+      url: '',
+      abstract: true,
+      views: {
+        sidebar: {
+          template: '<avarcom-sidebar>',
+        }
+      }
+    })
     .state('accidents', {
       url: '/accidents',
-      abstract: true,
-      templateUrl: 'templates/pages/accidents/list.html',
-      controller: 'AccidentListCtrl as listCtrl'
+      parent: 'main',
+      views: {
+        'content@': {
+          templateUrl: 'templates/pages/accidents/list.html',
+          controller: 'AccidentListCtrl as listCtrl'
+        }
+      }
     })
-      .state('accidents.create', {
-        url: '',
-        templateUrl: 'templates/pages/accidents/create.html'
-      })
       .state('accidents.edit', {
         url: '/:id',
         templateUrl: 'templates/pages/accidents/edit.html',
@@ -23,22 +32,54 @@ export default function ($stateProvider, $urlRouterProvider, $locationProvider, 
       })
     .state('closed', {
       url: '/closed/:id',
+      parent: 'main',
       params:  {
         id: {
           value: null,
           squash: true
         }
       },
-      templateUrl: 'templates/pages/closed/list.html',
-      controller: 'ClosedListCtrl as listCtrl'
+      views: {
+        'content@': {
+          templateUrl: 'templates/pages/closed/list.html',
+          controller: 'ClosedListCtrl as listCtrl'
+        }
+      }
     })
     .state('statistics', {
       url: '/statistics',
-      templateUrl: 'templates/pages/statistics.html',
-      controller: 'StatisticsCtrl as statCtrl'
+      parent: 'main',
+      views: {
+        'content@': {
+          templateUrl: 'templates/pages/statistics.html',
+          controller: 'StatisticsCtrl as statCtrl'
+        }
+      }
+    })
+    .state('login', {
+      url: '/login',
+      views: {
+        content: {
+          templateUrl: 'templates/pages/login.html',
+          controller: 'AuthCtrl as AuthCtrl'
+        }
+      }
+    })
+    .state('password-recovery', {
+      url: '/password-recovery',
+      views: {
+        content: {
+          templateUrl: 'templates/pages/password-recovery.html',
+          controller: 'AuthCtrl as AuthCtrl'
+        }
+      }
     })
     .state('404', {
       url: '/404',
-      templateUrl: 'templates/pages/errors/404.html'
+      views: {
+        content: {
+          templateUrl: 'templates/pages/errors/404.html'
+        }
+      }
     });
 }

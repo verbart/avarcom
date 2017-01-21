@@ -1,16 +1,21 @@
 import angular from 'angular';
+
 import router from './routes';
+
 import sidebar from './components/sidebar';
 import justCalendar from './components/justCalendar';
 import datePicker from './components/datePicker';
+
 import AccidentListCtrl from './controllers/accidents/AccidentListCtrl';
 import AccidentEditCtrl from './controllers/accidents/AccidentEditCtrl';
 import ClosedListCtrl from './controllers/closed/ClosedListCtrl';
+import StatisticsCtrl from './controllers/StatisticsCtrl';
+import AuthCtrl from './controllers/AuthCtrl';
+
 import Accident from './services/Accident';
 import Closed from './services/Closed';
 import Statistics from './services/Statistics';
 import clickOut from './directives/clickOut';
-import StatisticsCtrl from './controllers/StatisticsCtrl';
 
 require('../../node_modules/moment/locale/ru');
 require('angular-mocks');
@@ -27,17 +32,24 @@ angular
     'ngResource',
     'tableSort'
   ])
+  .constant('API', 'http://178.63.17.133:8181/api/v2')
+
   .config(router)
+
   .component('avarcomSidebar', sidebar)
   .component('justCalendar', justCalendar)
   .component('datePicker', datePicker)
+
   .controller('AccidentListCtrl', AccidentListCtrl)
   .controller('AccidentEditCtrl', AccidentEditCtrl)
   .controller('ClosedListCtrl', ClosedListCtrl)
   .controller('StatisticsCtrl', StatisticsCtrl)
+  .controller('AuthCtrl', AuthCtrl)
+
   .factory('Accident', Accident)
   .factory('Closed', Closed)
   .factory('Statistics', Statistics)
+
   .directive('clickOut', clickOut);
 
 

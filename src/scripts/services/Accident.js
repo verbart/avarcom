@@ -1,8 +1,3 @@
-export default function Accident($resource) {
-    return $resource('/api/accidents/:id', {id: '@id'},
-        {
-            update: {
-                method: 'PUT'
-            }
-        });
+export default function Accident($resource, API) {
+    return $resource(API+'/events/:id', {id: '@id'});
 }

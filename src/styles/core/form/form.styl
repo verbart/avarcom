@@ -17,7 +17,18 @@
     transition .4s
     &:focus
       border-color #a0a0a0
+    &_bordered
+      background #e3e3e3
+      border-color #363636
+      &:focus
+        background #ededed
+        border-color @border-color
   &__searchForm
     display flex
     input
       margin 0
+  &__errorMsg
+    margin-top -10px
+    margin-bottom 15px
+    font-size .95rem
+    color red

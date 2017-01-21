@@ -18,7 +18,7 @@ section.sidebar(
     just-calendar.sidebar__calendar(locale='ru')
 
     .menu
-      a.menu__item(ui-sref='accidents.create' ui-sref-active='menu__item_active')
+      a.menu__item(ui-sref='accidents' ui-sref-active='menu__item_active')
         span.menu__icon.menu__icon_car
         span.menu__text Аварии
 
@@ -37,7 +37,7 @@ section.sidebar(
       .sidebar__icon.sidebar__icon_calendar(ng-click='$ctrl.minimize = !$ctrl.minimize;')
 
     .menu
-      a.menu__item(ui-sref='accidents.create' ui-sref-active='menu__item_active')
+      a.menu__item(ui-sref='accidents' ui-sref-active='menu__item_active')
         span.menu__icon.menu__icon_car
 
       a.menu__item(ui-sref='closed' ui-sref-active='menu__item_active')
