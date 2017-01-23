@@ -1,0 +1,47 @@
+section.sidebar(
+  ng-class='{sidebar_minimize: $ctrl.minimize, sidebar_maximize: !$ctrl.minimize && $ctrl.toggleInit}'
+)
+  header.sidebar__header
+    h1.sidebar__caption Авар
+      span.text_highlight Ком
+    .sidebar__menuButton(ng-click='$ctrl.minimize = !$ctrl.minimize; $ctrl.toggleInit = true;')
+
+  .sidebar__body
+    .userInfo
+      .userInfo__photo
+      .userInfo__info
+        h3.userInfo__name Иван Иванов
+        div
+          a.userInfo__link(href='javascript:void(0)') Редактировать
+          a.userInfo__link(ui-sref='logout') Выйти
+
+    just-calendar.sidebar__calendar(locale='ru')
+
+    .menu
+      a.menu__item(ui-sref='dashboard.accidents' ui-sref-active='menu__item_active')
+        span.menu__icon.menu__icon_car
+        span.menu__text Аварии
+
+      a.menu__item(ui-sref='dashboard.closed' ui-sref-active='menu__item_active')
+        span.menu__icon.menu__icon_check
+        span.menu__text Завершенное
+
+      a.menu__item(ui-sref='dashboard.statistics' ui-sref-active='menu__item_active')
+        span.menu__icon.menu__icon_chart
+        span.menu__text Статистика
+
+
+  .sidebar__body_mini(ng-show='$ctrl.minimize')
+    .text_center
+      .sidebar__icon.sidebar__icon_user(ng-click='$ctrl.minimize = !$ctrl.minimize;')
+      .sidebar__icon.sidebar__icon_calendar(ng-click='$ctrl.minimize = !$ctrl.minimize;')
+
+    .menu
+      a.menu__item(ui-sref='dashboard.accidents' ui-sref-active='menu__item_active')
+        span.menu__icon.menu__icon_car
+
+      a.menu__item(ui-sref='dashboard.closed' ui-sref-active='menu__item_active')
+        span.menu__icon.menu__icon_check
+
+      a.menu__item(ui-sref='dashboard.statistics' ui-sref-active='menu__item_active')
+        span.menu__icon.menu__icon_chart

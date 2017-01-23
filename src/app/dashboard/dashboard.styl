@@ -1,0 +1,27 @@
+@import 'accidents'
+@import 'statistics'
+
+.dashboard
+  position fixed
+  top 0
+  bottom 0
+  left 0
+  right 0
+  display flex
+  &__main
+    flex 1
+    background #ededed
+    overflow auto
+  &__header
+    display flex
+    align-items center
+    min-height 4rem
+  &__caption
+    color #383838
+    font-family 'Helvetica Neue Cyr', sans-serif
+    font-size 1.65rem
+    font-weight 200
+  &__section
+    padding 15px
+    background #fff
+    overflow auto

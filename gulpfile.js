@@ -23,17 +23,20 @@ const isDevelopment = process.env.NODE_ENV !== 'production';
 
 
 gulp.task('views', function buildHTML() {
-    return gulp.src('./src/views/**/*.pug')
+    return gulp.src('./src/**/*.pug')
         .pipe(pug())
         .on('error', function(error) {
             gutil.log(gutil.colors.red('Error: ' + error.message));
             this.emit('end');
         })
+        .pipe(rename(path => {
+            if (path.dirname !== '.') path.dirname = ('views/' + path.dirname);
+        }))
         .pipe(gulp.dest('./public'));
 });
 
 gulp.task('styles', function () {
-    return gulp.src('./src/styles/app.styl')
+    return gulp.src('./src/app.styl')
         .pipe(gulpIf(isDevelopment, sourcemaps.init()))
         .pipe(stylus({
             'include css': true
@@ -55,7 +58,7 @@ gulp.task('styles', function () {
 
 gulp.task('scripts', function() {
     return browserify({
-        entries: './src/scripts/app.js',
+        entries: './src/app.js',
         debug: isDevelopment
     })
         .transform(babelify, {presets: ['es2015']})
@@ -71,7 +74,7 @@ gulp.task('scripts', function() {
 });
 
 gulp.task('sprite', function() {
-    const spriteData = gulp.src('./src/images/sprite/*.*')
+    const spriteData = gulp.src('./src/assets/images/sprite/*.*')
         .pipe(spritesmith({
             // retinaSrcFilter: './public/images/sprite/*@2x.*',
             imgName: 'sprite.png',
@@ -87,27 +90,27 @@ gulp.task('sprite', function() {
         .pipe(tinypng())
         .pipe(gulp.dest('./public/images'));
 
-    spriteData.css.pipe(gulp.dest('./src/styles/core/sprites'));
+    spriteData.css.pipe(gulp.dest('./src/assets/styles/sprites'));
 
     return spriteData;
 });
 
 gulp.task('images', function () {
-    return gulp.src(['./src/images/**/*.*', '!./src/images/sprite/*.*'])
+    return gulp.src(['./src/assets/images/**/*.*', '!./src/assets/images/sprite/*.*'])
         .pipe(tinypng())
         .pipe(gulp.dest('./public/images'));
 });
 
 gulp.task('fonts', function () {
-    return gulp.src('./src/fonts/**/*.*')
-        .pipe(rename(path => {path.dirname = '';}))
+    return gulp.src('./src/assets/fonts/**/*.*')
+        .pipe(rename(path => path.dirname = ''))
         .pipe(gulp.dest('./public/fonts'));
 });
 
 gulp.task('watch', function () {
-    gulp.watch('./src/views/**/*.pug', gulp.series('views'));
-    gulp.watch('./src/styles/**/*.{css,styl}', gulp.series('styles'));
-    gulp.watch('./src/scripts/**/*.js', gulp.series('scripts'));
+    gulp.watch('./src/**/*.pug', gulp.series('views'));
+    gulp.watch('./src/**/*.{css,styl}', gulp.series('styles'));
+    gulp.watch('./src/**/*.js', gulp.series('scripts'));
 });
 
 gulp.task('serve', function () {

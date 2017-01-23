@@ -1,0 +1,45 @@
+header.dashboard__header
+    button.button.button_sm.flex__item_end(ui-sref='dashboard.accidents') ДОБАВИТЬ АВАРИЮ
+
+.dashboard__section.text_center
+    form.form(ng-submit='listCtrl.editAccident()')
+        .accidentForm
+            h3.form__caption Контакты
+
+            input.form__input(
+                placeholder='Адрес'
+                ng-model='editCtrl.editable.address'
+                name='address'
+            )
+            input.form__input(
+                placeholder='Телефон'
+                ng-model='editCtrl.editable.phone'
+                name='phone'
+            )
+            input.form__input(
+                placeholder='Марка машины'
+                ng-model='editCtrl.editable.carBrand'
+                name='car_brand'
+            )
+            input.form__input(
+                placeholder='Имя'
+                ng-model='editCtrl.editable.name'
+                name='name'
+            )
+            input.form__input(
+                placeholder='Дата'
+                ng-model='editCtrl.editable.crash_date'
+                name='date'
+            )
+            input.form__input(
+                placeholder='Время'
+                ng-model='editCtrl.editable.time'
+                name='time'
+            )
+            input.form__input(
+                placeholder='ID комиссара'
+                ng-model='editCtrl.editable.commissar'
+                name='commissar'
+            )
+
+            button.button.button_lg ОТПРАВИТЬ

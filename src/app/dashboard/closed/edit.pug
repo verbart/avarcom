@@ -1,0 +1,90 @@
+header.dashboard__header
+    button.button.button_sm.flex__item_end(ui-sref='accidents.create') ДОБАВИТЬ АВАРИЮ
+
+.dashboard__section.text_center
+    form.form(ng-submit='listCtrl.editAccident()')
+        .accidentForm
+            h3.form__caption Потерпевший
+
+            input.form__input(
+                placeholder='Фамилия'
+                ng-model='listCtrl.editable.victim.lastName'
+                name='last_name'
+            )
+            input.form__input(
+                placeholder='Имя'
+                ng-model='listCtrl.editable.victim.firstName'
+                name='first_name'
+            )
+            input.form__input(
+                placeholder='Отчество'
+                ng-model='listCtrl.editable.victim.middleName'
+                name='middle_name'
+            )
+            input.form__input(
+                placeholder='Марка автомобиля'
+                ng-model='listCtrl.editable.victim.carBrand'
+                name='car_brand'
+            )
+            input.form__input(
+                placeholder='Номер автомобиля'
+                ng-model='listCtrl.editable.victim.carNumber'
+                name='car_number'
+            )
+            input.form__input(
+                placeholder='Телефон'
+                ng-model='listCtrl.editable.victim.phone'
+                name='phone'
+            )
+
+        .accidentForm
+            h3.form__caption Виновник
+
+            input.form__input(
+                placeholder='Фамилия'
+                ng-model='listCtrl.editable.culprit.lastName'
+                name='last_name'
+            )
+            input.form__input(
+                placeholder='Имя'
+                ng-model='listCtrl.editable.culprit.firstName'
+                name='first_name'
+            )
+            input.form__input(
+                placeholder='Отчество'
+                ng-model='listCtrl.editable.culprit.middleName'
+                name='middle_name'
+            )
+            input.form__input(
+                placeholder='Марка автомобиля'
+                ng-model='listCtrl.editable.culprit.carBrand'
+                name='carBrand'
+            )
+            input.form__input(
+                placeholder='Номер автомобиля'
+                ng-model='listCtrl.editable.culprit.carNumber'
+                name='carBrand'
+            )
+            input.form__input(
+                placeholder='Телефон'
+                ng-model='listCtrl.editable.culprit.phone'
+                name='phone'
+            )
+
+        .accidentForm.gutter_bottom
+            h4 Документы:
+
+            .accidentForm__documents
+                .accidentForm__photoPreview(
+                    ng-repeat='document in listCtrl.editable.documents track by $index'
+                    style='background-image: url(images/{{document.thumb}})'
+                )
+                label.accidentForm__addPhoto
+                    span.icon_plus
+                    input(type='file' nv-file-select uploader='listCtrl.uploader' multiple ng-hide='true')
+                    //.button.button_sm(ng-hide='listCtrl.uploader.queue.length') Добавить документ
+
+
+
+
+        button.button.button_lg СОХРАНИТЬ

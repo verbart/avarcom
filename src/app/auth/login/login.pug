@@ -1,0 +1,22 @@
+.login
+    .login__form
+        h1.login__caption Авар
+            span.text_highlight Ком
+
+        img.login__image(src='images/logo_banner.png')
+
+        .gutter_bottom
+            button.button.button_block ДЕМО-ВЕРСИЯ
+
+        h2 Авторизация
+
+        form.form(ng-submit='loginCtrl.login()')
+            input.form__input.form__input_bordered(name='login' placeholder='Логин' ng-model='loginCtrl.user.login')
+            input.form__input.form__input_bordered(name='password' type='password' placeholder='Пароль' ng-model='loginCtrl.user.password')
+
+            p.form__errorMsg(ng-show='loginCtrl.loginError') {{loginCtrl.loginError}}
+
+            .gutter_bottom_half
+                button.button.button_block.button_grey ВХОД
+
+            a.link(ui-sref='password-recovery') Забыли пароль?
