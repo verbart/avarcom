@@ -16,7 +16,8 @@ export default function ($stateProvider, $urlRouterProvider) {
       .state('dashboard.accidents.edit', {
         url: '/:id',
         templateUrl: 'views/app/dashboard/accidents/edit/edit.html',
-        controller: 'AccidentEditCtrl as editCtrl'
+        controller: 'AccidentEditCtrl as editCtrl',
+        authenticate: true
       })
     .state('dashboard.closed', {
       url: '/closed/:id',
@@ -27,11 +28,13 @@ export default function ($stateProvider, $urlRouterProvider) {
         }
       },
       templateUrl: 'views/app/dashboard/closed/list.html',
-      controller: 'ClosedListCtrl as listCtrl'
+      controller: 'ClosedListCtrl as listCtrl',
+      authenticate: true
     })
     .state('dashboard.statistics', {
       url: '/statistics',
       templateUrl: 'views/app/dashboard/statistics/statistics.html',
-      controller: 'StatisticsCtrl as statCtrl'
+      controller: 'StatisticsCtrl as statCtrl',
+      authenticate: true
     });
 }

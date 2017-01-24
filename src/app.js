@@ -3,6 +3,7 @@ import uiRouter from 'angular-ui-router';
 
 import '../node_modules/moment/locale/ru';
 import clickOut from './components/click-out.directive';
+import decodeBase64 from './components/decode-base64.filter';
 
 import './app/auth';
 import './app/main';
@@ -33,4 +34,5 @@ angular.module('avarcom', [
         $urlRouterProvider.otherwise('/404');
     })
 
+    .filter('decodeBase64', decodeBase64)
     .directive('clickOut', clickOut);

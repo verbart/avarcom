@@ -87,7 +87,7 @@ gulp.task('sprite', function() {
 
     spriteData.img
         .pipe(buffer())
-        .pipe(tinypng())
+        .pipe(gulpIf(!isDevelopment, tinypng()))
         .pipe(gulp.dest('./public/images'));
 
     spriteData.css.pipe(gulp.dest('./src/assets/styles/sprites'));
@@ -97,7 +97,7 @@ gulp.task('sprite', function() {
 
 gulp.task('images', function () {
     return gulp.src(['./src/assets/images/**/*.*', '!./src/assets/images/sprite/*.*'])
-        .pipe(tinypng())
+        .pipe(gulpIf(!isDevelopment, tinypng()))
         .pipe(gulp.dest('./public/images'));
 });
 

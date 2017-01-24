@@ -6,9 +6,6 @@ export default class {
         this.$httpParamSerializerJQLike = $httpParamSerializerJQLike;
     }
 
-    // signup(user) {
-    //     return this.$http.post(this.CONSTANT.API_URL+'/signup', user);
-    // }
     login(user) {
         return this.$http.post(this.CONSTANT.API_URL+'/users', this.$httpParamSerializerJQLike(user), {
             headers: {

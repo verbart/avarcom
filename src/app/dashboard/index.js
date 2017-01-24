@@ -22,6 +22,10 @@ import 'angular-file-upload';
 import 'angular-tablesort';
 import 'ngstorage';
 import 'angular-moment';
+import 'ui-leaflet';
+import 'angular-simple-logger';
+import 'angular-utf8-base64';
+
 
 angular.module('avarcom.dashboard', [
         uiRouter,
@@ -29,7 +33,10 @@ angular.module('avarcom.dashboard', [
         'angularMoment',
         'angularFileUpload',
         'tableSort',
-        'ngStorage'
+        'ngStorage',
+        'ui-leaflet',
+        'nemLogging',
+        'utf8-base64'
     ])
 
     .config(router)

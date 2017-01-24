@@ -2,8 +2,8 @@ export default class {
     constructor($state, Accident) {
         this.$state = $state;
         this.Accident = Accident;
-        this.accidents = Accident.query({}, {}, error => {
-            console.log(error);
+        this.accidents = Accident.query({}, res => {
+            console.log('result', res);
         });
         this.newAccident = {};
     }

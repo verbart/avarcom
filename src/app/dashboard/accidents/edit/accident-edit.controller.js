@@ -4,7 +4,8 @@ export default class {
         this.Accident = Accident;
 
         this.id = $stateParams.id;
-        this.accidents = Accident.query(res => {
+        Accident.query(res => {
+            console.log('result', res);
             this.editable = res.find(e => e.crash_id == this.id);
         });
     }
