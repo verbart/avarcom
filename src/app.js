@@ -4,6 +4,7 @@ import uiRouter from 'angular-ui-router';
 import '../node_modules/moment/locale/ru';
 import clickOut from './components/click-out.directive';
 import decodeBase64 from './components/decode-base64.filter';
+import '../node_modules/leaflet/dist/leaflet'
 
 import './app/auth';
 import './app/main';

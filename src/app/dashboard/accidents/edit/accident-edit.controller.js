@@ -3,16 +3,32 @@ export default class {
         this.$state = $state;
         this.Accident = Accident;
 
-        this.id = $stateParams.id;
         Accident.query(res => {
             console.log('result', res);
-            this.editable = res.find(e => e.crash_id == this.id);
-        });
-    }
+            this.selected = res.find(e => e.crash_id == $stateParams.id);
 
-    editAccident() {
-        this.Accident.update(this.editable, () => {
-            this.$state.go('accidents.create', {}, {reload: true});
+            this.map = {
+                center: {
+                    lat: +this.selected.latitude,
+                    lng: +this.selected.longitude,
+                    zoom: 16
+                },
+                markers: {
+                    accident: {
+                        lat: +this.selected.latitude,
+                        lng: +this.selected.longitude,
+                        message: this.selected.description,
+                        focus: true,
+                        icon: {
+                            iconUrl: 'images/icons/accident-marker_green.png',
+                            iconSize: [44, 44],
+                            popupAnchor:  [0, -22]
+                        }
+                    },
+                }
+            };
+        }, err => {
+            console.log(err);
         });
     }
 }

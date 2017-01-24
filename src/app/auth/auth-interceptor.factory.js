@@ -13,6 +13,7 @@ export default function (AuthToken, $q, $location, $localStorage) {
     return {
         request: addToken,
         responseError: function (response) {
+            console.log('inter', response);
             if (response.status === 401) {
                 $localStorage.$reset();
                 $location.path('/login');
