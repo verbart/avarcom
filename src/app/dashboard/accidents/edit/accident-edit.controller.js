@@ -3,9 +3,8 @@ export default class {
         this.$state = $state;
         this.Accident = Accident;
 
-        Accident.query(res => {
-            console.log('result', res);
-            this.selected = res.find(e => e.crash_id == $stateParams.id);
+        Accident.query(response => {
+            this.selected = response.data.find(e => e.crash_id == $stateParams.id);
 
             this.map = {
                 center: {

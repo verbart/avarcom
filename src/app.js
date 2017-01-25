@@ -18,9 +18,19 @@ angular.module('avarcom', [
         'avarcom.main',
         'avarcom.dashboard'
     ])
-    .constant('CONSTANT', {API_URL: 'http://178.63.17.133:8181/api/v2'})
+    .constant('CONSTANT', {
+        API_URL: 'http://178.63.17.133:8181/api/v2',
+        API_KEY: 'AIzaSyDDQzWP_LrDLwRqPSq9_7FvQf2uzQvSJhU'
+    })
 
-    .config(function($httpProvider, $localStorageProvider, $stateProvider, $urlRouterProvider, $locationProvider, $urlMatcherFactoryProvider) {
+    .config(function(
+        $httpProvider,
+        $localStorageProvider,
+        $stateProvider,
+        $urlRouterProvider,
+        $locationProvider,
+        $urlMatcherFactoryProvider
+    ) {
         $localStorageProvider.setKeyPrefix('avarcom_');
 
         $locationProvider.html5Mode(true).hashPrefix('!');
