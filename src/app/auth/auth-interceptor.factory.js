@@ -2,11 +2,11 @@ export default function (AuthToken, $q, $location, $localStorage, CONSTANT) {
     return {
         request: function addToken(config) {
             if (config.url.indexOf(CONSTANT.API_URL) != -1) {
-                const token = AuthToken.get();
+                const data = AuthToken.get();
 
-                if (token) {
+                if (data) {
                     config.headers = config.headers || {};
-                    config.headers.token = token;
+                    config.headers.token = data.token;
                 }
             }
 

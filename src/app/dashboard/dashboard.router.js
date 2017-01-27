@@ -9,14 +9,14 @@ export default function ($stateProvider, $urlRouterProvider) {
     })
     .state('dashboard.accidents', {
       url: '/accidents',
-      templateUrl: 'views/app/dashboard/accidents/list/list.html',
+      templateUrl: 'views/app/dashboard/accidents/accidents.html',
       controller: 'AccidentListCtrl as listCtrl',
       authenticate: true
     })
-      .state('dashboard.accidents.edit', {
+      .state('dashboard.accidents.readOne', {
         url: '/:id',
-        templateUrl: 'views/app/dashboard/accidents/edit/edit.html',
-        controller: 'AccidentEditCtrl as editCtrl',
+        templateUrl: 'views/app/dashboard/accidents/read-one/read-one.html',
+        controller: 'AccidentReadOneCtrl as readOneCtrl',
         authenticate: true
       })
     .state('dashboard.closed', {
@@ -27,7 +27,7 @@ export default function ($stateProvider, $urlRouterProvider) {
           squash: true
         }
       },
-      templateUrl: 'views/app/dashboard/closed/list.html',
+      templateUrl: 'views/app/dashboard/closed/read.html',
       controller: 'ClosedListCtrl as listCtrl',
       authenticate: true
     })

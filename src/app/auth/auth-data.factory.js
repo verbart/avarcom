@@ -1,5 +1,5 @@
 export default function ($localStorage) {
-    const key = 'auth-token';
+    const key = 'auth-data';
 
     function get() {
         return $localStorage[key];

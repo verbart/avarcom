@@ -1,0 +1,49 @@
+@import 'accident-form.styl'
+
+.accident
+  &List
+    td
+      &:first-child
+        width 2.75rem
+      &:last-child
+        line-height 1
+    &__address
+      border-right none !important
+    &__icon
+      sprite($right-chevron)
+    &__item
+      &_active
+        color #f59c00
+        .accidentList__icon
+          spritePosition($left-chevron_active)
+
+  &Form
+    padding-left 15px
+    padding-right 15px
+    & + &
+      padding-top 15px
+      border-top 1px solid #c3c3c3
+    &__documents
+      display flex
+      flex-wrap wrap
+      justify-content center
+    &__photoPreview, &__addPhoto
+      display inline-block
+      width 60px
+      height @width
+      margin 10px
+      cursor pointer
+      transition .4s
+      &:hover
+        opacity .7
+    &__photoPreview
+      background-size cover
+      background-position center
+      background-repeat no-repeat
+    &__addPhoto
+      padding 6px 0 0
+      background #ededed
+      border 1px solid #a0a0a0
+      color #a0a0a0
+      .icon_plus
+        sprite($plus)

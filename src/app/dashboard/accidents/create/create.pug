@@ -1,8 +1,8 @@
 header.dashboard__header
     h1.dashboard__caption Регистрация аварии
 
-.dashboard__section.text_center
-    form.form(ng-submit='listCtrl.addAccident()')
+.dashboard__section.text_center(ng-controller='AccidentCreateCtrl as createCtrl')
+    form.form(ng-submit='createCtrl.addAccident()')
         .gutter_bottom
             leaflet(
                 id='createAccidentMap'
@@ -18,37 +18,37 @@ header.dashboard__header
 
             input.form__input(
                 placeholder='Адрес'
-                ng-model='listCtrl.newAccident.address'
+                ng-model='createCtrl.newAccident.address'
                 name='address'
             )
             input.form__input(
                 placeholder='Телефон'
-                ng-model='listCtrl.newAccident.phone'
+                ng-model='createCtrl.newAccident.phone'
                 name='phone'
             )
             input.form__input(
                 placeholder='Марка машины'
-                ng-model='listCtrl.newAccident.carBrand'
+                ng-model='createCtrl.newAccident.car_brand'
                 name='car_brand'
             )
             input.form__input(
                 placeholder='Имя'
-                ng-model='listCtrl.newAccident.name'
+                ng-model='createCtrl.newAccident.client_name'
                 name='name'
             )
             input.form__input(
                 placeholder='Дата'
-                ng-model='listCtrl.newAccident.date'
+                ng-model='createCtrl.newAccident.date'
                 name='date'
             )
             input.form__input(
                 placeholder='Время'
-                ng-model='listCtrl.newAccident.time'
+                ng-model='createCtrl.newAccident.time'
                 name='time'
             )
             input.form__input(
                 placeholder='ID комиссара'
-                ng-model='listCtrl.newAccident.commissar'
+                ng-model='createCtrl.newAccident.commissar_id'
                 name='commissar'
             )
 

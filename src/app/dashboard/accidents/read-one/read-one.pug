@@ -1,0 +1,15 @@
+header.dashboard__header
+    a.button.button_sm.flex__item_end(ui-sref='dashboard.accidents' ui-sref-opts='{reload: true}') ДОБАВИТЬ АВАРИЮ
+
+.dashboard__section
+    .gutter_bottom
+        leaflet(ng-if='readOneCtrl.map' markers='readOneCtrl.map.markers' center='readOneCtrl.map.center' width='100%' height='280px')
+
+    ul
+        li {{readOneCtrl.selected.address}}
+        li(ng-if='readOneCtrl.selected.phone') {{readOneCtrl.selected.phone}}
+        li(ng-if='readOneCtrl.selected.carBrand') {{readOneCtrl.selected.carBrand}}
+        li(ng-if='readOneCtrl.selected.name') {{readOneCtrl.selected.name}}
+        li {{readOneCtrl.selected.createdDate.time}}
+        li {{readOneCtrl.selected.createdDate.date}}
+        li(ng-if='readOneCtrl.selected.holder_id') {{readOneCtrl.selected.holder_id}}

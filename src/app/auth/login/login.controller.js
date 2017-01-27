@@ -11,7 +11,8 @@ export default class {
         this.AuthService.login(this.user).then(
             res => {
                 console.log(res);
-                this.AuthToken.set(res.data.token);
+                this.AuthToken.set(res.data);
+                console.log(this.AuthToken.get());
                 this.$state.go('dashboard');
             },
             error => {

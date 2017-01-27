@@ -2,7 +2,7 @@ import angular from 'angular';
 import uiRouter from 'angular-ui-router';
 
 import router from './auth.router';
-import AuthToken from './auth-token.factory';
+import AuthToken from './auth-data.factory';
 import AuthInterceptor from './auth-interceptor.factory';
 import AuthService from './auth.service';
 import LoginCtrl from './login/login.controller';

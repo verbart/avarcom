@@ -8,7 +8,7 @@
                 table.table_hover.accidentList
                     tr.accidentList__item(
                         ng-repeat='accident in listCtrl.accidents'
-                        ui-sref='dashboard.accidents.edit({id: accident.crash_id})'
+                        ui-sref='dashboard.accidents.readOne({id: accident.crash_id})'
                         ui-sref-active='accidentList__item_active'
                     )
                         td.text_center {{$index+1}}.
@@ -18,4 +18,4 @@
 
     .col-md-7
         ui-view
-            include ../create/create
+            include create/create
