@@ -1,5 +1,9 @@
 .datePicker(click-out='$ctrl.close()')
-    .datePicker__field(ng-click='$ctrl.toggle()') {{$ctrl.selected.format("DD.MM.YYYY")}}
+    .form__input.datePicker__field(
+        ng-click='$ctrl.toggle()'
+        ng-bind='$ctrl.selected.format("DD.MM.YYYY")'
+        ng-class='{datePicker__field_active: $ctrl.isOpen}'
+    )
     just-calendar.datePicker__calendar(
         selected='$ctrl.selected'
         on-update='$ctrl.close(); $ctrl.onUpdate()'

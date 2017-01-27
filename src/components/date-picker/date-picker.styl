@@ -2,21 +2,23 @@ theme = #616161
 
 
 .datePicker
-  display block
   position relative
+  display block
   &__field
-    display block
-    width 100%
-    min-width 140px
-    height 2rem
-    margin-bottom 15px
-    padding-left 1rem
-    padding-right 1rem
-    color #454545
-    font 200 1.1rem/2.25rem 'Helvetica Neue Cyr', sans-serif
+    //display block
+    //width 100%
+    //min-width 140px
+    //height 2rem
+    //margin-bottom 15px
+    //padding-left 1rem
+    //padding-right 1rem
+    //color #454545
+    //font 200 1.1rem/2.25rem 'Helvetica Neue Cyr', sans-serif
     background #ededed
     cursor pointer
     transition .4s
+    &_active
+      border-color #a0a0a0
     &:hover
       background darken(@background, 10%)
   &__calendar
@@ -25,6 +27,7 @@ theme = #616161
     left 0
     display block
     max-width 240px
+    padding-bottom 15px
     font-family sans-serif
     overflow auto
     z-index 100
@@ -47,6 +50,7 @@ theme = #616161
       color white
       text-transform capitalize
       tr
+        border-top none
         border-bottom none
       td, th
         padding 8px

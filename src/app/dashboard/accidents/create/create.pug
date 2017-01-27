@@ -1,7 +1,7 @@
 header.dashboard__header
     h1.dashboard__caption Регистрация аварии
 
-.dashboard__section.text_center(ng-controller='AccidentCreateCtrl as createCtrl')
+.dashboard__section(ng-controller='AccidentCreateCtrl as createCtrl')
     form.form(ng-submit='createCtrl.addAccident()')
         .gutter_bottom
             leaflet(
@@ -36,11 +36,9 @@ header.dashboard__header
                 ng-model='createCtrl.newAccident.client_name'
                 name='name'
             )
-            input.form__input(
-                placeholder='Дата'
-                ng-model='createCtrl.newAccident.date'
-                name='date'
-            )
+
+            date-picker(selected='createCtrl.newAccident.date')
+
             input.form__input(
                 placeholder='Время'
                 ng-model='createCtrl.newAccident.time'
@@ -52,4 +50,5 @@ header.dashboard__header
                 name='commissar'
             )
 
-            button.button.button_lg ОТПРАВИТЬ
+            .text_center
+                button.button.button_lg ОТПРАВИТЬ
