@@ -25,8 +25,8 @@ export default class {
                                 else if (this.selected.holder_id) return 'images/icons/accident-marker_red.png';
                                 return 'images/icons/accident-marker_green.png';
                             }.bind(this)()),
-                            iconSize: [44, 44],
-                            popupAnchor:  [0, -22]
+                            iconSize: [32, 32],
+                            popupAnchor:  [0, -16]
                         }
                     }
                 }

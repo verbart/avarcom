@@ -26,11 +26,13 @@ import 'angular-moment';
 import 'ui-leaflet';
 import 'angular-simple-logger';
 import 'angular-utf8-base64';
+import 'angular-dropdowns';
 
 
 angular.module('avarcom.dashboard', [
         uiRouter,
         ngResource,
+        'ngDropdowns',
         'angularMoment',
         'angularFileUpload',
         'tableSort',
@@ -39,6 +41,21 @@ angular.module('avarcom.dashboard', [
         'nemLogging',
         'utf8-base64'
     ])
+    .run(function ($templateCache) {
+        $templateCache.put('ngDropdowns/templates/dropdownSelectItem.html', [
+            '<li ng-class="{active: dropdownSelectItem.isSelected, divider: (dropdownSelectItem.divider && !dropdownSelectItem[dropdownItemLabel]), \'divider-label\': (dropdownSelectItem.divider && dropdownSelectItem[dropdownItemLabel])}">',
+            '<a href="" class="dropdown-item"',
+            ' ng-if="!dropdownSelectItem.divider"',
+            ' ng-href="{{dropdownSelectItem.href}}"',
+            ' ng-click="selectItem()">',
+            '{{dropdownSelectItem[dropdownItemLabel]}}',
+            '</a>',
+            '<span ng-if="dropdownSelectItem.divider">',
+            '{{dropdownSelectItem[dropdownItemLabel]}}',
+            '</span>',
+            '</li>'
+        ].join(''));
+    })
 
     .config(router)
 

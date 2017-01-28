@@ -14,6 +14,11 @@ export default class {
                 this.newAccident.longitude = latlng.lng;
             });
         });
+
+        $scope.$on('leafletDirectiveMarker.createAccidentMap.click', (event, args) => {
+            console.log('e', args);
+            this.newAccident.commissar_id = args.model.commissioner_id;
+        });
     }
 
     addAccident() {

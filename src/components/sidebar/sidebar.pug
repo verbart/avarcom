@@ -15,14 +15,16 @@ section.sidebar(
           a.userInfo__link(href='javascript:void(0)') Редактировать
           a.userInfo__link(ui-sref='logout') Выйти
 
-    select(
-      style='width: 100%'
-      ng-options='city.name for city in $ctrl.cities track by city.short_name'
-      ng-model='$ctrl.selectedCity'
-      ng-change='$ctrl.changeCity($ctrl.selectedCity)'
-    )
+    .location
+      .location__icon
+      .location__select(
+        dropdown-select='$ctrl.cities'
+        dropdown-model='$ctrl.selectedCity'
+        dropdown-item-label='name'
+        dropdown-onchange='$ctrl.changeCity(selected)'
+      )
 
-    just-calendar.sidebar__calendar(locale='ru' on-update='$ctrl.changeDate()')
+    just-calendar.sidebar__calendar(locale='ru' on-update='$ctrl.changeDate(date)')
 
     .menu
       a.menu__item(ui-sref='dashboard.accidents' ui-sref-active='menu__item_active')

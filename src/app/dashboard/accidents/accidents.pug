@@ -7,7 +7,7 @@
             .table
                 table.table_hover.accidentList
                     tr.accidentList__item(
-                        ng-repeat='accident in listCtrl.accidents'
+                        ng-repeat='accident in listCtrl.accidents track by accident.crash_id'
                         ui-sref='dashboard.accidents.readOne({id: accident.crash_id})'
                         ui-sref-active='accidentList__item_active'
                     )
