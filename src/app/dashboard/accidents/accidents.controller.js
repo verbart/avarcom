@@ -1,12 +1,17 @@
 export default class {
-    constructor($http, CONSTANT, Accident, AuthToken) {
+    constructor($http, CONSTANT, Accident, AuthToken, $interval) {
         this.$http = $http;
         this.CONSTANT = CONSTANT;
         this.Accident = Accident;
         this.userData = AuthToken.get();
         this.selectedCity = this.userData.cities.find(e => e.isSelected);
 
-        Accident.query({}, response => {
+        this.getAccidents();
+        $interval(() => this.getAccidents(), 5*60*1000);
+    }
+
+    getAccidents() {
+        this.Accident.query({}, response => {
             this.accidents = response.data;
 
             this.map = {
