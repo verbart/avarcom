@@ -7,6 +7,16 @@
     padding 0
 
 .flex
+  display flex
+  &_column
+    flex-direction column
   &__item
+    &_grow
+      flex-grow 1
     &_end
       margin-left auto
+
+.scroll
+  overflow auto
+  &_no
+    overflow inherit

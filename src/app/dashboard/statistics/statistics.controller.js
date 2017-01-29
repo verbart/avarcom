@@ -10,21 +10,16 @@ export default class StatisticsCtrl {
 
     getStats() {
         this.Statistics.get({
-            from: this.startDate.format('DD.MM.YYYY'),
-            to: this.endDate.format('DD.MM.YYYY')
+            startTime: this.startDate.format('x'),
+            endTime: this.endDate.format('x'),
+            type: 'general'
         }, res => {
             console.log(res);
-            this.general = res.general;
-            this.commissioners = res.commissioners;
-            this.rating = angular.copy(res.commissioners);
+            this.general = res.general_data;
+            this.commissioners = res.commissars;
+            this.rating = angular.copy(this.commissioners);
         }, error => {
             console.log(error);
-        });
-    }
-    searchCommissioners() {
-        this.Statistics.search({keyWord: this.searchComInput}, res => {
-            console.log(res);
-            this.commissioners = res;
         });
     }
 }

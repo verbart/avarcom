@@ -1,8 +1,8 @@
 header.dashboard__header
     h1.dashboard__caption Регистрация аварии
 
-.dashboard__section(ng-controller='AccidentCreateCtrl as createCtrl')
-    form.form(ng-submit='createCtrl.addAccident()')
+.dashboard__section.scroll(ng-controller='AccidentCreateCtrl as createCtrl')
+    form.form.gutter_bottom_half(ng-submit='createCtrl.addAccident()')
         .gutter_bottom
             leaflet(
                 id='createAccidentMap'

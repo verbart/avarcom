@@ -1,21 +1,21 @@
-.row.gutter_bottom
-    .col-md-5
-        header.dashboard__header
-            h1.dashboard__caption Список аварий
+.container-fluid.dashboard__main.flex__item_grow
+    .row.flex.flex__item_grow.gutter_bottom_half
+        .col-md-5.flex.flex_column
+            header.dashboard__header
+                h1.dashboard__caption Список аварий
 
-        .dashboard__section
-            .table
-                table.table_hover.accidentList
-                    tr.accidentList__item(
-                        ng-repeat='accident in listCtrl.accidents track by accident.crash_id'
-                        ui-sref='dashboard.accidents.readOne({id: accident.crash_id})'
-                        ui-sref-active='accidentList__item_active'
-                    )
-                        td.text_center {{$index+1}}.
-                        td.accidentList__address {{accident.address}}
-                        td.text_right
-                            .accidentList__icon
+            .dashboard__section.scroll
+                .table
+                    table.table_hover.accidentList
+                        tr.accidentList__item(
+                            ng-repeat='accident in listCtrl.accidents track by accident.crash_id'
+                            ui-sref='dashboard.accidents.readOne({id: accident.crash_id})'
+                            ui-sref-active='accidentList__item_active'
+                        )
+                            td.text_center {{$index+1}}.
+                            td.accidentList__address {{accident.address}}
+                            td.text_right
+                                .accidentList__icon
 
-    .col-md-7
-        ui-view
+        ui-view.col-md-7.flex.flex_column
             include create/create

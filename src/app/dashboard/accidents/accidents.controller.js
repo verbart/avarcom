@@ -7,14 +7,14 @@ export default class {
         this.selectedCity = this.userData.cities.find(e => e.isSelected);
 
         this.getAccidents();
-        $interval(() => this.getAccidents(), 5*60*1000);
+        // $interval(() => this.getAccidents(), 30*1000);
     }
 
     getAccidents() {
         this.Accident.query({}, response => {
             this.accidents = response.data;
 
-            this.map = {
+            this.map = this.map || {
                 center: {
                     lat: this.selectedCity.latitude,
                     lng: this.selectedCity.longitude,
