@@ -1,10 +1,12 @@
 export default {
     templateUrl: 'views/components/sidebar/sidebar.html',
     controller: class {
-        constructor(AuthToken, CONSTANT, $http, $state) {
+        constructor(SidebarCalendar, AuthToken, CONSTANT, $http, $state, $rootScope) {
+            this.$rootScope = $rootScope;
             this.$http = $http;
             this.$state = $state;
             this.CONSTANT = CONSTANT;
+            this.SidebarCalendar = SidebarCalendar;
             this.AuthToken = AuthToken;
             this.minimize = false;
             this.toggleInit = false;
@@ -14,6 +16,8 @@ export default {
         }
 
         changeDate(day) {
+            this.SidebarCalendar.set(day);
+            this.$rootScope.$emit('changeMainCalendar', day);
             console.log(day);
         }
         changeCity(city) {

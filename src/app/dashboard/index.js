@@ -14,6 +14,7 @@ import AccidentCreateCtrl from './accidents/create/create.controller';
 import ClosedListCtrl from './closed/closed.controller';
 import StatisticsCtrl from './statistics/statistics.controller';
 
+import SidebarCalendar from '../../components/sidebar/sidebar-calendar.factory';
 import Accident from './accidents/accident.factory';
 import Closed from './closed/closed.factory';
 import Statistics from './statistics/statistics.factory';
@@ -69,6 +70,7 @@ angular.module('avarcom.dashboard', [
     .controller('ClosedListCtrl', ClosedListCtrl)
     .controller('StatisticsCtrl', StatisticsCtrl)
 
+    .factory('SidebarCalendar', SidebarCalendar)
     .factory('Accident', Accident)
     .factory('Closed', Closed)
     .factory('Statistics', Statistics);

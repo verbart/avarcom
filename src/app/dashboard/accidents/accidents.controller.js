@@ -1,17 +1,20 @@
 export default class {
-    constructor($http, CONSTANT, Accident, AuthToken, $interval) {
+    constructor($http, CONSTANT, Accident, SidebarCalendar, AuthToken, $interval, $rootScope) {
         this.$http = $http;
         this.CONSTANT = CONSTANT;
         this.Accident = Accident;
         this.userData = AuthToken.get();
         this.selectedCity = this.userData.cities.find(e => e.isSelected);
-
-        this.getAccidents();
+        this.selectedDate = SidebarCalendar.get();
+        this.getAccidents(this.selectedDate);
+        $rootScope.$on('changeMainCalendar', (event, args) => {
+            this.getAccidents(args.date.format('DD.MM.YYYY'));
+        });
         // $interval(() => this.getAccidents(), 30*1000);
     }
 
-    getAccidents() {
-        this.Accident.query({}, response => {
+    getAccidents(date) {
+        this.Accident.query({date}, response => {
             this.accidents = response.data;
 
             this.map = this.map || {
