@@ -7,13 +7,15 @@ export default {
     },
     templateUrl: 'views/components/just-calendar/just-calendar.html',
     controller: class {
-        constructor(moment) {
+        constructor(moment, $scope) {
+            this.$scope = $scope;
             this.$onInit = function () {
                 moment.locale(this.locale);
 
                 this.firstDayOfWeek = moment.localeData().firstDayOfWeek();
                 this.weekdays = this.weekdays || moment.weekdaysMin(true);
                 this.selected = this.selected || moment();
+
                 this.month = this.selected.clone();
 
                 const start = this.selected.clone().date(0);
@@ -22,10 +24,12 @@ export default {
                 this.buildMonth(start, this.month);
             };
         }
-        select(day) {
-            this.onUpdate({day});
-            this.selected = day.date;
-            if (!day.isCurrentMonth) day.date.date() < 7 ? this.changeMonth(+1) : this.changeMonth(-1);
+        select(date) {
+            this.selected = date.date;
+            this.onUpdate({
+                $event: date
+            });
+            if (!date.isCurrentMonth) date.date.date() < 7 ? this.changeMonth(+1) : this.changeMonth(-1);
         }
         changeMonth(changeTo) {
             const current = this.month.clone();

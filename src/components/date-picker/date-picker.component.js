@@ -6,7 +6,7 @@ export default {
     },
     templateUrl: 'views/components/date-picker/date-picker.html',
     controller: class {
-        constructor(moment) {
+        constructor() {
             this.$onInit = function () {
                 this.isOpen = false;
             };

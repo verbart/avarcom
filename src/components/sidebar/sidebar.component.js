@@ -13,8 +13,8 @@ export default {
             this.selectedCity = this.cities.find(e => e.isSelected);
         }
 
-        changeDate(date) {
-            console.log(date);
+        changeDate(day) {
+            console.log(day);
         }
         changeCity(city) {
             this.$http.post(this.CONSTANT.API_URL + '/users/update_city', {}, {headers: {city: city.short_name}}).then(() => {

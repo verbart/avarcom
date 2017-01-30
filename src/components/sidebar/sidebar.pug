@@ -24,7 +24,7 @@ section.sidebar(
         dropdown-onchange='$ctrl.changeCity(selected)'
       )
 
-    just-calendar.sidebar__calendar(locale='ru' on-update='$ctrl.changeDate(date)')
+    just-calendar.sidebar__calendar(locale='ru' on-update='$ctrl.changeDate($event)')
 
     .menu
       a.menu__item(ui-sref='dashboard.accidents' ui-sref-active='menu__item_active')

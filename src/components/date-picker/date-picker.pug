@@ -6,6 +6,6 @@
     )
     just-calendar.datePicker__calendar(
         selected='$ctrl.selected'
-        on-update='$ctrl.close(); $ctrl.onUpdate()'
+        on-update='$ctrl.close(); $ctrl.onUpdate($event)'
         ng-show='$ctrl.isOpen'
     )

@@ -6,11 +6,11 @@
         .dashboard__section
             section Данные с
                 | &nbsp;
-                date-picker.statistics__datePicker(selected='statCtrl.startDate' on-update='statCtrl.getStats()')
+                date-picker.statistics__datePicker(selected='statCtrl.startDate')
                 | &nbsp;
                 | по
                 | &nbsp;
-                date-picker.statistics__datePicker(selected='statCtrl.endDate' on-update='statCtrl.getStats()')
+                date-picker.statistics__datePicker(selected='statCtrl.endDate')
 
             .table
                 table.statisticsTable.text_center
@@ -42,10 +42,10 @@
                             td
                             td(ts-criteria='name | lowercase' ts-default) Имя
                             td(ts-criteria='id') ID
-                            td(ts-criteria='accidents.all | parseInt') Всего
-                            td(ts-criteria='accidents.false_events | parseInt') Ложных
-                            td(ts-criteria='accidents.closed | parseInt') Завершенных
-                        tr(ng-repeat='commissioners in statCtrl.commissioners | filter:statCtrl.searchComInput' ts-repeat ts-hide-no-data)
+                            td(ts-criteria='all_events | parseInt') Всего
+                            td(ts-criteria='false_events | parseInt') Ложных
+                            td(ts-criteria='completed_events | parseInt') Завершенных
+                        tr(ng-repeat='commissioners in statCtrl.commissioners| filter:statCtrl.searchComInput' ts-repeat ts-hide-no-data)
                             td {{$index+1}}
                             td {{commissioners.name}}
                             td {{commissioners.id}}
