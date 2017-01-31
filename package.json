@@ -4,7 +4,8 @@
   "author": "Artem Verbat",
   "scripts": {
     "start": "NODE_ENV=development ./node_modules/.bin/gulp",
-    "build": "NODE_ENV=production ./node_modules/.bin/gulp build"
+    "build": "NODE_ENV=production ./node_modules/.bin/gulp build",
+    "deploy": "npm run build && ./node_modules/.bin/firebase deploy"
   },
   "devDependencies": {
     "autoprefixer": "^6.6.0",
@@ -14,6 +15,7 @@
     "browserify": "^13.1.1",
     "connect-history-api-fallback": "^1.3.0",
     "del": "^2.2.2",
+    "firebase-tools": "^3.2.1",
     "gulp": "github:gulpjs/gulp#4.0",
     "gulp-clean-css": "^2.3.2",
     "gulp-if": "^2.0.2",
