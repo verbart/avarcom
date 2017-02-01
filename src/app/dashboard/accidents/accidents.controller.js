@@ -58,8 +58,8 @@ export default class {
                                 if (obj.busy) return 'images/icons/car_red.png';
                                 return 'images/icons/car_green.png';
                             }()),
-                            iconSize: [32, 32],
-                            popupAnchor:  [0, -16]
+                            iconSize: [38, 22],
+                            popupAnchor:  [0, -11]
                         }
                     };
                 });
