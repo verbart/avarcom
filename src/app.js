@@ -21,7 +21,7 @@ angular.module('avarcom', [
         'avarcom.dashboard'
     ])
     .constant('CONSTANT', {
-        API_URL: 'http://178.63.17.133:8181/api/v2',
+        API_URL: 'https://avarkom.pw/api/v2',
         API_KEY: 'AIzaSyDDQzWP_LrDLwRqPSq9_7FvQf2uzQvSJhU'
     })
 

@@ -4,14 +4,31 @@ export default class {
         this.Geocoding = Geocoding;
         this.Accident = Accident;
         this.newAccident = {};
+        this.errors = {
+            locationExist: false,
+        };
 
         $scope.$on('leafletDirectiveMap.createAccidentMap.click', (event, args) => {
             const latlng = args.leafletEvent.latlng;
 
-            this.Geocoding.getAddress(latlng, response => {
-                this.newAccident.address = response;
-                this.newAccident.latitude = latlng.lat;
-                this.newAccident.longitude = latlng.lng;
+            args.model.markers['new'] = {
+                lat: latlng.lat,
+                lng: latlng.lng,
+                draggable: true,
+                icon: {
+                    iconUrl: 'images/icons/flag.png',
+                    iconSize: [32, 32],
+                    popupAnchor:  [0, -16]
+                }
+            };
+
+            this.getAddress(latlng);
+        });
+
+        $scope.$on('leafletDirectiveMarker.createAccidentMap.dragend', (event, args) => {
+            this.getAddress({
+                lat: args.model.lat,
+                lng: args.model.lng
             });
         });
 
@@ -19,20 +36,32 @@ export default class {
             this.newAccident.commissar_id = args.model.commissioner_id;
         });
     }
-
+    getAddress(latlng) {
+        this.Geocoding.getAddress(latlng, response => {
+            this.newAccident.address = response;
+            this.newAccident.latitude = latlng.lat;
+            this.newAccident.longitude = latlng.lng;
+        });
+    }
     addAccident() {
+        if (!this.newAccident.latitude) {
+            this.errors.locationExist = true;
+            return;
+        }
+
         this.newAccident.commissar_id = 9;
         this.newAccident.crash_date = new Date().getTime();
 
-        if (!this.newAccident.latitude) {
-            this.Geocoding.getLocation(this.newAccident.address, response => {
-                this.newAccident.latitude = response.lat;
-                this.newAccident.longitude = response.lng;
-                this.saveAccident();
-            });
-        } else {
-            this.saveAccident();
-        }
+        // if (!this.newAccident.latitude) {
+        //     this.Geocoding.getLocation(this.newAccident.address, response => {
+        //         this.newAccident.latitude = response.lat;
+        //         this.newAccident.longitude = response.lng;
+        //         this.saveAccident();
+        //     });
+        // } else {
+        //     this.saveAccident();
+        // }
+        this.saveAccident();
     }
     saveAccident() {
         this.Accident.save(this.newAccident, response => {
