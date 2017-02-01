@@ -16,7 +16,6 @@ export default class {
         });
 
         $scope.$on('leafletDirectiveMarker.createAccidentMap.click', (event, args) => {
-            console.log('e', args);
             this.newAccident.commissar_id = args.model.commissioner_id;
         });
     }
@@ -25,8 +24,19 @@ export default class {
         this.newAccident.commissar_id = 9;
         this.newAccident.crash_date = new Date().getTime();
 
+        if (!this.newAccident.latitude) {
+            this.Geocoding.getLocation(this.newAccident.address, response => {
+                this.newAccident.latitude = response.lat;
+                this.newAccident.longitude = response.lng;
+                this.saveAccident();
+            });
+        } else {
+            this.saveAccident();
+        }
+    }
+    saveAccident() {
         this.Accident.save(this.newAccident, response => {
-            console.log(response);
+            console.log('Created accident:', response);
             this.$state.go('dashboard.accidents.readOne', {id: 'response.data.crash_id'}, {reload: true});
         });
     }

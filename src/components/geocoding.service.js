@@ -21,5 +21,21 @@ export default class {
                 cb(formatted);
             });
     }
+    getLocation(address, cb) {
+        return this.$http.get('https://maps.googleapis.com/maps/api/geocode/json', {
+            params: {
+                key: this.CONSTANT.API_KEY,
+                address: address,
+                // bounds: `${34.172684},${-118.604794}|${34.236144},${-118.500938}`,
+                language: 'ru',
+                region: 'ru'
+            }}).then(function(response) {
+                console.log('qw', response);
+                if (response.data.status == 'OK') {
+                    const location = response.data.results[0].geometry.location;
+                    cb(location);
+                }
+            });
+    }
 
 }
