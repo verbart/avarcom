@@ -46,7 +46,7 @@ angular.module('avarcom.dashboard', [
     ])
     .run(function ($templateCache) {
         $templateCache.put('ngDropdowns/templates/dropdownSelectItem.html', [
-            '<li ng-class="{active: dropdownSelectItem.isSelected, divider: (dropdownSelectItem.divider && !dropdownSelectItem[dropdownItemLabel]), \'divider-label\': (dropdownSelectItem.divider && dropdownSelectItem[dropdownItemLabel])}">',
+            '<li ng-class="{active: dropdownSelectItem.is_selected, divider: (dropdownSelectItem.divider && !dropdownSelectItem[dropdownItemLabel]), \'divider-label\': (dropdownSelectItem.divider && dropdownSelectItem[dropdownItemLabel])}">',
             '<a href="" class="dropdown-item"',
             ' ng-if="!dropdownSelectItem.divider"',
             ' ng-href="{{dropdownSelectItem.href}}"',

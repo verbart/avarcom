@@ -18,7 +18,8 @@ export default class {
                 icon: {
                     iconUrl: 'images/icons/flag.png',
                     iconSize: [32, 32],
-                    popupAnchor:  [0, -16]
+                    iconAnchor: [0, 32],
+                    popupAnchor: [0, -16]
                 }
             };
 

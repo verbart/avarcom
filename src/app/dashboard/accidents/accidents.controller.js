@@ -4,7 +4,7 @@ export default class {
         this.CONSTANT = CONSTANT;
         this.Accident = Accident;
         this.userData = AuthToken.get();
-        this.selectedCity = this.userData.cities.find(e => e.isSelected);
+        this.selectedCity = this.userData.cities.find(e => e.is_selected);
         this.selectedDate = SidebarCalendar.get();
         this.getAccidents(this.selectedDate);
         $rootScope.$on('changeMainCalendar', (event, args) => {
@@ -38,7 +38,8 @@ export default class {
                             return 'images/icons/accident-marker_green.png';
                         }()),
                         iconSize: [32, 32],
-                        popupAnchor:  [0, -16]
+                        iconAnchor: [16, 32],
+                        popupAnchor: [0, -16]
                     }
                 };
             });

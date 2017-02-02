@@ -1,11 +1,9 @@
 export default class {
     constructor($stateParams, $state, Accident) {
-        this.$state = $state;
         this.Accident = Accident;
 
-        Accident.query(response => {
-            this.selected = response.data.find(e => e.crash_id == $stateParams.id);
-            if (!this.selected) $state.go('dashboard.accidents', {}, {reload: true});
+        Accident.get({id: $stateParams.id}, response => {
+            this.selected = response.data;
 
             this.map = {
                 center: {
@@ -26,13 +24,15 @@ export default class {
                                 return 'images/icons/accident-marker_green.png';
                             }.bind(this)()),
                             iconSize: [32, 32],
-                            popupAnchor:  [0, -16]
+                            iconAnchor: [16, 32],
+                            popupAnchor: [0, -16]
                         }
                     }
                 }
             };
         }, err => {
             console.log(err);
+            $state.go('dashboard.accidents', {}, {reload: true})
         });
     }
 }

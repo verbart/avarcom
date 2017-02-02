@@ -10,7 +10,7 @@ export default {
             this.AuthToken = AuthToken;
             this.userData = AuthToken.get();
             this.cities = this.userData.cities;
-            this.selectedCity = this.cities.find(e => e.isSelected);
+            this.selectedCity = this.cities.find(e => e.is_selected);
             this.toggleInit = false;
             this.minimize = this.userData.sidebarIsCollapsed;
         }
@@ -28,10 +28,12 @@ export default {
         }
         changeCity(city) {
             this.$http.post(this.CONSTANT.API_URL + '/users/update_city', {}, {headers: {city: city.short_name}}).then(() => {
+                console.log(this.userData.cities);
                 this.userData.cities.forEach(e => {
-                    e.isSelected = false;
-                    if (e.short_name == city.short_name) e.isSelected = true;
+                    e.is_selected = false;
+                    if (e.short_name == city.short_name) e.is_selected = true;
                 });
+                console.log(this.userData.cities);
 
                 this.AuthToken.set(this.userData);
                 this.$state.reload();
