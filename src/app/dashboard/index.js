@@ -28,11 +28,13 @@ import 'ui-leaflet';
 import 'angular-simple-logger';
 import 'angular-utf8-base64';
 import 'angular-dropdowns';
+import 'angular-messages';
 
 
 angular.module('avarcom.dashboard', [
         uiRouter,
         ngResource,
+        'ngMessages',
         'ngDropdowns',
         'angularMoment',
         'angularFileUpload',

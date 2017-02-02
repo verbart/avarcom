@@ -35,6 +35,7 @@
     "angular": "^1.6.1",
     "angular-dropdowns": "^1.5.1",
     "angular-file-upload": "^2.4.1",
+    "angular-messages": "^1.6.1",
     "angular-moment": "^1.0.1",
     "angular-resource": "^1.6.1",
     "angular-simple-logger": "^0.1.7",

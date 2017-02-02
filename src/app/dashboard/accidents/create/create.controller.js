@@ -36,6 +36,9 @@ export default class {
             this.newAccident.commissar_id = args.model.commissioner_id;
         });
     }
+    interacted(field) {
+        return this.submitted || field.$dirty;
+    }
     getAddress(latlng) {
         this.Geocoding.getAddress(latlng, response => {
             this.newAccident.address = response;
@@ -48,9 +51,7 @@ export default class {
             this.errors.locationExist = true;
             return;
         }
-
-        this.newAccident.commissar_id = 9;
-        this.newAccident.crash_date = new Date().getTime();
+        this.newAccident.crash_date = this.newAccident.date.format('DD.MM.YYYY');
 
         // if (!this.newAccident.latitude) {
         //     this.Geocoding.getLocation(this.newAccident.address, response => {
@@ -61,6 +62,8 @@ export default class {
         // } else {
         //     this.saveAccident();
         // }
+
+        console.log(this.newAccident);
         this.saveAccident();
     }
     saveAccident() {

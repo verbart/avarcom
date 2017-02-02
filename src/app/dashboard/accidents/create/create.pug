@@ -2,8 +2,12 @@ header.dashboard__header
     h1.dashboard__caption Регистрация аварии
 
 .dashboard__section.scroll(ng-controller='AccidentCreateCtrl as createCtrl')
-    form.form.gutter_bottom_half(ng-submit='createCtrl.addAccident()')
-        .gutter_bottom
+    form.form.gutter_bottom_half(
+        name='creationForm'
+        novalidate
+        ng-submit='createCtrl.submitted = true; creationForm.$valid && createCtrl.addAccident()'
+    )
+        .gutter_bottom_half
             leaflet(
                 id='createAccidentMap'
                 ng-if='listCtrl.map'
@@ -12,15 +16,22 @@ header.dashboard__header
                 width='100%'
                 height='280px'
             )
+        input(ng-hide='true' ng-model='createCtrl.newAccident.latitude' name='latitude' required)
+        ng-messages(for='creationForm.latitude.$error' ng-if='createCtrl.interacted(creationForm.latitude)')
+            p.form__errorMsg(ng-message='required') Пометьте место аварии на карте
 
         .accidentForm
-            h3.form__caption Контакты
+            h3.form__caption.text_center Контакты
 
             input.form__input(
                 placeholder='Адрес'
                 ng-model='createCtrl.newAccident.address'
                 name='address'
+                required
             )
+            ng-messages(for='creationForm.address.$error' ng-if='createCtrl.interacted(creationForm.address)')
+                p.form__errorMsg(ng-message='required') Укажите адрес аварии
+
             input.form__input(
                 placeholder='Телефон'
                 ng-model='createCtrl.newAccident.phone'
@@ -49,8 +60,6 @@ header.dashboard__header
                 ng-model='createCtrl.newAccident.commissar_id'
                 name='commissar'
             )
-
-            p.form__errorMsg(ng-if='createCtrl.errors.locationExist') Пометьте место аварии на карте
 
             .text_center
                 button.button.button_lg ОТПРАВИТЬ

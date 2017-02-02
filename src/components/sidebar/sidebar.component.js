@@ -8,13 +8,19 @@ export default {
             this.CONSTANT = CONSTANT;
             this.SidebarCalendar = SidebarCalendar;
             this.AuthToken = AuthToken;
-            this.minimize = false;
-            this.toggleInit = false;
             this.userData = AuthToken.get();
             this.cities = this.userData.cities;
             this.selectedCity = this.cities.find(e => e.isSelected);
+            this.toggleInit = false;
+            this.minimize = this.userData.sidebarIsCollapsed;
         }
 
+        toggleSidebar() {
+            this.toggleInit = true;
+            this.minimize = !this.minimize;
+            this.userData.sidebarIsCollapsed = this.minimize;
+            this.AuthToken.set(this.userData);
+        }
         changeDate(day) {
             this.SidebarCalendar.set(day);
             this.$rootScope.$emit('changeMainCalendar', day);

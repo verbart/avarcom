@@ -4,7 +4,7 @@ section.sidebar(
   header.sidebar__header
     h1.sidebar__caption Авар
       span.text_highlight Ком
-    .sidebar__menuButton(ng-click='$ctrl.minimize = !$ctrl.minimize; $ctrl.toggleInit = true;')
+    .sidebar__menuButton(ng-click='$ctrl.toggleSidebar()')
 
   .sidebar__body
     .userInfo
