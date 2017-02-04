@@ -19,6 +19,10 @@ import Accident from './accidents/accident.factory';
 import Closed from './closed/closed.factory';
 import Statistics from './statistics/statistics.factory';
 
+import commissionerValidate from './accidents/create/commissioner-validate.directive';
+
+import dropdownsCustomTemplate from '../../components/dropdowns-custom-template';
+
 import 'angular-resource';
 import 'angular-file-upload';
 import 'angular-tablesort';
@@ -44,27 +48,15 @@ angular.module('avarcom.dashboard', [
         'nemLogging',
         'utf8-base64'
     ])
-    .run(function ($templateCache) {
-        $templateCache.put('ngDropdowns/templates/dropdownSelectItem.html', [
-            '<li ng-class="{active: dropdownSelectItem.is_selected, divider: (dropdownSelectItem.divider && !dropdownSelectItem[dropdownItemLabel]), \'divider-label\': (dropdownSelectItem.divider && dropdownSelectItem[dropdownItemLabel])}">',
-            '<a href="" class="dropdown-item"',
-            ' ng-if="!dropdownSelectItem.divider"',
-            ' ng-href="{{dropdownSelectItem.href}}"',
-            ' ng-click="selectItem()">',
-            '{{dropdownSelectItem[dropdownItemLabel]}}',
-            '</a>',
-            '<span ng-if="dropdownSelectItem.divider">',
-            '{{dropdownSelectItem[dropdownItemLabel]}}',
-            '</span>',
-            '</li>'
-        ].join(''));
-    })
+    .run(dropdownsCustomTemplate)
 
     .config(router)
 
     .component('avarcomSidebar', sidebar)
     .component('justCalendar', justCalendar)
     .component('datePicker', datePicker)
+
+    .directive('commissionerValidate', commissionerValidate)
 
     .controller('AccidentListCtrl', AccidentListCtrl)
     .controller('AccidentReadOneCtrl', AccidentReadOneCtrl)

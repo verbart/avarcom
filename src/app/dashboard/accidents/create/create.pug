@@ -58,8 +58,14 @@ header.dashboard__header
             input.form__input(
                 placeholder='ID комиссара'
                 ng-model='createCtrl.newAccident.commissar_id'
-                name='commissar'
+                name='commissar_id'
+                required
+                commissioner-validate
             )
+            ng-messages(for='creationForm.commissar_id.$error' ng-if='createCtrl.interacted(creationForm.commissar_id)')
+                p.form__errorMsg(ng-message='required') Укажите ID комиссара которому поступит заявка
+                p.form__errorMsg(ng-message='existCommissioner') Комиссара с таким ID не существует
+                p.form__errorMsg(ng-message='availableCommissioner') Комиссар в данный момент занят
 
             .text_center
                 button.button.button_lg ОТПРАВИТЬ
