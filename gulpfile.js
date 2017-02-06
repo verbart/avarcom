@@ -71,13 +71,11 @@ gulp.task('scripts', function(done) {
 gulp.task('sprite', function() {
     const spriteData = gulp.src('./src/assets/images/sprite/*.*')
         .pipe(spritesmith({
-            // retinaSrcFilter: './public/images/sprite/*@2x.*',
             imgName: 'sprite.png',
-            // retinaImgName: 'sprite@2x.png',
             cssName: 'images.styl',
             algorithm: 'binary-tree',
             padding: 2,
-            cssTemplate: 'stylus-sprite-template.mustache'
+            cssTemplate: './src/assets/styles/sprites/sprite-template.mustache'
         }));
 
     spriteData.img

@@ -14,39 +14,37 @@ import './app/dashboard';
 
 
 angular.module('avarcom', [
-        uiRouter,
+  uiRouter,
 
-        'avarcom.auth',
-        'avarcom.main',
-        'avarcom.dashboard'
-    ])
-    .constant('CONSTANT', {
-        API_URL: 'https://avarkom.pw/api/v2',
-        API_KEY: 'AIzaSyDDQzWP_LrDLwRqPSq9_7FvQf2uzQvSJhU'
-    })
+  'avarcom.auth',
+  'avarcom.main',
+  'avarcom.dashboard'
+])
+  .constant('CONSTANT', {
+    API_URL: 'https://avarkom.pw/api/v2',
+    API_KEY: 'AIzaSyDDQzWP_LrDLwRqPSq9_7FvQf2uzQvSJhU'
+  })
 
-    .config(function(
-        $httpProvider,
-        $localStorageProvider,
-        $stateProvider,
-        $urlRouterProvider,
-        $locationProvider,
-        $urlMatcherFactoryProvider
-    ) {
-        $localStorageProvider.setKeyPrefix('avarcom_');
+  .config(function(
+    $localStorageProvider,
+    $stateProvider,
+    $urlRouterProvider,
+    $locationProvider,
+    $urlMatcherFactoryProvider
+  ) {
+    $localStorageProvider.setKeyPrefix('avarcom_');
 
-        $locationProvider.html5Mode(true).hashPrefix('!');
-        $urlMatcherFactoryProvider.strictMode(false);
+    $locationProvider.html5Mode(true).hashPrefix('!');
+    $urlMatcherFactoryProvider.strictMode(false);
 
-        $stateProvider
-            .state('404', {
-                url: '/404',
-                templateUrl: 'views/app/errors/404.html'
-            });
+    $stateProvider.state('404', {
+      url: '/404',
+      templateUrl: 'views/app/errors/404.html'
+    });
 
-        $urlRouterProvider.otherwise('/404');
-    })
+    $urlRouterProvider.otherwise('/404');
+  })
 
-    .filter('decodeBase64', decodeBase64)
-    .service('Geocoding', Geocoding)
-    .directive('clickOut', clickOut);
+  .filter('decodeBase64', decodeBase64)
+  .service('Geocoding', Geocoding)
+  .directive('clickOut', clickOut);
