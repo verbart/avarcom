@@ -1,10 +1,10 @@
 header.dashboard__header
-    button.button.button_sm.flex__item_end(ui-sref='accidents.create') ДОБАВИТЬ АВАРИЮ
+    button.button.button_sm.flex__item_end(ui-sref='dashboard.accidents') ДОБАВИТЬ АВАРИЮ
 
-.dashboard__section.text_center
-    form.form(ng-submit='listCtrl.editAccident()')
+.dashboard__section.scroll
+    form.form.gutter_bottom_half(ng-submit='listCtrl.editAccident()')
         .accidentForm
-            h3.form__caption Потерпевший
+            h3.form__caption.text_center Потерпевший
 
             input.form__input(
                 placeholder='Фамилия'
@@ -38,7 +38,7 @@ header.dashboard__header
             )
 
         .accidentForm
-            h3.form__caption Виновник
+            h3.form__caption.text_center Виновник
 
             input.form__input(
                 placeholder='Фамилия'
@@ -71,7 +71,7 @@ header.dashboard__header
                 name='phone'
             )
 
-        .accidentForm.gutter_bottom
+        .accidentForm.gutter_bottom.text_center
             h4 Документы:
 
             .accidentForm__documents
@@ -80,11 +80,10 @@ header.dashboard__header
                     style='background-image: url(images/{{document.thumb}})'
                 )
                 label.accidentForm__addPhoto
-                    span.icon_plus
                     input(type='file' nv-file-select uploader='listCtrl.uploader' multiple ng-hide='true')
                     //.button.button_sm(ng-hide='listCtrl.uploader.queue.length') Добавить документ
 
 
 
-
-        button.button.button_lg СОХРАНИТЬ
+        .text_center
+            button.button.button_lg СОХРАНИТЬ

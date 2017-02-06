@@ -1,0 +1,23 @@
+.tabs
+  &__header
+    display table
+    table-layout fixed
+    text-align center
+    width 100%
+    font-size 1.25rem
+    border-bottom 1px solid #bebebe
+  &__tab
+    display table-cell
+    padding .5rem
+    background #fff
+    cursor pointer
+    transition .4s
+    &:hover
+      opacity .5
+    & + &
+      border-left 1px solid #bebebe
+    &_active
+      background gainsboro
+      &:hover
+        opacity 1
+        cursor default

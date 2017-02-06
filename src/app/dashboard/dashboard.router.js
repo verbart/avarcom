@@ -27,10 +27,22 @@ export default function ($stateProvider, $urlRouterProvider) {
           squash: true
         }
       },
-      templateUrl: 'views/app/dashboard/closed/read.html',
+      templateUrl: 'views/app/dashboard/closed/closed.html',
       controller: 'ClosedListCtrl as listCtrl',
       authenticate: true
     })
+      .state('dashboard.closed.', {
+        url: '/closed/:id',
+        params:  {
+        id: {
+          value: null,
+          squash: true
+        }
+        },
+        templateUrl: 'views/app/dashboard/closed/closed.html',
+        controller: 'ClosedListCtrl as listCtrl',
+        authenticate: true
+      })
     .state('dashboard.statistics', {
       url: '/statistics',
       templateUrl: 'views/app/dashboard/statistics/statistics.html',
