@@ -4,7 +4,6 @@ export default class StatisticsCtrl {
         this.Statistics = Statistics;
         this.startDate = moment().subtract(1, 'day');
         this.endDate = moment();
-        this.searchComInput = '';
 
         $scope.$watchGroup([()=>this.startDate, ()=>this.endDate], () => {
             this.getStats();

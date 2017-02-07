@@ -40,7 +40,6 @@
     "angular-simple-logger": "^0.1.7",
     "angular-tablesort": "^1.4.0",
     "angular-ui-router": "^0.4.2",
-    "angular-utf8-base64": "0.0.5",
     "ngstorage": "^0.3.11",
     "ui-leaflet": "^2.0.0"
   }

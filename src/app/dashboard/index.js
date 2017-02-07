@@ -12,6 +12,7 @@ import AccidentListCtrl from './accidents/accidents.controller';
 import AccidentReadOneCtrl from './accidents/read-one/read-one.controller';
 import AccidentCreateCtrl from './accidents/create/create.controller';
 import ClosedListCtrl from './closed/closed.controller';
+import ClosedEditCtrl from './closed/edit/edit.controller';
 import StatisticsCtrl from './statistics/statistics.controller';
 
 import SidebarCalendar from '../../components/sidebar/sidebar-calendar.factory';
@@ -30,9 +31,9 @@ import 'ngstorage';
 import 'angular-moment';
 import 'ui-leaflet';
 import 'angular-simple-logger';
-import 'angular-utf8-base64';
 import 'angular-dropdowns';
 import 'angular-messages';
+import 'ng-file-upload';
 
 
 angular.module('avarcom.dashboard', [
@@ -46,7 +47,7 @@ angular.module('avarcom.dashboard', [
         'ngStorage',
         'ui-leaflet',
         'nemLogging',
-        'utf8-base64'
+        'ngFileUpload'
     ])
     .run(dropdownsCustomTemplate)
 
@@ -62,6 +63,7 @@ angular.module('avarcom.dashboard', [
     .controller('AccidentReadOneCtrl', AccidentReadOneCtrl)
     .controller('AccidentCreateCtrl', AccidentCreateCtrl)
     .controller('ClosedListCtrl', ClosedListCtrl)
+    .controller('ClosedEditCtrl', ClosedEditCtrl)
     .controller('StatisticsCtrl', StatisticsCtrl)
 
     .factory('SidebarCalendar', SidebarCalendar)

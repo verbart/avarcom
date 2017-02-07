@@ -8,21 +8,21 @@
                 .dashboard__section
                     form.form(ng-submit='listCtrl.search()')
                         .form__searchForm
-                            input.form__input(ng-model='listCtrl.searchComInput' placeholder='Введите имя, марку машины или дату...')
+                            input.form__input(ng-model='searchAccident' placeholder='Введите имя, марку машины или дату...')
                             button.button.button_sm НАЙТИ
 
             .tabs
-                .tabs__header
-                    .tabs__tab.tabs__tab_active Все
-                    .tabs__tab Подтверждённые
-                    .tabs__tab Неподтверждённые
+                .tabs__header(ng-init='activeTab = 0')
+                    .tabs__tab(ng-class='{tabs__tab_active: activeTab === 0}' ng-click='activeTab = 0; filterBy = {}') Все
+                    .tabs__tab(ng-class='{tabs__tab_active: activeTab === 1}' ng-click='activeTab = 1; filterBy = {is_confirmed: true}') Подтверждённые
+                    .tabs__tab(ng-class='{tabs__tab_active: activeTab === 2}' ng-click='activeTab = 2; filterBy = {is_confirmed: false}') Неподтверждённые
 
             .dashboard__section.scroll
                 .table
                     table.table_hover.accidentList
                         tr.accidentList__item(
-                            ng-repeat='accident in listCtrl.accidents'
-                            ui-sref='dashboard.closed({id: accident.crash_id})'
+                            ng-repeat='accident in listCtrl.accidents | filter: filterBy : {address: searchAccident}'
+                            ui-sref='dashboard.closed.edit({id: accident.crash_id})'
                             ui-sref-active='accidentList__item_active'
                         )
                             td.text_center {{$index+1}}.
@@ -30,5 +30,4 @@
                             td.text_right
                                 .accidentList__icon
 
-        .col-md-5.flex.flex_column
-            include edit
+        ui-view.col-md-5.flex.flex_column

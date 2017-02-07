@@ -45,7 +45,7 @@
                             td(ts-criteria='all_events | parseInt') Всего
                             td(ts-criteria='false_events | parseInt') Ложных
                             td(ts-criteria='completed_events | parseInt') Завершенных
-                        tr(ng-repeat='commissioners in statCtrl.commissioners| filter:statCtrl.searchComInput' ts-repeat ts-hide-no-data)
+                        tr(ng-repeat='commissioners in statCtrl.commissioners| filter : statCtrl.searchComInput' ts-repeat ts-hide-no-data)
                             td {{$index+1}}
                             td {{commissioners.name}}
                             td {{commissioners.id}}
