@@ -1,8 +1,8 @@
 export default class {
-    constructor(AuthService, $state, AuthToken) {
+    constructor(AuthService, $state, AuthData) {
         this.AuthService = AuthService;
         this.$state = $state;
-        this.AuthToken = AuthToken;
+        this.AuthData = AuthData;
         this.user = {};
         this.loginError = null;
     }
@@ -11,8 +11,8 @@ export default class {
         this.AuthService.login(this.user).then(
             res => {
                 console.log(res);
-                this.AuthToken.set(res.data);
-                console.log(this.AuthToken.get());
+                this.AuthData.set(res.data);
+                console.log(this.AuthData.get());
                 this.$state.go('dashboard');
             },
             error => {

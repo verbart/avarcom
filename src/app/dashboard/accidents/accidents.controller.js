@@ -1,9 +1,9 @@
 export default class {
-    constructor($http, CONSTANT, Accident, SidebarCalendar, AuthToken, $interval, $rootScope) {
+    constructor($http, CONSTANT, Accident, SidebarCalendar, AuthData, $interval, $rootScope) {
         this.$http = $http;
         this.CONSTANT = CONSTANT;
         this.Accident = Accident;
-        this.userData = AuthToken.get();
+        this.userData = AuthData.get();
         this.selectedCity = this.userData.cities.find(e => e.is_selected);
         this.selectedDate = SidebarCalendar.get();
         this.getAccidents(this.selectedDate);

@@ -10,7 +10,7 @@ section.sidebar(
     .userInfo
       .userInfo__photo
       .userInfo__info
-        h3.userInfo__name Иван Иванов
+        h3.userInfo__name {{$ctrl.AuthData.user_name}}
         div
           a.userInfo__link(ui-sref='cabinet') Редактировать
           a.userInfo__link(ui-sref='logout') Выйти
