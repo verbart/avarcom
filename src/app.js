@@ -8,17 +8,19 @@ import clickOut from './components/click-out.directive';
 import decodeBase64 from './components/decode-base64.filter';
 import Geocoding from './components/geocoding.service';
 
-import './app/auth';
 import './app/main';
+import './app/auth';
 import './app/dashboard';
+import './app/cabinet';
 
 
 angular.module('avarcom', [
   uiRouter,
 
-  'avarcom.auth',
   'avarcom.main',
-  'avarcom.dashboard'
+  'avarcom.auth',
+  'avarcom.dashboard',
+  'avarcom.cabinet'
 ])
   .constant('CONSTANT', {
     API_URL: 'https://avarkom.pw/api/v2',

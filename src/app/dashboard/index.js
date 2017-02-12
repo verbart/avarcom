@@ -25,7 +25,6 @@ import commissionerValidate from './accidents/create/commissioner-validate.direc
 import dropdownsCustomTemplate from '../../components/dropdowns-custom-template';
 
 import 'angular-resource';
-import 'angular-file-upload';
 import 'angular-tablesort';
 import 'ngstorage';
 import 'angular-moment';
@@ -35,38 +34,36 @@ import 'angular-dropdowns';
 import 'angular-messages';
 import 'ng-file-upload';
 
-
 angular.module('avarcom.dashboard', [
-        uiRouter,
-        ngResource,
-        'ngMessages',
-        'ngDropdowns',
-        'angularMoment',
-        'angularFileUpload',
-        'tableSort',
-        'ngStorage',
-        'ui-leaflet',
-        'nemLogging',
-        'ngFileUpload'
-    ])
-    .run(dropdownsCustomTemplate)
+  uiRouter,
+  ngResource,
+  'ngMessages',
+  'ngDropdowns',
+  'angularMoment',
+  'tableSort',
+  'ngStorage',
+  'ui-leaflet',
+  'nemLogging',
+  'ngFileUpload'
+])
+  .run(dropdownsCustomTemplate)
 
-    .config(router)
+  .config(router)
 
-    .component('avarcomSidebar', sidebar)
-    .component('justCalendar', justCalendar)
-    .component('datePicker', datePicker)
+  .component('avarcomSidebar', sidebar)
+  .component('justCalendar', justCalendar)
+  .component('datePicker', datePicker)
 
-    .directive('commissionerValidate', commissionerValidate)
+  .directive('commissionerValidate', commissionerValidate)
 
-    .controller('AccidentListCtrl', AccidentListCtrl)
-    .controller('AccidentReadOneCtrl', AccidentReadOneCtrl)
-    .controller('AccidentCreateCtrl', AccidentCreateCtrl)
-    .controller('ClosedListCtrl', ClosedListCtrl)
-    .controller('ClosedEditCtrl', ClosedEditCtrl)
-    .controller('StatisticsCtrl', StatisticsCtrl)
+  .controller('AccidentListCtrl', AccidentListCtrl)
+  .controller('AccidentReadOneCtrl', AccidentReadOneCtrl)
+  .controller('AccidentCreateCtrl', AccidentCreateCtrl)
+  .controller('ClosedListCtrl', ClosedListCtrl)
+  .controller('ClosedEditCtrl', ClosedEditCtrl)
+  .controller('StatisticsCtrl', StatisticsCtrl)
 
-    .factory('SidebarCalendar', SidebarCalendar)
-    .factory('Accident', Accident)
-    .factory('Closed', Closed)
-    .factory('Statistics', Statistics);
+  .factory('SidebarCalendar', SidebarCalendar)
+  .factory('Accident', Accident)
+  .factory('Closed', Closed)
+  .factory('Statistics', Statistics);

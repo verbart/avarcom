@@ -70,7 +70,7 @@ export default class {
     saveAccident() {
         this.Accident.save(this.newAccident, response => {
             console.log('Created accident:', response);
-            this.$state.go('dashboard.accidents.readOne', {id: 'response.data.crash_id'}, {reload: true});
+            this.$state.go('dashboard.accidents.readOne', {id: response.crash_id}, {reload: true});
         });
     }
 }
