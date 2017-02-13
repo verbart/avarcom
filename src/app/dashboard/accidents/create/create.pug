@@ -5,17 +5,19 @@ header.dashboard__header
     form.form.gutter_bottom_half(
         name='creationForm'
         novalidate
-        ng-submit='createCtrl.submitted = true; creationForm.$valid && createCtrl.addAccident()'
+        ng-submit='createCtrl.submitted = true; creationForm.$valid && createCtrl.sendAccident()'
     )
+        .leaflet__wrap(ng-if='listCtrl.map')
+          leaflet(
+              id='createAccidentMap'
+              center='listCtrl.map.center'
+              markers='listCtrl.map.markers'
+              width='100%'
+              height='280px'
+          )
+          .leaflet__maximizeBtn(ng-click='createCtrl.openMapModal(listCtrl.selectedCity.name, listCtrl.map)') &#8689;
         .gutter_bottom_half
-            leaflet(
-                id='createAccidentMap'
-                ng-if='listCtrl.map'
-                center='listCtrl.map.center'
-                markers='listCtrl.map.markers'
-                width='100%'
-                height='280px'
-            )
+
         input(ng-hide='true' ng-model='createCtrl.newAccident.latitude' name='latitude' required)
         ng-messages(for='creationForm.latitude.$error' ng-if='createCtrl.interacted(creationForm.latitude)')
             p.form__errorMsg(ng-message='required') Пометьте место аварии на карте
@@ -65,7 +67,6 @@ header.dashboard__header
             ng-messages(for='creationForm.commissar_id.$error' ng-if='createCtrl.interacted(creationForm.commissar_id)')
                 p.form__errorMsg(ng-message='required') Укажите ID комиссара которому поступит заявка
                 p.form__errorMsg(ng-message='existCommissioner') Комиссара с таким ID не существует
-                p.form__errorMsg(ng-message='availableCommissioner') Комиссар в данный момент занят
 
             .text_center
                 button.button.button_lg ОТПРАВИТЬ

@@ -7,6 +7,7 @@ import router from './dashboard.router';
 import sidebar from '../../components/sidebar/sidebar.component';
 import justCalendar from '../../components/just-calendar/just-calendar.component';
 import datePicker from '../../components/date-picker/date-picker.component';
+import accidentsMapModal from '../../components/modals/accidents-map/accidents-map.component';
 
 import AccidentListCtrl from './accidents/accidents.controller';
 import AccidentReadOneCtrl from './accidents/read-one/read-one.controller';
@@ -33,6 +34,9 @@ import 'angular-simple-logger';
 import 'angular-dropdowns';
 import 'angular-messages';
 import 'ng-file-upload';
+import 'ng-file-upload';
+import 'angular-modal-service';
+import 'angular-ui-bootstrap';
 
 angular.module('avarcom.dashboard', [
   uiRouter,
@@ -41,6 +45,7 @@ angular.module('avarcom.dashboard', [
   'ngDropdowns',
   'angularMoment',
   'tableSort',
+  'ui.bootstrap',
   'ngStorage',
   'ui-leaflet',
   'nemLogging',
@@ -53,6 +58,7 @@ angular.module('avarcom.dashboard', [
   .component('avarcomSidebar', sidebar)
   .component('justCalendar', justCalendar)
   .component('datePicker', datePicker)
+  .component('accidentsMapModal', accidentsMapModal)
 
   .directive('commissionerValidate', commissionerValidate)
 
