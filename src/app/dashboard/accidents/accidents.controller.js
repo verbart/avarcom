@@ -1,5 +1,5 @@
 export default class {
-  constructor($http, CONSTANT, Accident, SidebarCalendar, AuthData, $interval, $rootScope) {
+  constructor($http, CONSTANT, Accident, SidebarCalendar, AuthData, $interval, $scope, $rootScope) {
     this.$http = $http;
     this.CONSTANT = CONSTANT;
     this.Accident = Accident;
@@ -8,13 +8,14 @@ export default class {
     this.selectedDate = SidebarCalendar.get();
     this.getAccidents(this.selectedDate);
     $rootScope.$on('changeMainCalendar', (event, args) => {
-        this.getAccidents(args.date.format('DD.MM.YYYY'));
+      this.getAccidents(args.date.format('DD.MM.YYYY'));
     });
-    // $interval(() => this.getAccidents(), 30*1000);
+    const interval = $interval(() => this.getAccidents(), 20*1000);
+    $scope.$on('$destroy', () => $interval.cancel(interval));
   }
 
   getAccidents(date) {
-    this.Accident.query({date}, response => {
+    this.Accident.query({date, web: true}, response => {
       this.accidents = response.data;
 
       this.map = this.map || {
@@ -35,8 +36,8 @@ export default class {
           message: obj.description || null,
           icon: {
             iconUrl: (function () {
-              if (obj.is_false) return 'images/icons/accident-marker_yellow.png';
-              else if (obj.holder_id) return 'images/icons/accident-marker_red.png';
+              if (obj.status.code > 2) return 'images/icons/accident-marker_yellow.png';
+              else if (obj.status.code == 2) return 'images/icons/accident-marker_red.png';
               return 'images/icons/accident-marker_green.png';
             }()),
             iconSize: [32, 32],

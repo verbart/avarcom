@@ -1,7 +1,7 @@
 export default {
   templateUrl: 'views/components/sidebar/sidebar.html',
   controller: class {
-    constructor(SidebarCalendar, AuthData, CONSTANT, $http, $state, $rootScope) {
+    constructor(SidebarCalendar, AuthData, CONSTANT, $http, $state, $rootScope, Closed, $interval) {
       this.$rootScope = $rootScope;
       this.$http = $http;
       this.$state = $state;
@@ -12,6 +12,18 @@ export default {
       this.selectedCity = this.userData.cities.find(e => e.is_selected);
       this.toggleInit = false;
       this.minimize = this.userData.sidebarIsCollapsed;
+
+      $interval(() => Closed.query(response => {
+        if (response.data.length) {
+          this.$rootScope.$emit('updateClosedCounter', response.data.filter(obj => !obj.is_confirmed).length);
+        }
+      }, error => {
+        console.log(error);
+      }), 20*1000);
+
+      $rootScope.$on('updateClosedCounter', (event, args) => {
+        this.closedCounter = args;
+      });
     }
 
     toggleSidebar() {

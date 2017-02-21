@@ -2,81 +2,121 @@ header.dashboard__header
     button.button.button_sm.flex__item_end(ui-sref='dashboard.accidents') ДОБАВИТЬ АВАРИЮ
 
 .dashboard__section.scroll(ng-show='editCtrl.editable')
-    div(ng-show='!editCtrl.editable.is_confirmed')
+  div(ng-show='!editCtrl.editable.is_confirmed')
+    h3.form__caption.text_center Потерпевший
+    p
+      b ФИО:
+      = ' '
+      | {{editCtrl.editable.victim.full_name}}
+    p
+      b Марка авто:
+      = ' '
+      | {{editCtrl.editable.victim.car_brand}}
+    p
+      b Номер авто:
+      = ' '
+      | {{editCtrl.editable.victim.car_number}}
+    p
+      b Телефон:
+      = ' '
+      | {{editCtrl.editable.victim.phone}}
+
+
+    h3.form__caption.text_center Виновник
+    p
+      b ФИО:
+      = ' '
+      | {{editCtrl.editable.culprit.full_name}}
+    p
+      b Марка авто:
+      = ' '
+      | {{editCtrl.editable.culprit.car_brand}}
+    p
+      b Номер авто:
+      = ' '
+      | {{editCtrl.editable.culprit.car_number}}
+    p
+      b Телефон:
+      = ' '
+      | {{editCtrl.editable.culprit.phone}}
+
+
+    h3.form__caption.text_center Комиссар
+    p
+      b ФИО:
+      = ' '
+      | {{editCtrl.editable.commissar.name}}
+    p
+      b ID:
+      = ' '
+      | {{editCtrl.editable.commissar.id}}
+    p
+      b Телефон:
+      = ' '
+      | {{editCtrl.editable.commissar.phone}}
+
+
+  form.form.gutter_bottom_half(ng-hide='!editCtrl.editable.is_confirmed')
+    .accidentForm
       h3.form__caption.text_center Потерпевший
-      ul
-          li {{editCtrl.editable.victim.full_name}}
-          li {{editCtrl.editable.victim.car_brand}}
-          li {{editCtrl.editable.victim.car_number}}
-          li {{editCtrl.editable.victim.phone}}
+
+      input.form__input(
+        placeholder='ФИО'
+        ng-model='editCtrl.editable.victim.full_name'
+        name='full_name'
+      )
+      input.form__input(
+        placeholder='Марка автомобиля'
+        ng-model='editCtrl.editable.victim.car_brand'
+        name='car_brand'
+      )
+      input.form__input(
+        placeholder='Номер автомобиля'
+        ng-model='editCtrl.editable.victim.car_number'
+        name='car_number'
+      )
+      input.form__input(
+        placeholder='Телефон'
+        ng-model='editCtrl.editable.victim.phone'
+        name='phone'
+      )
+
+    .accidentForm
       h3.form__caption.text_center Виновник
-      ul
-        li {{editCtrl.editable.culprit.full_name}}
-        li {{editCtrl.editable.culprit.car_brand}}
-        li {{editCtrl.editable.culprit.car_number}}
-        li {{editCtrl.editable.culprit.phone}}
 
-    form.form.gutter_bottom_half(ng-hide='!editCtrl.editable.is_confirmed')
-        .accidentForm
-            h3.form__caption.text_center Потерпевший
+      input.form__input(
+        placeholder='ФИО'
+        ng-model='editCtrl.editable.culprit.full_name'
+        name='full_name'
+      )
+      input.form__input(
+        placeholder='Марка автомобиля'
+        ng-model='editCtrl.editable.culprit.car_brand'
+        name='car_brand'
+      )
+      input.form__input(
+        placeholder='Номер автомобиля'
+        ng-model='editCtrl.editable.culprit.car_number'
+        name='car_number'
+      )
+      input.form__input(
+        placeholder='Телефон'
+        ng-model='editCtrl.editable.culprit.phone'
+        name='phone'
+      )
 
-            input.form__input(
-                placeholder='ФИО'
-                ng-model='editCtrl.editable.victim.full_name'
-                name='full_name'
-            )
-            input.form__input(
-                placeholder='Марка автомобиля'
-                ng-model='editCtrl.editable.victim.car_brand'
-                name='car_brand'
-            )
-            input.form__input(
-                placeholder='Номер автомобиля'
-                ng-model='editCtrl.editable.victim.car_number'
-                name='car_number'
-            )
-            input.form__input(
-                placeholder='Телефон'
-                ng-model='editCtrl.editable.victim.phone'
-                name='phone'
-            )
+    .accidentForm.gutter_bottom.text_center
+      h4 Документы:
 
-        .accidentForm
-            h3.form__caption.text_center Виновник
+      .accidentForm__documents
+        .accidentForm__photoPreview(
+          ng-repeat='document in editCtrl.editable.documents track by $index'
+          style='background-image: url(images/{{document.thumb}})'
+        )
+        label.accidentForm__addPhoto
+          input(type='file' ngf-select="editCtrl.onFileSelect($files)" ng-hide='true')
 
-            input.form__input(
-                placeholder='ФИО'
-                ng-model='editCtrl.editable.culprit.full_name'
-                name='full_name'
-            )
-            input.form__input(
-                placeholder='Марка автомобиля'
-                ng-model='editCtrl.editable.culprit.car_brand'
-                name='car_brand'
-            )
-            input.form__input(
-                placeholder='Номер автомобиля'
-                ng-model='editCtrl.editable.culprit.car_number'
-                name='car_number'
-            )
-            input.form__input(
-                placeholder='Телефон'
-                ng-model='editCtrl.editable.culprit.phone'
-                name='phone'
-            )
-
-        .accidentForm.gutter_bottom.text_center
-            h4 Документы:
-
-            .accidentForm__documents
-                .accidentForm__photoPreview(
-                    ng-repeat='document in editCtrl.editable.documents track by $index'
-                    style='background-image: url(images/{{document.thumb}})'
-                )
-                label.accidentForm__addPhoto
-                    input(type='file' ngf-select="editCtrl.onFileSelect($files)" ng-hide='true')
-
-        .text_center
-            .gutter_bottom_half
-              button.button.button_lg(ng-click='editCtrl.editAccident()') СОХРАНИТЬ
-            button.button.button_lg(ng-click='editCtrl.sendAccident()') Отправить
+    .text_center
+      .gutter_bottom_half
+        button.button.button_lg(ng-click='editCtrl.editAccident()') СОХРАНИТЬ
+      button.button.button_lg(ng-click='editCtrl.sendAccident()') Отправить

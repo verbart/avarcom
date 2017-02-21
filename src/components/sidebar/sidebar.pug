@@ -34,6 +34,8 @@ section.sidebar(
       a.menu__item(ui-sref='dashboard.closed' ui-sref-active='menu__item_active')
         span.menu__icon.menu__icon_check
         span.menu__text Завершенное
+          = ' '
+          .badge {{$ctrl.closedCounter || 0}}
 
       a.menu__item(ui-sref='dashboard.statistics' ui-sref-active='menu__item_active')
         span.menu__icon.menu__icon_chart

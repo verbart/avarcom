@@ -7,13 +7,32 @@
         line-height 1
     &__address
       border-right none !important
+    &__status
+      font-size .9rem
+      line-height 1
     &__icon
-      sprite($right-chevron)
+      margin-top 3px
     &__item
-      &_active
-        color #f59c00
+      transition .4s
+      &_green
+        .accidentList__status
+          color #1aaf5d
         .accidentList__icon
-          spritePosition($left-chevron_active)
+          sprite($right-chevron_green)
+      &_red
+        .accidentList__status
+          color #ea4b35
+        .accidentList__icon
+          sprite($right-chevron_red)
+      &_orange
+        .accidentList__status
+          color #ea4b35
+        .accidentList__icon
+          sprite($right-chevron_orange)
+      &_active
+        background #eee
+        .accidentList__address
+          font-weight 300
 
   &Form
     padding-left 15px

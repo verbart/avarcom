@@ -2,6 +2,7 @@ export default function Closed(CONSTANT, $filter, $resource) {
   const transformResponse = function (obj) {
     obj.address = $filter('decodeBase64')(obj.address);
     obj.data.is_confirmed = obj.is_confirmed;
+    obj.data.commissar = obj.commissar;
 
     obj.data.culprit.full_name = $filter('decodeBase64')(obj.data.culprit.full_name);
     obj.data.culprit.car_brand = $filter('decodeBase64')(obj.data.culprit.car_brand);

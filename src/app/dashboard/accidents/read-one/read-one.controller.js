@@ -2,9 +2,9 @@ export default class {
     constructor($stateParams, $state, Accident) {
         this.Accident = Accident;
 
-        Accident.get({id: $stateParams.id}, response => {
+        Accident.get({id: $stateParams.id, web: true}, response => {
+          console.log(response.data);
             this.selected = response.data;
-
             this.map = {
                 center: {
                     lat: +this.selected.latitude,
@@ -19,8 +19,8 @@ export default class {
                         focus: Boolean(this.selected.description),
                         icon: {
                             iconUrl: (function () {
-                                if (this.selected.is_false) return 'images/icons/accident-marker_yellow.png';
-                                else if (this.selected.holder_id) return 'images/icons/accident-marker_red.png';
+                                if (this.selected.status.code > 2) return 'images/icons/accident-marker_yellow.png';
+                                else if (this.selected.status.code == 2) return 'images/icons/accident-marker_red.png';
                                 return 'images/icons/accident-marker_green.png';
                             }.bind(this)()),
                             iconSize: [32, 32],
