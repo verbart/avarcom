@@ -1004,3 +1004,8 @@
 .pull-right {
   float: right;
 }
+.clearfix::after {
+  display: block;
+  content: "";
+  clear: both;
+}

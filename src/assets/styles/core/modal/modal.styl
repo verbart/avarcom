@@ -9,7 +9,7 @@
   height 100%
   overflow auto
   background rgba(0, 0, 0, 0.4)
-  &__content, &-dialog
+  &-dialog
     position relative
     width 80%
     min-width 300px
@@ -18,6 +18,8 @@
     background-color #fefefe
     box-shadow 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)
     animation animateTop 0.4s
+    &.modal-xs
+      max-width 320px
   &__header
     padding 10px 15px
     background-color #383838
@@ -42,6 +44,9 @@
     padding 10px 15px
     background-color #383838
     color white
+  &-xs
+    .modal-dialog
+      max-width 320px
 
 @keyframes animateTop
   from

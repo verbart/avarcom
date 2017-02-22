@@ -8,6 +8,7 @@ import sidebar from '../../components/sidebar/sidebar.component';
 import justCalendar from '../../components/just-calendar/just-calendar.component';
 import datePicker from '../../components/date-picker/date-picker.component';
 import accidentsMapModal from '../../components/modals/accidents-map/accidents-map.component';
+import periodModal from '../../components/modals/period/period.component';
 
 import AccidentListCtrl from './accidents/accidents.controller';
 import AccidentReadOneCtrl from './accidents/read-one/read-one.controller';
@@ -59,6 +60,7 @@ angular.module('avarcom.dashboard', [
   .component('justCalendar', justCalendar)
   .component('datePicker', datePicker)
   .component('accidentsMapModal', accidentsMapModal)
+  .component('periodModal', periodModal)
 
   .directive('commissionerValidate', commissionerValidate)
 

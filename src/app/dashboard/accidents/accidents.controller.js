@@ -30,16 +30,12 @@ export default class {
 
 
       this.accidents.forEach((obj, index) => {
-        this.map.markers['accident_'+index] = {
+        if (obj.status.code == 1) this.map.markers['accident_'+index] = {
           lat: +obj.latitude,
           lng: +obj.longitude,
           message: obj.description || null,
           icon: {
-            iconUrl: (function () {
-              if (obj.status.code > 2) return 'images/icons/accident-marker_yellow.png';
-              else if (obj.status.code == 2) return 'images/icons/accident-marker_red.png';
-              return 'images/icons/accident-marker_green.png';
-            }()),
+            iconUrl: 'images/icons/accident-marker_green.png',
             iconSize: [32, 32],
             iconAnchor: [16, 32],
             popupAnchor: [0, -32]

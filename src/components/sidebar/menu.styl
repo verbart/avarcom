@@ -15,6 +15,16 @@
     margin-bottom 15px
     color #fff
     text-decoration none
+    &_active
+      color #f59c00
+      cursor default
+      .menu__icon
+        &_car
+          spritePosition($car_active)
+        &_chart
+          spritePosition($chart_active)
+        &_check
+          spritePosition($check_active)
   &__icon
     margin-right 15px
     &_car
@@ -26,17 +36,6 @@
   &__text
     font-family 'Helvetica Neue Cyr'
     font-size 1.2rem
-
-  &__item_active
-    color #f59c00
-    cursor default
-    .menu__icon
-      &_car
-        spritePosition($car_active)
-      &_chart
-        spritePosition($chart_active)
-      &_check
-        spritePosition($check_active)
 
 .sidebar__body_mini
   .menu

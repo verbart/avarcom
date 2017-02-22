@@ -35,7 +35,6 @@
     overflow auto
     padding 20px 25px
     &_mini
-      display flex
       flex-direction column
       align-items center
       width 60px
@@ -50,6 +49,8 @@
       margin-right 16px
     .sidebar__body
       display none
+      &_mini
+        display flex
   &_maximize
     animation maximizeSidebar .4s
     animation-fill-mode forwards
@@ -60,6 +61,8 @@
       sprite($user)
       margin-left -1px
       margin-bottom 1.5rem
+      &_active
+        spritePosition($user_active)
     &_calendar
       sprite($calendar_white)
       margin-left -1px

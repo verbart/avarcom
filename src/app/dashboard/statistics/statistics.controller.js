@@ -15,10 +15,10 @@ export default class StatisticsCtrl {
             startTime: this.startDate.format('X'),
             endTime: this.endDate.format('X'),
             type: 'general'
-        }, res => {
-            console.log(res);
-            this.general = res.general_data;
-            this.commissioners = res.commissars;
+        }, response => {
+            console.log(response);
+            this.general = response.general_data;
+            this.commissioners = response.commissars;
             this.rating = angular.copy(this.commissioners);
         }, error => {
             console.log(error);

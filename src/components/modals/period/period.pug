@@ -1,0 +1,16 @@
+.modal__header
+  .modal__close(ng-click='$ctrl.cancel()') &times;
+  h3.modal__caption За период
+
+.modal__body.container-fluid.gutter_top
+  .row
+    .col-xs-2 С
+    .col-xs-10
+      date-picker(selected='$ctrl.period.from')
+    .col-xs-2 По
+    .col-xs-10
+      date-picker(selected='$ctrl.period.to')
+
+.modal__footer.clearfix
+  .pull-right
+    button.button.button_sm(ng-click='$ctrl.ok()') Поиск

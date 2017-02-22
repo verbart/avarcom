@@ -21,6 +21,9 @@ export default function ($stateProvider, $urlRouterProvider) {
       })
     .state('dashboard.closed', {
       url: '/closed',
+      params: {
+        id: null
+      },
       templateUrl: 'views/app/dashboard/closed/closed.html',
       controller: 'ClosedListCtrl as listCtrl',
       authenticate: true

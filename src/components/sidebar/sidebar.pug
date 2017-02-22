@@ -42,9 +42,9 @@ section.sidebar(
         span.menu__text Статистика
 
 
-  .sidebar__body_mini(ng-show='$ctrl.minimize')
+  .sidebar__body.sidebar__body_mini(ng-show='$ctrl.minimize')
     .text_center
-      .sidebar__icon.sidebar__icon_user(ng-click='$ctrl.minimize = !$ctrl.minimize;')
+      .sidebar__icon.sidebar__icon_user(ui-sref='cabinet' ui-sref-active='sidebar__icon_user_active')
       .sidebar__icon.sidebar__icon_calendar(ng-click='$ctrl.minimize = !$ctrl.minimize;')
 
     .menu
