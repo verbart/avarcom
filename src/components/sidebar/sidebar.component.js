@@ -1,11 +1,12 @@
 export default {
   templateUrl: 'views/components/sidebar/sidebar.html',
   controller: class {
-    constructor(SidebarCalendar, AuthData, CONSTANT, $http, $state, $rootScope, Closed, $interval) {
+    constructor(SidebarCalendar, AuthData, CONSTANT, $http, $state, $scope, $rootScope, Closed, $interval) {
       this.$rootScope = $rootScope;
       this.$http = $http;
       this.$state = $state;
       this.CONSTANT = CONSTANT;
+      this.Closed = Closed;
       this.SidebarCalendar = SidebarCalendar;
       this.AuthData = AuthData;
       this.userData = AuthData.get();
@@ -13,19 +14,24 @@ export default {
       this.toggleInit = false;
       this.minimize = this.userData.sidebarIsCollapsed;
 
-      $interval(() => Closed.query(response => {
-        if (response.data.length) {
-          this.$rootScope.$emit('updateClosedCounter', response.data.filter(obj => !obj.is_confirmed).length);
-        }
-      }, error => {
-        console.log(error);
-      }), 20*1000);
+      this.getClosedCounter();
+      const interval = $interval(() => this.getClosedCounter(), 20*1000);
+      $scope.$on('$destroy', () => $interval.cancel(interval));
 
       $rootScope.$on('updateClosedCounter', (event, args) => {
         this.closedCounter = args;
       });
     }
 
+    getClosedCounter() {
+      this.Closed.query(response => {
+        if (response.data.length) {
+          this.$rootScope.$emit('updateClosedCounter', response.data.filter(obj => !obj.is_confirmed).length);
+        }
+      }, error => {
+        console.log(error);
+      });
+    }
     toggleSidebar() {
       this.toggleInit = true;
       this.minimize = !this.minimize;
