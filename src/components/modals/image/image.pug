@@ -1,0 +1,18 @@
+.modal__header
+  .modal__close(ng-click='$dismiss()') &times;
+
+  //.btn-group(ng-if='Lightbox.images.length > 1')
+  //  a.btn.btn-xs.btn-default(ng-click='Lightbox.prevImage()')
+  //    | ‹ Previous
+  //  a.btn.btn-xs.btn-default(ng-href='{{Lightbox.imageUrl}}' target='_blank' title='Open in new tab')
+  //    | Open image in new tab
+  //  a.btn.btn-xs.btn-default(ng-click='Lightbox.nextImage()')
+  //    | Next ›
+
+.modal__body(ng-swipe-left='Lightbox.nextImage()' ng-swipe-right='Lightbox.prevImage()')
+  .lightbox-image-container
+    img(ng-if='!Lightbox.isVideo(Lightbox.image)' lightbox-src='{{Lightbox.imageUrl}}')
+
+//.modal__footer.clearfix
+//  .pull-right
+//    button.button.button_sm(ng-click='$dismiss()') Удалить

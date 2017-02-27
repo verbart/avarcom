@@ -1,0 +1,44 @@
+.photoPreview
+  position relative
+  display inline-block
+  width 60px
+  height @width
+  margin 10px
+  cursor pointer
+  transition .4s
+  &:hover
+    .photoPreview__removePhoto
+      transform translateY(-100%);
+  &__preview
+    position absolute
+    top 0
+    bottom 0
+    left 0
+    right 0
+    background-size cover
+    background-position center
+    background-repeat no-repeat
+    z-index 1
+  &_addPhoto
+    padding 6px 0 0
+    background #ededed
+    border 1px solid #a0a0a0
+    color #a0a0a0
+    text-align center
+    z-index 0
+    &:hover
+      opacity .6
+    &:before
+      sprite($plus)
+  &__removePhoto
+    position absolute
+    top 0
+    left 50%
+    right 0
+    padding 0
+    //background #f59c00
+    //color #fff
+    //padding .1rem
+    //transition .4s
+    //&:hover
+    //  background #ffba00

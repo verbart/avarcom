@@ -9,6 +9,7 @@ import justCalendar from '../../components/just-calendar/just-calendar.component
 import datePicker from '../../components/date-picker/date-picker.component';
 import accidentsMapModal from '../../components/modals/accidents-map/accidents-map.component';
 import periodModal from '../../components/modals/period/period.component';
+import confirmModal from '../../components/modals/confirm/confirm.component';
 
 import AccidentListCtrl from './accidents/accidents.controller';
 import AccidentReadOneCtrl from './accidents/read-one/read-one.controller';
@@ -38,6 +39,7 @@ import 'ng-file-upload';
 import 'ng-file-upload';
 import 'angular-modal-service';
 import 'angular-ui-bootstrap';
+import 'angular-bootstrap-lightbox';
 
 angular.module('avarcom.dashboard', [
   uiRouter,
@@ -50,17 +52,25 @@ angular.module('avarcom.dashboard', [
   'ngStorage',
   'ui-leaflet',
   'nemLogging',
-  'ngFileUpload'
+  'ngFileUpload',
+  'bootstrapLightbox'
 ])
   .run(dropdownsCustomTemplate)
 
   .config(router)
+  .config(function (LightboxProvider) {
+    LightboxProvider.templateUrl = 'views/components/modals/image/image.html';
+    LightboxProvider.getImageUrl = function (image) {
+      return '//i.imgsafe.org/' + image;
+    };
+  })
 
   .component('avarcomSidebar', sidebar)
   .component('justCalendar', justCalendar)
   .component('datePicker', datePicker)
   .component('accidentsMapModal', accidentsMapModal)
   .component('periodModal', periodModal)
+  .component('confirmModal', confirmModal)
 
   .directive('commissionerValidate', commissionerValidate)
 

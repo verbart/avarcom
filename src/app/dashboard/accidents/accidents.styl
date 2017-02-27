@@ -1,3 +1,5 @@
+@import 'photos.styl'
+
 .accident
   &List
     td
@@ -14,6 +16,21 @@
       margin-top 3px
     &__item
       transition .4s
+      &_confirmed > td:first-child, &_unconfirmed > td:first-child
+        position relative
+        &:before
+          content ''
+          position absolute
+          left 0
+          top 50%
+          transform translateY(-50%)
+          display inline-block
+          border-left .4rem solid green
+          border-right none
+          border-top .4rem solid transparent
+          border-bottom .4rem solid transparent
+      &_unconfirmed > td:first-child:before
+        border-left .4rem solid red
       &_green
         .accidentList__status
           color #1aaf5d
@@ -44,24 +61,3 @@
       display flex
       flex-wrap wrap
       justify-content center
-    &__photoPreview, &__addPhoto
-      display inline-block
-      width 60px
-      height @width
-      margin 10px
-      cursor pointer
-      transition .4s
-      &:hover
-        opacity .7
-    &__photoPreview
-      background-size cover
-      background-position center
-      background-repeat no-repeat
-    &__addPhoto
-      padding 6px 0 0
-      background #ededed
-      border 1px solid #a0a0a0
-      color #a0a0a0
-      text-align center
-      &:before
-        sprite($plus)

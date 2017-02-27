@@ -5,7 +5,7 @@
   "scripts": {
     "start": "NODE_ENV=development ./node_modules/.bin/gulp",
     "build": "NODE_ENV=production ./node_modules/.bin/gulp build",
-    "deploy": "npm run build && ./node_modules/.bin/firebase deploy"
+    "deploy": "./node_modules/.bin/firebase deploy"
   },
   "devDependencies": {
     "autoprefixer": "^6.6.0",
@@ -32,6 +32,7 @@
   },
   "dependencies": {
     "angular": "^1.6.1",
+    "angular-bootstrap-lightbox": "^0.12.0",
     "angular-dropdowns": "^1.5.1",
     "angular-messages": "^1.6.1",
     "angular-moment": "^1.0.1",
@@ -41,6 +42,7 @@
     "angular-ui-bootstrap": "^2.5.0",
     "angular-ui-router": "^0.4.2",
     "ng-file-upload": "^12.2.13",
+    "ng-image-gallery": "^2.0.8",
     "ngstorage": "^0.3.11",
     "ui-leaflet": "^2.0.0"
   }

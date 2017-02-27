@@ -1,0 +1,11 @@
+.modal__header
+  .modal__close(ng-click='$ctrl.cancel()') &times;
+
+.modal__body.gutter
+  h3 {{$ctrl.message || 'Вы точно уверенны?'}}
+
+.modal__footer.clearfix
+  .pull-right
+    button.button.button_grey.button_sm(ng-click='$ctrl.cancel()') Нет
+    = ' '
+    button.button.button_sm(ng-click='$ctrl.ok()') Да

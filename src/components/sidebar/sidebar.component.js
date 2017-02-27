@@ -15,7 +15,7 @@ export default {
       this.minimize = this.userData.sidebarIsCollapsed;
 
       this.getClosedCounter();
-      const interval = $interval(() => this.getClosedCounter(), 20*1000);
+      // const interval = $interval(() => this.getClosedCounter(), 20*1000);
       $scope.$on('$destroy', () => $interval.cancel(interval));
 
       $rootScope.$on('updateClosedCounter', (event, args) => {

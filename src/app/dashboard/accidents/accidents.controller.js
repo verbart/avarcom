@@ -56,6 +56,7 @@ export default class {
             icon: {
               iconUrl: (function () {
                 if (obj.busy) return 'images/icons/car_red.png';
+                else if (!obj.available) return 'images/icons/car_orange.png';
                 return 'images/icons/car_green.png';
               }()),
               iconSize: [36, 20],
