@@ -1,14 +1,13 @@
 export default class {
-  constructor($state, Accident, $uibModal, Geocoding, $scope) {
+  constructor($state, Accident, AuthData, $http, $uibModal, Geocoding, $scope) {
     this.$state = $state;
+    this.$http = $http;
     this.$uibModal = $uibModal;
     this.Geocoding = Geocoding;
     this.Accident = Accident;
     this.newAccident = {};
-    this.errors = {
-        locationExist: false,
-    };
-
+    this.userData = AuthData.get();
+    this.selectedCity = this.userData.cities.find(e => e.is_selected);
     $scope.$on('leafletDirectiveMap.createAccidentMap.click', (event, args) => {
       const latlng = args.leafletEvent.latlng;
 
@@ -46,6 +45,28 @@ export default class {
       this.newAccident.address = response;
       this.newAccident.latitude = latlng.lat;
       this.newAccident.longitude = latlng.lng;
+    });
+  }
+  getLocations(value) {
+    return this.$http({
+      method: 'POST',
+      url: 'https://suggestions.dadata.ru/suggestions/api/4_1/rs/suggest/address',
+      headers: {
+        'Authorization': 'Token 56795644c72463d902ba7d3787208e9779ec411d',
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      data: {
+        query: value,
+        count: 5,
+        locations: [{
+          city: this.selectedCity.name
+        }],
+        restrict_value: true
+      }
+    }).then(function(response) {
+      console.log(response.data);
+      return response.data.suggestions.map(item => item.value);
     });
   }
   openMapModal(city, map) {

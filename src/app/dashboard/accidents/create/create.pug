@@ -28,6 +28,9 @@ header.dashboard__header
       input.form__input(
         placeholder='Адрес'
         ng-model='createCtrl.newAccident.address'
+        uib-typeahead='address for address in createCtrl.getLocations($viewValue)'
+        typeahead-popup-template-url='views/assets/views/typehead.html'
+        autocomplete='off'
         name='address'
         required
       )
