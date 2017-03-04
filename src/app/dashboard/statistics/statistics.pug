@@ -43,12 +43,16 @@
                             td(ts-criteria='id') ID
                             td(ts-criteria='all_events | parseInt') Всего
                             td(ts-criteria='false_events | parseInt') Ложных
+                            td(ts-criteria='competitor_events | parseInt') Конкуренты
+                            td(ts-criteria='police_events | parseInt') ДПС
                             td(ts-criteria='completed_events | parseInt') Завершенных
                         tr(ng-repeat='commissioners in statCtrl.commissioners | filter : statCtrl.searchComInput' ts-repeat ts-hide-no-data)
                             td {{commissioners.name}}
                             td {{commissioners.id}}
                             td {{commissioners.all_events}}
                             td {{commissioners.false_events}}
+                            td {{commissioners.competitor_events}}
+                            td {{commissioners.police_events}}
                             td {{commissioners.completed_events}}
 
         .col-lg-5.gutter_bottom
