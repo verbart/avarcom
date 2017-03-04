@@ -10,30 +10,10 @@
 
 @font-face {
     font-family: 'Helvetica Neue Cyr';
-    src: url('../fonts/helveticaneuecyr-lightitalic-webfont.eot');
-    src: url('../fonts/helveticaneuecyr-lightitalic-webfont.eot?#iefix') format('embedded-opentype'),
-         url('../fonts/helveticaneuecyr-lightitalic-webfont.woff2') format('woff2'),
-         url('../fonts/helveticaneuecyr-lightitalic-webfont.woff') format('woff');
-    font-weight: 300;
-    font-style: italic;
-}
-
-@font-face {
-    font-family: 'Helvetica Neue Cyr';
     src: url('../fonts/helveticaneuecyr-ultralight-webfont.eot');
     src: url('../fonts/helveticaneuecyr-ultralight-webfont.eot?#iefix') format('embedded-opentype'),
          url('../fonts/helveticaneuecyr-ultralight-webfont.woff2') format('woff2'),
          url('../fonts/helveticaneuecyr-ultralight-webfont.woff') format('woff');
     font-weight: 200;
     font-style: normal;
-}
-
-@font-face {
-    font-family: 'Helvetica Neue Cyr';
-    src: url('../fonts/helveticaneuecyr-ultralightitalic-webfont.eot');
-    src: url('../fonts/helveticaneuecyr-ultralightitalic-webfont.eot?#iefix') format('embedded-opentype'),
-         url('../fonts/helveticaneuecyr-ultralightitalic-webfont.woff2') format('woff2'),
-         url('../fonts/helveticaneuecyr-ultralightitalic-webfont.woff') format('woff');
-    font-weight: 200;
-    font-style: italic;
 }
