@@ -16,20 +16,21 @@ export default class {
   }
 
   onFileSelect(files) {
-    console.log(12, files);
-    this.Upload.upload({
-      method: 'POST',
-      url: this.CONSTANT.API_URL+'/upload',
-      headers : {
-        'Content-Type': files[0].type
-      },
-      data: {'files[]': files[0]}
-    }).then(response => {
-      this.editable.photos.push(response.data.files[0].name);
-      this.photosIsChanged = true;
-    }, response => {
-      console.log('Error status: ' + response.status);
-    });
+    if (files) {
+      this.Upload.upload({
+        method: 'POST',
+        url: this.CONSTANT.API_URL+'/upload',
+        headers : {
+          'Content-Type': files[0].type
+        },
+        data: {'files[]': files[0]}
+      }).then(response => {
+        this.editable.photos.push(response.data.files[0].name);
+        this.editionForm.$setDirty();
+      }, response => {
+        console.log('Error status: ' + response.status);
+      });
+    }
   }
   openImage(index) {
     this.Lightbox.openModal(this.editable.photos, index);
@@ -43,20 +44,21 @@ export default class {
       }
     }).result.then(() => {
       this.editable.photos.splice(index, 1);
-      this.photosIsChanged = true;
+      this.editionForm.$setDirty();
     }, () => {
       console.info('modal-component dismissed at: ' + new Date());
     });
   }
-  editAccident() {
+  saveAccident() {
     this.Closed.update({id: this.id}, this.editable, () => {
         alert('Данные об аварии обновлены');
+        this.editionForm.$setPristine();
     });
   }
   sendAccident() {
     this.Closed.send({id: this.id}, this.editable, () => {
       alert('Данные об аварии отправлены');
-      this.$state.go('dashboard.closed.edit', {id: this.id}, {reload: true});
+      this.editable.is_confirmed = true;
     }, error => {
       console.log(error);
     });

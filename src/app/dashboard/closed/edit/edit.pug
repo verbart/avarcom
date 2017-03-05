@@ -62,12 +62,14 @@ header.dashboard__header
       .accidentForm__documents
         .photoPreview(
           ng-repeat='photo in editCtrl.editable.photos track by $index'
-          ng-click='editCtrl.openImage($index)'
-          style='background-image: url(//i.imgsafe.org/{{photo}})'
         )
+          .photoPreview__preview(
+            ng-click='editCtrl.openImage($index)'
+            style='background-image: url(//i.imgsafe.org/{{photo}})'
+          )
 
   form.form.gutter_bottom_half(
-    name='editionForm'
+    name='editCtrl.editionForm'
     novalidate
     ng-hide='editCtrl.editable.is_confirmed'
   )
@@ -169,16 +171,17 @@ header.dashboard__header
             ng-click='editCtrl.openImage($index)'
             style='background-image: url(//i.imgsafe.org/{{photo}})'
           )
-          .button.button_grey.button_sm.photoPreview__removePhoto(ng-click='editCtrl.removeImage();') &times;
+          .button.button_grey.button_sm.photoPreview__removePhoto(ng-click='editCtrl.removeImage($index);') &times;
 
         label.photoPreview.photoPreview_addPhoto
           input(type='file' ngf-select="editCtrl.onFileSelect($files)" ng-hide='true')
 
-    .row.text_center
-      .col-md-5.offset-md-1.gutter_bottom_half
-        button.button.button_grey.button_lg(
-          ng-click='editCtrl.editAccident()'
-          ng-disabled='editionForm.$pristine && !editCtrl.photosIsChanged'
-        ) СОХРАНИТЬ
-      .col-md-5
-        button.button.button_lg(ng-click='editCtrl.sendAccident()') Отправить
+    .text_center.gutter_bottom_half
+      button.button.button_grey.button_lg(
+        ng-click='editCtrl.saveAccident()'
+        ng-hide='editCtrl.editionForm.$pristine'
+      ) СОХРАНИТЬ
+      button.button.button_lg(
+        ng-show='editCtrl.editionForm.$pristine'
+        ng-click='editCtrl.sendAccident()'
+      ) Отправить
