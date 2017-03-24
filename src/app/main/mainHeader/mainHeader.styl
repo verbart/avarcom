@@ -1,0 +1,35 @@
+.mainHeader
+  @media (max-width 768px)
+    box-shadow 0 3px 7px 1px rgba(0, 0, 0, 0.3)
+    background-color #363636
+    color #fff
+  &__container
+    display flex
+    justify-content space-between
+    align-items center
+    padding-top 1rem
+    padding-bottom 1rem
+    border-bottom 1px solid rgba(#363636, 50%)
+    @media (max-width 768px)
+      flex-direction column
+  &__logo
+    @media (max-width 768px)
+      margin-bottom 10px
+  &__contacts
+    display flex
+    flex-direction column
+    align-items flex-end
+    margin-left auto
+    @media (max-width 768px)
+      flex-direction row
+      align-items center
+      margin-left 0
+    @media (max-width 430px)
+      flex-direction column
+  &__phone
+    margin-bottom .35rem
+    margin-left auto
+    text-align right
+    @media (min-width 430px) and (max-width 768px)
+      margin-right 15px
+      margin-bottom 0

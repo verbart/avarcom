@@ -1,0 +1,44 @@
+.hero
+  include ../mainHeader/mainHeader
+
+  .hero__container.container
+    h1.hero__header.hero__header_1 Первое мобильное приложение на iOS и Android
+      br
+      | для аварийных комиссаров
+
+    h2.hero__header Обрабатывайте от 150 до 300
+      = ' '
+      span.text_highlight холодных заявок
+      = ' '
+      | в день
+      br
+      | в Вашем смартфоне онлайн
+
+    .row.gutter_bottom
+      .col-sm-8.offset-sm-2.col-md-6.offset-md-3
+        img(src='images/3-phones.png')
+
+    .row.gutter_bottom
+      .col-6.text_right
+        a(href='')
+          img(src='images/app-store.png' height='50')
+      .col-6.text_left
+        a(href='')
+          img(src='images/google-play.png' height='50')
+
+    h3.hero__header.hero__header_3.gutter_bottom_half Хотите оперативно реагировать на заявки и проезжать по ним
+      br
+      | быстрее других? Оставьте контакты и получите
+      br
+      | бесплатный демодоступ на 1 неделю
+
+    .row
+      .col-10.offset-1.col-sm-12.offset-sm-0.col-lg-8.offset-lg-2
+        form.form
+          .row
+            .col-md-4
+              input.form__input.form__input_bordered.form__input_lg(placeholder='Введите E-mail')
+            .col-md-4
+              input.form__input.form__input_bordered.form__input_lg(placeholder='Введите телефон')
+            .col-md-4
+              button.button.button_underlined.button_block.button_lg Получить доступ

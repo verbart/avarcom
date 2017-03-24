@@ -1,0 +1,23 @@
+footer.mainFooter
+  .container
+    .row
+      .col-md-6
+        .mainFooter__cities.gutter_bottom_half
+          span.text_highlight Уфа
+          //= ' '
+          //| | Самара
+
+        script(charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3Ab8710d8a594c70f843c64851f4a7e5ead9e950c132b277a394c8ee454d81e301&amp;width=100%25&amp;height=200&amp;lang=ru_RU&amp;scroll=true")
+      .col-md-6
+        .logo.gutter_bottom.gutter_top
+          img.logo__image(src='images/logo.png')
+          .logo__text Центр
+            br
+            | Аварийных Комиссаров
+
+        address.address
+          p.address__item.address__item_location г. Уфа, ул. Жукова 111, оф. 5
+          p.address__item.address__item_phone
+            a(href="tel:8 (999) 123-45-78") 8 (999) 123-45-78
+          p.address__item.address__item_email
+            a(href="mailto:support@avarcom.ru") support@avarcom.ru

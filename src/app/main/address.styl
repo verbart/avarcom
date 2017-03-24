@@ -1,0 +1,17 @@
+.address
+  font-style normal
+  &__item
+    display flex
+    align-items center
+    position relative
+    margin-bottom 12px
+    @media (max-width 769px)
+      justify-content center
+    &_location:before
+      sprite($location)
+    &_phone:before
+      sprite($phone-call_white)
+    &_email:before
+      sprite($mail)
+    &:before
+      margin-right 8px

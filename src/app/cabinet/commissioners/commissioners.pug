@@ -1,0 +1,25 @@
+.table.text_center
+  .gutter_bottom.clearfix
+    form.form.col-md-4.offset-md-8.gutter_none(ng-submit='$ctrl.searchCommissioners()')
+      .form__searchForm
+        input.form__input(ng-model='$ctrl.searchComInput' placeholder='Введите имя или ID...')
+        button.button.button_sm НАЙТИ
+
+  table(ts-wrapper)
+    tr
+      td(ts-criteria='user_id | parseInt') ID
+      td(ts-criteria='user_name | lowercase' ts-default) Имя
+      td(ts-criteria='phone | parseInt') Телефон
+      td(ts-criteria='email | parseInt') Email
+      td(ts-criteria='competitor_events | parseInt') Статус
+      td(ts-criteria='police_events | parseInt') ДПС
+      td(ts-criteria='completed_events | parseInt') Забанить/Разбанить
+      td(ts-criteria='completed_events | parseInt') Удалить
+    tr(ng-repeat='commissioners in $ctrl.commissioners | filter : $ctrl.searchComInput' ts-repeat ts-hide-no-data)
+      td {{commissioners.user_id}}
+      td {{commissioners.user_name}}
+      td {{commissioners.phone}}
+      td {{commissioners.email}}
+      td {{commissioners.competitor_events}}
+      td {{commissioners.police_events}}
+      td {{commissioners.completed_events}}

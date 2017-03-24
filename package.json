@@ -38,12 +38,16 @@
     "angular-moment": "^1.0.1",
     "angular-resource": "^1.6.1",
     "angular-simple-logger": "^0.1.7",
+    "angular-slick-carousel": "^3.1.7",
     "angular-tablesort": "^1.4.0",
     "angular-ui-bootstrap": "^2.5.0",
     "angular-ui-router": "^0.4.2",
+    "jquery": "^3.2.0",
     "ng-file-upload": "^12.2.13",
     "ng-image-gallery": "^2.0.8",
     "ngstorage": "^0.3.11",
+    "slick-carousel": "^1.6.0",
+    "sticky-kit": "^1.1.3",
     "ui-leaflet": "^2.0.0"
   }
 }

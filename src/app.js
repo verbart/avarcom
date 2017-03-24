@@ -2,11 +2,14 @@ import angular from 'angular';
 import uiRouter from 'angular-ui-router';
 
 import '../node_modules/moment/locale/ru';
-import '../node_modules/leaflet/dist/leaflet'
+import '../node_modules/leaflet/dist/leaflet';
+import 'slick-carousel';
+import 'angular-slick-carousel';
 
 import clickOut from './components/click-out.directive';
 import decodeBase64 from './components/decode-base64.filter';
 import Geocoding from './components/geocoding.service';
+import './components/sticky-kit';
 
 import './app/main';
 import './app/auth';
@@ -16,6 +19,8 @@ import './app/cabinet';
 
 angular.module('avarcom', [
   uiRouter,
+  'angular-sticky-kit',
+  'slickCarousel',
 
   'avarcom.main',
   'avarcom.auth',

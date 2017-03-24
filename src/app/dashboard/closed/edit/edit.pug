@@ -1,7 +1,7 @@
 header.dashboard__header
     button.button.button_sm.flex__item_end(ui-sref='dashboard.accidents') ДОБАВИТЬ АВАРИЮ
 
-.dashboard__section.scroll(ng-show='editCtrl.editable')
+.dashboard__section(ng-show='editCtrl.editable')
   div(ng-show='editCtrl.editable.is_confirmed')
     .gutter_bottom_half
       h3.form__caption.text_center Потерпевший

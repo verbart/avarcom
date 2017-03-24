@@ -1,7 +1,7 @@
 header.dashboard__header
   a.button.button_sm.flex__item_end(ng-click='focusStyle = {"border": "1px solid #888"}') ДОБАВИТЬ АВАРИЮ
 
-.dashboard__section.scroll(ng-controller='AccidentCreateCtrl as createCtrl' ng-style='focusStyle')
+.dashboard__section(ng-controller='AccidentCreateCtrl as createCtrl' ng-style='focusStyle')
   form.form.gutter_bottom_half(
     name='creationForm'
     novalidate

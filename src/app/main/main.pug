@@ -1,2 +1,266 @@
-.errorPage
-    a.button.button_lg.button_grey(ui-sref='dashboard') DASHBOARD
+.main
+  include ./hero/hero
+
+  section.gutter_bottom
+    .container
+      h2.sectionHeader Приложение “Центр АК” — незаменимый помощник
+        br
+        | аварийного комиссара
+
+      .col-10.offset-1.col-sm-8.offset-sm-2.col-lg-6.offset-lg-3.gutter_bottom.text_center
+        .mockupSlider
+          img.mockupSlider__mockup(src='images/macbook.png')
+          .mockupSlider__frame.mockupSlider__frame_macbook
+            slick(dots='true' arrows='false' autoplay='true')
+              img(src='images/screenshots/1.png')
+              img(src='images/screenshots/2.png')
+              img(src='images/screenshots/3.png')
+
+      .row
+        .thumb.col-sm-6.col-md-3
+          img.thumb__image(src='images/thumbs/003-navigation.png')
+          h3.thumb__caption Привязка
+            br
+            | к навигатору
+          p.thumb__description.text_grey Поможет сориентироваться
+            br
+            | даже в малознакомом районе.
+
+        .thumb.col-sm-6.col-md-3
+          img.thumb__image(src='images/thumbs/004-cloud-computing.png')
+          h3.thumb__caption Оформляйте заявки
+            br
+            | онлайн
+          p.thumb__description.text_grey Отправляйте фотографии и все
+            br
+            | данные участников ДТП через
+            br
+            | смартфон.
+        .thumb.col-sm-6.col-md-3
+          img.thumb__image(src='images/thumbs/001-speedometer.png')
+          h3.thumb__caption Получайте информацию
+            br
+            | оперативно
+          p.thumb__description.text_grey Напрямую от водителей онлайн,
+            br
+            | а не через диспетчеров.
+
+        .thumb.col-sm-6.col-md-3
+          img.thumb__image(src='images/thumbs/002-map.png')
+          h3.thumb__caption Все аварийные комиссары
+            br
+            | как на ладони
+          p.thumb__description.text_grey Приложение показывает все
+            br
+            | заявки, перемещения и простои
+            br
+            | в режиме онлайн.
+
+      .gutter_top.text_center
+        a.button.button_underlined(ui-sref='dashboard') Перейти в панель управления
+
+  section.main__bg2.gutter_bottom
+    .container.text_white
+      h2.sectionHeader Приложение “Центр АК” — разумная экономия
+        br
+        | времени и средств
+
+      .row
+        .thumb.col-sm-6.col-md-3
+          img.thumb__image(src='images/thumbs/003-arrows.png')
+          h3.thumb__caption Информация поступает
+            br
+            | в несколько раз
+            br
+            | быстрее
+          p.thumb__description Чем при работе стандартной
+            br
+            | связки сотрудников
+            br
+            | диспетчер/аварийный комиссар.
+
+        .thumb.col-sm-6.col-md-3
+          img.thumb__image(src='images/thumbs/004-phone.png')
+          h3.thumb__caption Аварийный комиссар выполняет функции диспетчера
+          p.thumb__description За несколько секунд — появляется
+            | возможность оптимизировать
+            | штат компании.
+
+        .thumb.col-sm-6.col-md-3
+          img.thumb__image(src='images/thumbs/002-like.png')
+          h3.thumb__caption Высокая средняя скорость
+            br
+            | обработки одной
+            br
+            | заявки
+          p.thumb__description За день аварийный
+            br
+            | комиссар оформляет
+            br
+            | больше заявок.
+
+        .thumb.col-sm-6.col-md-3
+          img.thumb__image(src='images/thumbs/001-internet.png')
+          h3.thumb__caption Вся работа
+            br
+            | организована
+            br
+            | онлайн
+          p.thumb__description Аварийный комиссар
+            br
+            | не оформляет бумажные
+            br
+            | документы и экономит время.
+
+  section.gutter_bottom
+    .container
+      h2.sectionHeader Как работает приложение “Центр АК”
+
+      .row
+        .col-md-8.push-md-2.col-lg-4.push-lg-8.gutter_bottom.text_center
+          .row
+            .col-10.offset-1.col-sm-8.offset-sm-2.col-xl-7
+              .mockupSlider
+                img.mockupSlider__mockup(src='images/iphone.png')
+                .mockupSlider__frame.mockupSlider__frame_iphone
+                  slick(dots='true' arrows='false' autoplay='true')
+                    img(src='images/screenshots/4.png')
+                    img(src='images/screenshots/5.png')
+                    img(src='images/screenshots/6.png')
+                    img(src='images/screenshots/7.png')
+
+        .col-md-12.pull-md-0.col-lg-8.pull-lg-4
+          .row
+            .col-sm-6.col-lg-12
+              .thumb.thumb_horizontal.row
+                .col-lg-2.text_center
+                  img.thumb__image(src='images/thumbs/004-download.png')
+                .col-lg-10
+                  h3.thumb__caption Быстрая установка
+                  p.thumb__description Приложение скачивается и устанавливается на смартфон за несколько секунд.
+
+            .col-sm-6.col-lg-12
+              .thumb.thumb_horizontal.row
+                .col-lg-2.text_center
+                  img.thumb__image(src='images/thumbs/002-user.png')
+                .col-lg-10
+                  h3.thumb__caption Доступ в защищенный личный кабинет
+                  p.thumb__description Предоставляется аварийному комиссару сразу после регистрации.
+
+            .col-sm-6.col-lg-12
+              .thumb.thumb_horizontal.row
+                .col-lg-2.text_center
+                  img.thumb__image(src='images/thumbs/001-interface.png')
+                .col-lg-10
+                  h3.thumb__caption Удобный и понятный интерфейс
+                  p.thumb__description Исключает любые сложности, максимально ускоряет и упрощает работу.
+
+            .col-sm-6.col-lg-12
+              .thumb.thumb_horizontal.row
+                .col-lg-2.text_center
+                  img.thumb__image(src='images/thumbs/003-list.png')
+                .col-lg-10
+                  h3.thumb__caption Вся информация удобно структурирована
+                  p.thumb__description В личном кабинете видна ситуация на дорогах, есть сведения о закрытых заявках.
+
+  section.main__bg3.gutter_bottom.text_white
+    .container
+      h2.sectionHeader Кому “Центр АК” пригодится в первую очередь
+
+      .row
+        .col-lg-10.offset-lg-1.col-xl-8.offset-xl-2
+          .thumb.thumb_horizontal.row
+            .col-lg-2
+              img.thumb__image.thumb__image_right(src='images/thumbs/check-symbol.png')
+            .col-lg-10
+              h3.thumb__caption Всем, кто предоставляет услуги аварийных комиссаров
+              p.thumb__description Обрабатывайте больше заявок, получайте новых клиентов и наращивайте прибыль.
+
+  section.text_center.gutter_bottom
+    .container
+      h2.sectionHeader Сколько стоит доступ в приложение “Центр АК”?
+
+      h3 Стоимость месячного абонемента 5000 рублей.
+
+      h3.text_grey.gutter_bottom_half За эту сумму Вы получаете доступ к холодным заявкам из открытых источников.
+        br
+        | Примерное количество заявок от 150 до 300 в день.
+
+      h4.gutter_bottom
+        b Сомневаетесь, что приложение принесет реальную пользу?
+          br
+          | Оставьте контакты и получите бесплатный демодоступ на 1 неделю
+
+      .row
+        .col-10.offset-1.col-sm-12.offset-sm-0.col-lg-8.offset-lg-2
+          form.form
+            .row
+              .col-md-4
+                input.form__input.form__input_bordered.form__input_lg(placeholder='Введите E-mail')
+              .col-md-4
+                input.form__input.form__input_bordered.form__input_lg(placeholder='Введите телефон')
+              .col-md-4
+                button.button.button_underlined.button_block.button_lg Получить доступ
+
+  section.testimonials.gutter_bottom
+    .container.gutter_bottom_half
+      h2.sectionHeader Отзывы аварийных комиссаров,
+        br
+        | которые уже пользуются приложением “Центр АК”
+
+      slick(dots='false' arrows='true')
+        .testimonials__item(ng-repeat='testimonial in [{},{},{}]')
+          .testimonials__photo(style='background-image: url(images/bg-2.png);')
+          .testimonials__name Имя Фамилия
+          .testimonials__opinion С другой стороны консультация с широким активом требуют от нас анализа новых предложений. Значимость этих проблем настолько очевидна, что новая модель организационной деятельности в значительной степени обуславливает создание дальнейших направлений развития.
+
+  section.gutter_bottom
+    .container
+      h2.sectionHeader Отзывы аварийных комиссаров,
+        br
+        | которые уже пользуются приложением “Центр АК”
+
+      .step__container
+        .step__item
+          .step__index 1
+          .step__description Оставляете контакты и получаете ссылку на приложение.
+
+        .step__item
+          .step__index 2
+          .step__description Выбираете операционную систему и скачиваете продукт.
+
+        .step__item
+          .step__index 3
+          .step__description Проходите простую процедуру регистрации и заходите в личный кабинет.
+
+        .step__item
+          .step__index 4
+          .step__description Добавляете нужное количество аварийных комиссаров.
+
+        .step__item
+          .step__index 5
+          .step__description Выбираете свой город или регион.
+
+        .step__item
+          .step__index 6
+          .step__description Устанавливаете радиус видения аварий в зависимости от полномочий комиссаров.
+
+        .step__item
+          .step__index 7
+          .step__description Отслеживаете информацию о ДТП и перемещении комиссаров.
+
+        .step__item
+          .step__index 8
+          .step__description Контролируете обработку заявок и формируйте отчеты по ним.
+
+  section.main__bg4.gutter_bottom.text_white.text_center
+    .container
+      h2.sectionHeader Остались вопросы по работе мобильного приложения?
+
+      h3.gutter_bottom Задайте их прямо сейчас и получите бесплатную квалифицированную
+        br
+        | информационную поддержку.
+
+      button.button.button_lg.button_underlined Задать вопрос
+
+  include ./mainFooter/mainFooter

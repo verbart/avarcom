@@ -8,10 +8,32 @@ export default class {
     this.selectedDate = SidebarCalendar.get();
     this.getAccidents(this.selectedDate);
     $rootScope.$on('changeMainCalendar', (event, args) => {
+      this.selectedDate = args.date;
       this.getAccidents(args.date.format('DD.MM.YYYY'));
     });
-    const interval = $interval(() => this.getAccidents(), 20*1000);
+    const interval = $interval(() => this.getAccidents(this.selectedDate && this.selectedDate.format('DD.MM.YYYY')), 20*1000);
     $scope.$on('$destroy', () => $interval.cancel(interval));
+
+    this.stickyOptions = {
+      stick: function() {
+        console.log('Stick');
+      },
+      unstick: function() {
+        console.log('Unstick');
+      },
+      bottom: function() {
+        console.log('Bottom');
+      },
+      unbottom: function() {
+        console.log('Unbottom');
+      },
+      recalc: function() {
+        console.log('recalc');
+      },
+      detach: function() {
+        console.log('Detach');
+      }
+    };
   }
 
   getAccidents(date) {
