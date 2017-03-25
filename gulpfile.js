@@ -21,7 +21,7 @@ const isDevelopment = process.env.NODE_ENV !== 'production';
 
 gulp.task('views', function buildHTML() {
   return gulp.src('./src/**/*.pug')
-    .pipe(pug())
+    .pipe(pug({basedir: './'}))
     .on('error', function(error) {
       gutil.log(gutil.colors.red('Error: ' + error.message));
       this.emit('end');

@@ -1,4 +1,12 @@
 .errorPage
-    h1
-      b Error 404. 
-      | Page Not Found
+  include /src/components/bigLogo/bigLogo
+
+  .errorPage__statusCode 404
+  .errorPage__statusMsg Страница не найдена
+  .errorPage__info Возможно Вы попытались загрузить несуществующую или удаленную страницу.
+    br
+    | Перейдите на
+    = ' '
+    a.link.text_highlight(ui-sref='home') главную страницу
+    = ' '
+    | и попробуйте начать оттуда.
