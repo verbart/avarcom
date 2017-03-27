@@ -14,7 +14,7 @@ export default class {
     this.$rootScope.$emit('toggleSidebar', {isOpen: !this.minimize});
 
     this.getClosedCounter();
-    // const interval = $interval(() => this.getClosedCounter(), 20*1000);
+    const interval = $interval(() => this.getClosedCounter(), 20*1000);
     $scope.$on('$destroy', () => $interval.cancel(interval));
 
     $rootScope.$on('updateClosedCounter', (event, args) => {

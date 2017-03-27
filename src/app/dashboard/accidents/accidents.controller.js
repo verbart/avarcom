@@ -12,7 +12,10 @@ export default class {
       this.getAccidents(args.date.format('DD.MM.YYYY'));
     });
     const interval = $interval(() => this.getAccidents(this.selectedDate && this.selectedDate.format('DD.MM.YYYY')), 20*1000);
-    $scope.$on('$destroy', () => $interval.cancel(interval));
+    $scope.$on('$destroy', () => {
+      console.log(interval);
+      $interval.cancel(interval)
+    });
 
     this.stickyOptions = {
       stick: function() {
@@ -53,6 +56,7 @@ export default class {
 
       this.accidents.forEach((obj, index) => {
         if (obj.status.code == 1) this.map.markers['accident_'+index] = {
+          accident_id: obj.crash_id,
           lat: +obj.latitude,
           lng: +obj.longitude,
           message: obj.description || null,

@@ -7,8 +7,8 @@ export default function (CONSTANT, $http, $q) {
             model.$asyncValidators.existCommissioner = function (modelValue, viewValue) {
                 const userInput = modelValue || viewValue;
 
-                return $http.get(CONSTANT.API_URL + '/users').then(response => {
-                    commissioner = response.data.find(e => e.id == userInput);
+                return $http.get(CONSTANT.API_URL + '/commissars').then(response => {
+                    commissioner = response.data.find(e => e.user_id == userInput);
                     return commissioner ? true : $q.reject(404);
                 }, error => {
                     return $q.reject(error.status);

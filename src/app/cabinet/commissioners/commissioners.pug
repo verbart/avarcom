@@ -11,15 +11,12 @@
       td(ts-criteria='user_name | lowercase' ts-default) Имя
       td(ts-criteria='phone | parseInt') Телефон
       td(ts-criteria='email | parseInt') Email
-      //td(ts-criteria='competitor_events | parseInt') Статус
-      td(ts-criteria='police_events | parseInt') ДПС
-      td(ts-criteria='completed_events | parseInt') Забанить/Разбанить
-      td(ts-criteria='completed_events | parseInt') Удалить
+      td(ts-criteria='competitor_events | parseInt') Статус
+      td(ts-criteria='completed_events | parseInt') Действия
     tr(ng-repeat='commissioners in $ctrl.commissioners | filter : $ctrl.searchComInput' ts-repeat ts-hide-no-data)
       td {{commissioners.user_id}}
       td {{commissioners.user_name}}
       td {{commissioners.phone}}
       td {{commissioners.email}}
-      td {{commissioners.competitor_events}}
-      td {{commissioners.police_events}}
-      td {{commissioners.completed_events}}
+      td {{commissioners.type}}
+      td {{commissioners.is_blocked}}

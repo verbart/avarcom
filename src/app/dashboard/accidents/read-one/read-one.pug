@@ -1,17 +1,36 @@
 header.dashboard__header
-    a.button.button_sm.margin_left_auto(ui-sref='dashboard.accidents' ui-sref-opts='{reload: true}') ДОБАВИТЬ АВАРИЮ
+  a.button.button_sm.margin_left_auto(ui-sref='dashboard.accidents' ui-sref-opts='{reload: true}') ДОБАВИТЬ АВАРИЮ
 
 .dashboard__section.scroll
-    .padding_bottom
-        leaflet(ng-if='readOneCtrl.map' markers='readOneCtrl.map.markers' center='readOneCtrl.map.center' width='100%' height='280px')
+  .padding_bottom
+    leaflet(ng-if='readOneCtrl.map' markers='readOneCtrl.map.markers' center='readOneCtrl.map.center' width='100%' height='280px')
 
-    ul.accidentForm.padding_bottom_half(ng-if='readOneCtrl.selected')
-        li(ng-if='readOneCtrl.selected.address' style='list-style-image: url(images/icons/location.png)')
-            | {{readOneCtrl.selected.address}}
-        li(ng-if='readOneCtrl.selected.phone') {{readOneCtrl.selected.phone}}
-        li(ng-if='readOneCtrl.selected.carBrand') {{readOneCtrl.selected.carBrand}}
-        li(ng-if='readOneCtrl.selected.name') {{readOneCtrl.selected.name}}
-        li(style='list-style-image: url(images/icons/time.png)') {{readOneCtrl.selected.createdDate.time}}
-        li(style='list-style-image: url(images/icons/calendar.png)') {{readOneCtrl.selected.createdDate.date}}
-        li(ng-if='readOneCtrl.selected.holder_id' style='list-style-image: url(images/icons/user_id.png)')
-            | {{readOneCtrl.selected.holder_id}}
+  ul.accidentForm.padding_bottom_half(ng-if='readOneCtrl.selected')
+    li(ng-if='readOneCtrl.selected.address' style='list-style-image: url(images/icons/location.png)')
+        | {{readOneCtrl.selected.address}}
+    li(ng-if='readOneCtrl.selected.phone') {{readOneCtrl.selected.phone}}
+    li(ng-if='readOneCtrl.selected.carBrand') {{readOneCtrl.selected.carBrand}}
+    li(ng-if='readOneCtrl.selected.name') {{readOneCtrl.selected.name}}
+    li(style='list-style-image: url(images/icons/time.png)') {{readOneCtrl.selected.createdDate.time}}
+    li(style='list-style-image: url(images/icons/calendar.png)') {{readOneCtrl.selected.createdDate.date}}
+    li(ng-if='readOneCtrl.selected.holder_id' style='list-style-image: url(images/icons/user_id.png)')
+      | {{readOneCtrl.selected.holder_id}}
+
+  form.form.padding_bottom_half(
+    name='creationForm'
+    novalidate
+    ng-submit='readOneCtrl.submitted = true; creationForm.$valid && readOneCtrl.sendAccident()'
+  )
+    input.form__input(
+      placeholder='ID комиссара'
+      ng-model='readOneCtrl.newAccident.commissar_id'
+      name='commissar_id'
+      required
+      commissioner-validate
+    )
+    ng-messages(for='creationForm.commissar_id.$error' ng-if='readOneCtrl.interacted(creationForm.commissar_id)')
+      p.form__errorMsg(ng-message='required') Укажите ID комиссара которому поступит заявка
+      p.form__errorMsg(ng-message='existCommissioner') Комиссара с таким ID не существует
+
+    .text_center
+      button.button.button_lg ОТПРАВИТЬ

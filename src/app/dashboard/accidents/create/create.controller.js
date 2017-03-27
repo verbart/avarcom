@@ -34,7 +34,11 @@ export default class {
     });
 
     $scope.$on('leafletDirectiveMarker.createAccidentMap.click', (event, args) => {
-      this.newAccident.commissar_id = args.model.commissioner_id;
+      if (args.model.hasOwnProperty('commissioner_id')) {
+        this.newAccident.commissar_id = args.model.commissioner_id;
+      } else if (args.model.hasOwnProperty('accident_id')) {
+        this.$state.go('dashboard.accidents.readOne', {id: args.model.accident_id}, {reload: true});
+      }
     });
   }
   interacted(field) {
@@ -100,6 +104,8 @@ export default class {
     this.Accident.save(this.newAccident, response => {
       console.log('Created accident:', response);
       this.$state.go('dashboard.accidents.readOne', {id: response.crash_id}, {reload: true});
+    }, error => {
+      console.log(error);
     });
   }
 }
