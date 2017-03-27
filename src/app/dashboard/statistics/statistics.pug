@@ -1,71 +1,70 @@
-.dashboard__header
-  h1.dashboard__caption Статистика
+.padding_bottom_half
+  .dashboard__header
+    h1.dashboard__caption Статистика
 
-.gutter_bottom
-  .dashboard__section
-    section Данные с
-      | &nbsp;
-      date-picker.statistics__datePicker(selected='statCtrl.startDate')
-      | &nbsp;
-      | по
-      | &nbsp;
-      date-picker.statistics__datePicker(selected='statCtrl.endDate')
-
-    .table
-      table.statisticsTable.text_center
-        tr
-          td.statisticsTable__property Количество аварий
-          td.statisticsTable__property Количество ложных аварий
-          td.statisticsTable__property Количество взятых аварий
-          td.statisticsTable__property Количество завершенных аварий
-        tr
-          td.statisticsTable__value {{statCtrl.general.all_events}}
-          td.statisticsTable__value {{statCtrl.general.false_events}}
-          td.statisticsTable__value {{statCtrl.general.taken_events}}
-          td.statisticsTable__value {{statCtrl.general.completed_events}}
-
-.row
-  .col-lg-7
-    .statisticsSection
-      .statisticsSection__header
-        h4 Статистика по комиссарам:
-
-        form.form(ng-submit='statCtrl.searchCommissioners()')
-          .form__searchForm
-            input.form__input(ng-model='statCtrl.searchComInput' placeholder='Введите имя или ID...')
-            button.button.button_sm НАЙТИ
+  .padding_bottom
+    .dashboard__section
+      section.text_center
+        | Данные с &nbsp;
+        date-picker.statistics__datePicker(selected='statCtrl.startDate')
+        | &nbsp; по &nbsp;
+        date-picker.statistics__datePicker(selected='statCtrl.endDate')
 
       .table
-        table(ts-wrapper)
+        table.statisticsTable.text_center
           tr
-            td(ts-criteria='name | lowercase' ts-default) Имя
-            td(ts-criteria='id') ID
-            td(ts-criteria='taken_events | parseInt') Взятых
-            td(ts-criteria='false_events | parseInt') Ложных
-            td(ts-criteria='competitor_events | parseInt') Конкуренты
-            td(ts-criteria='police_events | parseInt') ДПС
-            td(ts-criteria='completed_events | parseInt') Завершенных
-          tr(ng-repeat='commissioners in statCtrl.commissioners | filter : statCtrl.searchComInput' ts-repeat ts-hide-no-data)
-            td {{commissioners.name}}
-            td {{commissioners.id}}
-            td {{commissioners.taken_events}}
-            td {{commissioners.false_events}}
-            td {{commissioners.competitor_events}}
-            td {{commissioners.police_events}}
-            td {{commissioners.completed_events}}
-
-  .col-lg-5
-    .statisticsSection.text_center
-      .statisticsSection__header
-        h4.container-fluid Рейтинг пользователей
-
-      .table
-        table(ts-wrapper)
+            td.statisticsTable__property Количество аварий
+            td.statisticsTable__property Количество ложных аварий
+            td.statisticsTable__property Количество взятых аварий
+            td.statisticsTable__property Количество завершенных аварий
           tr
-            td
-            td(ts-criteria='id') ID
-            td(ts-criteria='rating | parseInt' ts-default='descending') Рейтинг
-          tr(ng-repeat='user in statCtrl.rating' ts-repeat ts-hide-no-data)
-            td {{$index+1}}
-            td {{user.id}}
-            td {{user.rating || 0}}
+            td.statisticsTable__value {{statCtrl.general.all_events}}
+            td.statisticsTable__value {{statCtrl.general.false_events}}
+            td.statisticsTable__value {{statCtrl.general.taken_events}}
+            td.statisticsTable__value {{statCtrl.general.completed_events}}
+
+  .row
+    .col-lg-7
+      .statisticsSection
+        .statisticsSection__header
+          h4 Статистика по комиссарам:
+
+          form.form(ng-submit='statCtrl.searchCommissioners()')
+            .form__searchForm
+              input.form__input(ng-model='statCtrl.searchComInput' placeholder='Введите имя или ID...')
+              button.button.button_sm НАЙТИ
+
+        .table
+          table(ts-wrapper)
+            tr
+              td(ts-criteria='name | lowercase' ts-default) Имя
+              td(ts-criteria='id') ID
+              td(ts-criteria='taken_events | parseInt') Взятых
+              td(ts-criteria='false_events | parseInt') Ложных
+              td(ts-criteria='competitor_events | parseInt') Конкуренты
+              td(ts-criteria='police_events | parseInt') ДПС
+              td(ts-criteria='completed_events | parseInt') Завершенных
+            tr(ng-repeat='commissioners in statCtrl.commissioners | filter : statCtrl.searchComInput' ts-repeat ts-hide-no-data)
+              td {{commissioners.name}}
+              td {{commissioners.id}}
+              td {{commissioners.taken_events}}
+              td {{commissioners.false_events}}
+              td {{commissioners.competitor_events}}
+              td {{commissioners.police_events}}
+              td {{commissioners.completed_events}}
+
+    .col-lg-5
+      .statisticsSection.text_center
+        .statisticsSection__header
+          h4.container-fluid Рейтинг пользователей
+
+        .table
+          table(ts-wrapper)
+            tr
+              td
+              td(ts-criteria='id') ID
+              td(ts-criteria='rating | parseInt' ts-default='descending') Рейтинг
+            tr(ng-repeat='user in statCtrl.rating' ts-repeat ts-hide-no-data)
+              td {{$index+1}}
+              td {{user.id}}
+              td {{user.rating || 0}}

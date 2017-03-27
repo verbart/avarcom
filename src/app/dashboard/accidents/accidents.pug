@@ -1,10 +1,10 @@
-.row
-  .col-md-5(sticky-kit='')
+.row.flex.height_fullscreen.padding_bottom_half
+  .col-md-5.flex.flex_column
     header.dashboard__header
       h1.dashboard__caption Список аварий
 
-    .dashboard__section
-      .table.gutter_bottom_half
+    .dashboard__section.scroll
+      .table.padding_bottom_half
         table.table_hover.accidentList
           tr.accidentList__item(
             ng-repeat='accident in listCtrl.accidents track by accident.crash_id'
@@ -28,5 +28,6 @@
             td.text_right
               .accidentList__icon
 
-  ui-view.col-md-7(sticky-kit='')
-    include create/create
+  .col-md-7
+    ui-view.flex.flex_column
+      include create/create

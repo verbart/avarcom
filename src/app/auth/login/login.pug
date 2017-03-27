@@ -3,7 +3,7 @@
 
     include /src/components/bigLogo/bigLogo
 
-    .gutter_bottom
+    .padding_bottom
       button.button.button_block ДЕМО-ВЕРСИЯ
 
     h2 Авторизация
@@ -14,7 +14,7 @@
 
       p.form__errorMsg(ng-show='loginCtrl.loginError') {{loginCtrl.loginError}}
 
-      .gutter_bottom_half
+      .padding_bottom_half
         button.button.button_block.button_grey ВХОД
 
       a.link(ui-sref='password-recovery') Забыли пароль?

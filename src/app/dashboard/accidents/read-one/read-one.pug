@@ -1,11 +1,11 @@
 header.dashboard__header
-    a.button.button_sm.flex__item_end(ui-sref='dashboard.accidents' ui-sref-opts='{reload: true}') ДОБАВИТЬ АВАРИЮ
+    a.button.button_sm.margin_left_auto(ui-sref='dashboard.accidents' ui-sref-opts='{reload: true}') ДОБАВИТЬ АВАРИЮ
 
 .dashboard__section.scroll
-    .gutter_bottom
+    .padding_bottom
         leaflet(ng-if='readOneCtrl.map' markers='readOneCtrl.map.markers' center='readOneCtrl.map.center' width='100%' height='280px')
 
-    ul.accidentForm.gutter_bottom_half(ng-if='readOneCtrl.selected')
+    ul.accidentForm.padding_bottom_half(ng-if='readOneCtrl.selected')
         li(ng-if='readOneCtrl.selected.address' style='list-style-image: url(images/icons/location.png)')
             | {{readOneCtrl.selected.address}}
         li(ng-if='readOneCtrl.selected.phone') {{readOneCtrl.selected.phone}}

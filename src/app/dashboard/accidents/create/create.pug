@@ -1,8 +1,8 @@
 header.dashboard__header
-  a.button.button_sm.flex__item_end(ng-click='focusStyle = {"border": "1px solid #888"}') ДОБАВИТЬ АВАРИЮ
+  a.button.button_sm.margin_left_auto(ng-click='focusStyle = {"border": "1px solid #888"}') ДОБАВИТЬ АВАРИЮ
 
-.dashboard__section(ng-controller='AccidentCreateCtrl as createCtrl' ng-style='focusStyle')
-  form.form.gutter_bottom_half(
+.dashboard__section.scroll(ng-controller='AccidentCreateCtrl as createCtrl' ng-style='focusStyle')
+  form.form.padding_bottom_half(
     name='creationForm'
     novalidate
     ng-submit='createCtrl.submitted = true; creationForm.$valid && createCtrl.sendAccident()'
@@ -16,7 +16,7 @@ header.dashboard__header
         height='280px'
       )
       .leaflet__maximizeBtn(ng-click='createCtrl.openMapModal(listCtrl.selectedCity.name, listCtrl.map)') &#8689;
-    .gutter_bottom_half
+    .padding_bottom_half
 
     input(ng-hide='true' ng-model='createCtrl.newAccident.latitude' name='latitude' required)
     ng-messages(for='creationForm.latitude.$error' ng-if='createCtrl.interacted(creationForm.latitude)')
@@ -24,6 +24,8 @@ header.dashboard__header
 
     .accidentForm
       h3.form__caption.text_center Контакты
+
+      date-picker(selected='createCtrl.newAccident.date')
 
       input.form__input(
         placeholder='Адрес'
@@ -52,8 +54,6 @@ header.dashboard__header
         ng-model='createCtrl.newAccident.client_name'
         name='name'
       )
-
-      date-picker(selected='createCtrl.newAccident.date')
 
       //input.form__input(
       //  placeholder='Время'

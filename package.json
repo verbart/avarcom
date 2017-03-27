@@ -28,26 +28,28 @@
     "gulp-util": "^3.0.7",
     "gulp.spritesmith": "^6.2.1",
     "vinyl-buffer": "^1.0.0",
-    "webpack": "^2.2.1"
+    "webpack": "2.2.1"
   },
   "dependencies": {
-    "angular": "^1.6.1",
+    "angular": "^1.6.3",
     "angular-bootstrap-lightbox": "^0.12.0",
     "angular-dropdowns": "^1.5.1",
-    "angular-messages": "^1.6.1",
+    "angular-messages": "^1.6.3",
     "angular-moment": "^1.0.1",
-    "angular-resource": "^1.6.1",
+    "angular-resource": "^1.6.3",
     "angular-simple-logger": "^0.1.7",
     "angular-slick-carousel": "^3.1.7",
+    "angular-sticky-plugin": "^0.3.0",
     "angular-tablesort": "^1.4.0",
     "angular-ui-bootstrap": "^2.5.0",
     "angular-ui-router": "^0.4.2",
+    "gulp": "github:gulpjs/gulp#4.0",
     "jquery": "^3.2.0",
+    "jquery-sticky": "^1.0.4",
     "ng-file-upload": "^12.2.13",
     "ng-image-gallery": "^2.0.8",
     "ngstorage": "^0.3.11",
     "slick-carousel": "^1.6.0",
-    "sticky-kit": "^1.1.3",
     "ui-leaflet": "^2.0.0"
   }
 }

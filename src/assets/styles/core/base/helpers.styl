@@ -1,4 +1,4 @@
-.gutter
+.padding
   padding 15px
   &_top
     padding-top 15px
@@ -9,5 +9,26 @@
   &_none
     padding 0
 
-.m0
-  margin 0
+.margin
+  &_left
+    &_auto
+      margin-left auto
+  &_none
+    margin 0
+
+.flex
+  display flex
+  &_column
+    flex-direction column
+  &__item
+    &_grow
+      flex-grow 1
+
+.scroll
+  overflow auto
+  &_no
+    overflow visible
+
+.height
+  &_fullscreen
+    height 100vh

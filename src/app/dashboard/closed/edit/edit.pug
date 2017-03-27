@@ -1,9 +1,9 @@
 header.dashboard__header
-    button.button.button_sm.flex__item_end(ui-sref='dashboard.accidents') ДОБАВИТЬ АВАРИЮ
+    button.button.button_sm.margin_left_auto(ui-sref='dashboard.accidents') ДОБАВИТЬ АВАРИЮ
 
-.dashboard__section(ng-show='editCtrl.editable')
+.dashboard__section.scroll(ng-show='editCtrl.editable')
   div(ng-show='editCtrl.editable.is_confirmed')
-    .gutter_bottom_half
+    .padding_bottom_half
       h3.form__caption.text_center Потерпевший
       p
         b ФИО:
@@ -22,7 +22,7 @@ header.dashboard__header
         = ' '
         | {{editCtrl.editable.victim.phone}}
 
-    .gutter_bottom_half
+    .padding_bottom_half
       h3.form__caption.text_center Виновник
       p
         b ФИО:
@@ -41,7 +41,7 @@ header.dashboard__header
         = ' '
         | {{editCtrl.editable.culprit.phone}}
 
-    .gutter_bottom
+    .padding_bottom
       h3.form__caption.text_center Комиссар
       p
         b ФИО:
@@ -56,7 +56,7 @@ header.dashboard__header
         = ' '
         | {{editCtrl.editable.commissar.phone}}
 
-    .accidentForm.gutter_bottom.text_center(ng-if='editCtrl.editable.photos.length')
+    .accidentForm.padding_bottom.text_center(ng-if='editCtrl.editable.photos.length')
       h4 Документы:
 
       .accidentForm__documents
@@ -68,7 +68,7 @@ header.dashboard__header
             style='background-image: url(//i.imgsafe.org/{{photo}})'
           )
 
-  form.form.gutter_bottom_half(
+  form.form.padding_bottom_half(
     name='editCtrl.editionForm'
     novalidate
     ng-hide='editCtrl.editable.is_confirmed'
@@ -160,7 +160,7 @@ header.dashboard__header
         = ' '
         | {{editCtrl.editable.commissar.phone}}
 
-    .accidentForm.gutter_bottom.text_center
+    .accidentForm.padding_bottom.text_center
       h4 Документы:
 
       .accidentForm__documents
@@ -176,7 +176,7 @@ header.dashboard__header
         label.photoPreview.photoPreview_addPhoto
           input(type='file' ngf-select="editCtrl.onFileSelect($files)" ng-hide='true')
 
-    .text_center.gutter_bottom_half
+    .text_center.padding_bottom_half
       button.button.button_grey.button_lg(
         ng-click='editCtrl.saveAccident()'
         ng-hide='editCtrl.editionForm.$pristine'

@@ -5,11 +5,16 @@ import '../node_modules/moment/locale/ru';
 import '../node_modules/leaflet/dist/leaflet';
 import 'slick-carousel';
 import 'angular-slick-carousel';
+import 'jquery-sticky';
+import 'angular-sticky-plugin';
+
+setTimeout(()=> {
+  $("#sticker").sticky({topSpacing:0});
+}, 5000);
 
 import clickOut from './components/click-out.directive';
 import decodeBase64 from './components/decode-base64.filter';
 import Geocoding from './components/geocoding.service';
-import './components/sticky-kit';
 
 import './app/main';
 import './app/auth';
@@ -19,8 +24,8 @@ import './app/cabinet';
 
 angular.module('avarcom', [
   uiRouter,
-  'angular-sticky-kit',
   'slickCarousel',
+  'hl.sticky',
 
   'avarcom.main',
   'avarcom.auth',

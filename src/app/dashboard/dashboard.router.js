@@ -5,6 +5,7 @@ export default function ($stateProvider, $urlRouterProvider) {
     .state('dashboard', {
       url: '/dashboard',
       templateUrl: 'views/app/dashboard/dashboard.html',
+      controller: 'DashboardCtrl as dashboardCtrl',
       authenticate: true
     })
     .state('dashboard.accidents', {

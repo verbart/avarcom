@@ -1,16 +1,17 @@
 section.sidebar(
-  ng-class='{sidebar_minimize: $ctrl.minimize, sidebar_maximize: !$ctrl.minimize && $ctrl.toggleInit}'
+  ng-controller='SidebarCtrl as sidebarCtrl'
+  ng-class='{sidebar_minimize: sidebarCtrl.minimize, sidebar_maximize: !sidebarCtrl.minimize && sidebarCtrl.toggleInit}'
 )
   header.sidebar__header
     h1.sidebar__caption Авар
       span.text_highlight Ком
-    .sidebar__menuButton(ng-click='$ctrl.toggleSidebar()')
+    .sidebar__menuButton(ng-click='sidebarCtrl.toggleSidebar()')
 
   .sidebar__body
     .userInfo
       .userInfo__photo
       .userInfo__info
-        h3.userInfo__name {{$ctrl.userData.user_name}}
+        h3.userInfo__name {{sidebarCtrl.userData.user_name}}
         div
           a.userInfo__link(ui-sref='cabinet') Редактировать
           a.userInfo__link(ui-sref='logout') Выйти
@@ -18,13 +19,13 @@ section.sidebar(
     .location
       .location__icon
       .location__select(
-        dropdown-select='$ctrl.userData.cities'
-        dropdown-model='$ctrl.selectedCity'
+        dropdown-select='sidebarCtrl.userData.cities'
+        dropdown-model='sidebarCtrl.selectedCity'
         dropdown-item-label='name'
-        dropdown-onchange='$ctrl.changeCity(selected)'
+        dropdown-onchange='sidebarCtrl.changeCity(selected)'
       )
 
-    just-calendar.sidebar__calendar(locale='ru' on-update='$ctrl.changeDate($event)')
+    just-calendar.sidebar__calendar(locale='ru' on-update='sidebarCtrl.changeDate($event)')
 
     .menu
       a.menu__item(ui-sref='dashboard.accidents' ui-sref-active='menu__item_active')
@@ -35,17 +36,17 @@ section.sidebar(
         span.menu__icon.menu__icon_check
         span.menu__text Завершенное
           = ' '
-          .badge {{$ctrl.closedCounter || 0}}
+          .badge {{sidebarCtrl.closedCounter || 0}}
 
       a.menu__item(ui-sref='dashboard.statistics' ui-sref-active='menu__item_active')
         span.menu__icon.menu__icon_chart
         span.menu__text Статистика
 
 
-  .sidebar__body.sidebar__body_mini(ng-show='$ctrl.minimize')
+  .sidebar__body.sidebar__body_mini(ng-show='sidebarCtrl.minimize')
     .text_center
       .sidebar__icon.sidebar__icon_user(ui-sref='cabinet' ui-sref-active='sidebar__icon_user_active')
-      .sidebar__icon.sidebar__icon_calendar(ng-click='$ctrl.minimize = !$ctrl.minimize;')
+      .sidebar__icon.sidebar__icon_calendar(ng-click='sidebarCtrl.toggleSidebar()')
 
     .menu
       a.menu__item(ui-sref='dashboard.accidents' ui-sref-active='menu__item_active')
