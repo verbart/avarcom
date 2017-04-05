@@ -20,14 +20,15 @@ header.dashboard__header
 
     input(ng-hide='true' ng-model='createCtrl.newAccident.latitude' name='latitude' required)
     ng-messages(for='creationForm.latitude.$error' ng-if='createCtrl.interacted(creationForm.latitude)')
-      p.form__errorMsg(ng-message='required') Пометьте место аварии на карте
+      p.form__message.form__message_error(ng-message='required') Пометьте место аварии на карте
 
     .accidentForm
       h3.form__caption.text_center Контакты
 
-      date-picker(selected='createCtrl.newAccident.date')
+      .margin_bottom_half
+        date-picker(selected='createCtrl.newAccident.date')
 
-      input.form__input(
+      input.form__input.margin_bottom_half(
         placeholder='Адрес'
         ng-model='createCtrl.newAccident.address'
         uib-typeahead='address for address in createCtrl.getLocations($viewValue)'
@@ -37,30 +38,30 @@ header.dashboard__header
         required
       )
       ng-messages(for='creationForm.address.$error' ng-if='createCtrl.interacted(creationForm.address)')
-        p.form__errorMsg(ng-message='required') Укажите адрес аварии
+        p.form__message.form__message_error(ng-message='required') Укажите адрес аварии
 
-      input.form__input(
+      input.form__input.margin_bottom_half(
         placeholder='Телефон'
         ng-model='createCtrl.newAccident.phone'
         name='phone'
       )
-      input.form__input(
+      input.form__input.margin_bottom_half(
         placeholder='Марка машины'
         ng-model='createCtrl.newAccident.car_brand'
         name='car_brand'
       )
-      input.form__input(
+      input.form__input.margin_bottom_half(
         placeholder='Имя'
         ng-model='createCtrl.newAccident.client_name'
         name='name'
       )
 
-      //input.form__input(
+      //input.form__input.margin_bottom_half(
       //  placeholder='Время'
       //  ng-model='createCtrl.newAccident.time'
       //  name='time'
       //)
-      input.form__input(
+      input.form__input.margin_bottom_half(
         placeholder='ID комиссара'
         ng-model='createCtrl.newAccident.commissar_id'
         name='commissar_id'
@@ -68,8 +69,8 @@ header.dashboard__header
         commissioner-validate
       )
       ng-messages(for='creationForm.commissar_id.$error' ng-if='createCtrl.interacted(creationForm.commissar_id)')
-        p.form__errorMsg(ng-message='required') Укажите ID комиссара которому поступит заявка
-        p.form__errorMsg(ng-message='existCommissioner') Комиссара с таким ID не существует
+        p.form__message.form__message_error(ng-message='required') Укажите ID комиссара которому поступит заявка
+        p.form__message.form__message_error(ng-message='existCommissioner') Комиссара с таким ID не существует
 
       .text_center
         button.button.button_lg ОТПРАВИТЬ

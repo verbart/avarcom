@@ -21,7 +21,7 @@ header.dashboard__header
     novalidate
     ng-submit='readOneCtrl.submitted = true; creationForm.$valid && readOneCtrl.sendAccident()'
   )
-    input.form__input(
+    input.form__input.margin_bottom_half(
       placeholder='ID комиссара'
       ng-model='readOneCtrl.newAccident.commissar_id'
       name='commissar_id'
@@ -29,8 +29,8 @@ header.dashboard__header
       commissioner-validate
     )
     ng-messages(for='creationForm.commissar_id.$error' ng-if='readOneCtrl.interacted(creationForm.commissar_id)')
-      p.form__errorMsg(ng-message='required') Укажите ID комиссара которому поступит заявка
-      p.form__errorMsg(ng-message='existCommissioner') Комиссара с таким ID не существует
+      p.form__message.form__message_error(ng-message='required') Укажите ID комиссара которому поступит заявка
+      p.form__message.form__message_error(ng-message='existCommissioner') Комиссара с таким ID не существует
 
     .text_center
       button.button.button_lg ОТПРАВИТЬ

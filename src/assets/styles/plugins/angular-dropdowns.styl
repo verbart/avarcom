@@ -1,6 +1,9 @@
 .wrap-dd-select
   position relative
   border 1px solid #aaa
+  z-index 10
+  &_bordered
+    border 1px solid #363636
   .selected
     position relative
     display block
@@ -28,3 +31,13 @@
       border-bottom .4rem solid #ddd
     .dropdown
       display block
+  &_bg
+    .selected
+      background #ededed
+      color #363636
+      font-weight 300
+      opacity .9
+      &:after
+        border-top .4rem solid #999
+    &.active .selected:after
+      border-bottom .4rem solid #999

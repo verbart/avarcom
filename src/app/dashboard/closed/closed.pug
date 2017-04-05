@@ -1,17 +1,17 @@
-.row.flex.height_fullscreen.padding_bottom_half
-  .col-md-7.flex.flex_column
+.row.height_fullscreen.padding_bottom_half
+  .col-md-7.flex.flex_column.height_full
     header.dashboard__header
       h1.dashboard__caption Завершённые
 
     .padding_bottom_half
       .dashboard__section
         form.form
-          .form__searchForm
-            button.button.button_sm.button_lightgrey.selectDate__button(ng-click='listCtrl.openDateRangeModal()')
+          .form__group
+            button.button.button_lightgrey.form__addon.form__addon_light.margin_right_half(ng-click='listCtrl.openDateRangeModal()')
               .selectDate__icon
 
             input.form__input.form__input_lg(ng-model='searchAccident' placeholder='Введите имя, марку машины или дату...')
-            button.button.button_sm НАЙТИ
+            button.button НАЙТИ
 
     .tabs
       .tabs__header(ng-init='activeTab = 0')

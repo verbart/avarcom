@@ -29,6 +29,9 @@ export default function ($resource, $filter, CONSTANT) {
                     return response;
                 }
             }
+        },
+        block: {
+          method: 'POST'
         }
     });
 }

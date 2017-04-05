@@ -29,10 +29,11 @@
         .statisticsSection__header
           h4 Статистика по комиссарам:
 
-          form.form(ng-submit='statCtrl.searchCommissioners()')
-            .form__searchForm
-              input.form__input(ng-model='statCtrl.searchComInput' placeholder='Введите имя или ID...')
-              button.button.button_sm НАЙТИ
+          form.form
+            .form__group
+              .form__addon
+                .image_search
+              input.form__input(ng-model='$ctrl.searchComInput' placeholder='Поиск коммиссара...')
 
         .table
           table(ts-wrapper)

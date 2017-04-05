@@ -10,6 +10,6 @@ export default function ($stateProvider, $urlRouterProvider) {
     .state('cabinet.commissioners', {
       url: '/commissioners',
       templateUrl: 'views/app/cabinet/commissioners/commissioners.html',
-      controller: 'CommissionersCtrl as $ctrl'
+      controller: 'CommissionersCtrl as comCtrl'
     });
 }

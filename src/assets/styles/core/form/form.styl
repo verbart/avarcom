@@ -3,26 +3,22 @@
     margin-bottom 15px
   &__input
     width 100%
-    height 2rem
     line-height 2rem
-    padding-left .8rem
-    padding-right .8rem
-    margin-bottom 15px
+    padding 0 .8rem
     background #ededed
     box-shadow none
     outline none
     color #777
     font-weight 300
     font-size 1rem
-    border 1px solid transparent
+    border 0
     transition .4s
     &:focus
       border-color #a0a0a0
     &_lg
       height 2.5rem
     &_bordered
-      background #e3e3e3
-      border-color #363636
+      border 1px solid #363636
       color #363636
       &::placeholder
         opacity .9
@@ -30,12 +26,22 @@
       &:focus
         background #ededed
         border-color @border-color
-  &__searchForm
+  &__group
     display flex
-    input
-      margin 0
-  &__errorMsg
+  &__addon
+    display flex
+    align-items center
+    padding .3rem .5rem
+    border 0
+    line-height 1
+    font-size .9rem
+    text-align center
+    background #a2a2a2
+    &_light
+      background #ededed
+  &__message
     margin-top -12px
     margin-bottom 12px
     font-size .95rem
-    color #ea4b35
+    &_error
+      color #ea4b35

@@ -1,7 +1,8 @@
 .padding
   padding 15px
   &_top
-    padding-top 15px
+    &_half
+      padding-top 15px
   &_bottom
     padding-bottom 30px
     &_half
@@ -10,9 +11,15 @@
     padding 0
 
 .margin
+  &_bottom
+    &_half
+      margin-bottom 15px
   &_left
     &_auto
       margin-left auto
+  &_right
+    &_half
+      margin-right 15px
   &_none
     margin 0
 
@@ -30,5 +37,7 @@
     overflow visible
 
 .height
+  &_full
+    height 100%
   &_fullscreen
     height 100vh

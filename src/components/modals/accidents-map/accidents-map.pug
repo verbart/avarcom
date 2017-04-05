@@ -4,21 +4,21 @@
   h3.modal__caption {{$ctrl.city}}
 .modal__body
   leaflet(
-  id='createAccidentMapModal'
-  ng-if='$ctrl.map'
-  center='$ctrl.map.center'
-  markers='$ctrl.map.markers'
-  width='100%'
-  height='80vh'
+    id='createAccidentMapModal'
+    ng-if='$ctrl.map'
+    center='$ctrl.map.center'
+    markers='$ctrl.map.markers'
+    width='100%'
+    height='80vh'
   )
-.modal__footer
-  .pull-right
+.modal__footer.clearfix
+  .float-right
     button.button.button_sm(ng-show='$ctrl.result.address || $ctrl.result.commissar_id' ng-click='$ctrl.ok()') Сохранить
 
   p.margin_none(ng-hide='$ctrl.result.address || $ctrl.result.commissar_id') Поставьте метку на месте происшествия, и выберите комиссара для оформления прецедента
 
   p.margin_none(ng-show='$ctrl.result.address')
-    b Адрес проишествия:
+    b Адрес происшествия:
     = ' '
     |{{$ctrl.result.address}}
   p(ng-show='$ctrl.result.commissar_id') ID комиссара: {{$ctrl.result.commissar_id}}

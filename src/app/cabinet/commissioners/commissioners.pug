@@ -1,22 +1,30 @@
-.table.text_center
-  .padding_bottom.clearfix
-    form.form.col-md-4.offset-md-8.padding_none(ng-submit='$ctrl.searchCommissioners()')
-      .form__searchForm
-        input.form__input(ng-model='$ctrl.searchComInput' placeholder='Введите имя или ID...')
-        button.button.button_sm НАЙТИ
+.row.padding_bottom
+  .col-md-7.col-lg-8
+    button.button(ng-click='comCtrl.addCommissioner()') Добавить коммиссара
+  .col-md-5.col-lg-4
+    form.form
+      .form__group
+        .form__addon
+          .image_search
+        input.form__input(ng-model='comCtrl.searchComInput' placeholder='Поиск коммиссара...')
 
+.table.text_center
   table(ts-wrapper)
     tr
       td(ts-criteria='user_id | parseInt') ID
       td(ts-criteria='user_name | lowercase' ts-default) Имя
       td(ts-criteria='phone | parseInt') Телефон
       td(ts-criteria='email | parseInt') Email
-      td(ts-criteria='competitor_events | parseInt') Статус
+      //td(ts-criteria='competitor_events | parseInt') Статус
       td(ts-criteria='completed_events | parseInt') Действия
-    tr(ng-repeat='commissioners in $ctrl.commissioners | filter : $ctrl.searchComInput' ts-repeat ts-hide-no-data)
-      td {{commissioners.user_id}}
-      td {{commissioners.user_name}}
-      td {{commissioners.phone}}
-      td {{commissioners.email}}
-      td {{commissioners.type}}
-      td {{commissioners.is_blocked}}
+    tr(ng-repeat='commissioner in comCtrl.commissioners track by commissioner.user_id | filter : comCtrl.searchComInput' ts-repeat ts-hide-no-data)
+      td {{commissioner.user_id}}
+      td {{commissioner.user_name}}
+      td {{commissioner.phone}}
+      td
+        a.link(href='mailto:{{commissioner.email}}') {{commissioner.email}}
+      //td {{commissioner.type}}
+      td
+        button.button.button_grey.button_sm(ng-click='comCtrl.changeStatus(commissioner)')
+          span(ng-show='commissioner.is_blocked') Разблокировать
+          span(ng-hide='commissioner.is_blocked') Заблокировать

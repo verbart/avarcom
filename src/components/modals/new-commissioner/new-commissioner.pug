@@ -1,0 +1,18 @@
+.modal__header
+  .modal__close(ng-click='$ctrl.cancel()') &times;
+  h3.modal__caption Данные нового коммиссара
+
+.modal__body.container-fluid.padding_top_half
+  form.form(name='creationForm')
+    input.form__input.form__input_bordered.margin_bottom_half(placeholder='Имя')
+    input.form__input.form__input_bordered.margin_bottom_half(placeholder='Телефон')
+    input.form__input.form__input_bordered.margin_bottom_half(placeholder='E-mail')
+    .wrap-dd-select_bordered.wrap-dd-select_bg.margin_bottom_half(
+      dropdown-select='$ctrl.cities'
+      dropdown-model='$ctrl.selectedCity'
+      dropdown-item-label='name'
+    )
+
+.modal__footer.clearfix
+  .float-right
+    button.button.button_sm() Добавить
