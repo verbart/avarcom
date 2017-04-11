@@ -1,24 +1,24 @@
 export default class {
-    constructor(AuthService, $state, AuthData) {
-        this.AuthService = AuthService;
-        this.$state = $state;
-        this.AuthData = AuthData;
-        this.user = {};
-        this.loginError = null;
-    }
+  constructor(AuthService, $state, AuthData) {
+    this.AuthService = AuthService;
+    this.$state = $state;
+    this.AuthData = AuthData;
+    this.user = {};
+    this.errorCode = null;
+  }
 
-    login() {
-        this.AuthService.login(this.user).then(
-            res => {
-                console.log(res);
-                this.AuthData.set(res.data);
-                console.log(this.AuthData.get());
-                this.$state.go('dashboard');
-            },
-            error => {
-                console.log(error);
-                this.loginError= 'Неправильное имя пользователя или пароль';
-            }
-        );
-    }
+  login() {
+    this.AuthService.login(this.user).then(
+      response => {
+        console.log(response);
+        this.errorCode = null;
+        this.AuthData.set(response.data);
+        this.$state.go('dashboard');
+      },
+      error => {
+        console.log(error);
+        this.errorCode = error.status;
+      }
+    );
+  }
 }

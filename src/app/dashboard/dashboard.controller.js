@@ -4,7 +4,6 @@ export default class {
 
       $rootScope.$on('toggleSidebar', (event, args) => {
         this.sidebarIsOpen = args.isOpen;
-        console.log(args);
       });
     }
 }

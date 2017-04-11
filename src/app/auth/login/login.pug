@@ -12,7 +12,9 @@
       input.form__input.form__input_bordered.margin_bottom_half(name='login' placeholder='Логин' ng-model='loginCtrl.user.login')
       input.form__input.form__input_bordered.margin_bottom_half(name='password' type='password' placeholder='Пароль' ng-model='loginCtrl.user.password')
 
-      p.form__message.form__message_error(ng-show='loginCtrl.loginError') {{loginCtrl.loginError}}
+      div(ng-if='loginCtrl.errorCode')
+        p.form__message.form__message_error(ng-show='loginCtrl.errorCode != 403') Неправильное имя пользователя или пароль
+        p.form__message.form__message_error(ng-show='loginCtrl.errorCode == 403') У Вас нет доступа к данному ресурсу
 
       .padding_bottom_half
         button.button.button_block.button_grey ВХОД
