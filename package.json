@@ -28,7 +28,7 @@
     "gulp-util": "^3.0.7",
     "gulp.spritesmith": "^6.2.1",
     "vinyl-buffer": "^1.0.0",
-    "webpack": "2.2.1"
+    "webpack": "^2.2.1"
   },
   "dependencies": {
     "angular": "^1.6.3",
