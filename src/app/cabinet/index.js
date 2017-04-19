@@ -3,12 +3,12 @@ import uiRouter from 'angular-ui-router';
 
 import router from './cabinet.router';
 
-import CommissionersCtrl from './commissioners/commissioners.controller';
-import Commissioner from './commissioners/commissioner.factory';
+import UsersCtrl from './users/users.controller';
+import User from './users/users.factory';
 
 angular.module('avarcom.cabinet', [uiRouter])
   .config(router)
 
-  .controller('CommissionersCtrl', CommissionersCtrl)
+  .controller('UsersCtrl', UsersCtrl)
 
-  .factory('Commissioner', Commissioner);
+  .factory('User', User);

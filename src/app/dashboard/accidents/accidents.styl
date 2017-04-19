@@ -2,12 +2,25 @@
 
 .accident
   &List
+    background #fff
+    color #383838
+    tr
+      transition .4s
+      &:not(:last-child)
+        border-bottom 1px solid #bebebe
+      &:hover
+        background #eee
     td
+      padding 0.5rem
+      font-size 1.15rem
+      &:not(:last-child)
+        border-right 1px solid #bebebe
       &:first-child
         width 2.75rem
       &:last-child
+        width 2.75rem
         line-height 1
-    &__address
+    &__address, &__date
       border-right none !important
       line-height 1.2
     &__date
@@ -17,6 +30,7 @@
       line-height 1
     &__icon
       margin-top 3px
+      sprite($right-chevron_grey)
     &__item
       transition .4s
       &_confirmed > td:first-child, &_unconfirmed > td:first-child

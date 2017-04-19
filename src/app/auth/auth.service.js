@@ -1,17 +1,12 @@
 export default class {
-  constructor($http, CONSTANT, $localStorage, $httpParamSerializerJQLike) {
+  constructor($http, CONSTANT, $localStorage) {
     this.$http = $http;
     this.CONSTANT = CONSTANT;
     this.$localStorage = $localStorage;
-    this.$httpParamSerializerJQLike = $httpParamSerializerJQLike;
   }
 
   login(user) {
-    return this.$http.post(this.CONSTANT.API_URL+'/users', this.$httpParamSerializerJQLike(user), {
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencoded'
-      }
-    });
+    return this.$http.post(this.CONSTANT.API_URL+'/login', user);
   }
   logout() {
     this.$localStorage.$reset();

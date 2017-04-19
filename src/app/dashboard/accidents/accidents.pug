@@ -17,14 +17,15 @@
             }'
           )
             td.text_center {{$index+1}}.
-            td
-              .accidentList__address {{accident.address || 'Адресс не определён'}}
+            td.accidentList__address {{accident.address || 'Адресс не определён'}}
               .accidentList__status(ng-if='accident.status.code == 1') Свободная
               .accidentList__status(ng-if='accident.status.code == 2')
                 | Занятая ({{accident.commissar.id}}, {{accident.commissar.name}}, {{accident.commissar.phone}})
               .accidentList__status(ng-if='accident.status.code == 3') Ложная
               .accidentList__status(ng-if='accident.status.code == 4') ДТП
               .accidentList__status(ng-if='accident.status.code == 5') Конкурент
+            td.accidentList__date.text_right
+              span {{accident.createdDate.date}} {{accident.createdDate.time}}
             td.text_right
               .accidentList__icon
 
