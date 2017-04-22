@@ -4,7 +4,7 @@ export default class {
     this.CONSTANT = CONSTANT;
     this.Accident = Accident;
     this.userData = AuthData.get();
-    this.selectedCity = this.userData.cities.find(e => e.is_selected);
+    this.selectedCity = this.userData.city;
     this.selectedDate = SidebarCalendar.get();
     this.getAccidents(this.selectedDate);
     $rootScope.$on('changeMainCalendar', (event, args) => {
@@ -16,27 +16,6 @@ export default class {
       console.log(interval);
       $interval.cancel(interval)
     });
-
-    this.stickyOptions = {
-      stick: function() {
-        console.log('Stick');
-      },
-      unstick: function() {
-        console.log('Unstick');
-      },
-      bottom: function() {
-        console.log('Bottom');
-      },
-      unbottom: function() {
-        console.log('Unbottom');
-      },
-      recalc: function() {
-        console.log('recalc');
-      },
-      detach: function() {
-        console.log('Detach');
-      }
-    };
   }
 
   getAccidents(date) {

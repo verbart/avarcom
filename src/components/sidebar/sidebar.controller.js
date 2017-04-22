@@ -8,7 +8,7 @@ export default class {
     this.SidebarCalendar = SidebarCalendar;
     this.AuthData = AuthData;
     this.userData = AuthData.get();
-    this.selectedCity = this.userData.cities.find(e => e.is_selected);
+    this.selectedCity = this.userData.city;
     this.toggleInit = false;
     this.minimize = this.userData.sidebarIsCollapsed;
     this.$rootScope.$emit('toggleSidebar', {isOpen: !this.minimize});
@@ -46,11 +46,9 @@ export default class {
   changeCity(city) {
     if (this.selectedCity.short_name == city.short_name) return;
 
-    this.$http.post(this.CONSTANT.API_URL + '/users/update_city', {}, {headers: {city: city.short_name}}).then(() => {
-      this.userData.cities.forEach(e => {
-        e.is_selected = false;
-        if (e.short_name == city.short_name) e.is_selected = true;
-      });
+    this.$http.put(this.CONSTANT.API_URL + '/self', {city: city.short_name}).then(response => {
+      this.userData.city = response.data.city;
+      this.userData.cities = response.data.cities;
 
       this.AuthData.set(this.userData);
       this.$state.reload();
