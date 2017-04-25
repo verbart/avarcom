@@ -16,7 +16,7 @@ export default function Closed(CONSTANT, $filter, $resource) {
 
     obj.createdDate = {
       date: $filter('date')(obj.created * 1000, 'dd.MM.yyyy'),
-      time: $filter('date')(obj.created * 1000, 'HH:ss'),
+      time: $filter('date')(obj.created * 1000, 'HH:mm'),
     };
 
     return obj;
