@@ -34,11 +34,31 @@
 
     .row
       .col-10.offset-1.col-sm-12.offset-sm-0.col-lg-8.offset-lg-2
-        form.form
+        form.form(
+          name='feedbackForm'
+          novalidate
+          ng-submit='mainCtrl.submitted = true; feedbackForm.$valid && mainCtrl.submitFeedback(feedbackForm)'
+        )
           .row
             .col-md-4
-              input.form__input.form__input_bordered.form__input_lg(placeholder='Введите E-mail')
+              input.form__input.form__input_bordered.form__input_lg.margin_bottom_half(
+                ng-model='mainCtrl.email'
+                name='email'
+                type='email'
+                placeholder='Введите E-mail'
+                required
+              )
+              ng-messages(for='feedbackForm.email.$error' ng-if='mainCtrl.interacted(feedbackForm.email)')
+                p.form__message.form__message_error(ng-message='required') Укажите email адрес
+                p.form__message.form__message_error(ng-message='email') Укажите корректный email
             .col-md-4
-              input.form__input.form__input_bordered.form__input_lg(placeholder='Введите телефон')
+              input.form__input.form__input_bordered.form__input_lg.margin_bottom_half(
+                ng-model='mainCtrl.phone'
+                name='phone'
+                placeholder='Введите телефон'
+                required
+              )
+              ng-messages(for='feedbackForm.phone.$error' ng-if='mainCtrl.interacted(feedbackForm.phone)')
+                p.form__message.form__message_error(ng-message='required') Укажите телефон для связи
             .col-md-4
               button.button.button_underlined.button_block.button_lg Получить доступ

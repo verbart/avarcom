@@ -5,16 +5,14 @@ import '../node_modules/moment/locale/ru';
 import '../node_modules/leaflet/dist/leaflet';
 import 'slick-carousel';
 import 'angular-slick-carousel';
-import 'jquery-sticky';
-import 'angular-sticky-plugin';
-
-setTimeout(()=> {
-  $("#sticker").sticky({topSpacing:0});
-}, 5000);
+import 'angular-animate';
+import 'angularjs-toaster';
 
 import clickOut from './components/click-out.directive';
 import decodeBase64 from './components/decode-base64.filter';
 import Geocoding from './components/geocoding.service';
+import callbackModal from './components/modals/callback/callback.component';
+import privacyPolicyModal from './components/modals/privacy-policy/privacy-policy.component';
 
 import './app/main';
 import './app/auth';
@@ -25,7 +23,8 @@ import './app/cabinet';
 angular.module('avarcom', [
   uiRouter,
   'slickCarousel',
-  'hl.sticky',
+  'ngAnimate',
+  'toaster',
 
   'avarcom.main',
   'avarcom.auth',
@@ -70,4 +69,7 @@ angular.module('avarcom', [
 
   .filter('decodeBase64', decodeBase64)
   .service('Geocoding', Geocoding)
-  .directive('clickOut', clickOut);
+  .directive('clickOut', clickOut)
+
+  .component('callbackModal', callbackModal)
+  .component('privacyPolicyModal', privacyPolicyModal);

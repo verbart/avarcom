@@ -4,8 +4,12 @@ header.mainHeader
       .logo.mainHeader__logo
         img.logo__image(src='images/logo.png')
         .logo__text Центр
-          .text_highlight Аварийных Комиссаров
+          br
+          | Аварийных Комиссаров
+
+      .mainHeader__dashboardLink
+        a.button.button_underlined(ui-sref='dashboard') Перейти в панель управления
 
       .mainHeader__contacts
         a.phone.mainHeader__phone(href='tel:+89991234578') 8 (999) 123-45-78
-        button.button.button_underlined.mainHeader__callMeButton Перезвоните мне!
+        button.button.button_underlined.mainHeader__callMeButton(ng-click='mainCtrl.openCallbackModal()') Перезвоните мне!
