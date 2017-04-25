@@ -11,7 +11,7 @@ export default class {
       this.selectedDate = args.date;
       this.getAccidents(args.date.format('DD.MM.YYYY'));
     });
-    const interval = $interval(() => this.getAccidents(this.selectedDate && this.selectedDate.format('DD.MM.YYYY')), 20*1000);
+    const interval = $interval(() => this.getAccidents(this.selectedDate && this.selectedDate.format('DD.MM.YYYY')), 20 * 1000);
     $scope.$on('$destroy', () => {
       console.log(interval);
       $interval.cancel(interval)

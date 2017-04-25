@@ -50,6 +50,10 @@ export default class {
       this.userData.city = response.data.city;
       this.userData.cities = response.data.cities;
 
+      this.CONSTANT.OneSignal.push(['sendTags', {
+        city: city.short_name
+      }]);
+
       this.AuthData.set(this.userData);
       this.$state.reload();
     });

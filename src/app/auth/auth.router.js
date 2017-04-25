@@ -7,7 +7,10 @@ export default function ($stateProvider) {
     })
     .state('logout', {
       url: '/logout',
-      controller: function (AuthService, $state) {
+      controller: function (AuthService, $state, CONSTANT) {
+        CONSTANT.OneSignal.push(['sendTags', {
+          city: null
+        }]);
         AuthService.logout();
         $state.go('login');
       }

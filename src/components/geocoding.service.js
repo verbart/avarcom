@@ -7,7 +7,7 @@ export default class {
     getAddress(latlng, cb) {
         return this.$http.get('https://maps.googleapis.com/maps/api/geocode/json', {
             params: {
-                key: this.CONSTANT.API_KEY,
+                key: this.CONSTANT.GOOGLE_API_KEY,
                 latlng: `${latlng.lat},${latlng.lng}`,
                 language: 'ru'
             }}).then(function(response) {
@@ -24,7 +24,7 @@ export default class {
     getLocation(address, cb) {
         return this.$http.get('https://maps.googleapis.com/maps/api/geocode/json', {
             params: {
-                key: this.CONSTANT.API_KEY,
+                key: this.CONSTANT.GOOGLE_API_KEY,
                 address: address,
                 // bounds: `${34.172684},${-118.604794}|${34.236144},${-118.500938}`,
                 language: 'ru',

@@ -33,8 +33,9 @@ angular.module('avarcom', [
   'avarcom.cabinet'
 ])
   .constant('CONSTANT', {
-    API_URL: 'https://avarkom.pw/control',
-    API_KEY: 'AIzaSyDDQzWP_LrDLwRqPSq9_7FvQf2uzQvSJhU'
+    API_URL: 'https://avarkom.pw/api/v2',
+    GOOGLE_API_KEY: 'AIzaSyDDQzWP_LrDLwRqPSq9_7FvQf2uzQvSJhU',
+    OneSignal: window.OneSignal || []
   })
 
   .config(function(
@@ -42,7 +43,8 @@ angular.module('avarcom', [
     $stateProvider,
     $urlRouterProvider,
     $locationProvider,
-    $urlMatcherFactoryProvider
+    $urlMatcherFactoryProvider,
+    CONSTANT
   ) {
     $localStorageProvider.setKeyPrefix('avarcom_');
 
@@ -55,24 +57,17 @@ angular.module('avarcom', [
     });
 
     $urlRouterProvider.otherwise('/404');
+
+    CONSTANT.OneSignal.push(["init", {
+      allowLocalhostAsSecureOrigin: true,
+      appId: "d46a0dd4-336f-4586-9d04-e91179e55514",
+      autoRegister: false,
+      notifyButton: {
+        enable: true
+      }
+    }]);
   })
 
   .filter('decodeBase64', decodeBase64)
   .service('Geocoding', Geocoding)
   .directive('clickOut', clickOut);
-
-var OneSignal = window.OneSignal || [];
-OneSignal.push(["init", {
-  appId: "d46a0dd4-336f-4586-9d04-e91179e55514",
-  autoRegister: false, /* Set to true to automatically prompt visitors */
-  subdomainName: 'SUBDOMAIN_NAME_SEE_STEP_1.4',
-  /*
-   subdomainName: Use the value you entered in step 1.4: http://imgur.com/a/f6hqN
-   */
-  httpPermissionRequest: {
-    enable: true
-  },
-  notifyButton: {
-    enable: true /* Set to false to hide */
-  }
-}]);
