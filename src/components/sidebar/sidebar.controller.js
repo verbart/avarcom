@@ -52,6 +52,10 @@ export default class {
         if (e.short_name == city.short_name) e.is_selected = true;
       });
 
+      this.CONSTANT.OneSignal.push(['sendTags', {
+        city: city.short_name
+      }]);
+
       this.AuthData.set(this.userData);
       this.$state.reload();
     });

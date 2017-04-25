@@ -34,7 +34,8 @@ angular.module('avarcom', [
 ])
   .constant('CONSTANT', {
     API_URL: 'https://avarkom.pw/api/v2',
-    API_KEY: 'AIzaSyDDQzWP_LrDLwRqPSq9_7FvQf2uzQvSJhU'
+    GOOGLE_API_KEY: 'AIzaSyDDQzWP_LrDLwRqPSq9_7FvQf2uzQvSJhU',
+    OneSignal: window.OneSignal || []
   })
 
   .config(function(
@@ -42,7 +43,8 @@ angular.module('avarcom', [
     $stateProvider,
     $urlRouterProvider,
     $locationProvider,
-    $urlMatcherFactoryProvider
+    $urlMatcherFactoryProvider,
+    CONSTANT
   ) {
     $localStorageProvider.setKeyPrefix('avarcom_');
 
@@ -55,6 +57,15 @@ angular.module('avarcom', [
     });
 
     $urlRouterProvider.otherwise('/404');
+
+    CONSTANT.OneSignal.push(["init", {
+      allowLocalhostAsSecureOrigin: true,
+      appId: "d46a0dd4-336f-4586-9d04-e91179e55514",
+      autoRegister: false,
+      notifyButton: {
+        enable: true
+      }
+    }]);
   })
 
   .filter('decodeBase64', decodeBase64)

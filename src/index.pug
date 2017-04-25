@@ -3,8 +3,10 @@ html(ng-app='avarcom' lang='ru')
   head
     base(href='/')
     meta(charset='UTF-8')
-    meta(name='viewport', content='width=device-width, initial-scale=1')
-    link(rel='stylesheet', href='./css/style.css')
+    meta(name='viewport' content='width=device-width, initial-scale=1')
+    link(rel='manifest' href='./manifest.json')
+    link(rel='stylesheet' href='./css/style.css')
+    script(script src='https://cdn.onesignal.com/sdks/OneSignalSDK.js')
     script(defer src='./js/bundle.js')
     title АварКом
 
