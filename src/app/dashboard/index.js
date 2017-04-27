@@ -4,8 +4,7 @@ import ngResource from 'angular-resource';
 
 import router from './dashboard.router';
 
-import SidebarCtrl from '../../components/sidebar/sidebar.controller';
-import justCalendar from '../../components/just-calendar/just-calendar.component';
+import mainHeader from '../../components/main-header/main-header.component';
 import datePicker from '../../components/date-picker/date-picker.component';
 import accidentsMapModal from '../../components/modals/accidents-map/accidents-map.component';
 import periodModal from '../../components/modals/period/period.component';
@@ -20,7 +19,6 @@ import ClosedListCtrl from './closed/closed.controller';
 import ClosedEditCtrl from './closed/edit/edit.controller';
 import StatisticsCtrl from './statistics/statistics.controller';
 
-import SidebarCalendar from '../../components/sidebar/sidebar-calendar.factory';
 import Accident from './accidents/accident.factory';
 import Closed from './closed/closed.factory';
 import Statistics from './statistics/statistics.factory';
@@ -66,7 +64,7 @@ angular.module('avarcom.dashboard', [
     };
   })
 
-  .component('justCalendar', justCalendar)
+  .component('mainHeader', mainHeader)
   .component('datePicker', datePicker)
   .component('accidentsMapModal', accidentsMapModal)
   .component('periodModal', periodModal)
@@ -75,7 +73,6 @@ angular.module('avarcom.dashboard', [
 
   .directive('commissionerValidate', commissionerValidate)
 
-  .controller('SidebarCtrl', SidebarCtrl)
   .controller('DashboardCtrl', DashboardCtrl)
   .controller('AccidentListCtrl', AccidentListCtrl)
   .controller('AccidentReadOneCtrl', AccidentReadOneCtrl)
@@ -84,7 +81,6 @@ angular.module('avarcom.dashboard', [
   .controller('ClosedEditCtrl', ClosedEditCtrl)
   .controller('StatisticsCtrl', StatisticsCtrl)
 
-  .factory('SidebarCalendar', SidebarCalendar)
   .factory('Accident', Accident)
   .factory('Closed', Closed)
   .factory('Statistics', Statistics);
