@@ -1,15 +1,17 @@
 export default function ($stateProvider, $urlRouterProvider) {
-  $urlRouterProvider.when('/dashboard/cabinet', '/dashboard/cabinet/commissioners');
+  $urlRouterProvider.when('/dashboard/cabinet', '/dashboard/cabinet/users');
 
   $stateProvider
     .state('cabinet', {
       url: '/cabinet',
       parent: 'dashboard',
-      templateUrl: 'views/app/cabinet/cabinet.html'
+      templateUrl: 'views/app/cabinet/cabinet.html',
+      authenticate: true
     })
-    .state('cabinet.commissioners', {
-      url: '/commissioners',
-      templateUrl: 'views/app/cabinet/commissioners/commissioners.html',
-      controller: 'CommissionersCtrl as comCtrl'
+    .state('cabinet.users', {
+      url: '/users',
+      templateUrl: 'views/app/cabinet/users/users.html',
+      controller: 'UsersCtrl as usersCtrl',
+      authenticate: true
     });
 }

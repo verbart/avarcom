@@ -1,0 +1,30 @@
+.row.padding_bottom
+  .col-md-7.col-lg-8
+    button.button(ng-click='usersCtrl.addCommissioner()') Добавить пользователя
+  .col-md-5.col-lg-4
+    form.form
+      .form__group
+        .form__addon
+          .image_search
+        input.form__input(ng-model='usersCtrl.searchComInput' placeholder='Поиск пользователя...')
+
+.table.text_center
+  table(ts-wrapper)
+    tr
+      td(ts-criteria='user_id | parseInt') ID
+      td(ts-criteria='user_name | lowercase' ts-default) Имя
+      td(ts-criteria='phone | parseInt') Телефон
+      td(ts-criteria='email | parseInt') Email
+      //td(ts-criteria='competitor_events | parseInt') Статус
+      td(ts-criteria='completed_events | parseInt') Действия
+    tr(ng-repeat='user in usersCtrl.users | filter : usersCtrl.searchComInput track by user.user_id' ts-repeat ts-hide-no-data)
+      td {{user.user_id}}
+      td {{user.user_name}}
+      td {{user.phone}}
+      td
+        a.link(href='mailto:{{user.email}}') {{user.email}}
+      //td {{user.type}}
+      td
+        button.button.button_grey.button_sm(ng-click='usersCtrl.changeStatus(user)')
+          span(ng-show='user.is_blocked') Разблокировать
+          span(ng-hide='user.is_blocked') Заблокировать

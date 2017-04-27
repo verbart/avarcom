@@ -4,7 +4,7 @@ export default class {
     this.CONSTANT = CONSTANT;
     this.Accident = Accident;
     this.userData = AuthData.get();
-    this.selectedCity = this.userData.cities.find(e => e.is_selected);
+    this.selectedCity = this.userData.city;
     // this.selectedDate = SidebarCalendar.get();
     this.getAccidents(this.selectedDate);
     $rootScope.$on('changeMainCalendar', (event, args) => {

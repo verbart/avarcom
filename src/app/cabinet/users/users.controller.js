@@ -1,32 +1,32 @@
 export default class {
-  constructor(Commissioner, AuthData, $uibModal, $interval, $scope) {
+  constructor(User, AuthData, $uibModal, $interval, $scope) {
     this.$uibModal = $uibModal;
     this.userData = AuthData.get();
-    this.Commissioner = Commissioner;
+    this.User = User;
 
-    this.getCommissioners(this.selectedDate);
+    this.getUsers(this.selectedDate);
 
-    // const interval = $interval(() => this.getCommissioners(), 60*1000);
+    // const interval = $interval(() => this.getUsers(), 60*1000);
     // $scope.$on('$destroy', () => $interval.cancel(interval));
   }
 
-  getCommissioners() {
-    this.Commissioner.query(response => {
-      this.commissioners = response.data;
+  getUsers() {
+    this.User.query(response => {
+      this.users = response.data;
       console.log(response);
     });
   }
   changeStatus(commissioner) {
-    this.Commissioner.block({id: commissioner.user_id}, {
+    this.User.block({id: commissioner.user_id}, {
       block: !commissioner.is_blocked
     }, response => {
       console.log(response);
       commissioner.is_blocked = !commissioner.is_blocked;
     });
   }
-  addCommissioner() {
+  addUser() {
     const modalInstance = this.$uibModal.open({
-      component: 'newCommissionerModal',
+      component: 'newUserModal',
       size: 'sm',
       resolve: {
         cities: () => this.userData.cities,
@@ -34,7 +34,7 @@ export default class {
     });
 
     modalInstance.result.then(result => {
-      this.commissioners.push(result.commissioner);
+      this.users.push(result.commissioner);
     }, () => {
       console.info('modal-component dismissed at: ' + new Date());
     });
