@@ -5,3 +5,4 @@
 /.gulp
 /public
 src/assets/styles/sprites/images.styl
+src/assets/misc/svg-symbols.svg

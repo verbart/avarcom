@@ -15,6 +15,7 @@ const pug = require('gulp-pug');
 const tinypng = require('gulp-tinypng-nokey');
 const spritesmith = require('gulp.spritesmith');
 const webpack = require('webpack');
+const svgSymbols = require('gulp-svg-symbols');
 
 const isDevelopment = process.env.NODE_ENV !== 'production';
 
@@ -94,6 +95,22 @@ gulp.task('images', function () {
     .pipe(gulp.dest('./public/images'));
 });
 
+gulp.task('svgSymbols', function () {
+  return gulp.src('./src/assets/images/svg/**/*.svg')
+    .pipe(svgSymbols({
+      svgClassname: 'icon_iconsLib',
+      className: '.icon_%f'
+    }))
+    .pipe(rename(path => {
+      if (path.extname == '.svg') {
+        path.dirname = 'misc';
+      } else if (path.extname == '.css') {
+        path.dirname = 'styles/core/icon';
+      }
+    }))
+    .pipe(gulp.dest('./src/assets'));
+});
+
 gulp.task('fonts', function () {
   return gulp.src('./src/assets/fonts/**/*.*')
     .pipe(rename(path => path.dirname = ''))
@@ -114,6 +131,7 @@ gulp.task('watch', function () {
   gulp.watch('./src/**/*.{css,styl}', gulp.series('styles'));
   gulp.watch('./src/**/*.js', gulp.series('scripts'));
   gulp.watch('./src/assets/misc/**/*.*', gulp.series('copy:misc'));
+  gulp.watch('./src/assets/images/svg/**/*.svg', gulp.series('svgSymbols'));
 });
 
 gulp.task('serve', function () {
@@ -133,7 +151,10 @@ gulp.task('serve', function () {
 
 gulp.task('build', gulp.series(
   'clean',
-  'sprite',
+  gulp.parallel(
+    'sprite',
+    'svgSymbols'
+  ),
   gulp.parallel(
     'views',
     'styles',
