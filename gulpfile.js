@@ -110,12 +110,6 @@ gulp.task('svgSymbols', function () {
     .pipe(gulp.dest('./src/assets'));
 });
 
-gulp.task('fonts', function () {
-  return gulp.src('./src/assets/fonts/**/*.*')
-    .pipe(rename(path => path.dirname = ''))
-    .pipe(gulp.dest('./public/fonts'));
-});
-
 gulp.task('copy:misc', function () {
   return gulp.src('./src/assets/misc/**/*.*')
     .pipe(gulp.dest('./public'));
@@ -158,7 +152,6 @@ gulp.task('build', gulp.series(
     'views',
     'styles',
     'scripts',
-    'fonts',
     'images',
     'copy:misc'
   )));
