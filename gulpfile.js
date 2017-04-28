@@ -98,7 +98,6 @@ gulp.task('images', function () {
 gulp.task('svgSymbols', function () {
   return gulp.src('./src/assets/images/svg/**/*.svg')
     .pipe(svgSymbols({
-      svgClassname: 'icon_iconsLib',
       className: '.icon_%f'
     }))
     .pipe(rename(path => {
