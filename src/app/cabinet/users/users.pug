@@ -1,12 +1,28 @@
+include /src/components/icon/icon
+
 .row.padding_bottom
+  .col-md-7.margin_bottom_half
+    ng-dropdown-multiselect.dropdown(
+      options='usersCtrl.roles'
+      selected-model='usersCtrl.selectedRole'
+      extra-settings='usersCtrl.rolesOptions'
+      events='{onSelectionChanged: usersCtrl.onRoleSelect}'
+      translation-texts='{buttonDefaultText: "Роль"}'
+    )
+      toggle-dropdown
+        .form__group.form__group_dropdown
+          label.form__addon
+            +icon({iconName: 'placeholder_fill'})
+          .form__input.form__input_dummy {{usersCtrl.selectedRoleLabel || 'Роль'}}
+
   .col-md-7.col-lg-8
-    button.button(ng-click='usersCtrl.addCommissioner()') Добавить пользователя
+    button.button(ng-click='usersCtrl.addUser()') Добавить пользователя
   .col-md-5.col-lg-4
     form.form
       .form__group
-        .form__addon
-          .image_search
-        input.form__input(ng-model='usersCtrl.searchComInput' placeholder='Поиск пользователя...')
+        label(for='searchUser').form__addon
+          +icon({iconName: 'search'})
+        input.form__input(id='searchUser' ng-model='usersCtrl.searchComInput' placeholder='Поиск пользователя...')
 
 .table.text_center
   table(ts-wrapper)

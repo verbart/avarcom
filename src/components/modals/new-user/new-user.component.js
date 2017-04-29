@@ -1,5 +1,5 @@
 export default {
-  templateUrl: 'views/components/modals/new-commissioner/new-commissioner.html',
+  templateUrl: 'views/components/modals/new-user/new-user.html',
   bindings: {
     resolve: '<',
     close: '&',
@@ -8,7 +8,7 @@ export default {
   controller: function () {
     this.$onInit = () => {
       this.cities = this.resolve.cities;
-      this.selectedCity = this.cities.find(e => e.is_selected);
+      this.selectedCity = this.cities[0];
     };
 
     this.ok = () => {

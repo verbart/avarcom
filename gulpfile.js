@@ -16,6 +16,7 @@ const tinypng = require('gulp-tinypng-nokey');
 const spritesmith = require('gulp.spritesmith');
 const webpack = require('webpack');
 const svgSymbols = require('gulp-svg-symbols');
+const svgmin = require('gulp-svgmin');
 
 const isDevelopment = process.env.NODE_ENV !== 'production';
 
@@ -97,6 +98,7 @@ gulp.task('images', function () {
 
 gulp.task('svgSymbols', function () {
   return gulp.src('./src/assets/images/svg/**/*.svg')
+    .pipe(svgmin())
     .pipe(svgSymbols({
       className: '.icon_%f'
     }))

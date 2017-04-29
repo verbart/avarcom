@@ -7,6 +7,8 @@ import 'slick-carousel';
 import 'angular-slick-carousel';
 import 'angular-animate';
 import 'angularjs-toaster';
+import svg4everybody from 'svg4everybody';
+if (!IS_DEVELOPMENT) svg4everybody();
 
 import clickOut from './components/click-out.directive';
 import decodeBase64 from './components/decode-base64.filter';

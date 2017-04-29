@@ -1,0 +1,71 @@
+.dropdown
+  //width 100%
+  display inline-block
+  .multiselect-parent
+    position relative
+    display inline-block
+    vertical-align middle
+    white-space nowrap
+    .dropdown-toggle
+      position relative
+      display inline-block
+      padding 0
+      border none
+      box-shadow none
+      outline none
+      text-align left
+      font-size 1rem
+      color #606065
+      background none
+      white-space nowrap
+      cursor pointer
+      &__text
+        overflow hidden
+        text-overflow ellipsis
+        white-space nowrap
+      .caret
+        display inline-block
+        width 0
+        height 0
+        margin-left 8px
+        //position absolute
+        //top 50%
+        //right .8rem
+        //transform translateY(-50%)
+        border-left 8px solid transparent
+        border-right 8px solid transparent
+        border-top 8px solid #b2b0a7
+        transition .2s
+    .dropdown-menu
+      position absolute
+      left 0
+      right 0
+      top 100%
+      display block
+      min-width 120px
+      margin 8px 0 0
+      padding 0
+      list-style none
+      box-shadow 0 3px 2px 1px rgba(0, 0, 0, 0.3)
+      background #fff
+      color #4f4e57
+      z-index 10
+      li a
+        display block
+        padding 4px 8px
+        text-align center
+        transition .2s
+        &:hover
+          background rgba(#efefef, .5)
+      li.active a
+        background #efefef
+  .multiselect-parent.open
+    .caret
+      border-top none
+      border-bottom 8px solid #b2b0a7
+
+  &_formControl
+    .multiselect-parent.open
+      .dropdown-toggle
+        &:after
+          transform translate(-50%, -25%) rotate(-135deg)
