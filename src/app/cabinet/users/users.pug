@@ -1,23 +1,9 @@
 include /src/components/icon/icon
 
-.row.padding_bottom
-  .col-md-7.margin_bottom_half
-    ng-dropdown-multiselect.dropdown(
-      options='usersCtrl.roles'
-      selected-model='usersCtrl.selectedRole'
-      extra-settings='usersCtrl.rolesOptions'
-      events='{onSelectionChanged: usersCtrl.onRoleSelect}'
-      translation-texts='{buttonDefaultText: "Роль"}'
-    )
-      toggle-dropdown
-        .form__group.form__group_dropdown
-          label.form__addon
-            +icon({iconName: 'placeholder_fill'})
-          .form__input.form__input_dummy {{usersCtrl.selectedRoleLabel || 'Роль'}}
-
-  .col-md-7.col-lg-8
+.row
+  .col-md-7.col-lg-8.padding_bottom_half
     button.button(ng-click='usersCtrl.addUser()') Добавить пользователя
-  .col-md-5.col-lg-4
+  .col-md-5.col-lg-4.padding_bottom
     form.form
       .form__group
         label(for='searchUser').form__addon
@@ -31,7 +17,8 @@ include /src/components/icon/icon
       td(ts-criteria='user_name | lowercase' ts-default) Имя
       td(ts-criteria='phone | parseInt') Телефон
       td(ts-criteria='email | parseInt') Email
-      //td(ts-criteria='competitor_events | parseInt') Статус
+      td(ts-criteria='type | lowercase') Тип
+      td(ts-criteria='role | lowercase') Роль
       td(ts-criteria='completed_events | parseInt') Действия
     tr(ng-repeat='user in usersCtrl.users | filter : usersCtrl.searchComInput track by user.user_id' ts-repeat ts-hide-no-data)
       td {{user.user_id}}
@@ -39,7 +26,8 @@ include /src/components/icon/icon
       td {{user.phone}}
       td
         a.link(href='mailto:{{user.email}}') {{user.email}}
-      //td {{user.type}}
+      td {{'Комиссар'}}
+      td {{'Великий и прекрасный'}}
       td
         button.button.button_grey.button_sm(ng-click='usersCtrl.changeStatus(user)')
           span(ng-show='user.is_blocked') Разблокировать

@@ -16,6 +16,8 @@
     white-space nowrap
     cursor text
     transition .4s
+    &::placeholder
+      opacity 1
     &_dummy
       display flex
       align-items center
@@ -47,12 +49,12 @@
       left 1px
       background #fff
     &_dropdown
-      padding-right 38px
+      padding-right 25px
       &:after
         content ''
         position absolute
         top 50%
-        right 8px
+        right 6px
         transform translate(-50%, -75%) rotate(45deg)
         display block
         width 12px

@@ -2,4 +2,7 @@ include ../icon/icon
 
 header.mainHeader.mainHeader_dashboard
   .container.header__container
-    +icon({iconName: 'logo', className: 'mainHeader__logo'})
+    a.logo.mainHeader__logo(ui-sref='home')
+      .logo__image
+        +icon({iconName: 'logo'})
+      h1.logo__text Центр АК

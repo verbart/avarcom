@@ -43,9 +43,14 @@
   height: 737.8px;
 }
 
+.icon_mail {
+  width: 14px;
+  height: 14px;
+}
+
 .icon_pawn {
-  width: 100px;
-  height: 100px;
+  width: 261.737px;
+  height: 261.737px;
 }
 
 .icon_pencil {
@@ -78,7 +83,7 @@
   height: 56.966px;
 }
 
-.icon_user-silhouette {
+.icon_user {
   width: 409px;
   height: 409px;
 }
@@ -86,10 +91,5 @@
 .icon_user_settings {
   width: 32px;
   height: 32px;
-}
-
-.icon_weekly-calendar {
-  width: 512px;
-  height: 512px;
 }
 
