@@ -8,9 +8,11 @@
     height 52px
     z-index 10
     background #fff
-    box-shadow 0 1px #c9c8c5
+    box-shadow 0 1px 2px #c9c8c5
     &__container
       display flex
+      align-items center
+      justify-content space-between
     &__logo
       .icon
         height 32px
@@ -18,6 +20,31 @@
         margin-top 10px
         margin-bottom 10px
         color #f59c00
+    &__navbar
+      align-self stretch
+      @media(max-width 992px)
+        position fixed
+        top 52px
+        right 0
+        min-width 280px
+        background #fff
+        transform translate(100%)
+        overflow auto
+        box-shadow inset 0 1px 2px #c9c8c5, 0 1px 2px #c9c8c5
+        transition .2s
+        &_active
+          transform translate(0)
+    &__burgerButton
+      display none
+      padding 5px 0 5px 15px
+      .icon
+        width 25px
+        height 25px
+        color #333
+        cursor pointer
+      @media (max-width 992px)
+        display flex
+
   .logo
     display flex
     align-items center
