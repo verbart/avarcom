@@ -8,6 +8,12 @@ export default function ($stateProvider, $urlRouterProvider) {
       templateUrl: 'views/app/cabinet/cabinet.html',
       authenticate: true
     })
+    .state('cabinet.account', {
+      url: '/account',
+      templateUrl: 'views/app/cabinet/account/account.html',
+      controller: 'AccountCtrl as accountCtrl',
+      authenticate: true
+    })
     .state('cabinet.users', {
       url: '/users',
       templateUrl: 'views/app/cabinet/users/users.html',
