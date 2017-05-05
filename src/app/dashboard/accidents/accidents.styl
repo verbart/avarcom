@@ -5,34 +5,44 @@
     background #fff
     color #383838
     tr
-      transition .4s
+      transition .2s
       &:not(:last-child)
         border-bottom 1px solid #bebebe
       &:hover
         background #eee
     td
       padding 0.5rem
-      font-size 1.15rem
-      &:not(:last-child)
-        border-right 1px solid #bebebe
+      border none !important
       &:first-child
-        width 2.75rem
-      &:last-child
-        width 2.75rem
-        line-height 1
-    &__address, &__date
-      border-right none !important
+        position relative
+        padding-left 28px
+        &:before
+          content ''
+          position absolute
+          top 50%
+          left 6px
+          transform translateY(-50%)
+          display block
+          width 12px
+          height @width
+          border-radius 50%
+
+    &__address
+      padding-top 4px
+      padding-bottom 5px
       line-height 1.2
-    &__date
-      font-size .9rem
-    &__status
-      font-size .9rem
+    &__date, &__status
+      color #a0a0a0
+      font-size .8rem
       line-height 1
     &__icon
-      margin-top 3px
-      sprite($right-chevron_grey)
+      text-align right
+      .icon
+        width 22px
+        height 22px
+
     &__item
-      transition .4s
+      transition .2s
       &_confirmed > td:first-child, &_unconfirmed > td:first-child
         position relative
         &:before
@@ -49,24 +59,18 @@
       &_unconfirmed > td:first-child:before
         border-left .4rem solid red
       &_green
-        .accidentList__status
-          color #1aaf5d
-        .accidentList__icon
-          sprite($right-chevron_green)
+        td:first-child:before
+          background #1aaf5d
       &_red
-        .accidentList__status
-          color #ea4b35
-        .accidentList__icon
-          sprite($right-chevron_red)
+        td:first-child:before
+          background #ea4b35
       &_orange
-        .accidentList__status
-          color #ea4b35
-        .accidentList__icon
-          sprite($right-chevron_orange)
+        td:first-child:before
+          background #f59c00
       &_active
         background #eee
         .accidentList__address
-          font-weight 300
+          font-weight 600
 
   &Form
     padding-left 15px

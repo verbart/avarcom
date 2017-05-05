@@ -1,3 +1,5 @@
+include /src/components/icon/icon
+
 .padding_vertical
   .padding_bottom
     .dashboard__section
@@ -28,9 +30,9 @@
 
           form.form
             .form__group
-              .form__addon
-                .image_search
-              input.form__input(ng-model='$ctrl.searchComInput' placeholder='Поиск коммиссара...')
+              label(for='searchUser').form__addon
+                +icon({icon: 'search'})
+              input.form__input(id='searchUser' ng-model='searchUser' placeholder='Поиск коммиссара...')
 
         .table
           table(ts-wrapper)
@@ -42,7 +44,7 @@
               td(ts-criteria='competitor_events | parseInt') Конкуренты
               td(ts-criteria='police_events | parseInt') ДПС
               td(ts-criteria='completed_events | parseInt') Завершенных
-            tr(ng-repeat='commissioners in statCtrl.commissioners | filter : statCtrl.searchComInput' ts-repeat ts-hide-no-data)
+            tr(ng-repeat='commissioners in statCtrl.commissioners | filter : searchUser' ts-repeat ts-hide-no-data)
               td {{commissioners.name}}
               td {{commissioners.id}}
               td {{commissioners.taken_events}}

@@ -1,30 +1,37 @@
+include /src/components/icon/icon
+
 .row.padding_vertical
   .col-md-7
     .dashboard__section.padding_bottom_half
-      form.form
-        .form__group
-          button.button.button_lightgrey.form__addon.form__addon_light.margin_right_half(ng-click='listCtrl.openDateRangeModal()')
-            .selectDate__icon
+      form.form.row
+        .col-sm-5
+          .form__group.form__group_dropdown.filters__item.margin_bottom_half(ng-click='listCtrl.openDateRangeModal()')
+            label.form__addon
+              +icon({icon: 'calendar'})
+            input.form__input(ng-model='$ctrl.selectedCitiesLabel' placeholder='За период' readonly onfocus='this.blur()')
 
-          input.form__input.form__input_lg(ng-model='searchAccident' placeholder='Введите имя, марку машины или дату...')
-          button.button НАЙТИ
+        .col-sm-7
+          .form__group.form__group_block.filters__item.margin_bottom_half
+            label(for='searchAccident').form__addon
+              +icon({icon: 'search'})
+            input.form__input(id='searchAccident' ng-model='searchAccident' placeholder='Введите имя, марку машины или дату...')
 
-    .tabs
-      .tabs__header(ng-init='activeTab = 0')
-        .tabs__tab(
-          ng-class='{tabs__tab_active: activeTab === 0}'
-          ng-click='activeTab = 0; filterBy = {}'
-        ) Все
-        .tabs__tab(
-          ng-class='{tabs__tab_active: activeTab === 1}'
-          ng-click='activeTab = 1; filterBy = {is_confirmed: true}'
-        ) Подтверждённые
-        .tabs__tab(
-          ng-class='{tabs__tab_active: activeTab === 2}'
-          ng-click='activeTab = 2; filterBy = {is_confirmed: false}'
-        ) Неподтверждённые
-          = ' '
-          .badge {{listCtrl.closedCounter || 0}}
+      .tabs
+        .tabs__header(ng-init='activeTab = 0')
+          .tabs__tab(
+            ng-class='{tabs__tab_active: activeTab === 0}'
+            ng-click='activeTab = 0; filterBy = {}'
+          ) Все
+          .tabs__tab(
+            ng-class='{tabs__tab_active: activeTab === 1}'
+            ng-click='activeTab = 1; filterBy = {is_confirmed: true}'
+          ) Подтверждённые
+          .tabs__tab(
+            ng-class='{tabs__tab_active: activeTab === 2}'
+            ng-click='activeTab = 2; filterBy = {is_confirmed: false}'
+          ) Неподтверждённые
+            = ' '
+            .badge {{listCtrl.closedCounter || 0}}
 
     .dashboard__section.scroll
       .table

@@ -10,19 +10,19 @@ include /src/components/icon/icon
       .form__group
         label.form__addon(for='name')
           +icon({icon: 'user'})
-        input.form__input.form__input_dummy(id='name' placeholder='Имя')
+        input.form__input(id='name' placeholder='Имя')
 
     .col-md-6.margin_bottom_half
       .form__group
         label.form__addon(for='phone')
           +icon({icon: 'user'})
-        input.form__input.form__input_dummy(id='phone' placeholder='Телефон')
+        input.form__input(id='phone' placeholder='Телефон')
 
     .col-md-6.margin_bottom_half
       .form__group
         label.form__addon(for='mail')
           +icon({icon: 'mail'})
-        input.form__input.form__input_dummy(id='mail' placeholder='E-mail')
+        input.form__input(id='mail' placeholder='E-mail')
 
     .col-md-6.margin_bottom_half
       ng-dropdown-multiselect.dropdown.dropdown_block(

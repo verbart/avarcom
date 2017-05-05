@@ -34,7 +34,7 @@ export default {
     };
 
     this.loadTypes = () => {
-      $http.get(CONSTANT.API_URL+'/levels').then(response => {
+      $http.get(CONSTANT.API_URL_V2+'/levels').then(response => {
         console.log(response);
         this.types = response.data;
         this.selectedType = [this.types[0]];
@@ -46,7 +46,7 @@ export default {
     };
     this.loadRoles = (type) => {
       if (type) {
-        $http.get(`${CONSTANT.API_URL}/levels/${type.id}/roles`).then(response => {
+        $http.get(`${CONSTANT.API_URL_V2}/levels/${type.id}/roles`).then(response => {
           console.log(response);
           this.roles = response.data;
           this.selectedRole = [this.roles[0]];
@@ -64,7 +64,7 @@ export default {
     };
     this.loadCities = (role) => {
       if (role) {
-        $http.get(`${CONSTANT.API_URL}/roles/${role.id}/cities`).then(response => {
+        $http.get(`${CONSTANT.API_URL_V2}/roles/${role.id}/cities`).then(response => {
           this.citiesOptions.selectionLimit = 1;
           this.cities = response.data;
           this.selectedCities = [this.cities[0]];
