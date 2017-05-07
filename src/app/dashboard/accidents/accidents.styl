@@ -4,12 +4,6 @@
   &List
     background #fff
     color #383838
-    tr
-      transition .2s
-      &:not(:last-child)
-        border-bottom 1px solid #bebebe
-      &:hover
-        background #eee
     td
       padding 0.5rem
       border none !important
@@ -42,7 +36,11 @@
         height 22px
 
     &__item
-      transition .2s
+      transition background .2s
+      &:not(:last-child)
+        border-bottom 1px solid #bebebe
+      &:hover
+        background #eee
       &_confirmed > td:first-child, &_unconfirmed > td:first-child
         position relative
         &:before

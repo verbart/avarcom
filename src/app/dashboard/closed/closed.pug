@@ -2,7 +2,7 @@ include /src/components/icon/icon
 
 .row.padding_vertical
   .col-md-7
-    .dashboard__section.padding_bottom_half
+    .dashboard__section.margin_bottom_half
       form.form.row
         .col-sm-5
           .form__group.form__group_dropdown.filters__item.margin_bottom_half(ng-click='listCtrl.openDateRangeModal()')
@@ -33,20 +33,26 @@ include /src/components/icon/icon
             = ' '
             .badge {{listCtrl.closedCounter || 0}}
 
-    .dashboard__section.scroll
+    .dashboard__section
+      h3.text_center(ng-hide='filteredAccidents.length') Нет аварий отвечающих текущим фильтрам
+
       .table
-        table.table_hover.accidentList
+        table.accidentList
           tr.accidentList__item(
-            ng-repeat='accident in listCtrl.accidents | filter: filterBy | filter: searchAccident track by accident.crash_id'
+            ng-repeat='accident in listCtrl.accidents | filter: filterBy | filter: searchAccident as filteredAccidents track by accident.crash_id'
             ui-sref='dashboard.closed.edit({id: accident.crash_id})'
             ui-sref-active='accidentList__item_active'
-            ng-class='{accidentList__item_confirmed: accident.is_confirmed, accidentList__item_unconfirmed: !accident.is_confirmed}'
+            ng-class='{\
+              accidentList__item_green: accident.is_confirmed,\
+              accidentList__item_red: !accident.is_confirmed,\
+            }'
           )
-            td.text_center {{$index+1}}.
-            td.accidentList__address {{accident.address}}
-              br
-              .accidentList__date {{accident.createdDate.date}}
-            td.text_right
-              .accidentList__icon
+            td
+              .accidentList__date {{accident.createdDate.date}} {{accident.createdDate.time}}
+              .accidentList__address {{accident.address || 'Адресс не определён'}}
+              .accidentList__status(ng-show='accident.is_confirmed') Подтверждённая
+              .accidentList__status(ng-hide='accident.is_confirmed') Неподтверждённая
+            td.accidentList__icon
+              +icon({icon: 'chevron_right'})
 
   ui-view.col-md-5.flex.flex_column

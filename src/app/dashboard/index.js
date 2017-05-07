@@ -6,6 +6,7 @@ import router from './dashboard.router';
 
 import mainHeader from '../../components/main-header/main-header.component';
 import mainNavbar from '../../components/navbar/navbar.component';
+import justCalendar from '../../components/just-calendar/just-calendar.component'
 import datePicker from '../../components/date-picker/date-picker.component';
 import accidentsMapModal from '../../components/modals/accidents-map/accidents-map.component';
 import periodModal from '../../components/modals/period/period.component';
@@ -60,6 +61,7 @@ angular.module('avarcom.dashboard', [
 
   .component('mainHeader', mainHeader)
   .component('mainNavbar', mainNavbar)
+  .component('justCalendar', justCalendar)
   .component('datePicker', datePicker)
   .component('accidentsMapModal', accidentsMapModal)
   .component('periodModal', periodModal)

@@ -37,5 +37,10 @@ export default function ($stateProvider, $urlRouterProvider) {
       templateUrl: 'views/app/dashboard/statistics/statistics.html',
       controller: 'StatisticsCtrl as statCtrl',
       authenticate: true
+    })
+    .state('dashboard.help', {
+      url: '/help',
+      templateUrl: 'views/app/dashboard/help/help.html',
+      authenticate: true
     });
 }

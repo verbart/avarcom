@@ -3,9 +3,12 @@ nav.navbar
     a.navbar__link(ui-sref='dashboard.accidents') Аварии
   .navbar__item(ui-sref-active='navbar__item_active')
     a.navbar__link(ui-sref='dashboard.closed') Завершенные
+      span(ng-if='$ctrl.closedCounter.length')
+        = ' '
+        .badge {{$ctrl.closedCounter || 0}}
   .navbar__item(ui-sref-active='navbar__item_active')
     a.navbar__link(ui-sref='dashboard.statistics') Статистика
-  //.navbar__item(ui-sref-active='navbar__item_active')
-  //  a.navbar__link(ui-sref='dashboard.help') Помощь
+  .navbar__item(ui-sref-active='navbar__item_active')
+    a.navbar__link(ui-sref='dashboard.help') Помощь
   .navbar__item(ui-sref-active='navbar__item_active')
     a.navbar__link(ui-sref='cabinet') Кабинет

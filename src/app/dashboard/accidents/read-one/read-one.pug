@@ -1,7 +1,7 @@
-header.dashboard__header
-  a.button.button_sm.margin_left_auto(ui-sref='dashboard.accidents' ui-sref-opts='{reload: true}') ДОБАВИТЬ АВАРИЮ
-
-.dashboard__section.scroll
+//header.dashboard__header
+//  a.button.button_sm.margin_left_auto(ui-sref='dashboard.accidents' ui-sref-opts='{reload: true}') ДОБАВИТЬ АВАРИЮ
+//
+.dashboard__section
   .padding_bottom
     leaflet(ng-if='readOneCtrl.map' markers='readOneCtrl.map.markers' center='readOneCtrl.map.center' width='100%' height='280px')
 

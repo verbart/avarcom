@@ -24,7 +24,7 @@ include /src/components/icon/icon
 
   .row
     .col-lg-7
-      .statisticsSection
+      .dashboard__section
         .statisticsSection__header
           h4 Статистика по комиссарам:
 
@@ -34,7 +34,7 @@ include /src/components/icon/icon
                 +icon({icon: 'search'})
               input.form__input(id='searchUser' ng-model='searchUser' placeholder='Поиск коммиссара...')
 
-        .table
+        .table.text_center
           table(ts-wrapper)
             tr
               td(ts-criteria='name | lowercase' ts-default) Имя
@@ -54,14 +54,14 @@ include /src/components/icon/icon
               td {{commissioners.completed_events}}
 
     .col-lg-5
-      .statisticsSection.text_center
+      .dashboard__section.text_center
         .statisticsSection__header
           h4.container-fluid Рейтинг пользователей
 
         .table
           table(ts-wrapper)
             tr
-              td
+              td №
               td(ts-criteria='id') ID
               td(ts-criteria='rating | parseInt' ts-default='descending') Рейтинг
             tr(ng-repeat='user in statCtrl.rating' ts-repeat ts-hide-no-data)
