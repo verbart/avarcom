@@ -63,9 +63,9 @@ angular.module('avarcom', [
     CONSTANT.OneSignal.push(["init", {
       allowLocalhostAsSecureOrigin: true,
       appId: "d46a0dd4-336f-4586-9d04-e91179e55514",
-      autoRegister: false,
+      autoRegister: true,
       notifyButton: {
-        enable: true
+        enable: false
       }
     }]);
   })
