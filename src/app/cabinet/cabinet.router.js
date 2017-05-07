@@ -1,5 +1,5 @@
 export default function ($stateProvider, $urlRouterProvider) {
-  $urlRouterProvider.when('/dashboard/cabinet', '/dashboard/cabinet/users');
+  $urlRouterProvider.when('/dashboard/cabinet', '/dashboard/cabinet/account');
 
   $stateProvider
     .state('cabinet', {
