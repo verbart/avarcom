@@ -18,7 +18,7 @@ export default class {
         this.errorCode = null;
 
         this.CONSTANT.OneSignal.push(['sendTags', {
-          city: userData.city,
+          city: userData.city.short_name,
           name: userData.user_name,
           phone: userData.phone
         }]);
