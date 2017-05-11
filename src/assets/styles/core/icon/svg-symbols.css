@@ -73,7 +73,7 @@
   height: 32px;
 }
 
-.icon_phone-receiver {
+.icon_phone {
   width: 578.106px;
   height: 578.106px;
 }
@@ -91,6 +91,11 @@
 .icon_play-arrow {
   width: 357px;
   height: 357px;
+}
+
+.icon_profile {
+  width: 512px;
+  height: 512px;
 }
 
 .icon_search {

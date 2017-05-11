@@ -20,6 +20,7 @@ import AccidentCreateCtrl from './accidents/create/create.controller';
 import ClosedListCtrl from './closed/closed.controller';
 import ClosedEditCtrl from './closed/edit/edit.controller';
 import StatisticsCtrl from './statistics/statistics.controller';
+import ProfileLinkCtrl from '../../components/profile-link/profile-link.controller';
 
 import Accident from './accidents/accident.factory';
 import Closed from './closed/closed.factory';
@@ -78,6 +79,7 @@ angular.module('avarcom.dashboard', [
   .controller('ClosedListCtrl', ClosedListCtrl)
   .controller('ClosedEditCtrl', ClosedEditCtrl)
   .controller('StatisticsCtrl', StatisticsCtrl)
+  .controller('ProfileLinkCtrl', ProfileLinkCtrl)
 
   .factory('Accident', Accident)
   .factory('Closed', Closed)

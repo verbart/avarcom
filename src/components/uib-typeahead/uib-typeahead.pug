@@ -1,0 +1,20 @@
+ul.uib-typeahead(
+  ng-show='isOpen() && !moveInProgress'
+  role='listbox'
+  aria-hidden='{{!isOpen()}}'
+)
+  li.uib-typeahead-match(
+    ng-repeat='match in matches track by $index'
+    ng-class='{active: isActive($index) }'
+    ng-mouseenter='selectActive($index)'
+    ng-click='selectMatch($index, $event)'
+    role='option'
+    id='{{::match.id}}'
+  )
+    div(
+      uib-typeahead-match
+      index='$index'
+      match='match'
+      query='query'
+      template-url='templateUrl'
+    )
