@@ -23,7 +23,6 @@ include /src/components/icon/icon
     ng-messages(for='creationForm.latitude.$error' ng-if='createCtrl.interacted(creationForm.latitude)')
       p.form__message.form__message_error(ng-message='required') Пометьте место аварии на карте
 
-
     .margin_bottom_half
       date-picker(selected='createCtrl.newAccident.date')
 
@@ -45,7 +44,7 @@ include /src/components/icon/icon
 
     .form__group.margin_bottom_half
       label.form__addon(for='phone')
-        +icon({icon: 'user'})
+        +icon({icon: 'phone'})
       input.form__input(
         id='phone'
         ng-model='createCtrl.newAccident.phone'
@@ -69,8 +68,8 @@ include /src/components/icon/icon
       input.form__input(
         id='client_name'
         ng-model='createCtrl.newAccident.client_name'
-        name='car_brand'
-        placeholder='Имя'
+        name='client_name'
+        placeholder='Чьёто Имя'
       )
 
     .form__group.margin_bottom_half

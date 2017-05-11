@@ -12,15 +12,16 @@ include /src/components/icon/icon
       .table
         table.statisticsTable.text_center
           tr
-            td.statisticsTable__property Количество аварий
-            td.statisticsTable__property Количество ложных аварий
-            td.statisticsTable__property Количество взятых аварий
-            td.statisticsTable__property Количество завершенных аварий
+            td.statisticsTable__property Всего аварий
+            td.statisticsTable__property Взятых
+            td.statisticsTable__property Завершенных
+            td.statisticsTable__property Ложных
+
           tr
             td.statisticsTable__value {{statCtrl.general.all_events}}
-            td.statisticsTable__value {{statCtrl.general.false_events}}
             td.statisticsTable__value {{statCtrl.general.taken_events}}
             td.statisticsTable__value {{statCtrl.general.completed_events}}
+            td.statisticsTable__value {{statCtrl.general.false_events}}
 
   .row
     .col-lg-7
