@@ -20,8 +20,13 @@
         margin-top 10px
         margin-bottom 10px
         color #f59c00
+    &__city
+      max-width 180px
+      //margin-left 15px
+      margin-right auto
     &__navbar
       align-self stretch
+      margin-left 15px
       @media(max-width 992px)
         position fixed
         top 52px
@@ -29,6 +34,7 @@
         left 0
         right 0
         min-width 280px
+        margin-left 0
         background #fff
         transform translate(100%)
         overflow auto
@@ -51,6 +57,7 @@
     display flex
     align-items center
     text-decoration none
+    margin-right 15px
     &__image
       display flex
     &__text
@@ -60,3 +67,6 @@
       font-size 1rem
       font-weight 600
       text-decoration none
+      white-space nowrap
+      @media (max-width 380px)
+        display none

@@ -49,6 +49,19 @@
         border-right 1px solid #999
         border-bottom 1px solid #999
         transition .2s
+      &_inline
+        width 100%
+        display inline-block
+        background none
+        overflow hidden
+        text-overflow ellipsis
+        white-space nowrap
+        &:before
+          display none
+        &:after
+          width 8px
+          height @width
+          border-color inherit
       .form__input
         cursor pointer
   &__addon

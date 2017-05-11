@@ -11,13 +11,5 @@ export default {
         this.isOpen = false;
       };
     }
-    toggle() {
-      this.isOpen = !this.isOpen;
-    }
-    close() {
-      if (this.isOpen) {
-        this.isOpen = false;
-      }
-    }
   }
 }

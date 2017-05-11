@@ -38,8 +38,8 @@
         transition .2s
     .dropdown-menu
       position absolute
-      left 0
-      right 0
+      left 1px
+      right 1px
       top 100%
       display block
       min-width 120px
@@ -50,10 +50,11 @@
       background #fff
       color #4f4e57
       z-index 10
+      animation fadeInDown .1s
       li a
         display block
         padding 4px 8px
-        text-align center
+        //text-align center
         transition .2s
         &:hover
           background rgba(#efefef, .5)
@@ -70,9 +71,3 @@
       width 100%
       .dropdown-menu
         margin 0
-
-//&_formControl
-  //  .multiselect-parent.open
-  //    .dropdown-toggle
-  //      &:after
-  //        transform translate(-50%, -25%) rotate(-135deg)
