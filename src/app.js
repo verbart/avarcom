@@ -60,10 +60,10 @@ angular.module('avarcom', [
 
     $urlRouterProvider.otherwise('/404');
 
-    CONSTANT.OneSignal.push(["init", {
+    CONSTANT.OneSignal.push(['init', {
       allowLocalhostAsSecureOrigin: true,
-      appId: "d46a0dd4-336f-4586-9d04-e91179e55514",
-      autoRegister: true,
+      appId: 'd46a0dd4-336f-4586-9d04-e91179e55514',
+      autoRegister: false,
       notifyButton: {
         enable: false
       }

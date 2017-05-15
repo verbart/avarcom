@@ -1,7 +1,7 @@
 export default {
   templateUrl: 'views/components/main-header/main-header.html',
   controller: class {
-    constructor($http, $state, CONSTANT, AuthData) {
+    constructor($http, $state, $rootScope, CONSTANT, AuthData) {
       this.$http = $http;
       this.$state = $state;
       this.CONSTANT = CONSTANT;
@@ -16,6 +16,10 @@ export default {
         showCheckAll: false,
         showUncheckAll: false
       };
+
+      $rootScope.$on('$stateChangeSuccess', () => {
+        console.log('state');
+        this.navbarIsActive = false});
 
       this.onCitySelected = city => {
         this.$http.put(this.CONSTANT.API_URL_V2 + '/self', {city: city.short_name}).then(response => {
