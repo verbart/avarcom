@@ -2,15 +2,15 @@ include /src/components/icon/icon
 
 .padding_vertical
   .padding_bottom
-    .dashboard__section
-      section.text_center
+    .dashboard__section.text_center
+      section.margin_bottom_half
         | Данные с &nbsp;
-        date-picker.statistics__datePicker(selected='statCtrl.startDate')
+        date-picker.statistics__datePicker.margin_bottom_half(selected='statCtrl.startDate')
         | &nbsp; по &nbsp;
-        date-picker.statistics__datePicker(selected='statCtrl.endDate')
+        date-picker.statistics__datePicker.margin_bottom_half(selected='statCtrl.endDate')
 
       .table
-        table.statisticsTable.text_center
+        table
           tr
             td.statisticsTable__property Всего аварий
             td.statisticsTable__property Взятых
@@ -26,7 +26,7 @@ include /src/components/icon/icon
   .row
     .col-lg-7
       .dashboard__section
-        .statisticsSection__header
+        .statistics__sectionHeader
           h4 Статистика по комиссарам:
 
           form.form
@@ -56,7 +56,7 @@ include /src/components/icon/icon
 
     .col-lg-5
       .dashboard__section.text_center
-        .statisticsSection__header
+        .statistics__sectionHeader
           h4.container-fluid Рейтинг пользователей
 
         .table

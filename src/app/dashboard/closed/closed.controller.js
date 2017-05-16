@@ -35,7 +35,7 @@ export default class {
       component: 'periodModal',
       size: 'xs',
       resolve: {
-        period: () => this.period
+        period: () => angular.copy(this.period)
       }
     }).result.then(result => {
       this.period = result;

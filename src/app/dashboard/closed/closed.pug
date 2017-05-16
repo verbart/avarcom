@@ -1,14 +1,14 @@
 include /src/components/icon/icon
 
 .row.padding_vertical
-  .col-md-7
+  .col-lg-7
     .dashboard__section.margin_bottom_half
       form.form.row
         .col-sm-5
           .form__group.form__group_dropdown.filters__item.margin_bottom_half(ng-click='listCtrl.openDateRangeModal()')
             label.form__addon
               +icon({icon: 'calendar'})
-            input.form__input(ng-model='$ctrl.selectedCitiesLabel' placeholder='За период' readonly onfocus='this.blur()')
+            input.form__input(value='{{listCtrl.period.from.format("DD.MM.YYYY")}} - {{listCtrl.period.to.format("DD.MM.YYYY")}}' placeholder='За период' readonly onfocus='this.blur()')
 
         .col-sm-7
           .form__group.form__group_block.filters__item.margin_bottom_half
@@ -31,7 +31,7 @@ include /src/components/icon/icon
             ng-click='activeTab = 2; filterBy = {is_confirmed: false}'
           ) Неподтверждённые
             = ' '
-            .badge {{listCtrl.closedCounter || 0}}
+            .badge(ng-if='listCtrl.closedCounter') {{listCtrl.closedCounter}}
 
     .dashboard__section
       h3.text_center(ng-hide='filteredAccidents.length') Нет аварий отвечающих текущим фильтрам
@@ -55,4 +55,4 @@ include /src/components/icon/icon
             td.accidentList__icon
               +icon({icon: 'chevron_right'})
 
-  ui-view.col-md-5.flex.flex_column
+  ui-view.col-lg-5

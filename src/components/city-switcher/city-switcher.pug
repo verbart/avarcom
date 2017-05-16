@@ -1,0 +1,14 @@
+ng-dropdown-multiselect.dropdown.dropdown_block(
+  options='$ctrl.userData.cities'
+  selected-model='$ctrl.selectedCities'
+  extra-settings='$ctrl.citiesOptions'
+  events='{onItemSelect: $ctrl.onCitySelected, onItemDeselect: $ctrl.onCityDeselected}'
+)
+  toggle-dropdown
+    .form__group.form__group_dropdown
+      input.form__input(
+        ng-model='$ctrl.selectedCities[0].name'
+        size='{{$ctrl.selectedCities[0].name.length-1}}'
+        readonly
+        onfocus='this.blur()'
+      )

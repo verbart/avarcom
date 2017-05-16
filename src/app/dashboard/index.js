@@ -12,6 +12,7 @@ import accidentsMapModal from '../../components/modals/accidents-map/accidents-m
 import periodModal from '../../components/modals/period/period.component';
 import confirmModal from '../../components/modals/confirm/confirm.component';
 import notificationSwitcher from '../../components/notification-switcher/notification-switcher.component';
+import citySwitcher from '../../components/city-switcher/city-switcher.component';
 
 import DashboardCtrl from './dashboard.controller';
 import AccidentListCtrl from './accidents/accidents.controller';
@@ -69,6 +70,7 @@ angular.module('avarcom.dashboard', [
   .component('periodModal', periodModal)
   .component('confirmModal', confirmModal)
   .component('notificationSwitcher', notificationSwitcher)
+  .component('citySwitcher', citySwitcher)
 
   .directive('commissionerValidate', commissionerValidate)
 

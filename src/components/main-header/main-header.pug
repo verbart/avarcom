@@ -8,15 +8,7 @@ header.mainHeader.mainHeader_dashboard
       h1.logo__text Центр АК
 
     .mainHeader__city
-      ng-dropdown-multiselect.dropdown.dropdown_block(
-        options='$ctrl.userData.cities'
-        selected-model='$ctrl.selectedCities'
-        extra-settings='$ctrl.citiesOptions'
-        events='{onItemSelect: $ctrl.onCitySelected, onItemDeselect: $ctrl.onCityDeselected}'
-      )
-        toggle-dropdown
-          .form__group.form__group_dropdown
-            input.form__input(ng-model='$ctrl.selectedCities[0].name' readonly onfocus='this.blur()')
+      city-switcher
 
     .mainHeader__navbar(ng-class='{mainHeader__navbar_active: $ctrl.navbarIsActive}')
       main-navbar
