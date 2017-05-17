@@ -17,6 +17,7 @@ const spritesmith = require('gulp.spritesmith');
 const webpack = require('webpack');
 const svgSymbols = require('gulp-svg-symbols');
 const svgmin = require('gulp-svgmin');
+const changed = require('gulp-changed');
 
 const isDevelopment = process.env.NODE_ENV !== 'production';
 
@@ -71,7 +72,7 @@ gulp.task('scripts', function(done) {
 });
 
 gulp.task('sprite', function() {
-  const spriteData = gulp.src('./src/assets/images/sprite/*.*')
+  const spriteData = gulp.src('./src/assets/images/sprite/*.{png,jpg,jpeg}')
     .pipe(spritesmith({
       imgName: 'sprite.png',
       cssName: 'images.styl',
@@ -92,7 +93,8 @@ gulp.task('sprite', function() {
 
 gulp.task('images', function () {
   return gulp.src(['./src/assets/images/**/*.*', '!./src/assets/images/sprite/*.*'])
-    .pipe(gulpIf(!isDevelopment, tinypng()))
+    .pipe(changed('./public/images'))
+    .pipe(gulpIf(!isDevelopment, gulpIf(['!**.*.svg'], tinypng())))
     .pipe(gulp.dest('./public/images'));
 });
 
