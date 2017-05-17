@@ -7,7 +7,7 @@ export default class {
     this.Accident = Accident;
     this.newAccident = {};
     this.userData = AuthData.get();
-    this.selectedCity = this.userData.cities.find(e => e.is_selected);
+    this.selectedCity = this.userData.city;
     $scope.$on('leafletDirectiveMap.createAccidentMap.click', (event, args) => {
       const latlng = args.leafletEvent.latlng;
 

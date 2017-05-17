@@ -1,5 +1,6 @@
-header.dashboard__header
-  a.button.button_sm.margin_left_auto(ng-click='focusStyle = {"border": "1px solid #888"}') ДОБАВИТЬ АВАРИЮ
+include /src/components/icon/icon
+//header.dashboard__header
+//  a.button.button_sm.margin_left_auto(ng-click='focusStyle = {"border": "1px solid #888"}') ДОБАВИТЬ АВАРИЮ
 
 .dashboard__section.scroll(ng-controller='AccidentCreateCtrl as createCtrl' ng-style='focusStyle')
   form.form.padding_bottom_half(
@@ -22,55 +23,69 @@ header.dashboard__header
     ng-messages(for='creationForm.latitude.$error' ng-if='createCtrl.interacted(creationForm.latitude)')
       p.form__message.form__message_error(ng-message='required') Пометьте место аварии на карте
 
-    .accidentForm
-      h3.form__caption.text_center Контакты
+    .margin_bottom_half
+      date-picker(selected='createCtrl.newAccident.date')
 
-      .margin_bottom_half
-        date-picker(selected='createCtrl.newAccident.date')
-
-      input.form__input.margin_bottom_half(
-        placeholder='Адрес'
+    .form__group.margin_bottom_half
+      label.form__addon(for='address')
+        +icon({icon: 'placeholder_fill'})
+      input.form__input(
+        id='address'
         ng-model='createCtrl.newAccident.address'
         uib-typeahead='address for address in createCtrl.getLocations($viewValue)'
-        typeahead-popup-template-url='views/assets/views/typehead.html'
+        typeahead-popup-template-url='views/components/uib-typeahead/uib-typeahead.html'
         autocomplete='off'
         name='address'
+        placeholder='Адрес'
         required
       )
-      ng-messages(for='creationForm.address.$error' ng-if='createCtrl.interacted(creationForm.address)')
-        p.form__message.form__message_error(ng-message='required') Укажите адрес аварии
+    ng-messages(for='creationForm.address.$error' ng-if='createCtrl.interacted(creationForm.address)')
+      p.form__message.form__message_error(ng-message='required') Укажите адрес аварии
 
-      input.form__input.margin_bottom_half(
-        placeholder='Телефон'
+    .form__group.margin_bottom_half
+      label.form__addon(for='phone')
+        +icon({icon: 'phone'})
+      input.form__input(
+        id='phone'
         ng-model='createCtrl.newAccident.phone'
         name='phone'
-      )
-      input.form__input.margin_bottom_half(
-        placeholder='Марка машины'
-        ng-model='createCtrl.newAccident.car_brand'
-        name='car_brand'
-      )
-      input.form__input.margin_bottom_half(
-        placeholder='Имя'
-        ng-model='createCtrl.newAccident.client_name'
-        name='name'
+        placeholder='Телефон'
       )
 
-      //input.form__input.margin_bottom_half(
-      //  placeholder='Время'
-      //  ng-model='createCtrl.newAccident.time'
-      //  name='time'
-      //)
-      input.form__input.margin_bottom_half(
-        placeholder='ID комиссара'
+    .form__group.margin_bottom_half
+      label.form__addon(for='car_brand')
+        +icon({icon: 'car-compact'})
+      input.form__input(
+        id='car_brand'
+        ng-model='createCtrl.newAccident.car_brand'
+        name='car_brand'
+        placeholder='Марка машины'
+      )
+
+    .form__group.margin_bottom_half
+      label.form__addon(for='client_name')
+        +icon({icon: 'user'})
+      input.form__input(
+        id='client_name'
+        ng-model='createCtrl.newAccident.client_name'
+        name='client_name'
+        placeholder='Чьёто Имя'
+      )
+
+    .form__group.margin_bottom_half
+      label.form__addon(for='commissar_id')
+        +icon({icon: 'id-card'})
+      input.form__input(
+        id='commissar_id'
         ng-model='createCtrl.newAccident.commissar_id'
         name='commissar_id'
+        placeholder='ID комиссара'
         required
         commissioner-validate
       )
-      ng-messages(for='creationForm.commissar_id.$error' ng-if='createCtrl.interacted(creationForm.commissar_id)')
-        p.form__message.form__message_error(ng-message='required') Укажите ID комиссара которому поступит заявка
-        p.form__message.form__message_error(ng-message='existCommissioner') Комиссара с таким ID не существует
+    ng-messages(for='creationForm.commissar_id.$error' ng-if='createCtrl.interacted(creationForm.commissar_id)')
+      p.form__message.form__message_error(ng-message='required') Укажите ID комиссара которому поступит заявка
+      p.form__message.form__message_error(ng-message='existCommissioner') Комиссара с таким ID не существует
 
-      .text_center
-        button.button.button_lg ОТПРАВИТЬ
+    .text_center
+      button.button.button_lg Отправить

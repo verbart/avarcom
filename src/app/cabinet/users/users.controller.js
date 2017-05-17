@@ -1,5 +1,5 @@
 export default class {
-  constructor(User, AuthData, $uibModal, $interval, $scope) {
+  constructor(User, AuthData, CONSTANT, $uibModal, $http, $interval, $scope) {
     this.$uibModal = $uibModal;
     this.userData = AuthData.get();
     this.User = User;
@@ -8,6 +8,7 @@ export default class {
 
     // const interval = $interval(() => this.getUsers(), 60*1000);
     // $scope.$on('$destroy', () => $interval.cancel(interval));
+
   }
 
   getUsers() {

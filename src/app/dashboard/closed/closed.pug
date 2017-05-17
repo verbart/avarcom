@@ -1,49 +1,58 @@
-.row.height_fullscreen.padding_bottom_half
-  .col-md-7.flex.flex_column.height_full
-    header.dashboard__header
-      h1.dashboard__caption Завершённые
+include /src/components/icon/icon
 
-    .padding_bottom_half
-      .dashboard__section
-        form.form
-          .form__group
-            button.button.button_lightgrey.form__addon.form__addon_light.margin_right_half(ng-click='listCtrl.openDateRangeModal()')
-              .selectDate__icon
+.row.padding_vertical
+  .col-lg-7
+    .dashboard__section.margin_bottom_half
+      form.form.row
+        .col-sm-5
+          .form__group.form__group_dropdown.filters__item.margin_bottom_half(ng-click='listCtrl.openDateRangeModal()')
+            label.form__addon
+              +icon({icon: 'calendar'})
+            input.form__input(value='{{listCtrl.period.from.format("DD.MM.YYYY")}} - {{listCtrl.period.to.format("DD.MM.YYYY")}}' placeholder='За период' readonly onfocus='this.blur()')
 
-            input.form__input.form__input_lg(ng-model='searchAccident' placeholder='Введите имя, марку машины или дату...')
-            button.button НАЙТИ
+        .col-sm-7
+          .form__group.form__group_block.filters__item.margin_bottom_half
+            label(for='searchAccident').form__addon
+              +icon({icon: 'search'})
+            input.form__input(id='searchAccident' ng-model='searchAccident' placeholder='Введите имя, марку машины или дату...')
 
-    .tabs
-      .tabs__header(ng-init='activeTab = 0')
-        .tabs__tab(
-          ng-class='{tabs__tab_active: activeTab === 0}'
-          ng-click='activeTab = 0; filterBy = {}'
-        ) Все
-        .tabs__tab(
-          ng-class='{tabs__tab_active: activeTab === 1}'
-          ng-click='activeTab = 1; filterBy = {is_confirmed: true}'
-        ) Подтверждённые
-        .tabs__tab(
-          ng-class='{tabs__tab_active: activeTab === 2}'
-          ng-click='activeTab = 2; filterBy = {is_confirmed: false}'
-        ) Неподтверждённые
-          = ' '
-          .badge {{listCtrl.closedCounter || 0}}
+      .tabs
+        .tabs__header(ng-init='activeTab = 0')
+          .tabs__tab(
+            ng-class='{tabs__tab_active: activeTab === 0}'
+            ng-click='activeTab = 0; filterBy = {}'
+          ) Все
+          .tabs__tab(
+            ng-class='{tabs__tab_active: activeTab === 1}'
+            ng-click='activeTab = 1; filterBy = {is_confirmed: true}'
+          ) Подтверждённые
+          .tabs__tab(
+            ng-class='{tabs__tab_active: activeTab === 2}'
+            ng-click='activeTab = 2; filterBy = {is_confirmed: false}'
+          ) Неподтверждённые
+            = ' '
+            .badge(ng-if='listCtrl.closedCounter') {{listCtrl.closedCounter}}
 
-    .dashboard__section.scroll
+    .dashboard__section
+      h3.text_center(ng-hide='filteredAccidents.length') Нет аварий отвечающих текущим фильтрам
+
       .table
-        table.table_hover.accidentList
+        table.accidentList
           tr.accidentList__item(
-            ng-repeat='accident in listCtrl.accidents | filter: filterBy | filter: searchAccident track by accident.crash_id'
+            ng-repeat='accident in listCtrl.accidents | filter: filterBy | filter: searchAccident as filteredAccidents track by accident.crash_id'
             ui-sref='dashboard.closed.edit({id: accident.crash_id})'
             ui-sref-active='accidentList__item_active'
-            ng-class='{accidentList__item_confirmed: accident.is_confirmed, accidentList__item_unconfirmed: !accident.is_confirmed}'
+            ng-class='{\
+              accidentList__item_green: accident.is_confirmed,\
+              accidentList__item_red: !accident.is_confirmed,\
+            }'
           )
-            td.text_center {{$index+1}}.
-            td.accidentList__address {{accident.address}}
-              br
-              .accidentList__date {{accident.createdDate.date}}
-            td.text_right
-              .accidentList__icon
+            td
+              .accidentList__date {{accident.createdDate.date}} {{accident.createdDate.time}}
+              .accidentList__address {{accident.address || 'Адресс не определён'}}
+              .accidentList__status(ng-show='accident.is_confirmed') Подтверждённая
+              .accidentList__status(ng-hide='accident.is_confirmed') Неподтверждённая
+            td.accidentList__icon
+              +icon({icon: 'chevron_right'})
 
-  ui-view.col-md-5.flex.flex_column
+  ui-view.col-lg-5

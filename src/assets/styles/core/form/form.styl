@@ -1,44 +1,81 @@
 .form
-  &__caption
-    margin-bottom 15px
   &__input
+    position relative
     width 100%
-    line-height 2rem
-    padding 0 .8rem
-    background #ededed
+    padding 0 8px
     box-shadow none
     outline none
     color #777
-    font-weight 300
     font-size 1rem
-    border 0
-    transition .4s
-    &:focus
-      border-color #a0a0a0
+    border none
+    background none
+    overflow hidden
+    text-overflow ellipsis
+    white-space nowrap
+    cursor text
+    transition .2s
+    &::placeholder
+      opacity 1
+  &__group
+    position relative
+    display flex
+    height 2rem
+    background #c9c8c5
+    border-radius 1px
+    cursor pointer
+    &:before
+      content ''
+      position absolute
+      top 1px
+      right 1px
+      bottom 1px
+      left 1px
+      background #fff
     &_lg
       height 2.5rem
-    &_bordered
-      border 1px solid #363636
-      color #363636
-      &::placeholder
-        opacity .9
-        color #363636
-      &:focus
-        background #ededed
-        border-color @border-color
-  &__group
-    display flex
+    &_block
+      width 100%
+    &_dropdown
+      padding-right 25px
+      &:after
+        content ''
+        position absolute
+        top 50%
+        right 6px
+        transform translate(-50%, -75%) rotate(45deg)
+        display block
+        width 12px
+        height @width
+        border-right 1px solid #999
+        border-bottom 1px solid #999
+        transition .2s
+      &_inline
+        width 100%
+        display inline-block
+        background none
+        overflow hidden
+        text-overflow ellipsis
+        white-space nowrap
+        &:before
+          display none
+        &:after
+          width 8px
+          height @width
+          border-color inherit
+      .form__input
+        cursor pointer
   &__addon
+    position relative
     display flex
     align-items center
-    padding .3rem .5rem
-    border 0
-    line-height 1
-    font-size .9rem
-    text-align center
-    background #a2a2a2
-    &_light
-      background #ededed
+    justify-content center
+    min-width 32px
+    box-shadow 6px 0 0px -5px #999
+    color #999
+    cursor pointer
+    .icon
+      width 18px
+      height 18px
   &__message
     margin-top -12px
     margin-bottom 12px

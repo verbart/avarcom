@@ -1,0 +1,10 @@
+include /src/components/checkbox/checkbox
+
+.notificationSwitcher(
+  ng-show='$ctrl.OneSignal.isPushNotificationsSupported() && ($ctrl.allowNotification != undefined)'
+)
+  +checkbox({
+    id: 'allowNotification',
+    'ng-model': '$ctrl.allowNotification',
+    'ng-change': '$ctrl.changeNotificationAllow()'
+  }) Показывать мгновенные уведомления

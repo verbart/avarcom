@@ -1,7 +1,6 @@
-header.dashboard__header
-    button.button.button_sm.margin_left_auto(ui-sref='dashboard.accidents') ДОБАВИТЬ АВАРИЮ
+include /src/components/icon/icon
 
-.dashboard__section.scroll(ng-show='editCtrl.editable')
+.dashboard__section(ng-show='editCtrl.editable')
   div(ng-show='editCtrl.editable.is_confirmed')
     .padding_bottom_half
       h3.form__caption.text_center Потерпевший
@@ -76,74 +75,114 @@ header.dashboard__header
     .accidentForm
       h3.form__caption.text_center Потерпевший
 
-      label(for='victimFullName')
-        b ФИО:
-      input.form__input.margin_bottom_half(
-        id='victimFullName'
-        placeholder='Введите полное имя потерпевшего'
-        ng-model='editCtrl.editable.victim.full_name'
-        name='full_name'
-      )
-      label(for='victimCarBrand')
-        b Марка авто:
-      input.form__input.margin_bottom_half(
-        id='victimCarBrand'
-        placeholder='Марка автомобиля'
-        ng-model='editCtrl.editable.victim.car_brand'
-        name='car_brand'
-      )
-      label(for='victimCarNumber')
-        b Номер авто:
-      input.form__input.margin_bottom_half(
-        id='victimCarNumber'
-        placeholder='Номер автомобиля'
-        ng-model='editCtrl.editable.victim.car_number'
-        name='car_number'
-      )
-      label(for='victimPhone')
-        b Телефон:
-      input.form__input.margin_bottom_half(
-        id='victimPhone'
-        placeholder='Телефон'
-        ng-model='editCtrl.editable.victim.phone'
-        name='phone'
-      )
+      .form__group.margin_bottom_half
+        label.form__addon(for='victimFullName')
+          +icon({icon: 'user'})
+        input.form__input(
+          id='victimFullName'
+          ng-model='editCtrl.editable.victim.full_name'
+          name='full_name'
+          placeholder='Полное имя потерпевшего'
+        )
+      .form__group.margin_bottom_half
+        label.form__addon(for='victimCarBrand')
+          +icon({icon: 'car-compact'})
+        input.form__input(
+          id='victimCarBrand'
+          ng-model='editCtrl.editable.victim.car_brand'
+          name='car_brand'
+          placeholder='Марка автомобиля'
+        )
+      .form__group.margin_bottom_half
+        label.form__addon(for='victimCarNumber')
+          +icon({icon: 'license-plate'})
+        input.form__input(
+          id='victimCarNumber'
+          ng-model='editCtrl.editable.victim.car_number'
+          name='car_number'
+          placeholder='Номер автомобиля'
+        )
+      .form__group.margin_bottom_half
+        label.form__addon(for='victimPhone')
+          +icon({icon: 'phone'})
+        input.form__input(
+          id='victimPhone'
+          ng-model='editCtrl.editable.victim.phone'
+          name='phone'
+          placeholder='Телефон потерпевшего'
+        )
 
     .accidentForm
       h3.form__caption.text_center Виновник
-
-      label(for='culpritFullName')
-        b ФИО:
-      input.form__input.margin_bottom_half(
-        id='culpritFullName'
-        placeholder='Введите полное имя виновника'
-        ng-model='editCtrl.editable.culprit.full_name'
-        name='full_name'
-      )
-      label(for='culpritCarBrand')
-        b Марка авто:
-      input.form__input.margin_bottom_half(
-        id='culpritCarBrand'
-        placeholder='Марка автомобиля'
-        ng-model='editCtrl.editable.culprit.car_brand'
-        name='car_brand'
-      )
-      label(for='culpritCarNumber')
-        b Номер авто:
-      input.form__input.margin_bottom_half(
-        id='culpritCarNumber'
-        placeholder='Номер автомобиля'
-        ng-model='editCtrl.editable.culprit.car_number'
-        name='car_number'
-      )
-      label(for='culpritPhone')
-        b Телефон:
-      input.form__input.margin_bottom_half(
-        id='culpritPhone'
-        placeholder='Телефон'
-        ng-model='editCtrl.editable.culprit.phone'
-        name='phone'
-      )
+      .form__group.margin_bottom_half
+        label.form__addon(for='culpritFullName')
+          +icon({icon: 'user'})
+        input.form__input(
+          id='culpritFullName'
+          ng-model='editCtrl.editable.culprit.full_name'
+          name='full_name'
+          placeholder='Полное имя виновника происшествия'
+        )
+      .form__group.margin_bottom_half
+        label.form__addon(for='culpritCarBrand')
+          +icon({icon: 'car-compact'})
+        input.form__input(
+          id='culpritCarBrand'
+          ng-model='editCtrl.editable.culprit.car_brand'
+          name='car_brand'
+          placeholder='Марка автомобиля'
+        )
+      .form__group.margin_bottom_half
+        label.form__addon(for='culpritCarNumber')
+          +icon({icon: 'license-plate'})
+        input.form__input(
+          id='culpritCarNumber'
+          ng-model='editCtrl.editable.culprit.car_number'
+          name='car_number'
+          placeholder='Номер автомобиля'
+        )
+      .form__group.margin_bottom_half
+        label.form__addon(for='culpritPhone')
+          +icon({icon: 'phone'})
+        input.form__input(
+          id='culpritPhone'
+          ng-model='editCtrl.editable.culprit.phone'
+          name='phone'
+          placeholder='Телефон виновника аварии'
+        )
+      //
+      //label(for='culpritFullName')
+      //  b ФИО:
+      //input.form__input.margin_bottom_half(
+      //  id='culpritFullName'
+      //  placeholder='Введите полное имя виновника'
+      //  ng-model='editCtrl.editable.culprit.full_name'
+      //  name='full_name'
+      //)
+      //label(for='culpritCarBrand')
+      //  b Марка авто:
+      //input.form__input.margin_bottom_half(
+      //  id='culpritCarBrand'
+      //  placeholder='Марка автомобиля'
+      //  ng-model='editCtrl.editable.culprit.car_brand'
+      //  name='car_brand'
+      //)
+      //label(for='culpritCarNumber')
+      //  b Номер авто:
+      //input.form__input.margin_bottom_half(
+      //  id='culpritCarNumber'
+      //  placeholder='Номер автомобиля'
+      //  ng-model='editCtrl.editable.culprit.car_number'
+      //  name='car_number'
+      //)
+      //label(for='culpritPhone')
+      //  b Телефон:
+      //input.form__input.margin_bottom_half(
+      //  id='culpritPhone'
+      //  placeholder='Телефон'
+      //  ng-model='editCtrl.editable.culprit.phone'
+      //  name='phone'
+      //)
 
     .accidentForm
       h3.form__caption.text_center Комиссар

@@ -1,3 +1,5 @@
+include /src/components/icon/icon
+
 .auth
   .container-fluid.auth__form
 
@@ -9,8 +11,25 @@
     h2 Авторизация
 
     form.form(ng-submit='loginCtrl.login()')
-      input.form__input.form__input_bordered.margin_bottom_half(name='login' placeholder='Логин' ng-model='loginCtrl.user.login')
-      input.form__input.form__input_bordered.margin_bottom_half(name='password' type='password' placeholder='Пароль' ng-model='loginCtrl.user.password')
+      .form__group.margin_bottom_half
+        label.form__addon(for='login')
+          +icon({icon: 'user'})
+        input.form__input(
+          id='login'
+          ng-model='loginCtrl.user.login'
+          name='login'
+          placeholder='Логин'
+        )
+      .form__group.margin_bottom_half
+        label.form__addon(for='password')
+          +icon({icon: 'lock'})
+        input.form__input(
+          id='password'
+          ng-model='loginCtrl.user.password'
+          name='password'
+          type='password'
+          placeholder='Пароль'
+        )
 
       div(ng-if='loginCtrl.errorCode')
         p.form__message.form__message_error(ng-show='loginCtrl.errorCode != 403') Неправильное имя пользователя или пароль

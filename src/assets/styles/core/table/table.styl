@@ -1,15 +1,20 @@
 .table
   overflow auto
-
-table
-  width 100%
-  vertical-align middle
-tr
-
-td
-
-&_hover
-
+  table
+    background #fff
+    width 100%
+    color #383838
+    vertical-align middle
+  tr
+    &:not(:last-child)
+      border-bottom 1px solid #bebebe
+  td
+    padding 0.5rem
+    &:not(:last-child)
+      border-right 1px solid #bebebe
+  &_hover
+    tr:hover
+      background #eee
 
   &sort
     &-sortable
@@ -31,6 +36,6 @@ td
 
 [ts-criteria]
   cursor pointer
-  transition .4s
+  transition .2s
   &:hover
     background #eee

@@ -1,11 +1,18 @@
-.datePicker(click-out='$ctrl.close()')
-    .form__input.datePicker__field(
-        ng-click='$ctrl.toggle()'
-        ng-bind='$ctrl.selected.format("DD.MM.YYYY")'
-        ng-class='{datePicker__field_active: $ctrl.isOpen}'
+include /src/components/icon/icon
+
+.datePicker(click-out='$ctrl.isOpen = false')
+  .form__group.form__group_dropdown.datePicker__field(ng-click='$ctrl.isOpen = !$ctrl.isOpen')
+    label.form__addon
+      +icon({icon: 'calendar'})
+    input.form__input(
+      ng-value='$ctrl.selected.format("DD.MM.YYYY")'
+      size='8'
+      readonly
+      onfocus='this.blur()'
     )
-    just-calendar.datePicker__calendar(
-        selected='$ctrl.selected'
-        on-update='$ctrl.close(); $ctrl.onUpdate($event)'
-        ng-show='$ctrl.isOpen'
-    )
+
+  just-calendar.datePicker__calendar(
+    selected='$ctrl.selected'
+    on-update='$ctrl.isOpen = false; $ctrl.onUpdate($event)'
+    ng-class='{datePicker__calendar_active: $ctrl.isOpen}'
+  )

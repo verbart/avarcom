@@ -1,0 +1,17 @@
+include ../icon/icon
+
+header.mainHeader.mainHeader_dashboard
+  .container.mainHeader__container
+    a.logo.mainHeader__logo(ui-sref='home')
+      .logo__image
+        +icon({icon: 'logo'})
+      h1.logo__text Центр АК
+
+    .mainHeader__city
+      city-switcher
+
+    .mainHeader__navbar(ng-class='{mainHeader__navbar_active: $ctrl.navbarIsActive}')
+      main-navbar
+
+    .mainHeader__burgerButton(ng-click='$ctrl.navbarIsActive = !$ctrl.navbarIsActive')
+      +icon({icon: 'menu'})

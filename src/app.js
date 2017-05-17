@@ -7,6 +7,8 @@ import 'slick-carousel';
 import 'angular-slick-carousel';
 import 'angular-animate';
 import 'angularjs-toaster';
+import svg4everybody from 'svg4everybody';
+if (!IS_DEVELOPMENT) svg4everybody();
 
 import clickOut from './components/click-out.directive';
 import decodeBase64 from './components/decode-base64.filter';
@@ -33,6 +35,7 @@ angular.module('avarcom', [
 ])
   .constant('CONSTANT', {
     API_URL: 'https://avarkom.pw/api/v2',
+    API_URL_V2: 'https://avarkom.pw/control',
     GOOGLE_API_KEY: 'AIzaSyDDQzWP_LrDLwRqPSq9_7FvQf2uzQvSJhU',
     OneSignal: window.OneSignal || []
   })
@@ -57,12 +60,12 @@ angular.module('avarcom', [
 
     $urlRouterProvider.otherwise('/404');
 
-    CONSTANT.OneSignal.push(["init", {
+    CONSTANT.OneSignal.push(['init', {
       allowLocalhostAsSecureOrigin: true,
-      appId: "d46a0dd4-336f-4586-9d04-e91179e55514",
+      appId: 'd46a0dd4-336f-4586-9d04-e91179e55514',
       autoRegister: false,
       notifyButton: {
-        enable: true
+        enable: false
       }
     }]);
   })

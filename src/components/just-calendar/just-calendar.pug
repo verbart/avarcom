@@ -1,16 +1,34 @@
-table.header
+.justCalendar
+  table.header
     th.header__nav.header__nav_previous(ng-click='$ctrl.changeMonth(-1)') <
     th.header__current {{$ctrl.month.format('MMMM YYYY')}}
     th.header__nav.header__nav_next(ng-click='$ctrl.changeMonth(+1)') >
 
-table.month
+  table.month
     thead.weekdays
-        th.weekdays__day(ng-repeat='day in $ctrl.weekdays') {{day}}
+      th.weekdays__day(ng-repeat='day in $ctrl.weekdays') {{day}}
 
     tr.rowSeparator
     tr.week(ng-repeat='week in $ctrl.weeks')
-        td.week__day(
-            ng-repeat='day in week.days'
-            ng-click='$ctrl.select(day);'
-            ng-class='{ week__day_today: day.isToday, week__day_otherMoth: !day.isCurrentMonth, week__day_selected: day.date.isSame($ctrl.selected) }'
-        ) {{day.date.date()}}
+      td.week__day(
+      ng-repeat='day in week.days'
+      ng-click='$ctrl.select(day);'
+      ng-class='{ week__day_today: day.isToday, week__day_otherMoth: !day.isCurrentMonth, week__day_selected: day.date.isSame($ctrl.selected) }'
+      ) {{day.date.date()}}
+
+//  table.justCalendarHeader
+//    th.justCalendarHeader__nav.justCalendarHeader__nav_previous(ng-click='$ctrl.changeMonth(-1)') <
+//    th.justCalendarHeader__current {{$ctrl.month.format('MMMM YYYY')}}
+//    th.justCalendarHeader__nav.justCalendarHeader__nav_next(ng-click='$ctrl.changeMonth(+1)') >
+//
+//  table.justCalendarMonth
+//    thead.justCalendarWekdays
+//      th.weekdays__day(ng-repeat='day in $ctrl.weekdays') {{day}}
+//
+//    tr.justCalendar__rowSeparator
+//    tr.justCalendarWeek(ng-repeat='week in $ctrl.weeks')
+//      td.justCalendarWeek__day(
+//      ng-repeat='day in week.days'
+//      ng-click='$ctrl.select(day);'
+//      ng-class='{ week__day_today: day.isToday, week__day_otherMoth: !day.isCurrentMonth, week__day_selected: day.date.isSame($ctrl.selected) }'
+//      ) {{day.date.date()}}

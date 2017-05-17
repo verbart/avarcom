@@ -1,7 +1,7 @@
 export default function (AuthToken, $q, $location, $localStorage, CONSTANT) {
   return {
     request: function addToken(config) {
-      if (config.url.indexOf(CONSTANT.API_URL) != -1) {
+      if ((config.url.indexOf(CONSTANT.API_URL) != -1) || (config.url.indexOf(CONSTANT.API_URL_V2) != -1)) {
         const token = AuthToken.get();
 
         if (token) {

@@ -1,0 +1,20 @@
+include /node_modules/bemto.pug/bemto
+
++b.NAV.navbar
+  +e.item(ui-sref-active='navbar__item_active')
+    +e.A.link(ui-sref='dashboard.accidents') Аварии
+
+  +e.item(ui-sref-active='navbar__item_active')
+    +e.A.link(ui-sref='dashboard.closed') Завершенные
+      span(ng-if='$ctrl.closedCounter')
+        = ' '
+        .badge {{$ctrl.closedCounter}}
+
+  +e.item(ui-sref-active='navbar__item_active')
+    +e.A.link(ui-sref='dashboard.statistics') Статистика
+
+  +e.item(ui-sref-active='navbar__item_active')
+    +e.A.link(ui-sref='dashboard.help') Помощь
+
+  +e.item_profileLink
+    include ../profile-link/profile-link

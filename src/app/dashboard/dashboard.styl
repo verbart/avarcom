@@ -3,26 +3,21 @@
 @import 'statistics'
 
 .dashboard
-  background #ededed
+  min-height: 100%
+  background #fffcef
   &__main
-    margin-left 60px
-    width calc(100% - 60px)
     padding-left 15px
     padding-right 15px
     background #ededed
-  &.sidebarIsOpen
-    .dashboard__main
-      margin-left 320px
-      width calc(100% - 320px)
-  &__header
-    display flex
-    align-items center
-    min-height 4rem
-  &__caption
-    color #383838
-    font-family 'Helvetica Neue Cyr', sans-serif
-    font-size 1.65rem
-    font-weight 200
+  //&__header
+  //  display flex
+  //  align-items center
+  //  min-height 4rem
+  //&__caption
+  //  color #383838
+  //  font-size 1.65rem
+  //  font-weight 200
   &__section
     padding 15px
     background #fff
+    box-shadow 0 1px 0 0 #d7d8db, 0 0 0 1px #e3e4e8

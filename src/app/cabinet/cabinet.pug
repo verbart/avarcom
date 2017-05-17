@@ -1,6 +1,14 @@
-.padding_bottom_half
-  header.dashboard__header
-    h1.dashboard__caption Личный кабинет
+.row.padding_vertical
+  .filters.col-md-12
+    a.filters__item.button.button_grey.margin_bottom_half(
+      ui-sref='cabinet.account'
+      ui-sref-active='button_lightgrey'
+    ) Личные данные
+    a.filters__item.button.button_grey.margin_bottom_half(
+      ui-sref='cabinet.users'
+      ui-sref-active='button_lightgrey'
+    ) Пользователи
 
-  .dashboard__section
-    ui-view
+  .col-md-12
+    .dashboard__section
+      ui-view

@@ -1,0 +1,15 @@
+include /node_modules/bemto.pug/bemto
+
++b.profileLink(ng-controller='ProfileLinkCtrl as ctrl')
+  +e.link(
+    ng-click='ctrl.menuIsOpen = !ctrl.menuIsOpen'
+    click-out='ctrl.menuIsOpen = false'
+    ng-class='{profileLink__link_active: ctrl.menuIsOpen}'
+  )
+    +e.H3.name {{ctrl.userData.user_name}}
+    +e.photo(style='background-image: url({{ctrl.userData.photo || "../images/svg/profile.svg"}})')
+  +e.UL.menu.profileLinkMenu__(ng-class='{profileLinkMenu_active: ctrl.menuIsOpen}')
+    +e.item
+      +e.A.link(ui-sref='cabinet.account') Редактировать
+      +e.HR.separator
+      +e.A.link(ui-sref='logout') Выйти

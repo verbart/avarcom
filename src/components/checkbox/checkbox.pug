@@ -1,0 +1,12 @@
+include /node_modules/bemto.pug/bemto
+
+mixin checkbox(data)
+  - data = data || {};
+  - data.id = data.id || Math.random();
+
+  +b.checkbox
+    +e.INPUT.input(type='checkbox')&attributes(data)
+    +e.LABEL.icon(for=data.id)
+
+    +e.LABEL.label(for=data.id)
+      block

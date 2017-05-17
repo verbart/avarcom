@@ -4,13 +4,15 @@ import ngResource from 'angular-resource';
 
 import router from './dashboard.router';
 
-import SidebarCtrl from '../../components/sidebar/sidebar.controller';
-import justCalendar from '../../components/just-calendar/just-calendar.component';
+import mainHeader from '../../components/main-header/main-header.component';
+import mainNavbar from '../../components/navbar/navbar.component';
+import justCalendar from '../../components/just-calendar/just-calendar.component'
 import datePicker from '../../components/date-picker/date-picker.component';
 import accidentsMapModal from '../../components/modals/accidents-map/accidents-map.component';
 import periodModal from '../../components/modals/period/period.component';
 import confirmModal from '../../components/modals/confirm/confirm.component';
-import newCommissionerModal from '../../components/modals/new-commissioner/new-commissioner.component';
+import notificationSwitcher from '../../components/notification-switcher/notification-switcher.component';
+import citySwitcher from '../../components/city-switcher/city-switcher.component';
 
 import DashboardCtrl from './dashboard.controller';
 import AccidentListCtrl from './accidents/accidents.controller';
@@ -19,15 +21,13 @@ import AccidentCreateCtrl from './accidents/create/create.controller';
 import ClosedListCtrl from './closed/closed.controller';
 import ClosedEditCtrl from './closed/edit/edit.controller';
 import StatisticsCtrl from './statistics/statistics.controller';
+import ProfileLinkCtrl from '../../components/profile-link/profile-link.controller';
 
-import SidebarCalendar from '../../components/sidebar/sidebar-calendar.factory';
 import Accident from './accidents/accident.factory';
 import Closed from './closed/closed.factory';
 import Statistics from './statistics/statistics.factory';
 
 import commissionerValidate from './accidents/create/commissioner-validate.directive';
-
-import dropdownsCustomTemplate from '../../components/dropdowns-custom-template';
 
 import 'angular-resource';
 import 'angular-tablesort';
@@ -35,7 +35,6 @@ import 'ngstorage';
 import 'angular-moment';
 import 'ui-leaflet';
 import 'angular-simple-logger';
-import 'angular-dropdowns';
 import 'angular-messages';
 import 'ng-file-upload';
 import 'ng-file-upload';
@@ -46,7 +45,6 @@ angular.module('avarcom.dashboard', [
   uiRouter,
   ngResource,
   'ngMessages',
-  'ngDropdowns',
   'angularMoment',
   'tableSort',
   'ui.bootstrap',
@@ -56,8 +54,6 @@ angular.module('avarcom.dashboard', [
   'ngFileUpload',
   'bootstrapLightbox'
 ])
-  .run(dropdownsCustomTemplate)
-
   .config(router)
   .config(function (LightboxProvider) {
     LightboxProvider.templateUrl = 'views/components/modals/image/image.html';
@@ -66,16 +62,18 @@ angular.module('avarcom.dashboard', [
     };
   })
 
+  .component('mainHeader', mainHeader)
+  .component('mainNavbar', mainNavbar)
   .component('justCalendar', justCalendar)
   .component('datePicker', datePicker)
   .component('accidentsMapModal', accidentsMapModal)
   .component('periodModal', periodModal)
   .component('confirmModal', confirmModal)
-  .component('newCommissionerModal', newCommissionerModal)
+  .component('notificationSwitcher', notificationSwitcher)
+  .component('citySwitcher', citySwitcher)
 
   .directive('commissionerValidate', commissionerValidate)
 
-  .controller('SidebarCtrl', SidebarCtrl)
   .controller('DashboardCtrl', DashboardCtrl)
   .controller('AccidentListCtrl', AccidentListCtrl)
   .controller('AccidentReadOneCtrl', AccidentReadOneCtrl)
@@ -83,8 +81,8 @@ angular.module('avarcom.dashboard', [
   .controller('ClosedListCtrl', ClosedListCtrl)
   .controller('ClosedEditCtrl', ClosedEditCtrl)
   .controller('StatisticsCtrl', StatisticsCtrl)
+  .controller('ProfileLinkCtrl', ProfileLinkCtrl)
 
-  .factory('SidebarCalendar', SidebarCalendar)
   .factory('Accident', Accident)
   .factory('Closed', Closed)
   .factory('Statistics', Statistics);

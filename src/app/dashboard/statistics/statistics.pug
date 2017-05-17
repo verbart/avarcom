@@ -1,41 +1,41 @@
-.padding_bottom_half
-  .dashboard__header
-    h1.dashboard__caption Статистика
+include /src/components/icon/icon
 
+.padding_vertical
   .padding_bottom
-    .dashboard__section
-      section.text_center
+    .dashboard__section.text_center
+      section.margin_bottom_half
         | Данные с &nbsp;
-        date-picker.statistics__datePicker(selected='statCtrl.startDate')
+        date-picker.statistics__datePicker.margin_bottom_half(selected='statCtrl.startDate')
         | &nbsp; по &nbsp;
-        date-picker.statistics__datePicker(selected='statCtrl.endDate')
+        date-picker.statistics__datePicker.margin_bottom_half(selected='statCtrl.endDate')
 
       .table
-        table.statisticsTable.text_center
+        table
           tr
-            td.statisticsTable__property Количество аварий
-            td.statisticsTable__property Количество ложных аварий
-            td.statisticsTable__property Количество взятых аварий
-            td.statisticsTable__property Количество завершенных аварий
+            td.statisticsTable__property Всего аварий
+            td.statisticsTable__property Взятых
+            td.statisticsTable__property Завершенных
+            td.statisticsTable__property Ложных
+
           tr
             td.statisticsTable__value {{statCtrl.general.all_events}}
-            td.statisticsTable__value {{statCtrl.general.false_events}}
             td.statisticsTable__value {{statCtrl.general.taken_events}}
             td.statisticsTable__value {{statCtrl.general.completed_events}}
+            td.statisticsTable__value {{statCtrl.general.false_events}}
 
   .row
     .col-lg-7
-      .statisticsSection
-        .statisticsSection__header
+      .dashboard__section
+        .statistics__sectionHeader
           h4 Статистика по комиссарам:
 
           form.form
             .form__group
-              .form__addon
-                .image_search
-              input.form__input(ng-model='$ctrl.searchComInput' placeholder='Поиск коммиссара...')
+              label(for='searchUser').form__addon
+                +icon({icon: 'search'})
+              input.form__input(id='searchUser' ng-model='searchUser' placeholder='Поиск коммиссара...')
 
-        .table
+        .table.text_center
           table(ts-wrapper)
             tr
               td(ts-criteria='name | lowercase' ts-default) Имя
@@ -45,7 +45,7 @@
               td(ts-criteria='competitor_events | parseInt') Конкуренты
               td(ts-criteria='police_events | parseInt') ДПС
               td(ts-criteria='completed_events | parseInt') Завершенных
-            tr(ng-repeat='commissioners in statCtrl.commissioners | filter : statCtrl.searchComInput' ts-repeat ts-hide-no-data)
+            tr(ng-repeat='commissioners in statCtrl.commissioners | filter : searchUser' ts-repeat ts-hide-no-data)
               td {{commissioners.name}}
               td {{commissioners.id}}
               td {{commissioners.taken_events}}
@@ -55,14 +55,14 @@
               td {{commissioners.completed_events}}
 
     .col-lg-5
-      .statisticsSection.text_center
-        .statisticsSection__header
+      .dashboard__section.text_center
+        .statistics__sectionHeader
           h4.container-fluid Рейтинг пользователей
 
         .table
           table(ts-wrapper)
             tr
-              td
+              td №
               td(ts-criteria='id') ID
               td(ts-criteria='rating | parseInt' ts-default='descending') Рейтинг
             tr(ng-repeat='user in statCtrl.rating' ts-repeat ts-hide-no-data)

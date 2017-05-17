@@ -1,0 +1,71 @@
+include /src/components/icon/icon
+
+.modal__header
+  .modal__close(ng-click='$ctrl.cancel()') &times;
+  h3.modal__caption Данные нового пользователя
+
+.modal__body.container-fluid.padding_top_half
+  form.form.row(name='creationForm')
+    .col-md-6.margin_bottom_half
+      .form__group
+        label.form__addon(for='name')
+          +icon({icon: 'user'})
+        input.form__input(id='name' placeholder='Имя')
+
+    .col-md-6.margin_bottom_half
+      .form__group
+        label.form__addon(for='phone')
+          +icon({icon: 'phone'})
+        input.form__input(id='phone' placeholder='Телефон')
+
+    .col-md-6.margin_bottom_half
+      .form__group
+        label.form__addon(for='mail')
+          +icon({icon: 'mail'})
+        input.form__input(id='mail' placeholder='E-mail')
+
+    .col-md-6.margin_bottom_half
+      ng-dropdown-multiselect.dropdown.dropdown_block(
+        options='$ctrl.types'
+        selected-model='$ctrl.selectedType'
+        extra-settings='$ctrl.typesOptions'
+        events='{onSelectionChanged: $ctrl.onTypeChanged}'
+        disabled='!$ctrl.types.length'
+      )
+        toggle-dropdown
+          .form__group.form__group_dropdown
+            label.form__addon
+              +icon({icon: 'user_settings'})
+            input.form__input(ng-model='$ctrl.selectedTypeLabel' placeholder='Тип' readonly onfocus='this.blur()')
+
+    .col-md-6.margin_bottom_half
+      ng-dropdown-multiselect.dropdown.dropdown_block(
+        options='$ctrl.roles'
+        selected-model='$ctrl.selectedRole'
+        extra-settings='$ctrl.rolesOptions'
+        events='{onSelectionChanged: $ctrl.onRoleChanged}'
+        disabled='!$ctrl.roles.length'
+      )
+        toggle-dropdown
+          .form__group.form__group_dropdown
+            label.form__addon
+              +icon({icon: 'pawn'})
+            input.form__input(ng-model='$ctrl.selectedRoleLabel' placeholder='Роль' readonly onfocus='this.blur()')
+
+    .col-md-6.margin_bottom_half
+      ng-dropdown-multiselect.dropdown.dropdown_block(
+        options='$ctrl.cities'
+        selected-model='$ctrl.selectedCities'
+        extra-settings='$ctrl.citiesOptions'
+        events='{onSelectionChanged: $ctrl.onCitiesChanged, onItemSelect: $ctrl.onCitiesSelected}'
+        disabled='!$ctrl.cities.length'
+      )
+        toggle-dropdown
+          .form__group.form__group_dropdown
+            label.form__addon
+              +icon({icon: 'placeholder_fill'})
+            input.form__input(ng-model='$ctrl.selectedCitiesLabel' placeholder='Город' readonly onfocus='this.blur()')
+
+.modal__footer.clearfix
+  .float-right
+    button.button.button_sm() Добавить

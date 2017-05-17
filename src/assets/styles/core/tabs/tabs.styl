@@ -4,20 +4,29 @@
     //table-layout fixed
     text-align center
     width 100%
-    font-size 1.25rem
-    border-bottom 1px solid #bebebe
+    //border-bottom 1px solid #bebebe
+    @media (max-width 768px)
+      display block
   &__tab
     display table-cell
-    padding .5rem
+    padding .4rem
     background #fff
+    color #606065
     cursor pointer
-    transition .4s
+    font-size 1.15rem
+    transition .2s
     &:hover
-      opacity .5
+      background #eee
     & + &
       border-left 1px solid #bebebe
+    @media (max-width 768px)
+      display block
+      & + &
+        border-left none
+        border-top 1px solid #bebebe
     &_active
-      background gainsboro
+      background #eee
+      color #363636
       &:hover
         opacity 1
         cursor default

@@ -6,7 +6,7 @@ export default class {
   }
 
   login(user) {
-    return this.$http.post(this.CONSTANT.API_URL+'/login', user);
+    return this.$http.post(this.CONSTANT.API_URL_V2+'/login', user);
   }
   logout() {
     this.$localStorage.$reset();

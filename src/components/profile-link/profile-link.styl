@@ -1,0 +1,39 @@
+@import 'profile-link-menu'
+
+.profileLink
+  width 100%
+  &__link
+    position relative
+    display flex
+    justify-content center
+    align-items center
+    width 100%
+    min-height 52px
+    padding-left 10px
+    padding-right 10px
+    cursor pointer
+    transition .2s
+    &_active, &:hover
+      background #f2f2f2
+    &:after
+      content ''
+      display inline-block
+      width 0
+      height 0
+      margin-left 8px
+      border-left 6px solid transparent
+      border-right 6px solid transparent
+      border-top 6px solid #b2b2b2
+      transition .2s
+  &__name
+    margin 0
+    font-size 1rem
+    font-weight 600
+  &__photo
+    width 32px
+    height @width
+    margin-left 10px
+    border-radius 50%
+    //background-color #e5e5e5
+    background-position center
+    background-size cover

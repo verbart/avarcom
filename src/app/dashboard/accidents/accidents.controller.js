@@ -1,11 +1,11 @@
 export default class {
-  constructor($http, CONSTANT, Accident, SidebarCalendar, AuthData, $interval, $scope, $rootScope) {
+  constructor($http, CONSTANT, Accident, AuthData, $interval, $scope, $rootScope) {
     this.$http = $http;
     this.CONSTANT = CONSTANT;
     this.Accident = Accident;
     this.userData = AuthData.get();
     this.selectedCity = this.userData.city;
-    this.selectedDate = SidebarCalendar.get();
+    // this.selectedDate = SidebarCalendar.get();
     this.getAccidents(this.selectedDate);
     $rootScope.$on('changeMainCalendar', (event, args) => {
       this.selectedDate = args.date;
