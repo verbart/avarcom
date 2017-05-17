@@ -3,15 +3,17 @@
 
   .hero__container.container
     h1.hero__header.hero__header_1 Первое мобильное приложение на iOS и Android
-      br
+      br.hidden-md-down
+      = ' '
       | для аварийных комиссаров
 
-    h2.hero__header Обрабатывайте от 150 до 300
+    h2.hero__header.hero__header_2 Обрабатывайте от 150 до 300
       = ' '
       b холодных заявок
       = ' '
       | в день
-      br
+      br.hidden-md-down
+      = ' '
       | в Вашем смартфоне онлайн
 
     .row
@@ -55,7 +57,7 @@
           .hidden-md-down.col-lg-6.offset-lg-3
             img(src='images/3-phones.png')
 
-        .row.padding_bottom
+        .row.padding_bottom_half
           .col-6.text_right
             a(href='https://itunes.apple.com/us/app/centr-ak/id1189530284')
               img(src='images/app-store.png' height='50')
