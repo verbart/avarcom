@@ -25,9 +25,11 @@ html(ng-app='avarcom' lang='ru')
     link(rel='icon', type='image/png', sizes='32x32', href='/images/app-icon/favicon-32x32.png')
     link(rel='icon', type='image/png', sizes='96x96', href='/images/app-icon/favicon-96x96.png')
     link(rel='icon', type='image/png', sizes='16x16', href='/images/app-icon/favicon-16x16.png')
+    link(rel='icon' type='image/x-icon' href='/favicon.ico')
+    link(rel='shortcut icon' type='image/x-icon' href='/favicon.ico')
 
     link(rel='stylesheet' href='./css/style.css')
-    script(script src='https://cdn.onesignal.com/sdks/OneSignalSDK.js')
+    script(defer src='https://cdn.onesignal.com/sdks/OneSignalSDK.js')
     script(defer src='./js/bundle.js')
     title АварКом
 
