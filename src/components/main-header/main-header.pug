@@ -13,5 +13,5 @@ header.mainHeader.mainHeader_dashboard
     .mainHeader__navbar(ng-class='{mainHeader__navbar_active: $ctrl.navbarIsActive}')
       main-navbar
 
-    .mainHeader__burgerButton(ng-click='$ctrl.navbarIsActive = !$ctrl.navbarIsActive')
+    button.mainHeader__burgerButton(ng-click='$ctrl.navbarIsActive = !$ctrl.navbarIsActive')
       +icon({icon: 'menu'})

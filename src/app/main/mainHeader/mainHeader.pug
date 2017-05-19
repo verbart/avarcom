@@ -1,4 +1,6 @@
-header.mainHeader
+include /src/components/icon/icon
+
+header.mainHeader(click-out='menuIsActive = false')
   .container
     .mainHeader__container
       .logo.mainHeader__logo
@@ -7,9 +9,18 @@ header.mainHeader
           br
           | Аварийных Комиссаров
 
-      .mainHeader__dashboardLink
-        a.button.button_underlined(ui-sref='dashboard') Перейти в панель управления
 
-      .mainHeader__contacts
-        a.phone.mainHeader__phone(href='tel:+89991234578') 8 (999) 123-45-78
-        button.button.button_underlined.mainHeader__callMeButton(ng-click='mainCtrl.openCallbackModal()') Перезвоните мне!
+      .mainHeader__menu(ng-class='{mainHeader__menu_active: menuIsActive}')
+        .mainHeader__dashboardLink
+          a.button.button_underlined(ui-sref='dashboard') Перейти в панель управления
+
+        hr.hidden-sm-up
+
+        .mainHeader__contacts
+          a.phone.mainHeader__phone(href='tel:+89991234578') 8 (999) 123-45-78
+          button.button.button_underlined.mainHeader__callMeButton(
+            ng-click='mainCtrl.openCallbackModal()'
+          ) Перезвоните мне!
+
+      button.mainHeader__menuButton(ng-click='menuIsActive = !menuIsActive')
+        +icon({icon: 'menu_dot'})
