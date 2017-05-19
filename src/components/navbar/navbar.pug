@@ -16,5 +16,11 @@ include /node_modules/bemto.pug/bemto
   +e.item(ui-sref-active='navbar__item_active')
     +e.A.link(ui-sref='dashboard.help') Помощь
 
-  +e.item_profileLink
+  +e.item.hidden-lg-up(ui-sref-active='navbar__item_active')
+    +e.A.link(ui-sref='cabinet.account') Мой профиль
+
+  +e.item.hidden-lg-up(ui-sref-active='navbar__item_active')
+    +e.A.link(ui-sref='logout') Выйти
+
+  +e.item_profileLink.hidden-md-down
     include ../profile-link/profile-link

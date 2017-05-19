@@ -23,7 +23,7 @@ export default class {
       this.accidents = response.data;
 
       this.map = this.map || {
-          attribution: '',
+        attribution: '',
         center: {
           lat: this.selectedCity.latitude,
           lng: this.selectedCity.longitude,

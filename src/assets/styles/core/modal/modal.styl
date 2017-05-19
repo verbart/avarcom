@@ -1,5 +1,4 @@
 .modal
-  //display none
   position fixed
   z-index 3000 !important
   padding-top 30px
@@ -13,10 +12,10 @@
     position relative
     width 80%
     min-width 300px
-    //max-width 980px
     margin auto
     background-color #fefefe
     box-shadow 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)
+    border-radius 3px
     animation animateTop 0.4s
     &.modal-xs
       max-width 320px
@@ -27,28 +26,33 @@
   &__header
     min-height 2.45rem
     padding 10px 15px
-    background-color #383838
-    color white
+    background-color #fff
+    color #383838
+    border-top-left-radius 3px
+    border-top-right-radius 3px
+    box-shadow 0 0 1px 0 #999
   &__close
     display inline-block
     float right
     margin-top -2px
-    color #fff
+    margin-left 10px
     font-size 1.5rem
     line-height 1
-    trasition .4s
+    trasition .2s
     &:hover, &:focus
       color #bebebe
       text-decoration none
       cursor pointer
   &__caption
     margin 0
-    font-size 1.25rem
-  //&__body
+    font-size 1.15rem
   &__footer
     padding 10px 15px
-    background-color #383838
-    color white
+    background-color #fff
+    color #383838
+    box-shadow 0 0 1px 0 #999
+    border-bottom-left-radius 3px
+    border-bottom-right-radius 3px
   &-xs
     max-width 320px
   &-md
