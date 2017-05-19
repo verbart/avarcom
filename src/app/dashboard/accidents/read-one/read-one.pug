@@ -40,9 +40,7 @@ include /src/components/icon/icon
     li.list__item(ng-if='readOneCtrl.selected.status.code != 1')
       .list__icon
         +icon({icon: 'id-card'})
-      .list__text
-        span {{readOneCtrl.selected.holder_id}}
-        //span.link {{readOneCtrl.selected.holder_id || 'Назначить комиссара'}}
+      .list__text {{readOneCtrl.selected.commissar.id}}
 
   form.form(
     ng-if='readOneCtrl.selected.status.code == 1'

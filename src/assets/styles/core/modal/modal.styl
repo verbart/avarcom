@@ -24,6 +24,8 @@
   &-content
     height auto !important
   &__header
+    position relative
+    z-index 10
     min-height 2.45rem
     padding 10px 15px
     background-color #fff
@@ -46,13 +48,23 @@
   &__caption
     margin 0
     font-size 1.15rem
+  &__body
+    position relative
   &__footer
+    position relative
+    z-index 10
     padding 10px 15px
     background-color #fff
     color #383838
     box-shadow 0 0 1px 0 #999
     border-bottom-left-radius 3px
     border-bottom-right-radius 3px
+    &_vail
+      position absolute
+      bottom 0
+      left 0
+      right 0
+      background rgba(#fff, .65)
   &-xs
     max-width 320px
   &-md
