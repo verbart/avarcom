@@ -9,16 +9,16 @@
     center='$ctrl.map.center'
     markers='$ctrl.map.markers'
     width='100%'
-    height='80vh'
+    height='calc(100vh - 140px)'
   )
-.modal__footer.clearfix
+  .modal__footer.modal__footer_vail
+    p.margin_none(ng-hide='$ctrl.result.address || $ctrl.result.commissar_id') Поставьте метку на месте происшествия, и выберите комиссара для оформления прецедента
+    p.margin_none(ng-show='!$ctrl.result.address && $ctrl.result.commissar_id') Поставьте метку на месте происшествия
+    p.margin_none(ng-show='$ctrl.result.address') {{$ctrl.result.address}}
+
+    p.margin_none(ng-show='$ctrl.result.address && !$ctrl.result.commissar_id') Выберите комиссара для оформления прецедента
+    p.margin_none(ng-show='$ctrl.result.commissar_id') ID комиссара: {{$ctrl.result.commissar_id}}
+
+.modal__footer.clearfix(ng-show='$ctrl.result.address || $ctrl.result.commissar_id')
   .float-right
-    button.button.button_sm(ng-show='$ctrl.result.address || $ctrl.result.commissar_id' ng-click='$ctrl.ok()') Сохранить
-
-  p.margin_none(ng-hide='$ctrl.result.address || $ctrl.result.commissar_id') Поставьте метку на месте происшествия, и выберите комиссара для оформления прецедента
-
-  p.margin_none(ng-show='$ctrl.result.address')
-    b Адрес происшествия:
-    = ' '
-    |{{$ctrl.result.address}}
-  p(ng-show='$ctrl.result.commissar_id') ID комиссара: {{$ctrl.result.commissar_id}}
+    button.button.button_sm(ng-click='$ctrl.ok()') Сохранить

@@ -8,12 +8,13 @@
     novalidate
     ng-submit='$ctrl.submitted = true; feedbackForm3.$valid && $ctrl.ok(feedbackForm3)'
   )
-    input.form__input.form__input_lg.margin_bottom_half(
-      ng-model='$ctrl.phone'
-      name='phone'
-      placeholder='Введите телефон'
-      required
-    )
+    .form__group.form__group_lg.margin_bottom_half
+      input.form__input(
+        ng-model='$ctrl.phone'
+        name='phone'
+        placeholder='Введите телефон'
+        required
+      )
     ng-messages(for='feedbackForm3.phone.$error' ng-if='$ctrl.interacted(feedbackForm3.phone)')
       p.form__message.form__message_error(ng-message='required') Укажите телефон для связи
 
