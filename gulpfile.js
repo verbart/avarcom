@@ -137,14 +137,12 @@ gulp.task('serve', function () {
     // proxy: 'example.com',
     // files: 'public/**/*.*',
     // https: true,
-    files: [
-      {
-        match: ['./public/**/*.*'],
-        fn: function (event, file) {
-          this.reload()
-        }
+    files: [{
+      match: ['./public/**/*.*'],
+      fn: function (event, file) {
+        this.reload()
       }
-    ],
+    }],
     server: './public',
     port: 8080,
     middleware: [historyApiFallback({
