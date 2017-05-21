@@ -8,13 +8,13 @@
         | аварийного комиссара
 
       .col-10.offset-1.col-sm-8.offset-sm-2.col-lg-6.offset-lg-3.padding_bottom.text_center
-        .mockupSlider
+        .mockupSlider.margin_bottom_half
           img.mockupSlider__mockup(src='images/macbook.png')
           .mockupSlider__frame.mockupSlider__frame_macbook
             slick(dots='true' arrows='false' autoplay='true')
-              img(src='images/screenshots/1.png')
-              img(src='images/screenshots/2.png')
-              img(src='images/screenshots/3.png')
+              .mockupSlider__screenshot(style='background-image: url(images/screenshots/1.png)')
+              .mockupSlider__screenshot(style='background-image: url(images/screenshots/2.png)')
+              .mockupSlider__screenshot(style='background-image: url(images/screenshots/3.png)')
 
       .row
         .thumb.col-sm-6.col-md-3
@@ -116,15 +116,16 @@
       .row
         .col-md-8.push-md-2.col-lg-4.push-lg-8.padding_bottom.text_center
           .row
-            .col-10.offset-1.col-sm-8.offset-sm-2.col-xl-7
+            .col-10.offset-1.col-sm-8.offset-sm-2.col-xl-7.padding_bottom
               .mockupSlider
                 img.mockupSlider__mockup(src='images/iphone.png')
                 .mockupSlider__frame.mockupSlider__frame_iphone
                   slick(dots='true' arrows='false' autoplay='true')
-                    img(src='images/screenshots/4.png')
-                    img(src='images/screenshots/5.png')
-                    img(src='images/screenshots/6.png')
-                    img(src='images/screenshots/7.png')
+                    .mockupSlider__screenshot(style='background-image: url(images/screenshots/4.png)')
+                    .mockupSlider__screenshot(style='background-image: url(images/screenshots/5.png)')
+                    .mockupSlider__screenshot(style='background-image: url(images/screenshots/6.png)')
+                    .mockupSlider__screenshot(style='background-image: url(images/screenshots/7.png)')
+                    .mockupSlider__screenshot(style='background-image: url(images/screenshots/8.png)')
 
         .col-md-12.pull-md-0.col-lg-8.pull-lg-4
           .row
@@ -177,11 +178,11 @@
     .container
       h2.sectionHeader Сколько стоит доступ в приложение “Центр АК”?
 
-      h3 Стоимость месячного абонемента 5000 рублей.
+      h3 Стоимость месячного абонемента договорная
 
-      h3.text_grey.padding_bottom_half За эту сумму Вы получаете доступ к холодным заявкам из открытых источников.
+      h3.text_grey.padding_bottom_half Вы получите доступ к холодным заявкам из открытых источников
         br
-        | Примерное количество заявок от 150 до 300 в день.
+        | Примерное количество заявок от 150 до 300 в день
 
       h4.padding_bottom
         b Сомневаетесь, что приложение принесет реальную пользу?

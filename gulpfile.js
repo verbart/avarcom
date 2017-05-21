@@ -92,9 +92,9 @@ gulp.task('sprite', function() {
 });
 
 gulp.task('images', function () {
-  return gulp.src(['./src/assets/images/**/*.*', '!./src/assets/images/sprite/*.*'])
+  return gulp.src(['./src/assets/images/**/*.*', '!./src/assets/images/sprite'])
     .pipe(changed('./public/images'))
-    .pipe(gulpIf(!isDevelopment, gulpIf(['!**.*.svg'], tinypng())))
+    .pipe(gulpIf(!isDevelopment, gulpIf(['!*.svg'], tinypng())))
     .pipe(gulp.dest('./public/images'));
 });
 
@@ -129,6 +129,7 @@ gulp.task('watch', function () {
   gulp.watch('./src/**/*.js', gulp.series('scripts'));
   gulp.watch('./src/assets/misc/**/*.*', gulp.series('copy:misc'));
   gulp.watch('./src/assets/images/svg/**/*.svg', gulp.series('svgSymbols'));
+  gulp.watch(['./src/assets/images/**/*.*', '!./src/assets/images/svg'], gulp.series('images'));
 });
 
 gulp.task('serve', function () {
@@ -136,14 +137,20 @@ gulp.task('serve', function () {
     // proxy: 'example.com',
     // files: 'public/**/*.*',
     // https: true,
+    files: [
+      {
+        match: ['./public/**/*.*'],
+        fn: function (event, file) {
+          this.reload()
+        }
+      }
+    ],
     server: './public',
     port: 8080,
     middleware: [historyApiFallback({
         logger: gutil.log
     })]
   });
-
-  browserSync.watch('./public/**/*.*').on('change', browserSync.reload);
 });
 
 gulp.task('build', gulp.series(

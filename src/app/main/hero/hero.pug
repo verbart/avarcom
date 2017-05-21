@@ -17,13 +17,15 @@
       | в Вашем смартфоне онлайн
 
     .row
-      .col-lg-4.offset-lg-1
+      .col-lg-5.offset-lg-1
+        .padding_top.hidden-md-down
+
         h3.hero__header.hero__header_3 Хотите оперативно реагировать на заявки и проезжать по ним быстрее других?
-          = ' '
+          br.margin_bottom_half
           | Оставьте контакты и получите бесплатный демодоступ на 1 неделю
 
         .row
-          .col-10.offset-1.col-sm-12.offset-sm-0.col-md-8.offset-md-2
+          .col-10.offset-1.col-sm-12.offset-sm-0.col-md-8.offset-md-2.col-lg-6.offset-lg-3
             form.form(
               name='feedbackForm'
               novalidate
@@ -54,15 +56,15 @@
                     p.form__message.form__message_error(ng-message='required') Укажите телефон для связи
                 .col-md-12
                   button.button.button_underlined.button_block.button_lg Получить доступ
-      .col-lg-7.text_center
+      .col-lg-6.text_center
         .row.padding_vertical
-          .hidden-md-down.col-lg-6.offset-lg-3
+          .hidden-md-down.col-lg-8.offset-lg-2
             img(src='images/3-phones.png')
 
         .row.padding_bottom_half
           .col-6.text_right
             a(href='https://itunes.apple.com/us/app/centr-ak/id1189530284')
-              img(src='images/app-store.png' height='50')
+              img(src='images/app-store.png' height='45')
           .col-6.text_left
             a(href='https://play.google.com/store/apps/details?id=centr.ru.crashservice' target='_blank')
-              img(src='images/google-play.png' height='50')
+              img(src='images/google-play.png' height='45')

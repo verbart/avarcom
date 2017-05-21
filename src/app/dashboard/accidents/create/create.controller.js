@@ -1,6 +1,8 @@
 export default class {
-  constructor($state, Accident, AuthData, $http, $uibModal, Geocoding, $scope) {
+  constructor($scope, $rootScope, $state, Accident, AuthData, $http, $uibModal, Geocoding) {
     this.$state = $state;
+    this.$rootScope = $rootScope;
+    this.$scope = $scope;
     this.$http = $http;
     this.$uibModal = $uibModal;
     this.Geocoding = Geocoding;
@@ -86,7 +88,7 @@ export default class {
     });
 
     modalInstance.result.then(result => {
-      map = result.map;
+      this.$rootScope.$emit('updateNewAccidentMarker', result.map.markers.new);
       result.commissar_id && (this.newAccident.commissar_id = result.commissar_id);
 
       if (result.address) {

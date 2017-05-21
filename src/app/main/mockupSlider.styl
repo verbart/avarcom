@@ -1,21 +1,38 @@
 .mockupSlider
   position relative
   display inline-block
-  margin-bottom 30px
   &__frame
     position absolute
     &_macbook
       top 6%
-      bottom 6%
+      bottom 16%
       left 13%
       right 13%
+      .slick
+        &-dotted
+          margin-bottom 70px
+        &-dots
+          bottom -70px
+          @media (max-width 768px)
+            bottom -50px
     &_iphone
       top 12%
-      bottom 0
+      bottom 12%
       left 5.5%
       right 5.5%
+      .slick
+        &-dotted
+          margin-bottom 80px
+        &-dots
+          bottom -95px
+  &__screenshot
+    height 100%
+    background-position center
+    background-size cover
   .slick
     &-slider
       position static
-    &-dots
-      bottom -45px
+      height 100%
+    &-list, &-track
+      height 100%
+

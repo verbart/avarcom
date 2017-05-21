@@ -6,6 +6,15 @@ export default class {
     this.userData = AuthData.get();
     this.selectedCity = this.userData.city;
     // this.selectedDate = SidebarCalendar.get();
+    this.map = {
+        attribution: '',
+        center: {
+          lat: this.selectedCity.latitude,
+          lng: this.selectedCity.longitude,
+          zoom: this.selectedCity.zoom
+        },
+        markers: {}
+      };
     this.getAccidents(this.selectedDate);
     $rootScope.$on('changeMainCalendar', (event, args) => {
       this.selectedDate = args.date;
@@ -16,22 +25,14 @@ export default class {
       console.log(interval);
       $interval.cancel(interval)
     });
+    $rootScope.$on('updateNewAccidentMarker', (event, args) => {
+      this.map.markers.new = args;
+    });
   }
 
   getAccidents(date) {
     this.Accident.query({date, web: true}, response => {
       this.accidents = response.data;
-
-      this.map = this.map || {
-        attribution: '',
-        center: {
-          lat: this.selectedCity.latitude,
-          lng: this.selectedCity.longitude,
-          zoom: this.selectedCity.zoom
-        },
-        markers: {}
-      };
-
 
       this.accidents.forEach((obj, index) => {
         if (obj.status.code == 1) this.map.markers['accident_'+index] = {

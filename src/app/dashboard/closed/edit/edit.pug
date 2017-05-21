@@ -186,18 +186,22 @@ include /src/components/icon/icon
 
     .accidentForm
       h3.form__caption.text_center Комиссар
-      p
-        b ФИО:
-        = ' '
-        | {{editCtrl.editable.commissar.name}}
-      p
-        b ID:
-        = ' '
-        | {{editCtrl.editable.commissar.id}}
-      p
-        b Телефон:
-        = ' '
-        | {{editCtrl.editable.commissar.phone}}
+
+      ul.list
+        li.list__item
+          .list__icon
+            +icon({icon: 'user'})
+          .list__text {{editCtrl.editable.commissar.name}}
+
+        li.list__item
+          .list__icon
+            +icon({icon: 'id-card'})
+          .list__text {{editCtrl.editable.commissar.id}}
+
+        li.list__item
+          .list__icon
+            +icon({icon: 'phone'})
+          .list__text {{editCtrl.editable.commissar.phone}}
 
     .accidentForm.padding_bottom.text_center
       h4 Документы:
