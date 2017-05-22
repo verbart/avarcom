@@ -17,5 +17,8 @@ after_success:
 
 notifications:
   email:
+    recipients:
+      - wtf.noword@gmail.com
+      - artem.verbat@ya.ru
     on_failure: always
     on_success: always
