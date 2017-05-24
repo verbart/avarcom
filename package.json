@@ -1,6 +1,6 @@
 {
   "name": "avarcom",
-  "version": "0.0.1",
+  "version": "0.1.5",
   "author": "Artem Verbat",
   "scripts": {
     "start": "gulp",
