@@ -21,12 +21,14 @@ import './app/auth';
 import './app/dashboard';
 import './app/cabinet';
 
+import './sticky'
 
 angular.module('avarcom', [
   uiRouter,
   'slickCarousel',
   'ngAnimate',
   'toaster',
+  'sticky',
 
   'avarcom.main',
   'avarcom.auth',

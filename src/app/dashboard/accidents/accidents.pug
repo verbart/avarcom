@@ -1,7 +1,7 @@
 include /src/components/icon/icon
 
-.row.flex.height_fullscreen.padding_vertical
-  .col-md-6
+.row.padding_vertical
+  .col-md-6#sticky-follow
     .dashboard__section
       h3.text_center(ng-hide='filteredAccidents.length') Нет аварий отвечающих текущим фильтрам
 
@@ -30,5 +30,5 @@ include /src/components/icon/icon
               +icon({icon: 'chevron_right'})
 
 
-  ui-view.col-md-6
+  ui-view.col-md-6(sticky sticky-follow='sticky-follow')
     include create/create
