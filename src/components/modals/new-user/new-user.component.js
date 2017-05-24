@@ -5,8 +5,12 @@ export default {
     close: '&',
     dismiss: '&'
   },
-  controller: function ($http, CONSTANT) {
+  controller: function ($http, toaster, CONSTANT, User) {
     this.$onInit = () => {
+      this.toaster = toaster;
+      this.User = User;
+      this.user = {};
+
       this.typesOptions = {
         selectionLimit: 1,
         styleActive: true,
@@ -38,7 +42,7 @@ export default {
         console.log(response);
         this.types = response.data;
         this.selectedType = [this.types[0]];
-        this.buildTypeLabel();
+        this.buildLabel(this.selectedType);
         this.loadRoles(this.types[0]);
       }, error => {
         console.log(error);
@@ -50,7 +54,7 @@ export default {
           console.log(response);
           this.roles = response.data;
           this.selectedRole = [this.roles[0]];
-          this.buildRoleLabel();
+          this.buildLabel(this.selectedRole);
           this.loadCities(this.roles[0]);
         }, error => {
           console.log(error);
@@ -58,7 +62,7 @@ export default {
       } else {
         this.roles = [];
         this.selectedRole = [];
-        this.buildRoleLabel();
+        this.buildLabel(this.selectedRole);
         this.loadCities();
       }
     };
@@ -68,37 +72,31 @@ export default {
           this.citiesOptions.selectionLimit = 1;
           this.cities = response.data;
           this.selectedCities = [this.cities[0]];
-          this.buildCitiesLabel();
+          this.buildLabel(this.selectedCities);
         }, error => {
           console.log(error);
         });
       } else {
         this.cities = [];
         this.selectedCities = [];
-        this.buildCitiesLabel();
+        this.buildLabel(this.selectedCities);
       }
     };
 
-    this.buildTypeLabel = () => {
-      this.selectedTypeLabel = this.selectedType.map(item => item.name).join(', ');
-    };
-    this.buildRoleLabel = () => {
-      this.selectedRoleLabel = this.selectedRole.map(item => item.name).join(', ');
-    };
-    this.buildCitiesLabel = () => {
-      this.selectedCitiesLabel = this.selectedCities.map(item => item.name).join(', ');
+    this.buildLabel = (items) => {
+      items.label = items.map(item => item.name).join(', ');
     };
 
     this.onTypeChanged = () => {
-      this.buildTypeLabel();
+      this.buildLabel(this.selectedType);
       this.loadRoles(this.selectedType[0]);
     };
     this.onRoleChanged = () => {
-      this.buildRoleLabel();
+      this.buildLabel(this.selectedRole);
       this.loadCities(this.selectedRole[0]);
     };
     this.onCitiesChanged = () => {
-      this.buildCitiesLabel();
+      this.buildLabel(this.selectedCities);
     };
     this.onCitiesSelected = (city) => {
       if (this.selectedRole[0] && !this.selectedRole[0].multi_cities) {
@@ -106,8 +104,28 @@ export default {
       }
     };
 
-    this.ok = () => {
-      this.close({$value: this.user});
+    this.interacted = (field) => {
+      return this.submitted || field.$dirty;
+    };
+
+    this.addUser = () => {
+      this.user.type = this.selectedType[0].id;
+      this.user.role = this.selectedRole[0].id;
+      if (this.selectedCities.length > 1) {
+        this.user.cities = this.selectedCities.map(city => city.id);
+      }
+
+      this.User.save(this.user, response => {
+        this.toaster.pop('success', 'Добавлен новый пользователь');
+        this.close({$value: response.data});
+      }, error => {
+        if (error.status == 409) {
+          this.toaster.pop('error', 'Пользователь с такой почтой или телефоном уже существует!');
+        } else {
+          this.toaster.pop('error', 'Произошла ошибка, пожалуйста, сообщите нам о ней!');
+        }
+        console.log(error);
+      });
     };
     this.cancel = () => {
       this.dismiss({$value: 'cancel'});
