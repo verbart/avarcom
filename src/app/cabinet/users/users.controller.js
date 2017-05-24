@@ -28,14 +28,11 @@ export default class {
   addUser() {
     const modalInstance = this.$uibModal.open({
       component: 'newUserModal',
-      size: 'sm',
-      resolve: {
-        cities: () => this.userData.cities,
-      }
+      size: 'md'
     });
 
-    modalInstance.result.then(result => {
-      this.users.push(result.commissioner);
+    modalInstance.result.then(user => {
+        this.users.push(user);
     }, () => {
       console.info('modal-component dismissed at: ' + new Date());
     });

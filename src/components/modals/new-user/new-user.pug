@@ -5,27 +5,63 @@ include /src/components/icon/icon
   h3.modal__caption Данные нового пользователя
 
 .modal__body.container-fluid.padding_top_half
-  form.form.row(name='creationForm')
-    .col-md-6.margin_bottom_half
-      .form__group
+  form.form.row(
+    id='creationForm'
+    name='creationForm'
+    novalidate
+    ng-submit='$ctrl.submitted = true; creationForm.$valid && $ctrl.addUser()')
+    .col-md-6
+      .form__group.margin_bottom_half
         label.form__addon(for='name')
           +icon({icon: 'user'})
-        input.form__input(id='name' placeholder='Имя')
+        input.form__input(
+          id='name'
+          name='name'
+          ng-model='$ctrl.user.name'
+          required
+          placeholder='Имя'
+        )
+      ng-messages(for='creationForm.name.$error' ng-if='$ctrl.interacted(creationForm.name)')
+        p.form__message.form__message_error(ng-message='required') Укажите имя пользователя
 
-    .col-md-6.margin_bottom_half
-      .form__group
+    .col-md-6
+      .form__group.margin_bottom_half
         label.form__addon(for='phone')
           +icon({icon: 'phone'})
-        input.form__input(id='phone' placeholder='Телефон')
+        input.form__input(
+          id='phone'
+          name='phone'
+          ng-model='$ctrl.user.phone'
+          ng-minlength='10'
+          ng-maxlength='15'
+          ng-pattern='/^[0-9]*$/'
+          required
+          placeholder='Телефон'
+        )
+      ng-messages(for='creationForm.phone.$error' ng-if='$ctrl.interacted(creationForm.phone)')
+        p.form__message.form__message_error(ng-message='required') Укажите телефон
+        p.form__message.form__message_error(ng-message='minlength') Не менее 10 цифер в номере
+        p.form__message.form__message_error(ng-message='maxlength') Не более 15 цифр в номере
+        p.form__message.form__message_error(ng-message='pattern') Только цифры
 
-    .col-md-6.margin_bottom_half
-      .form__group
-        label.form__addon(for='mail')
+    .col-md-6
+      .form__group.margin_bottom_half
+        label.form__addon(for='email')
           +icon({icon: 'mail'})
-        input.form__input(id='mail' placeholder='E-mail')
+        input.form__input(
+          type='email'
+          id='email'
+          name='email'
+          ng-model='$ctrl.user.email'
+          required
+          placeholder='E-mail'
+        )
+      ng-messages(for='creationForm.email.$error' ng-if='$ctrl.interacted(creationForm.email)')
+        p.form__message.form__message_error(ng-message='required') Укажите email адрес
+        p.form__message.form__message_error(ng-message='email') Email не корректен
 
-    .col-md-6.margin_bottom_half
-      ng-dropdown-multiselect.dropdown.dropdown_block(
+    .col-md-6
+      ng-dropdown-multiselect.dropdown.dropdown_block.margin_bottom_half(
         options='$ctrl.types'
         selected-model='$ctrl.selectedType'
         extra-settings='$ctrl.typesOptions'
@@ -36,10 +72,19 @@ include /src/components/icon/icon
           .form__group.form__group_dropdown
             label.form__addon
               +icon({icon: 'user_settings'})
-            input.form__input(ng-model='$ctrl.selectedTypeLabel' placeholder='Тип' readonly onfocus='this.blur()')
+            input.form__input(
+              ng-model='$ctrl.selectedType.label'
+              name='type'
+              required
+              placeholder='Тип'
+              readonly
+              onfocus='this.blur()'
+            )
+      ng-messages(for='creationForm.type.$error' ng-if='$ctrl.interacted(creationForm.type)')
+        p.form__message.form__message_error(ng-message='required') Выберите тип пользователя
 
-    .col-md-6.margin_bottom_half
-      ng-dropdown-multiselect.dropdown.dropdown_block(
+    .col-md-6
+      ng-dropdown-multiselect.dropdown.dropdown_block.margin_bottom_half(
         options='$ctrl.roles'
         selected-model='$ctrl.selectedRole'
         extra-settings='$ctrl.rolesOptions'
@@ -50,10 +95,20 @@ include /src/components/icon/icon
           .form__group.form__group_dropdown
             label.form__addon
               +icon({icon: 'pawn'})
-            input.form__input(ng-model='$ctrl.selectedRoleLabel' placeholder='Роль' readonly onfocus='this.blur()')
+            input.form__input(
+              ng-model='$ctrl.selectedRole.label'
+              name='role'
+              required
+              placeholder='Роль'
+              readonly
+              onfocus='this.blur()'
+            )
+      ng-messages(for='creationForm.role.$error' ng-if='$ctrl.interacted(creationForm.role)')
+        p.form__message.form__message_error(ng-message='required') Выберите роль пользователя
 
-    .col-md-6.margin_bottom_half
-      ng-dropdown-multiselect.dropdown.dropdown_block(
+
+    .col-md-6
+      ng-dropdown-multiselect.dropdown.dropdown_block.margin_bottom_half(
         options='$ctrl.cities'
         selected-model='$ctrl.selectedCities'
         extra-settings='$ctrl.citiesOptions'
@@ -64,8 +119,17 @@ include /src/components/icon/icon
           .form__group.form__group_dropdown
             label.form__addon
               +icon({icon: 'placeholder_fill'})
-            input.form__input(ng-model='$ctrl.selectedCitiesLabel' placeholder='Город' readonly onfocus='this.blur()')
+            input.form__input(
+              ng-model='$ctrl.selectedCities.label'
+              name='city'
+              required
+              placeholder='Город'
+              readonly
+              onfocus='this.blur()'
+            )
+      ng-messages(for='creationForm.city.$error' ng-if='$ctrl.interacted(creationForm.city)')
+        p.form__message.form__message_error(ng-message='required') Выберите город пользователя
 
 .modal__footer.clearfix
   .float-right
-    button.button.button_sm() Добавить
+    button.button.button_sm(form='creationForm') Добавить
