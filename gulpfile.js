@@ -137,18 +137,14 @@ gulp.task('serve', function () {
     // proxy: 'example.com',
     // files: 'public/**/*.*',
     // https: true,
-    files: [{
-      match: ['./public/**/*.*'],
-      fn: function (event, file) {
-        this.reload()
-      }
-    }],
     server: './public',
     port: 8080,
     middleware: [historyApiFallback({
         logger: gutil.log
     })]
   });
+
+  browserSync.watch('./public/**/*.*').on('change', browserSync.reload);
 });
 
 gulp.task('build', gulp.series(
