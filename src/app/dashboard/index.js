@@ -40,6 +40,7 @@ import 'ng-file-upload';
 import 'ng-file-upload';
 import 'angular-ui-bootstrap';
 import 'angular-bootstrap-lightbox';
+import 'angular-ui-mask';
 
 angular.module('avarcom.dashboard', [
   uiRouter,
@@ -50,6 +51,7 @@ angular.module('avarcom.dashboard', [
   'ui.bootstrap',
   'ngStorage',
   'ui-leaflet',
+  'ui.mask',
   'nemLogging',
   'ngFileUpload',
   'bootstrapLightbox'
