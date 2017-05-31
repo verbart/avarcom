@@ -17,12 +17,12 @@ export default class {
       console.log(response);
     });
   }
-  changeStatus(commissioner) {
-    this.User.block({id: commissioner.user_id}, {
-      block: !commissioner.is_blocked
+  changeStatus(user) {
+    this.User.block({id: user.user_id}, {
+      block: !user.block
     }, response => {
       console.log(response);
-      commissioner.is_blocked = !commissioner.is_blocked;
+      user.block = !user.block;
     });
   }
   addUser() {
