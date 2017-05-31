@@ -13,12 +13,23 @@ export default angular.module('avarcom.auth', [uiRouter, 'ngStorage'])
   .config(function($httpProvider) {
     $httpProvider.interceptors.push('AuthInterceptor');
   })
-  .run(function($rootScope, AuthToken, $state) {
-    $rootScope.$on('$stateChangeStart', function(event, toState) {
-      if(toState.authenticate && !AuthToken.get()) {
+  .run(function($rootScope, $state, AuthService) {
+    $rootScope.$on('$stateChangeStart', (event, toState, toParams) => {
+      if (toState.authenticate && !$rootScope.transitionIsAllowed) {
         event.preventDefault();
-        $state.go('login');
+
+        AuthService.confirmToken().then(response => {
+          console.log(response);
+          $rootScope.transitionIsAllowed = true;
+          $state.go(toState, toParams);
+        }, error => {
+          console.log(error);
+          $state.go('logout');
+        });
       }
+    });
+    $rootScope.$on('$stateChangeSuccess', () => {
+      $rootScope.transitionIsAllowed = false;
     });
   })
   .config(router)

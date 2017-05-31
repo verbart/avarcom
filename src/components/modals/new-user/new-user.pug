@@ -32,17 +32,29 @@ include /src/components/icon/icon
           id='phone'
           name='phone'
           ng-model='$ctrl.user.phone'
-          ng-minlength='10'
-          ng-maxlength='15'
-          ng-pattern='/^[0-9]*$/'
+          ng-pattern='/^\d{10}$/'
+          ui-mask='+7 (999) 999-99-99'
+          ui-options='{clearOnBlur: false}'
+          placeholder='+7 (***) ***-**-**'
           required
-          placeholder='Телефон'
         )
-      ng-messages(for='creationForm.phone.$error' ng-if='$ctrl.interacted(creationForm.phone)')
-        p.form__message.form__message_error(ng-message='required') Укажите телефон
-        p.form__message.form__message_error(ng-message='minlength') Не менее 10 цифер в номере
-        p.form__message.form__message_error(ng-message='maxlength') Не более 15 цифр в номере
-        p.form__message.form__message_error(ng-message='pattern') Только цифры
+      //p {{creationForm.phone | json}}
+        //ng-minlength='10'
+        //ng-maxlength='15'
+      p.form__message.form__message_error(
+        ng-if='(creationForm.phone.$error.required || creationForm.phone.$error.mask)' +
+          ' && $ctrl.interacted(creationForm.phone)'
+      ) Укажите телефон
+
+      //ng-messages(
+      //  for='creationForm.phone.$error'
+      //  ng-show='$ctrl.interacted(creationForm.phone)'
+      //)
+      //  p.form__message.form__message_error(ng-message='required') Укажите телефон
+        //p.form__message.form__message_error(ng-message='minlength') Не менее 10 цифер в номере
+        //p.form__message.form__message_error(ng-message='maxlength') Не более 15 цифр в номере
+        //p.form__message.form__message_error(ng-message='pattern') Допустимый формат 10 цифер
+        //p.form__message.form__message_error(ng-message='pattern') Допустимы только 10 цифр
 
     .col-md-6
       .form__group.margin_bottom_half

@@ -19,7 +19,7 @@ include /src/components/icon/icon
       td(ts-criteria='email | parseInt') Email
       td(ts-criteria='type | lowercase') Тип
       td(ts-criteria='role | lowercase') Роль
-      td(ts-criteria='completed_events | parseInt') Действия
+      td(ts-criteria='block') Действия
     tr(ng-repeat='user in usersCtrl.users | filter : usersCtrl.searchComInput track by user.user_id' ts-repeat ts-hide-no-data)
       td {{user.user_id}}
       td {{user.user_name}}
@@ -29,6 +29,11 @@ include /src/components/icon/icon
       td {{'Комиссар'}}
       td {{'Великий и прекрасный'}}
       td
-        button.button.button_grey.button_sm(ng-click='usersCtrl.changeStatus(user)')
-          span(ng-show='user.is_blocked') Разблокировать
-          span(ng-hide='user.is_blocked') Заблокировать
+        button.button.button_lightgrey.button_sm(
+          ng-show='user.block'
+          ng-click='usersCtrl.changeStatus(user)'
+        ) Разблокировать
+        button.button.button_grey.button_sm(
+          ng-hide='user.block'
+          ng-click='usersCtrl.changeStatus(user)'
+        ) Заблокировать
