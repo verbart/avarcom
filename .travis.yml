@@ -19,5 +19,6 @@ notifications:
   email:
     recipients:
       - artem.verbat@gmail.com
+      - vagapoff@mobiagency.ru
     on_failure: always
     on_success: always
