@@ -4,10 +4,17 @@
 
 .modal__body.padding
   form.form(
-    name='feedbackForm3'
+    name='callbackForm'
+    ng-init='$ctrl.callbackForm = {}'
     novalidate
-    ng-submit='$ctrl.submitted = true; feedbackForm3.$valid && $ctrl.ok(feedbackForm3)'
+    ng-submit='$ctrl.submitted = true; callbackForm.$valid && $ctrl.ok(callbackForm)'
   )
+    input(
+      type='hidden'
+      name='title'
+      ng-init='$ctrl.callbackForm.title = "Заявка на обратный звонок из модального окна"'
+      ng-model='$ctrl.callbackForm.title'
+    )
     .form__group.form__group_lg.margin_bottom_half
       input.form__input(
         ng-model='$ctrl.phone'
@@ -15,7 +22,7 @@
         placeholder='Введите телефон'
         required
       )
-    ng-messages(for='feedbackForm3.phone.$error' ng-if='$ctrl.interacted(feedbackForm3.phone)')
+    ng-messages(for='callbackForm.phone.$error' ng-if='$ctrl.interacted(callbackForm.phone)')
       p.form__message.form__message_error(ng-message='required') Укажите телефон для связи
 
     button.button.button_underlined.button_block.button_lg Перезвоните мне!

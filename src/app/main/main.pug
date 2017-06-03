@@ -193,35 +193,41 @@
         .col-10.offset-1.col-sm-12.offset-sm-0.col-lg-8.offset-lg-2
           form.form(
             name='feedbackForm2'
+            ng-init='mainCtrl.feedbackForm2 = {}'
             novalidate
             ng-submit='mainCtrl.submitted = true; feedbackForm2.$valid && mainCtrl.submitFeedback(feedbackForm2)'
           )
+            input(
+              type='hidden'
+              name='title'
+              ng-init='mainCtrl.feedbackForm2.title = "Заявка на демодоступ из блока со стоимостью"'
+              ng-model='mainCtrl.feedbackForm2.title'
+            )
             .row
               .col-md-4
                 .form__group.form__group_lg.margin_bottom_half
                   input.form__input(
-                    ng-model='mainCtrl.email'
+                    ng-model='mainCtrl.feedbackForm2.email'
                     name='email'
                     type='email'
                     placeholder='Введите E-mail'
                     required
                   )
-                ng-messages(for='feedbackForm.email.$error' ng-if='mainCtrl.interacted(feedbackForm.email)')
+                ng-messages(for='feedbackForm2.email.$error' ng-if='mainCtrl.interacted(feedbackForm2.email)')
                   p.form__message.form__message_error(ng-message='required') Укажите email адрес
                   p.form__message.form__message_error(ng-message='email') Укажите корректный email
               .col-md-4
                 .form__group.form__group_lg.margin_bottom_half
                   input.form__input(
-                    ng-model='mainCtrl.phone'
+                    ng-model='mainCtrl.feedbackForm2.phone'
                     name='phone'
                     placeholder='Введите телефон'
                     required
                   )
-                ng-messages(for='feedbackForm.phone.$error' ng-if='mainCtrl.interacted(feedbackForm.phone)')
+                ng-messages(for='feedbackForm2.phone.$error' ng-if='mainCtrl.interacted(feedbackForm2.phone)')
                   p.form__message.form__message_error(ng-message='required') Укажите телефон для связи
               .col-md-4
                 button.button.button_underlined.button_block.button_lg Получить доступ
-
 
   section.testimonials.padding_bottom
     .container.padding_bottom_half

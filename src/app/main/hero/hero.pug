@@ -28,14 +28,22 @@
           .col-10.offset-1.col-sm-12.offset-sm-0.col-md-8.offset-md-2.col-lg-6.offset-lg-3
             form.form(
               name='feedbackForm'
+              ng-init='mainCtrl.feedbackForm = {}'
               novalidate
               ng-submit='mainCtrl.submitted = true; feedbackForm.$valid && mainCtrl.submitFeedback(feedbackForm)'
             )
+              input(
+                type='hidden'
+                name='title'
+                ng-init='mainCtrl.feedbackForm.title = "Заявка на демодоступ c первого экрана"'
+                ng-model='mainCtrl.feedbackForm.title'
+              )
+
               .row
                 .col-md-12
                   .form__group.form__group_lg.margin_bottom_half
                     input.form__input(
-                      ng-model='mainCtrl.email'
+                      ng-model='mainCtrl.feedbackForm.email'
                       name='email'
                       type='email'
                       placeholder='Введите E-mail'
@@ -47,7 +55,7 @@
                 .col-md-12
                   .form__group.form__group_lg.margin_bottom_half
                     input.form__input(
-                      ng-model='mainCtrl.phone'
+                      ng-model='mainCtrl.feedbackForm.phone'
                       name='phone'
                       placeholder='Введите телефон'
                       required

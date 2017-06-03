@@ -32,22 +32,24 @@ export default class {
     return this.submitted || field.$dirty;
   }
   submitFeedback(form) {
-    form.email = form.email || {};
-    form.phone = form.phone || {};
 
-    const data = {
-      email: form.email.$viewValue,
-      phone: form.phone.$viewValue
-    };
+    const data = form.$$controls.reduce((result, item) => {
+      result[item.$name] = item.$viewValue;
+      return result;
+    }, {});
 
-    this.$http.post(this.CONSTANT.API_URL + '/feedback', data).then(response => {
-      form.email.$viewValue = '';
-      form.phone.$viewValue = '';
-      this.toaster.pop('success', 'Ура!', 'Мы получили ваши данные');
-    }, error => {
-      console.log(error);
-      this.toaster.pop('error', 'Ошибка доставки', 'Обратитесь пожалуйста в поддержку');
-    }).finally(() => {
-    });
+    data.site = 'avarkom.bitrix24.ru';
+
+    console.log(data);
+    console.log(form);
+
+    // this.$http.post(this.CONSTANT.API_URL + '/feedback', data).then(response => {
+    //   angular.element(form.$$element).trigger('reset');
+    //   form.$setPristine();
+    //   this.toaster.pop('success', 'Ура!', 'Мы получили ваши данные');
+    // }, error => {
+    //   console.log(error);
+    //   this.toaster.pop('error', 'Ошибка доставки', 'Обратитесь пожалуйста в поддержку');
+    // });
   }
 }
