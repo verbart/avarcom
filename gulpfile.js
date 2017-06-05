@@ -102,16 +102,10 @@ gulp.task('svgSymbols', function () {
   return gulp.src('./src/assets/images/svg/**/*.svg')
     .pipe(svgmin())
     .pipe(svgSymbols({
+      templates: ['default-svg'],
       className: '.icon_%f'
     }))
-    .pipe(rename(path => {
-      if (path.extname == '.svg') {
-        path.dirname = 'misc';
-      } else if (path.extname == '.css') {
-        path.dirname = 'styles/core/icon';
-      }
-    }))
-    .pipe(gulp.dest('./src/assets'));
+    .pipe(gulp.dest('./public'));
 });
 
 gulp.task('copy:misc', function () {
