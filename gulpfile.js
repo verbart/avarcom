@@ -71,30 +71,10 @@ gulp.task('scripts', function(done) {
   });
 });
 
-gulp.task('sprite', function() {
-  const spriteData = gulp.src('./src/assets/images/sprite/*.{png,jpg,jpeg}')
-    .pipe(spritesmith({
-      imgName: 'sprite.png',
-      cssName: 'images.styl',
-      algorithm: 'binary-tree',
-      padding: 2,
-      cssTemplate: './src/assets/styles/sprites/sprite-template.mustache'
-    }));
-
-  spriteData.img
-    .pipe(buffer())
-    .pipe(gulpIf(!isDevelopment, tinypng()))
-    .pipe(gulp.dest('./public/images'));
-
-  spriteData.css.pipe(gulp.dest('./src/assets/styles/sprites'));
-
-  return spriteData;
-});
-
 gulp.task('images', function () {
-  return gulp.src(['./src/assets/images/**/*.*', '!./src/assets/images/sprite'])
+  return gulp.src('./src/assets/images/**/*.*')
     .pipe(changed('./public/images'))
-    .pipe(gulpIf(!isDevelopment, gulpIf(['!*.svg'], tinypng())))
+    .pipe(gulpIf(!isDevelopment, gulpIf(['*', '!*.svg'], tinypng())))
     .pipe(gulp.dest('./public/images'));
 });
 
@@ -108,7 +88,7 @@ gulp.task('svgSymbols', function () {
     .pipe(gulp.dest('./public'));
 });
 
-gulp.task('copy:misc', function () {
+gulp.task('misc', function () {
   return gulp.src('./src/assets/misc/**/*.*')
     .pipe(gulp.dest('./public'));
 });
@@ -121,9 +101,9 @@ gulp.task('watch', function () {
   gulp.watch('./src/**/*.pug', gulp.series('views'));
   gulp.watch('./src/**/*.{css,styl}', gulp.series('styles'));
   gulp.watch('./src/**/*.js', gulp.series('scripts'));
-  gulp.watch('./src/assets/misc/**/*.*', gulp.series('copy:misc'));
+  gulp.watch('./src/assets/misc/**/*.*', gulp.series('misc'));
   gulp.watch('./src/assets/images/svg/**/*.svg', gulp.series('svgSymbols'));
-  gulp.watch(['./src/assets/images/**/*.*', '!./src/assets/images/svg'], gulp.series('images'));
+  gulp.watch('./src/assets/images/**/*.*', gulp.series('images'));
 });
 
 gulp.task('serve', function () {
@@ -143,16 +123,13 @@ gulp.task('serve', function () {
 
 gulp.task('build', gulp.series(
   'clean',
-  gulp.parallel(
-    'sprite',
-    'svgSymbols'
-  ),
+  'svgSymbols',
   gulp.parallel(
     'views',
     'styles',
     'scripts',
     'images',
-    'copy:misc'
+    'misc'
   )));
 
 gulp.task('default', gulp.series(
