@@ -15,8 +15,8 @@ include /src/components/icon/icon
     tr
       td(ts-criteria='user_id | parseInt') ID
       td(ts-criteria='user_name | lowercase' ts-default) Имя
-      td(ts-criteria='phone | parseInt') Телефон
-      td(ts-criteria='email | parseInt') Email
+      td(ts-criteria='phone | lowercase') Телефон
+      td(ts-criteria='email | lowercase') Email
       td(ts-criteria='type | lowercase') Тип
       td(ts-criteria='role | lowercase') Роль
       td(ts-criteria='block') Действия

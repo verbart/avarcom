@@ -5,7 +5,6 @@ include /src/components/icon/icon
   h3.modal__caption Данные нового пользователя
 
 .modal__body.container-fluid.padding_top_half
-  h1 {{creationForm.$valid | json}}
   form.form.row(
     id='creationForm'
     name='creationForm'
@@ -33,23 +32,19 @@ include /src/components/icon/icon
           id='phone'
           name='phone'
           ng-model='$ctrl.user.phone'
+          ui-mask='+7 (999) 999-99-99'
           ui-options='{clearOnBlur: false}'
-          placeholder='Введите телефон'
+          placeholder='+7 (***) ***-**-**'
           required
         )
-        //ui-mask='+7 (999) 999-99-99'
-        //placeholder='+7 (***) ***-**-**'
-          ng-pattern='/^\d{10}$/'
-
-
-        //p {{creationForm.phone | json}}
+        //placeholder='Введите телефон'
+        //ng-pattern='/^\d{10}$/'
         //ng-minlength='10'
         //ng-maxlength='15'
-      //p.form__message.form__message_error(
-      //  ng-if='(creationForm.phone.$error.pattern)' +
-      //    ' && $ctrl.interacted(creationForm.phone)'
-      //) Укажите телефон
-
+      p.form__message.form__message_error(
+        ng-if='(creationForm.phone.$error.required || creationForm.phone.$error.mask)' +
+        '&& $ctrl.interacted(creationForm.phone)'
+      ) Укажите телефон
       //ng-messages(
       //  for='creationForm.phone.$error'
       //  ng-show='$ctrl.interacted(creationForm.phone)'

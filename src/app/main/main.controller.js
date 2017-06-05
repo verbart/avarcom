@@ -32,9 +32,8 @@ export default class {
     return this.submitted || field.$dirty;
   }
   submitFeedback(form) {
-
     const data = form.$$controls.reduce((result, item) => {
-      result[item.$name] = item.$viewValue;
+      result[item.$name] = item.$modelValue;
       return result;
     }, {});
 

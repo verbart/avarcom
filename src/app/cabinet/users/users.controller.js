@@ -1,5 +1,6 @@
 export default class {
-  constructor(User, AuthData, CONSTANT, $uibModal, $http, $interval, $scope) {
+  constructor(User, AuthData, $uibModal, $interval, $scope) {
+    this.$scope = $scope;
     this.$uibModal = $uibModal;
     this.userData = AuthData.get();
     this.User = User;
@@ -8,7 +9,6 @@ export default class {
 
     // const interval = $interval(() => this.getUsers(), 60*1000);
     // $scope.$on('$destroy', () => $interval.cancel(interval));
-
   }
 
   getUsers() {
@@ -32,7 +32,8 @@ export default class {
     });
 
     modalInstance.result.then(user => {
-        this.users.push(user);
+      console.log(user);
+      this.users.push(user);
     }, () => {
       console.info('modal-component dismissed at: ' + new Date());
     });
