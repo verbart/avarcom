@@ -8,8 +8,9 @@ include /node_modules/bemto.pug/bemto
   )
     +e.H3.name {{ctrl.userData.user_name}}
     +e.photo(style='background-image: url({{ctrl.userData.photo || "../images/svg/profile.svg"}})')
+
   +e.UL.menu.profileLinkMenu__(ng-class='{profileLinkMenu_active: ctrl.menuIsOpen}')
-    +e.item
-      +e.A.link(ui-sref='cabinet.account') Редактировать
+    +e.A.link(ui-sref='cabinet.account') Редактировать
+    +e.link
       +e.HR.separator
-      +e.A.link(ui-sref='logout') Выйти
+    +e.A.link(ui-sref='logout') Выйти
