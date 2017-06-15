@@ -14,23 +14,28 @@ export default angular.module('avarcom.auth', [uiRouter, 'ngStorage'])
     $httpProvider.interceptors.push('AuthInterceptor');
   })
   .run(function($rootScope, $state, AuthService) {
-    $rootScope.$on('$stateChangeStart', (event, toState, toParams) => {
-      if (toState.authenticate && !$rootScope.transitionIsAllowed) {
-        event.preventDefault();
-
-        AuthService.confirmToken().then(response => {
-          console.log(response);
-          $rootScope.transitionIsAllowed = true;
-          $state.go(toState, toParams);
-        }, error => {
-          console.log(error);
-          $state.go('logout');
-        });
-      }
-    });
-    $rootScope.$on('$stateChangeSuccess', () => {
-      $rootScope.transitionIsAllowed = false;
-    });
+    // let transitionIsAllowed = false;
+    //
+    // $rootScope.$on('$stateChangeStart', (event, toState, toParams) => {
+    //   console.log(toState, transitionIsAllowed);
+    //
+    //   if (toState.authenticate && !transitionIsAllowed) {
+    //     event.preventDefault();
+    //
+    //     AuthService.confirmToken().then(response => {
+    //       console.log('auth', response);
+    //       transitionIsAllowed = true;
+    //       $state.go(toState, toParams);
+    //       return null;
+    //     }, error => {
+    //       console.log(error);
+    //       $state.go('logout');
+    //     });
+    //   }
+    // });
+    // $rootScope.$on('$stateChangeSuccess', () => {
+    //   transitionIsAllowed = false;
+    // });
   })
   .config(router)
 
