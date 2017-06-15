@@ -4,7 +4,8 @@
   "author": "Artem Verbat",
   "scripts": {
     "start": "gulp",
-    "build": "NODE_ENV=production gulp build"
+    "build": "NODE_ENV=production gulp build",
+    "firebase": "firebase deploy --token $FIREBASE_TOKEN"
   },
   "devDependencies": {
     "autoprefixer": "^6.6.0",
