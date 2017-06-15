@@ -1,0 +1,15 @@
+image: node:8
+
+cache:
+  paths:
+  - node_modules
+
+deploy_production:
+  stage: deploy
+  environment: production
+  only:
+    - master
+  script:
+    - npm install
+    - npm run build
+    - firebase deploy --token $FIREBASE_TOKEN
