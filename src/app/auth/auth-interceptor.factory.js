@@ -1,13 +1,25 @@
 export default function ($q, $injector, CONSTANT, AuthToken) {
   return {
     request: function (config) {
+      console.log(config);
       if ((config.url.indexOf(CONSTANT.API_URL) === 0) || (config.url.indexOf(CONSTANT.API_URL_V2) === 0)) {
         const token = AuthToken.get();
 
-        if (token) {
-          config.headers = config.headers || {};
-          config.headers.token = token;
-        }
+        config.headers = config.headers || {};
+        config.headers.token = token || '';
+      } else if (
+        (config.url.indexOf('views/app/dashboard') === 0) ||
+        (config.url.indexOf('views/app/cabinet') === 0)
+      ) {
+        const deferred = $q.defer();
+
+        $injector.get('AuthService').confirmToken().then(() => {
+          deferred.resolve(config);
+        }, () => {
+          deferred.reject(config);
+        });
+
+        return deferred.promise;
       }
 
       return config;

@@ -5,9 +5,9 @@ export default class StatisticsCtrl {
         this.startDate = moment().subtract(1, 'day');
         this.endDate = moment();
 
-        $scope.$watchGroup([()=>this.startDate, ()=>this.endDate], () => {
-            this.getStats();
-        });
+        // $scope.$watchGroup([()=>this.startDate, ()=>this.endDate], () => {
+        //     this.getStats();
+        // });
     }
 
     getStats() {
