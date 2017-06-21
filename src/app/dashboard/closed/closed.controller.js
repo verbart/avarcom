@@ -21,7 +21,7 @@ export default class {
 
     const introOptions = IntroService.getOptions();
 
-    if (!this.$cookies.get('intro_v2')) {
+    if (!this.$cookies.get('intro_closed')) {
       const introSteps = [
         {
           element: document.getElementById('intro-step-5'),
@@ -46,6 +46,7 @@ export default class {
       ngIntroService.onComplete(() => {
         $state.go('dashboard.statistics');
       });
+      this.$cookies.put('intro_closed', true);
     }
   }
 

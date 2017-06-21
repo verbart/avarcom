@@ -3,7 +3,7 @@ export default class {
     this.$cookies = $cookies;
     this.userData = AuthData.get();
 
-    if (!this.$cookies.get('intro_v2')) {
+    if (!this.$cookies.get('intro_cabinet-account')) {
       const introSteps = [
         {
           element: document.getElementById('intro-step-cabinet-notifications'),
@@ -27,6 +27,7 @@ export default class {
           $state.go('cabinet.users');
         });
       }, 1000);
+      this.$cookies.put('intro_cabinet-account', true);
     }
   }
 }

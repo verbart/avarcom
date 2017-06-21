@@ -25,18 +25,18 @@ export default class {
     this.ngIntroService.setOptions(this.options);
   }
   start(step = 1) {
+    angular.element('body').addClass('intro');
+
     this.ngIntroService.clear();
     this.setOptions();
+    this.ngIntroService.start(step);
 
     this.ngIntroService.onChange(() => {
       angular.element('body').addClass('intro');
     });
 
     this.ngIntroService.onExit(() => {
-      this.$cookies.put('intro_v2', true);
       angular.element('body').removeClass('intro');
     });
-
-    this.ngIntroService.start(step);
   }
 }

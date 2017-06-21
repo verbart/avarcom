@@ -42,15 +42,18 @@ export default {
           position: 'bottom'
         }
       ];
-      if (!this.$cookies.get('intro_v2')) {
+      if (!this.$cookies.get('intro_accidents')) {
         const introOptions = IntroService.getOptions();
         introOptions.steps = introSteps;
         introOptions.doneLabel = 'Перейти';
         IntroService.setOptions(introOptions);
-        IntroService.start();
-        ngIntroService.onComplete(() => {
-          $state.go('dashboard.closed');
-        });
+        setTimeout(() => {
+          IntroService.start();
+          ngIntroService.onComplete(() => {
+            $state.go('dashboard.closed');
+          });
+        }, 2000);
+        this.$cookies.put('intro_accidents', true);
       }
     }
 

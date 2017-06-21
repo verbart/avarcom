@@ -43,7 +43,7 @@ export default class StatisticsCtrl {
       this.commissioners = response.commissars;
       this.rating = angular.copy(this.commissioners);
 
-      if (!this.$cookies.get('intro_v2')) {
+      if (!this.$cookies.get('intro_statistics')) {
         const introOptions = this.IntroService.getOptions();
         introOptions.steps = this.introSteps;
         introOptions.doneLabel = 'Перейти';
@@ -52,6 +52,7 @@ export default class StatisticsCtrl {
         this.ngIntroService.onComplete(() => {
           this.$state.go('cabinet.account');
         });
+        this.$cookies.put('intro_statistics', true);
       }
     }, error => {
       console.log(error);

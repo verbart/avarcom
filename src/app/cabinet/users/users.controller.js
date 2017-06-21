@@ -40,17 +40,18 @@ export default class {
 
       this.users = response.data;
 
-      if (!this.$cookies.get('intro_v2')) {
+      if (!this.$cookies.get('intro_cabinet-users')) {
+        const introOptions = this.IntroService.getOptions();
+        introOptions.steps = this.introSteps;
+        introOptions.doneLabel = 'Завершить';
+        this.IntroService.setOptions(introOptions);
         setTimeout(() => {
-          const introOptions = this.IntroService.getOptions();
-          introOptions.steps = this.introSteps;
-          introOptions.doneLabel = 'Завершить';
-          this.IntroService.setOptions(introOptions);
           this.IntroService.start();
           this.ngIntroService.onComplete(() => {
             this.$state.go('dashboard');
           });
         }, 500);
+        this.$cookies.put('intro_cabinet-users', true);
       }
     });
   }
