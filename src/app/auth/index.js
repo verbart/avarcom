@@ -10,10 +10,10 @@ import LoginCtrl from './login/login.controller';
 
 
 export default angular.module('avarcom.auth', [uiRouter, 'ngStorage'])
-  .config(function ($httpProvider) {
+  .config(function($httpProvider) {
     $httpProvider.interceptors.push('AuthInterceptor');
   })
-  .run(function ($rootScope, $state, AuthService) {
+  .run(function($rootScope, $state, AuthService) {
     // let transitionIsAllowed = false;
     //
     // $rootScope.$on('$stateChangeStart', (event, toState, toParams) => {

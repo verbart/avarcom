@@ -1,8 +1,9 @@
 export default class {
-  constructor($http, $localStorage, CONSTANT) {
+  constructor($http, $localStorage, CONSTANT, ngIntroService) {
     this.$http = $http;
     this.$localStorage = $localStorage;
     this.CONSTANT = CONSTANT;
+    this.ngIntroService = ngIntroService;
   }
 
   login(user) {
@@ -12,6 +13,7 @@ export default class {
     this.CONSTANT.OneSignal.push(['sendTags', {
       city: null
     }]);
+    this.ngIntroService.clear();
     this.$localStorage.$reset();
   }
   confirmToken() {

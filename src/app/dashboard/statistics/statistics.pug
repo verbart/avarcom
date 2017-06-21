@@ -2,7 +2,7 @@ include /src/components/icon/icon
 
 .padding_vertical
   .padding_bottom
-    .dashboard__section.text_center
+    .dashboard__section.text_center(id='intro-step-statistics-date')
       section.margin_bottom_half
         | Данные с &nbsp;
         date-picker.statistics__datePicker.margin_bottom_half(selected='statCtrl.startDate')
@@ -18,12 +18,12 @@ include /src/components/icon/icon
             td.statisticsTable__property Ложных
 
           tr
-            td.statisticsTable__value {{statCtrl.general.all_events}}
-            td.statisticsTable__value {{statCtrl.general.taken_events}}
-            td.statisticsTable__value {{statCtrl.general.completed_events}}
-            td.statisticsTable__value {{statCtrl.general.false_events}}
+            td.statisticsTable__value {{statCtrl.general.all_events || 0}}
+            td.statisticsTable__value {{statCtrl.general.taken_events || 0}}
+            td.statisticsTable__value {{statCtrl.general.completed_events || 0}}
+            td.statisticsTable__value {{statCtrl.general.false_events || 0}}
 
-  .row
+  .row(id='intro-step-statistics-users')
     .col-lg-7
       .dashboard__section
         .statistics__sectionHeader

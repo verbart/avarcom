@@ -1,7 +1,6 @@
 export default function ($q, $injector, CONSTANT, AuthToken) {
   return {
     request: function (config) {
-      console.log(config);
       if ((config.url.indexOf(CONSTANT.API_URL) === 0) || (config.url.indexOf(CONSTANT.API_URL_V2) === 0)) {
         const token = AuthToken.get();
 

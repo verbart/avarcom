@@ -5,7 +5,7 @@ include /src/components/icon/icon
     .dashboard__section.margin_bottom_half
       form.form.row
         .col-sm-5
-          .form__group.form__group_dropdown.filters__item.margin_bottom_half(ng-click='listCtrl.openDateRangeModal()')
+          .form__group.form__group_dropdown.filters__item.margin_bottom_half(id='intro-step-5' ng-click='listCtrl.openDateRangeModal()')
             label.form__addon
               +icon({icon: 'calendar'})
             input.form__input(value='{{listCtrl.period.from.format("DD.MM.YYYY")}} - {{listCtrl.period.to.format("DD.MM.YYYY")}}' placeholder='За период' readonly onfocus='this.blur()')
@@ -33,7 +33,7 @@ include /src/components/icon/icon
             = ' '
             .badge(ng-if='listCtrl.closedCounter') {{listCtrl.closedCounter}}
 
-    .dashboard__section
+    .dashboard__section(id='intro-step-6')
       h3.text_center(ng-hide='filteredAccidents.length') Нет аварий отвечающих текущим фильтрам
 
       .table

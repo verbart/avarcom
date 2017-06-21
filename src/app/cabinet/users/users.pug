@@ -2,7 +2,7 @@ include /src/components/icon/icon
 
 .row
   .col-md-7.col-lg-8.padding_bottom_half
-    button.button(ng-click='usersCtrl.addUser()') Добавить пользователя
+    button.button(id='intro-step-cabinet-add-user' ng-click='usersCtrl.addUser()') Добавить пользователя
   .col-md-5.col-lg-4.padding_bottom
     form.form
       .form__group
@@ -10,7 +10,7 @@ include /src/components/icon/icon
           +icon({icon: 'search'})
         input.form__input(id='searchUser' ng-model='usersCtrl.searchComInput' placeholder='Поиск пользователя...')
 
-.table.text_center
+.table.text_center(id='intro-step-cabinet-users-list')
   table(ts-wrapper)
     tr
       td(ts-criteria='user_id | parseInt') ID

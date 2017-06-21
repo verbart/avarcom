@@ -5,16 +5,16 @@ include /node_modules/bemto.pug/bemto
     +e.A.link(ui-sref='dashboard.accidents') Аварии
 
   +e.item(ui-sref-active='navbar__item_active')
-    +e.A.link(ui-sref='dashboard.closed') Завершенные
+    +e.A.link(id='intro-step-4' ui-sref='dashboard.closed') Завершенные
       span(ng-if='$ctrl.closedCounter')
         = ' '
         .badge {{$ctrl.closedCounter}}
 
   +e.item(ui-sref-active='navbar__item_active')
-    +e.A.link(ui-sref='dashboard.statistics') Статистика
+    +e.A.link(id='intro-step-7' ui-sref='dashboard.statistics') Статистика
 
   +e.item(ui-sref-active='navbar__item_active')
-    +e.A.link(ui-sref='dashboard.help') Помощь
+    +e.A.link(id='intro-step-help' ui-sref='dashboard.help') Помощь
 
   +e.item.hidden-lg-up(ui-sref-active='navbar__item_active')
     +e.A.link(ui-sref='cabinet.account') Мой профиль
@@ -22,5 +22,5 @@ include /node_modules/bemto.pug/bemto
   +e.item.hidden-lg-up(ui-sref-active='navbar__item_active')
     +e.A.link(ui-sref='logout') Выйти
 
-  +e.item_profileLink.hidden-md-down
+  +e.item_profileLink.hidden-md-down(id='intro-step-profile-link')
     include ../profile-link/profile-link
