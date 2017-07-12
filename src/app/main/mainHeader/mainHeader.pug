@@ -22,5 +22,5 @@ header.mainHeader(click-out='menuIsActive = false')
             ng-click='mainCtrl.openCallbackModal()'
           ) Перезвоните мне!
 
-      button.mainHeader__menuButton(ng-click='menuIsActive = !menuIsActive')
+      button.mainHeader__menuButton(ng-click='menuIsActive = !menuIsActive; alert()')
         +icon({icon: 'menu_dot'})

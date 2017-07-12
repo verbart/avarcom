@@ -3,6 +3,7 @@ import uiRouter from 'angular-ui-router';
 
 import '../node_modules/moment/locale/ru';
 import 'leaflet';
+import 'smartbanner.js/dist/smartbanner.min';
 import 'slick-carousel';
 import 'angular-slick-carousel';
 import 'angular-animate';
