@@ -2,7 +2,7 @@ export default class {
   constructor($stateParams, $state, Accident) {
     this.Accident = Accident;
 
-    Accident.get({id: $stateParams.id, web: true}, response => {
+    Accident.get({id: $stateParams.id}, response => {
       this.selected = response.data;
 
       this.map = {

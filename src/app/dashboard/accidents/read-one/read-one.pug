@@ -4,7 +4,13 @@ header.dashboard__header
 
 .dashboard__section
   .padding_bottom
-    leaflet(ng-if='readOneCtrl.map' markers='readOneCtrl.map.markers' center='readOneCtrl.map.center' width='100%' height='280px')
+    leaflet(
+      ng-if='readOneCtrl.map'
+      markers='readOneCtrl.map.markers'
+      center='readOneCtrl.map.center'
+      width='100%'
+      height='280px'
+    )
 
   ul.list(ng-if='readOneCtrl.selected')
     li.list__item(ng-if='readOneCtrl.selected.address')

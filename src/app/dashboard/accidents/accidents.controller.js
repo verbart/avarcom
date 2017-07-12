@@ -31,7 +31,7 @@ export default class {
   }
 
   getAccidents(date) {
-    this.Accident.query({date, web: true}, response => {
+    this.Accident.query({date}, response => {
       this.accidents = response.data;
 
       this.accidents.forEach((obj, index) => {
@@ -49,7 +49,7 @@ export default class {
         };
       });
 
-      this.$http.get(this.CONSTANT.API_URL+'/users').then(response => {
+      this.$http.get(this.CONSTANT.API_URL_V2+'/location').then(response => {
         this.commissioners = response.data;
         console.log('commissioners', this.commissioners);
 

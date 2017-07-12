@@ -11,7 +11,7 @@ export default function ($resource, $filter, CONSTANT) {
     return obj;
   };
 
-  return $resource(CONSTANT.API_URL+'/events/:id', {id: '@id'}, {
+  return $resource(CONSTANT.API_URL_V2+'/events/:id', {id: '@id'}, {
     get: {
       interceptor: {
         response: function(response) {

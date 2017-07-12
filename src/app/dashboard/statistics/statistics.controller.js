@@ -35,10 +35,9 @@ export default class StatisticsCtrl {
   getStats() {
     this.Statistics.get({
       startTime: this.startDate.format('X'),
-      endTime: this.endDate.format('X'),
-      type: 'general'
+      endTime: this.endDate.format('X')
     }, response => {
-      console.log(response);
+      console.log('general', response);
       this.general = response.general_data;
       this.commissioners = response.commissars;
       this.rating = angular.copy(this.commissioners);
