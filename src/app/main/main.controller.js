@@ -42,10 +42,10 @@ export default class {
     this.$http.post(this.CONSTANT.API_URL + '/feedback', data).then(response => {
       angular.element(form.$$element).trigger('reset');
       form.$setPristine();
-      this.toaster.pop('success', 'Ура! Мы получили ваши данные');
+      this.toaster.success('Ура! Мы получили ваши данные');
     }, error => {
       console.log(error);
-      this.toaster.pop('error', 'Ошибка доставки! Обратитесь пожалуйста в поддержку');
+      this.toaster.error('Ошибка доставки! Обратитесь пожалуйста в поддержку');
     });
   }
 }

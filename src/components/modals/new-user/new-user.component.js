@@ -118,23 +118,23 @@ export default {
       this.User.save(this.user, response => {
         console.log(response);
 
-        this.toaster.pop('success', 'Добавлен новый пользователь, c ID ' + response.user_id);
+        this.toaster.success('Добавлен новый пользователь, c ID ' + response.user_id);
         this.close({$value: response});
       }, error => {
         console.log(error);
 
         switch(error.status) {
           case 409:
-            this.toaster.pop('error', 'Пользователь с такой почтой или телефоном уже существует!');
+            this.toaster.error('Пользователь с такой почтой или телефоном уже существует!');
             break;
           case 400:
-            this.toaster.pop('error', 'Не корректное заполнение формы, проверьте и попробуйте ещё раз!');
+            this.toaster.error('Не корректное заполнение формы, проверьте и попробуйте ещё раз!');
             break;
           case 403:
-            this.toaster.pop('error', 'У Вас не достаточно прав для добавления нового пользователя!');
+            this.toaster.error('У Вас не достаточно прав для добавления нового пользователя!');
             break;
           default:
-            this.toaster.pop('error', 'Произошла ошибка, пожалуйста, сообщите нам о ней!');
+            this.toaster.error('Произошла ошибка, пожалуйста, сообщите нам о ней!');
         }
       });
     };

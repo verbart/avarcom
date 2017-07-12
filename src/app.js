@@ -21,6 +21,7 @@ import './app/auth';
 import './app/dashboard';
 import './app/cabinet';
 import './app/intro';
+import './app/proposal';
 
 import './sticky'
 
@@ -37,12 +38,13 @@ angular.module('avarcom', [
   'avarcom.auth',
   'avarcom.dashboard',
   'avarcom.cabinet',
-  'avarcom.intro'
+  'avarcom.intro',
+  'avarcom.proposal'
 ])
   .constant('CONSTANT', {
     API_URL: 'https://avarkom.pw/api/v2',
     API_URL_V2: 'https://avarkom.pw/control',
-    GOOGLE_API_KEY: 'AIzaSyDDQzWP_LrDLwRqPSq9_7FvQf2uzQvSJhU',
+    GOOGLE_API_KEY: 'AIzaSyAubAXFxcAgK9XesfxXUTLqA-F3DNT2E7U',
     OneSignal: window.OneSignal || []
   })
 

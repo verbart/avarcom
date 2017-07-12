@@ -1,5 +1,5 @@
 export default {
-  templateUrl: 'views/components/modals/confirm/confirm.html',
+  templateUrl: 'views/components/modals/alert/alert.html',
   bindings: {
     resolve: '<',
     close: '&',
@@ -8,13 +8,6 @@ export default {
   controller: function () {
     this.$onInit = () => {
       this.message = this.resolve.message;
-    };
-
-    this.ok = () => {
-      this.close({$value: true});
-    };
-    this.cancel = () => {
-      this.dismiss({$value: false});
     };
   }
 };
