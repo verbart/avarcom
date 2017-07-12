@@ -13,7 +13,6 @@ const del = require('del');
 const gutil = require('gulp-util');
 const pug = require('gulp-pug');
 const tinypng = require('gulp-tinypng-nokey');
-const spritesmith = require('gulp.spritesmith');
 const webpack = require('webpack');
 const svgSymbols = require('gulp-svg-symbols');
 const svgmin = require('gulp-svgmin');
