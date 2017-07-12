@@ -11,6 +11,7 @@ import datePicker from '../../components/date-picker/date-picker.component';
 import accidentsMapModal from '../../components/modals/accidents-map/accidents-map.component';
 import periodModal from '../../components/modals/period/period.component';
 import confirmModal from '../../components/modals/confirm/confirm.component';
+import alertModal from '../../components/modals/alert/alert.component';
 import notificationSwitcher from '../../components/notification-switcher/notification-switcher.component';
 import citySwitcher from '../../components/city-switcher/city-switcher.component';
 
@@ -71,6 +72,7 @@ angular.module('avarcom.dashboard', [
   .component('accidentsMapModal', accidentsMapModal)
   .component('periodModal', periodModal)
   .component('confirmModal', confirmModal)
+  .component('alertModal', alertModal)
   .component('notificationSwitcher', notificationSwitcher)
   .component('citySwitcher', citySwitcher)
 
