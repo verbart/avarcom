@@ -1,7 +1,10 @@
 export default function ($q, $injector, CONSTANT, AuthToken) {
   return {
     request: function (config) {
-      if ((config.url.indexOf(CONSTANT.API_URL) === 0) || (config.url.indexOf(CONSTANT.API_URL_V2) === 0)) {
+      if (
+        (config.url.indexOf(CONSTANT.API_URL) === 0) ||
+        (config.url.indexOf(CONSTANT.API_URL_V2) === 0)
+      ) {
         const token = AuthToken.get();
 
         config.headers = config.headers || {};
@@ -24,7 +27,11 @@ export default function ($q, $injector, CONSTANT, AuthToken) {
       return config;
     },
     responseError: function (response) {
-      if (response.status === 401 || response.status === 403) {
+      if (
+        ((response.config.url.indexOf(CONSTANT.API_URL) === 0) ||
+        (response.config.url.indexOf(CONSTANT.API_URL_V2) === 0)) &&
+        (response.status === 401 || response.status === 403)
+      ) {
         $injector.get('$state').go('logout');
       }
 
