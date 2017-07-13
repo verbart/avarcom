@@ -1,8 +1,13 @@
-leaflet(
-  id='mainMap'
-  ng-if='accidentCtrl.map'
-  markers='accidentCtrl.map.markers'
-  center='accidentCtrl.map.center'
-  width='100%'
-  height='100vh'
-)
+.accident
+  .accident__loader(ng-hide='accidentCtrl.locationIsDetected')
+    img(src='/images/search-loader.gif' width='80')
+    .padding_top Поиск спутников...
+
+  div(ng-class='{visibility_hidden: !accidentCtrl.locationIsDetected}')
+    leaflet(
+      id='mainMap'
+      markers='accidentCtrl.map.markers'
+      center='accidentCtrl.map.center'
+      width='100%'
+      height='100vh'
+    )

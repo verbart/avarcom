@@ -1,6 +1,10 @@
 export default class {
-  constructor($state, $http, $uibModal, leafletData, CONSTANT) {
+  constructor($http, $uibModal, leafletData, CONSTANT) {
+    this.$http = $http;
+    this.CONSTANT = CONSTANT;
+    this.locationIsDetected = false;
     this.$uibModal = $uibModal;
+    this.leafletData = leafletData;
     this.map = {
       center: {
         lat: 0,
@@ -12,81 +16,73 @@ export default class {
     this.radiusCircle = {};
     this.warningMessageOfGPSisShowed = false;
 
-    navigator.geolocation.getCurrentPosition((position) => {
-      console.log(position);
-    });
+    this.detectLocation();
+  }
 
-    leafletData.getMap('mainMap').then((map) => {
-      map.locate({
+  detectLocation() {
+    this.leafletData.getMap('mainMap').then((map) => {
+      this.lMap = map;
+
+      this.lMap.locate({
         setView: true,
         maxZoom: 16,
-        // watch: true,
-        // enableHighAccuracy: true
+        enableHighAccuracy: true,
+        // watch: true
       });
 
-      this.onLocationFound = (e) => {
-        const radius = Math.round(e.accuracy / 2);
-
-        this.map.center.lat = e.latlng.lat;
-        this.map.center.lng = e.latlng.lng;
-
-        this.map.markers['user'] = {
-          lat: e.latlng.lat,
-          lng: e.latlng.lng,
-          message: `Ваше местоположение предположительно в радиусе ${radius}м`,
-          focus: true
-        };
-
-        map.removeLayer(this.radiusCircle);
-        this.radiusCircle = L.circle(e.latlng, radius).addTo(map);
-      };
-
-      this.onLocationError = (e) => {
-        console.log(e);
-
-        if (!this.warningMessageOfGPSisShowed) {
-          this.$uibModal.open({
-            component: 'alertModal',
-            size: 'xs',
-            resolve: {
-              message: () => `
-              Не удалось подключится к спутникам,
-              попробуем определить Ваше местоположение с помощью интернет соединения
-            `
-            }
-          }).result.then(result => {
-          }, () => {
-            console.info('modal-component dismissed at: ' + new Date());
-          }).then(() => {
-            this.warningMessageOfGPSisShowed = true;
-          });
-        }
-
-        $http.post(`https://www.googleapis.com/geolocation/v1/geolocate?key=${CONSTANT.GOOGLE_API_KEY}`).then(
-          response => {
-            console.log(response);
-            this.onLocationFound({
-              accuracy: response.data.accuracy,
-              latlng: response.data.location
-            });
-          }, error => {
-            console.log(error);
-          }
-        )
-      };
-
-      map.on('locationfound', this.onLocationFound);
-      map.on('locationerror', this.onLocationError);
+      this.lMap.on('locationfound', this.onLocationFound.bind(this));
+      this.lMap.on('locationerror', this.onLocationError.bind(this));
     });
+  }
 
-  // interacted(field) {
-  //   return this.submitted || field.$dirty;
-  // }
-  // sendAccident() {
-  //   this.Accident.update({id: this.selected.crash_id}, this.selected, () => {
-  //     this.$state.go('dashboard.accidents.readOne', {id: this.selected.crash_id}, {reload: true});
-  //   }, error => {
-  //     console.log(error);
-  //   });
+  onLocationFound(e) {
+    this.locationIsDetected = true;
+    const radius = Math.round(e.accuracy / 2);
+
+    this.map.center.lat = e.latlng.lat;
+    this.map.center.lng = e.latlng.lng;
+
+    this.map.markers['user'] = {
+      lat: e.latlng.lat,
+      lng: e.latlng.lng,
+      message: `Ваше местоположение предположительно в радиусе ${radius}м`,
+      focus: true
+    };
+
+    this.lMap.removeLayer(this.radiusCircle);
+    this.radiusCircle = L.circle(e.latlng, radius).addTo(this.lMap);
+  };
+
+  onLocationError(e) {
+    console.log(e);
+
+    if (!this.warningMessageOfGPSisShowed) {
+      this.$uibModal.open({
+        component: 'alertModal',
+        size: 'xs',
+        resolve: {
+          message: () => `
+            Не удалось подключится к спутникам,
+            попробуем определить Ваше местоположение с помощью интернет соединения
+          `
+        }
+      }).result.then(result => {}, () => {
+        console.info('modal-component dismissed at: ' + new Date());
+      }).then(() => {
+        this.warningMessageOfGPSisShowed = true;
+      });
+    }
+
+    this.$http.post(`https://www.googleapis.com/geolocation/v1/geolocate?key=${this.CONSTANT.GOOGLE_API_KEY}`).then(
+      response => {
+        console.log(response);
+        this.onLocationFound({
+          accuracy: response.data.accuracy,
+          latlng: response.data.location
+        });
+      }, error => {
+        console.log(error);
+      }
+    )
   }
 }
