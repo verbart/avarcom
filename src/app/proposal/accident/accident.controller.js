@@ -1,6 +1,7 @@
 export default class {
-  constructor($http, $uibModal, leafletData, CONSTANT) {
+  constructor($http, $uibModal, leafletData, toaster, CONSTANT) {
     this.$http = $http;
+    this.toaster = toaster;
     this.CONSTANT = CONSTANT;
     this.locationIsDetected = false;
     this.$uibModal = $uibModal;
@@ -16,22 +17,22 @@ export default class {
     this.radiusCircle = {};
     this.warningMessageOfGPSisShowed = false;
 
-    this.detectLocation();
+    leafletData.getMap('mainMap').then((map) => {
+      this.lMap = map;
+
+      map.on('locationfound', this.onLocationFound.bind(this));
+      map.on('locationerror', this.onLocationError.bind(this));
+
+      this.detectLocation();
+    });
   }
 
   detectLocation() {
-    this.leafletData.getMap('mainMap').then((map) => {
-      this.lMap = map;
-
-      this.lMap.locate({
-        setView: true,
-        maxZoom: 16,
-        enableHighAccuracy: true,
-        // watch: true
-      });
-
-      this.lMap.on('locationfound', this.onLocationFound.bind(this));
-      this.lMap.on('locationerror', this.onLocationError.bind(this));
+    this.lMap.locate({
+      setView: true,
+      maxZoom: 16,
+      enableHighAccuracy: true,
+      // watch: true
     });
   }
 
@@ -51,10 +52,12 @@ export default class {
 
     this.lMap.removeLayer(this.radiusCircle);
     this.radiusCircle = L.circle(e.latlng, radius).addTo(this.lMap);
-  };
+  }
 
   onLocationError(e) {
     console.log(e);
+
+    this.locationIsDetected = true;
 
     if (!this.warningMessageOfGPSisShowed) {
       this.$uibModal.open({
@@ -70,19 +73,27 @@ export default class {
         console.info('modal-component dismissed at: ' + new Date());
       }).then(() => {
         this.warningMessageOfGPSisShowed = true;
+      }).finally(() => {
+        this.geoLoacatebyGoogle();
       });
+    } else {
+      this.geoLoacatebyGoogle();
     }
+  }
 
-    this.$http.post(`https://www.googleapis.com/geolocation/v1/geolocate?key=${this.CONSTANT.GOOGLE_API_KEY}`).then(
-      response => {
+  geoLoacatebyGoogle() {
+    this.$http.post(`https://www.googleapis.com/geolocation/v1/geolocate?key=${this.CONSTANT.GOOGLE_API_KEY}`)
+      .then(response => {
         console.log(response);
+
         this.onLocationFound({
           accuracy: response.data.accuracy,
           latlng: response.data.location
         });
       }, error => {
         console.log(error);
-      }
-    )
+
+        this.toaster.error('Не удалось определить местоположение, проверьте актуальность сетевых интерфейсов')
+      });
   }
 }

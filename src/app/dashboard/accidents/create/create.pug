@@ -23,7 +23,7 @@ include /src/components/icon/icon
         width='100%'
         height='280px'
       )
-      .leaflet__maximizeBtn(ng-click='createCtrl.openMapModal(listCtrl.selectedCity.name, listCtrl.map)') &#8689;
+      .leaflet__controlBtn.leaflet__controlBtn_rightBottom(ng-click='createCtrl.openMapModal(listCtrl.selectedCity.name, listCtrl.map)') &#8689;
     .padding_bottom_half
 
     input(ng-hide='true' ng-model='createCtrl.newAccident.latitude' name='latitude' required)

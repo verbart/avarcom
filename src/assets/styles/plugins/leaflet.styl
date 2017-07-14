@@ -3,11 +3,11 @@
     display none
   &__wrap
     position relative
-  &__maximizeBtn
-    display inline-block
+  &__controlBtn
+    display inline-flex
+    align-items center
+    justify-content center
     position absolute
-    bottom 10px
-    right 10px
     width 26px
     height 26px
     font bold 18px/28px 'Lucida Console', Monaco, monospace
@@ -19,3 +19,9 @@
     transition .4s
     &:hover
       background #f4f4f4
+    &_rightTop
+      top 10px
+      right 10px
+    &_rightBottom
+      bottom 10px
+      right 10px

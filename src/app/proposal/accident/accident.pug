@@ -1,9 +1,12 @@
+include /src/components/icon/icon
+
+
 .accident
   .accident__loader(ng-hide='accidentCtrl.locationIsDetected')
     img(src='/images/search-loader.gif' width='80')
     .padding_top Поиск спутников...
 
-  div(ng-class='{visibility_hidden: !accidentCtrl.locationIsDetected}')
+  .leaflet__wrap(ng-class='{visibility_hidden: !accidentCtrl.locationIsDetected}')
     leaflet(
       id='mainMap'
       markers='accidentCtrl.map.markers'
@@ -11,3 +14,5 @@
       width='100%'
       height='100vh'
     )
+    .leaflet__controlBtn.leaflet__controlBtn_rightTop(ng-click='accidentCtrl.detectLocation()')
+      +icon({icon: 'gps-fix'})
