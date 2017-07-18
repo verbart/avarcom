@@ -73,7 +73,7 @@ gulp.task('scripts', function(done) {
 gulp.task('images', function () {
   return gulp.src('./src/assets/images/**/*.*')
     .pipe(changed('./public/images'))
-    .pipe(gulpIf(!isDevelopment, gulpIf(['*', '!*.svg'], tinypng())))
+    .pipe(gulpIf(!isDevelopment, gulpIf(['*', '!*.{svg,gif}'], tinypng())))
     .pipe(gulp.dest('./public/images'));
 });
 
