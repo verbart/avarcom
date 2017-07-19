@@ -1,8 +1,7 @@
 import angular from 'angular';
-import 'element-closest';
 
 import router from './proposal.router';
-import AccidentCtrl from './accident/accident.controller';
+import ProposalCtrl from './proposal.controller';
 import proposalContactModal from '../../components/modals/proposal-contact/proposal-contact.component';
 
 import 'angular-ui-bootstrap';
@@ -13,5 +12,5 @@ angular.module('avarcom.proposal', [
 ])
   .config(router)
 
-  .controller('AccidentCtrl', AccidentCtrl)
+  .controller('ProposalCtrl', ProposalCtrl)
   .component('proposalContactModal', proposalContactModal);

@@ -1,15 +1,9 @@
-export default function ($stateProvider, $urlRouterProvider) {
-  $urlRouterProvider.when('/proposal', '/proposal/accident');
-
+export default function ($stateProvider) {
   $stateProvider
     .state('proposal', {
-      url: '/proposal',
-      templateUrl: 'views/app/proposal/proposal.html'
-    })
-    .state('proposal.accident', {
-      url: '/accident?token',
-      templateUrl: 'views/app/proposal/accident/accident.html',
-      controller: 'AccidentCtrl',
-      controllerAs: 'accidentCtrl'
+      url: '/proposal?token',
+      templateUrl: 'views/app/proposal/proposal.html',
+      controller: 'ProposalCtrl',
+      controllerAs: 'proposalCtrl'
     });
 }
