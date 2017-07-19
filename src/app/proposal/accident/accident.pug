@@ -14,5 +14,27 @@ include /src/components/icon/icon
       width='100%'
       height='100vh'
     )
-    .leaflet__controlBtn.leaflet__controlBtn_rightTop(ng-click='accidentCtrl.detectLocation()')
+    button.leaflet__controlBtn.leaflet__controlBtn_rightTop(ng-click='accidentCtrl.detectLocation()')
       +icon({icon: 'gps-fix'})
+
+    .leaflet__search
+      form.form__group
+        //label.form__addon(for='search')
+        //  +icon({icon: 'placeholder_fill'})
+        input.form__input(
+          id='search'
+          name='search'
+          placeholder='Адрес аварии...'
+          ng-model='accidentCtrl.newAccident.address'
+          uib-typeahead='item.formatted_address for item in accidentCtrl.searchLocations($viewValue)'
+          typeahead-on-select='accidentCtrl.onSelectAddressTypeahead($item, $model, $label, $event)'
+          typeahead-popup-template-url='views/components/uib-typeahead/uib-typeahead.html'
+          autocomplete='off'
+        )
+
+  .accident__footer
+    .row
+      .col-6.text_right.margin_vertical_half
+        button.button.button_lg(ng-click='accidentCtrl.openContactModal(0)') Участник
+      .col-6.margin_vertical_half
+        button.button.button_lg.button_lightgrey(ng-click='accidentCtrl.openContactModal(1)') Очевидец

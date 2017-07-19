@@ -38,7 +38,6 @@ import 'ui-leaflet';
 import 'angular-simple-logger';
 import 'angular-messages';
 import 'ng-file-upload';
-import 'ng-file-upload';
 import 'angular-ui-bootstrap';
 import 'angular-bootstrap-lightbox';
 import 'angular-ui-mask';

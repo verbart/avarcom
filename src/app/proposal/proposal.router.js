@@ -7,7 +7,7 @@ export default function ($stateProvider, $urlRouterProvider) {
       templateUrl: 'views/app/proposal/proposal.html'
     })
     .state('proposal.accident', {
-      url: '/accident',
+      url: '/accident?token',
       templateUrl: 'views/app/proposal/accident/accident.html',
       controller: 'AccidentCtrl',
       controllerAs: 'accidentCtrl'

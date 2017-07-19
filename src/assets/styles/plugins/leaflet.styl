@@ -1,6 +1,9 @@
 .leaflet
-  &-control-attribution
-    display none
+  &-control
+    border none !important
+    box-shadow 0 1px 5px rgba(0,0,0,0.65) !important
+    &-attribution
+      display none
   &__wrap
     position relative
   &__controlBtn
@@ -8,15 +11,22 @@
     align-items center
     justify-content center
     position absolute
+    z-index 10
     width 26px
     height 26px
-    font bold 18px/28px 'Lucida Console', Monaco, monospace
+    margin 0
+    padding 0
+    border none
+    font bold 18px 'Lucida Console', Monaco, monospace
     background #fff
-    box-shadow 0 1px 5px rgba(0,0,0,0.65)
+    box-shadow 0 1px 5px rgba(0,0,0,.65)
     border-radius 4px
     text-align center
     cursor pointer
     transition .4s
+    @media (max-width 769px)
+      width 30px
+      height 30px
     &:hover
       background #f4f4f4
     &_rightTop
@@ -25,3 +35,19 @@
     &_rightBottom
       bottom 10px
       right 10px
+  &__search
+    align-items center
+    justify-content center
+    position absolute
+    top 10px
+    left 50%
+    transform translateX(-50%)
+    width 100%
+    min-width 150px
+    max-width 420px
+    padding-left 46px
+    padding-right 46px
+    .form__group
+      box-shadow 0 1px 5px rgba(0,0,0,.65)
+      border-radius 4px
+      overflow hidden

@@ -45,7 +45,7 @@ angular.module('avarcom', [
   .constant('CONSTANT', {
     API_URL: 'https://avarkom.pw/api/v2',
     API_URL_V2: 'https://avarkom.pw/control',
-    GOOGLE_API_KEY: 'AIzaSyAubAXFxcAgK9XesfxXUTLqA-F3DNT2E7U',
+    GOOGLE_API_KEY: 'AIzaSyA-Ozt9RQOAbDXS6brHXUlNunpN-A4_Ygs',
     OneSignal: window.OneSignal || []
   })
 

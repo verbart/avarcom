@@ -9,7 +9,10 @@ import AuthService from './auth.service';
 import LoginCtrl from './login/login.controller';
 
 
-export default angular.module('avarcom.auth', [uiRouter, 'ngStorage'])
+export default angular.module('avarcom.auth', [
+  uiRouter,
+  'ngStorage'
+])
   .config(function($httpProvider) {
     $httpProvider.interceptors.push('AuthInterceptor');
   })
