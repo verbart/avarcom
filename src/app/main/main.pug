@@ -180,9 +180,7 @@
 
       h3 Стоимость месячного абонемента договорная
 
-      h3.text_grey.padding_bottom_half Вы получите доступ к холодным заявкам из открытых источников
-        br
-        | Примерное количество заявок от 150 до 300 в день
+      h3.text_grey.padding_bottom_half Вы получите доступ к заявкам из наших источников
 
       h4.padding_bottom
         b Сомневаетесь, что приложение принесет реальную пользу?
@@ -236,10 +234,14 @@
         | которые уже пользуются приложением “Центр АК”
 
       slick(dots='false' arrows='true')
-        .testimonials__item(ng-repeat='testimonial in [{},{},{}]')
-          .testimonials__photo(style='background-image: url(images/bg-2.jpg);')
-          .testimonials__name Имя Фамилия
-          .testimonials__opinion С другой стороны консультация с широким активом требуют от нас анализа новых предложений. Значимость этих проблем настолько очевидна, что новая модель организационной деятельности в значительной степени обуславливает создание дальнейших направлений развития.
+        .testimonials__item(ng-repeat='testimonial in [{}]')
+          .testimonials__photo.testimonials__photo_img
+            img(src='http://avarkom02.com/templates/avksite/logo.png')
+          .testimonials__name Центр Аварийных Комиссаров
+          .testimonials__opinion Приложение значительно увеличило количество заявок нашим комиссарам,&nbsp;
+            | в городах где у нас есть филиалы - Уфа и Самара
+            br
+            a(href='http://avarkom02.com') http://avarkom02.com
 
   section.padding_bottom
     .container
