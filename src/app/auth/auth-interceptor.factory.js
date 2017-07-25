@@ -27,7 +27,6 @@ export default function ($q, $injector, CONSTANT, AuthToken) {
       return config;
     },
     responseError: function (response) {
-      console.log('err1', response);
       if (
         ((response.config.url.indexOf(CONSTANT.API_URL) === 0) ||
         (response.config.url.indexOf(CONSTANT.API_URL_V2) === 0)) &&

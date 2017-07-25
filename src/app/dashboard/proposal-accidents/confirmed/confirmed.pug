@@ -1,0 +1,73 @@
+include /src/components/icon/icon
+header.dashboard__header
+  a.button.button_sm.margin_left_auto(ui-sref='dashboard.accidents' id='intro-step-3') ДОБАВИТЬ АВАРИЮ
+
+.dashboard__section
+  .padding_bottom
+    leaflet(
+      ng-if='readOneCtrl.map'
+      markers='readOneCtrl.map.markers'
+      center='readOneCtrl.map.center'
+      width='100%'
+      height='280px'
+    )
+
+  ul.list(ng-if='readOneCtrl.selected')
+    li.list__item(ng-if='readOneCtrl.selected.address')
+      .list__icon
+        +icon({icon: 'placeholder_fill'})
+      .list__text {{readOneCtrl.selected.address}}
+
+    li.list__item(ng-if='readOneCtrl.selected.phone')
+      .list__icon
+        +icon({icon: 'phone'})
+      .list__text {{readOneCtrl.selected.phone}}
+
+    li.list__item(ng-if='readOneCtrl.selected.carBrand')
+      .list__icon
+        +icon({icon: 'car-compact'})
+      .list__text {{readOneCtrl.selected.carBrand}}
+
+    li.list__item(ng-if='readOneCtrl.selected.name')
+      .list__icon
+        +icon({icon: 'user'})
+      .list__text {{readOneCtrl.selected.name}}
+
+    li.list__item(ng-if='readOneCtrl.selected.createdDate.time')
+      .list__icon
+        +icon({icon: 'clock'})
+      .list__text {{readOneCtrl.selected.createdDate.time}}
+
+    li.list__item(ng-if='readOneCtrl.selected.createdDate.date')
+      .list__icon
+        +icon({icon: 'calendar'})
+      .list__text {{readOneCtrl.selected.createdDate.date}}
+
+    li.list__item(ng-if='readOneCtrl.selected.status.code != 1')
+      .list__icon
+        +icon({icon: 'id-card'})
+      .list__text {{readOneCtrl.selected.commissar.id}}
+
+  form.form(
+    ng-if='readOneCtrl.selected.status.code == 1'
+    ng-submit='readOneCtrl.submitted = true; creationForm.$valid && readOneCtrl.sendAccident()'
+    name='creationForm'
+    novalidate
+  )
+    .form__group.margin_bottom_half
+      label.form__addon(for='holder_id')
+        +icon({icon: 'id-card'})
+      input.form__input(
+        id='holder_id'
+        ng-model='readOneCtrl.selected.holder_id'
+        name='holder_id'
+        placeholder='ID комиссара'
+        required
+        commissioner-validate
+      )
+    ng-messages(for='creationForm.holder_id.$error' ng-if='readOneCtrl.interacted(creationForm.holder_id)')
+      p.form__message.form__message_error(ng-message='required') Укажите ID комиссара которому поступит заявка
+      p.form__message.form__message_error(ng-message='existCommissioner') Комиссара с таким ID не существует
+
+    .text_center(ng-if='creationForm.$valid')
+      button.button.button_lg Отправить

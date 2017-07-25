@@ -19,6 +19,9 @@ import DashboardCtrl from './dashboard.controller';
 import AccidentListCtrl from './accidents/accidents.controller';
 import AccidentReadOneCtrl from './accidents/read-one/read-one.controller';
 import AccidentCreateCtrl from './accidents/create/create.controller';
+import ProposalAccidentsCtrl from './proposal-accidents/proposal-accidents.controller';
+import ConfirmedCtrl from './proposal-accidents/confirmed/confirmed.controller';
+import UnconfirmedCtrl from './proposal-accidents/unconfirmed/unconfirmed.controller';
 import ClosedListCtrl from './closed/closed.controller';
 import ClosedEditCtrl from './closed/edit/edit.controller';
 import StatisticsCtrl from './statistics/statistics.controller';
@@ -85,6 +88,9 @@ angular.module('avarcom.dashboard', [
   .controller('ClosedEditCtrl', ClosedEditCtrl)
   .controller('StatisticsCtrl', StatisticsCtrl)
   .controller('ProfileLinkCtrl', ProfileLinkCtrl)
+  .controller('ProposalAccidentsCtrl', ProposalAccidentsCtrl)
+  .controller('ConfirmedCtrl', ConfirmedCtrl)
+  .controller('UnconfirmedCtrl', UnconfirmedCtrl)
 
   .factory('Accident', Accident)
   .factory('Closed', Closed)

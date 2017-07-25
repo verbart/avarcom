@@ -1,0 +1,35 @@
+include /src/components/icon/icon
+
+.padding_vertical
+  .row
+    .col-md-6#sticky-follow
+      .dashboard__section(id='intro-step-2')
+        h3.text_center(ng-hide='filteredAccidents.length') Нет аварий отвечающих текущим фильтрам
+
+        .table
+          table.table_hover.accidentList
+            tr.accidentList__item(
+              ng-repeat='accident in listCtrl.accidents as filteredAccidents track by accident.crash_id'
+              ui-sref='dashboard.accidents.readOne({id: accident.crash_id})'
+              ui-sref-active='accidentList__item_active'
+              ng-class='{\
+                accidentList__item_green: accident.status.code == 1,\
+                accidentList__item_red: accident.status.code == 2,\
+                accidentList__item_orange: accident.status.code > 2\
+              }'
+            )
+              td
+                .accidentList__date {{accident.createdDate.date}} {{accident.createdDate.time}}
+                .accidentList__address {{accident.address || 'Адресс не определён'}}
+                .accidentList__status(ng-if='accident.status.code == 1') Свободная
+                .accidentList__status(ng-if='accident.status.code == 2')
+                  | Занятая ({{accident.commissar.id}}, {{accident.commissar.name}}, {{accident.commissar.phone}})
+                .accidentList__status(ng-if='accident.status.code == 3') Ложная
+                .accidentList__status(ng-if='accident.status.code == 4') ДТП
+                .accidentList__status(ng-if='accident.status.code == 5') Конкурент
+              td.accidentList__icon
+                +icon({icon: 'chevron_right'})
+
+
+    ui-view.col-md-6(sticky sticky-follow='sticky-follow')
+      include unconfirmed/unconfirmed

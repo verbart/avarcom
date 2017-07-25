@@ -22,7 +22,6 @@ import './app/auth';
 import './app/dashboard';
 import './app/cabinet';
 import './app/intro';
-import './app/proposal';
 
 import './sticky'
 
@@ -39,8 +38,7 @@ angular.module('avarcom', [
   'avarcom.auth',
   'avarcom.dashboard',
   'avarcom.cabinet',
-  'avarcom.intro',
-  'avarcom.proposal'
+  'avarcom.intro'
 ])
   .constant('CONSTANT', {
     API_URL: 'https://avarkom.pw/api/v2',

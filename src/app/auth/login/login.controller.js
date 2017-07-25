@@ -1,8 +1,9 @@
 export default class {
-  constructor(AuthService, $state, AuthData, AuthToken, CONSTANT) {
+  constructor($rootScope, $state, AuthService, AuthData, AuthToken, CONSTANT) {
+    this.$rootScope = $rootScope;
+    this.$state = $state;
     this.CONSTANT = CONSTANT;
     this.AuthService = AuthService;
-    this.$state = $state;
     this.AuthData = AuthData;
     this.AuthToken = AuthToken;
     this.user = {};
@@ -14,6 +15,8 @@ export default class {
       response => {
         console.log(response);
         const userData = response.data;
+
+        this.$rootScope.__USER_ROLE = userData.role || 'moderator';
 
         this.errorCode = null;
 
