@@ -1,0 +1,22 @@
+include /src/components/icon/icon
+
+.padding_vertical
+  .row
+    .col-md-6#sticky-follow
+      .dashboard__section(id='intro-step-2')
+        h3.text_center(ng-hide='filteredAccidents.length') Нет аварий отвечающих текущим фильтрам
+
+        .table
+          table.table_hover.accidentList.accidentList_moderated
+            tr.accidentList__item(
+              ng-repeat='accident in moderationCtrl.accidents as filteredAccidents track by accident.id'
+              ui-sref='dashboard.moderation.readOne({id: accident.id})'
+              ui-sref-active='accidentList__item_active'
+            )
+              td
+                .accidentList__date {{accident.createdDate.date}} {{accident.createdDate.time}}
+                .accidentList__address {{accident.address || 'Адресс не определён'}}
+              td.accidentList__icon
+                +icon({icon: 'chevron_right'})
+
+    ui-view.col-md-6(sticky sticky-follow='sticky-follow')

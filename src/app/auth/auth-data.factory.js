@@ -1,12 +1,16 @@
 export default function ($localStorage) {
-  const key = 'auth-data';
+  const dataKey = 'auth-data';
 
-  function get() {
-    return $localStorage[key];
+  function set(key, data) {
+    if (key && data) {
+      $localStorage[dataKey][key] = data;
+    } else if (key) {
+      $localStorage[dataKey] = key;
+    }
   }
-  function set(token) {
-    if (token) $localStorage[key] = token;
-    else delete $localStorage[key];
+
+  function get(key) {
+    return key ? $localStorage[dataKey][key] : $localStorage[dataKey];
   }
 
   return {

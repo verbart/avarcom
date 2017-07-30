@@ -42,23 +42,5 @@ export default function ($stateProvider, $urlRouterProvider) {
       url: '/help',
       templateUrl: 'views/app/dashboard/help/help.html',
       authenticate: true
-    })
-    .state('dashboard.proposal-accidents', {
-      url: '/proposal-accidents',
-      templateUrl: 'views/app/dashboard/proposal-accidents/proposal-accidents.html',
-      controller: 'ProposalAccidentsCtrl as paCtrl',
-      authenticate: true
-    })
-    .state('dashboard.proposal-accidents.confirmed', {
-      url: '/:id',
-      templateUrl: 'views/app/dashboard/proposal-accidents/confirmed/confirmed.html',
-      controller: 'ConfirmedCtrl as confirmedCtrl',
-      authenticate: true
-    })
-    .state('dashboard.proposal-accidents.unconfirmed', {
-      url: '/:id',
-      templateUrl: 'views/app/dashboard/proposal-accidents/unconfirmed/unconfirmed.html',
-      controller: 'UnconfirmedCtrl as unconfirmedCtrl',
-      authenticate: true
     });
 }

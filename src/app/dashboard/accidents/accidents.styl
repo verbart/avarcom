@@ -1,82 +1,92 @@
 @import 'photos.styl'
 
-.accident
-  &List
-    background #fff
-    color #383838
-    td
-      padding 0.5rem
-      border none !important
-      &:first-child
-        position relative
-        padding-left 28px
-        &:before
-          content ''
-          position absolute
-          top 50%
-          left 6px
-          transform translateY(-50%)
-          display block
-          width 12px
-          height @width
-          border-radius 50%
+.accidentList
+  background #fff
+  color #383838
+  td
+    padding 0.5rem
+    border none !important
+    &:first-child
+      position relative
+      padding-left 28px
+      &:before
+        content ''
+        position absolute
+        top 50%
+        left 6px
+        transform translateY(-50%)
+        display block
+        width 12px
+        height @width
+        border-radius 50%
 
-    &__address
-      padding-top 4px
-      padding-bottom 5px
-      line-height 1.2
-    &__date, &__status
-      color #a0a0a0
-      font-size .8rem
-      line-height 1
-    &__icon
-      text-align right
-      .icon
-        width 22px
-        height 22px
+  &__address
+    padding-top 4px
+    padding-bottom 5px
+    line-height 1.2
+  &__date, &__status
+    color #a0a0a0
+    font-size .8rem
+    line-height 1
+  &__icon
+    line-height 1
+    text-align right
+    .icon
+      width 22px
+      height 22px
 
-    &__item
-      transition background .2s
-      &:not(:last-child)
-        border-bottom 1px solid #bebebe
-      &:hover
-        background #eee
-      &_confirmed > td:first-child, &_unconfirmed > td:first-child
-        position relative
-        &:before
-          content ''
-          position absolute
-          left 0
-          top 50%
-          transform translateY(-50%)
-          display inline-block
-          border-left .4rem solid green
-          border-right none
-          border-top .4rem solid transparent
-          border-bottom .4rem solid transparent
-      &_unconfirmed > td:first-child:before
-        border-left .4rem solid red
-      &_green
-        td:first-child:before
-          background #1aaf5d
-      &_red
-        td:first-child:before
-          background #ea4b35
-      &_orange
-        td:first-child:before
-          background #f59c00
-      &_active
-        background #eee
-        .accidentList__address
-          font-weight 600
+  &__item
+    transition background .2s
+    &:not(:last-child)
+      border-bottom 1px solid #bebebe
+    &:hover
+      background #eee
+    &_confirmed > td:first-child, &_unconfirmed > td:first-child
+      position relative
+      &:before
+        content ''
+        position absolute
+        left 0
+        top 50%
+        transform translateY(-50%)
+        display inline-block
+        border-left .4rem solid green
+        border-right none
+        border-top .4rem solid transparent
+        border-bottom .4rem solid transparent
+    &_unconfirmed > td:first-child:before
+      border-left .4rem solid red
+    &_green
+      td:first-child:before
+        background #1aaf5d
+    &_red
+      td:first-child:before
+        background #ea4b35
+    &_orange
+      td:first-child:before
+        background #f59c00
+    &_active
+      background #eee
+      .accidentList__address
+        font-weight 600
+  &_moderated
+    td:first-child
+      padding-left 0.5rem
+      &:before
+        display none
+    .accidentList
+      &__status
+        display none
+      &__address
+        padding-bottom 0
 
-  &Form
-    padding-left 15px
-    padding-right 15px
-    & + &
-      padding-top 15px
-      border-top 1px solid #c3c3c3
-    &__documents
-      display flex
-      flex-wrap wrap
-      justify-content center
+.accidentForm
+  padding-left 15px
+  padding-right 15px
+  & + &
+    padding-top 15px
+    border-top 1px solid #c3c3c3
+  &__documents
+    display flex
+    flex-wrap wrap
+    justify-content center

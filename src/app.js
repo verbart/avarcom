@@ -44,6 +44,7 @@ angular.module('avarcom', [
     API_URL: 'https://avarkom.pw/api/v2',
     API_URL_V2: 'https://avarkom.pw/control',
     GOOGLE_API_KEY: 'AIzaSyA-Ozt9RQOAbDXS6brHXUlNunpN-A4_Ygs',
+    PROXY_URL: 'https://cors-anywhere.herokuapp.com/',
     OneSignal: window.OneSignal || []
   })
 

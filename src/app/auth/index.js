@@ -17,13 +17,6 @@ export default angular.module('avarcom.auth', [
     $httpProvider.interceptors.push('AuthInterceptor');
   })
   .run(function($rootScope, $state, AuthService, $http) {
-    $rootScope.__USER_ROLE = $rootScope.__USER_ROLE || 'user';
-
-    $rootScope.getUserRole = () => $rootScope.__USER_ROLE;
-    $rootScope.isUserRole = (...roles) => {
-      return !!roles.filter(role => role === $rootScope.__USER_ROLE).length
-    };
-
     // let transitionIsAllowed = false;
     //
     // $rootScope.$on('$stateChangeStart', (event, toState, toParams) => {

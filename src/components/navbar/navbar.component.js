@@ -1,14 +1,25 @@
 export default {
   templateUrl: 'views/components/navbar/navbar.html',
   controller: class {
-    constructor($http, $state, $scope, $rootScope, $interval, $cookies, AuthData, CONSTANT, Closed, IntroService, ngIntroService) {
+    constructor(
+      $state,
+      $scope,
+      $rootScope,
+      $interval,
+      $cookies,
+      AuthService,
+      AuthData,
+      CONSTANT,
+      Closed,
+      IntroService,
+      ngIntroService
+    ) {
       this.$rootScope = $rootScope;
-      this.$http = $http;
       this.$state = $state;
       this.$cookies = $cookies;
       this.CONSTANT = CONSTANT;
       this.Closed = Closed;
-      this.AuthData = AuthData;
+      this.AuthService = AuthService;
       this.userData = AuthData.get();
       this.selectedCity = this.userData.cities.find(e => e.is_selected);
 

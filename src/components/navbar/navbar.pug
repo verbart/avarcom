@@ -1,19 +1,19 @@
 include /node_modules/bemto.pug/bemto
 
 +b.NAV.navbar
-  +e.item(ng-if='$root.isUserRole("moderator")' ui-sref-active='navbar__item_active')
-    +e.A.link(ui-sref='dashboard.proposal-accidents') Модерация
+  +e.item(ng-if='$ctrl.AuthService.isUserRole("moderator")' ui-sref-active='navbar__item_active')
+    +e.A.link(ui-sref='dashboard.moderation') Модерация
 
-  +e.item(ng-if='$root.isUserRole("moderator", "user")' ui-sref-active='navbar__item_active')
+  +e.item(ng-if='$ctrl.AuthService.isUserRole("moderator", "user")' ui-sref-active='navbar__item_active')
     +e.A.link(ui-sref='dashboard.accidents') Аварии
 
-  +e.item(ng-if='$root.isUserRole("moderator", "user")' ui-sref-active='navbar__item_active')
+  +e.item(ng-if='$ctrl.AuthService.isUserRole("moderator", "user")' ui-sref-active='navbar__item_active')
     +e.A.link(id='intro-step-4' ui-sref='dashboard.closed') Завершенные
       span(ng-if='$ctrl.closedCounter')
         = ' '
         .badge {{$ctrl.closedCounter}}
 
-  +e.item(ng-if='$root.isUserRole("moderator", "user")' ui-sref-active='navbar__item_active')
+  +e.item(ng-if='$ctrl.AuthService.isUserRole("moderator", "user")' ui-sref-active='navbar__item_active')
     +e.A.link(id='intro-step-7' ui-sref='dashboard.statistics') Статистика
 
   +e.item(ui-sref-active='navbar__item_active')

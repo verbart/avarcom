@@ -1,0 +1,51 @@
+include /src/components/icon/icon
+
+.dashboard__section
+  form.form(
+    name='creationForm'
+    novalidate
+  )
+    .leaflet__wrap.margin_bottom_half(ng-if='readOneCtrl.map')
+      leaflet(
+        id='accidentMap'
+        center='readOneCtrl.map.center'
+        markers='readOneCtrl.map.markers'
+        width='100%'
+        height='280px'
+      )
+
+    ul.list.padding_bottom_half(ng-if='readOneCtrl.selected')
+      //li.list__item(ng-if='readOneCtrl.selected.address')
+      //  .list__icon
+      //    +icon({icon: 'placeholder_fill'})
+      //  .list__text {{readOneCtrl.selected.address}}
+
+      li.list__item(ng-if='readOneCtrl.selected.phone')
+        .list__icon
+          +icon({icon: 'phone'})
+        .list__text
+          a.lin(href='tel:{{readOneCtrl.selected.phone}}') {{readOneCtrl.selected.phone}}
+
+    .form__group
+      input.form__input(
+        id='search'
+        name='search'
+        placeholder='Укажите город...'
+        ng-model='readOneCtrl.newAccident.address'
+        uib-typeahead='(item.name || item.description) for item in readOneCtrl.searchLocations($viewValue)'
+        typeahead-on-select='readOneCtrl.onSelectAddressTypeahead($item, $model, $label, $event)'
+        typeahead-popup-template-url='views/components/uib-typeahead/uib-typeahead.html'
+        autocomplete='off'
+      )
+
+    .row.text_center.padding_top_half
+      .col-sm-8.offset-sm-2
+        .row
+          .col-sm-6.margin_bottom_half
+            button.button.button_lg(
+              ng-click='readOneCtrl.submitted = true; creationForm.$valid && readOneCtrl.sendAccident("accept")'
+            ) Подтвердить
+          .col-sm-6
+            button.button.button_grey.button_lg(
+             ng-click='readOneCtrl.submitted = true; creationForm.$valid && readOneCtrl.sendAccident("refuse")'
+            ) Отклонить
