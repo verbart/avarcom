@@ -124,16 +124,12 @@ export default class {
   sendAccident(status) {
     this.moderated.status = status;
 
-    if (this.moderated.city) {
-      this.Moderation.moderate({id: this.selected.id}, this.moderated, response => {
-        console.log('Moderation.moderate', response);
+    this.Moderation.moderate({id: this.selected.id}, this.moderated, response => {
+      console.log('Moderation.moderate', response);
 
-        this.$state.go('dashboard.moderation', {}, {reload: true});
-      }, error => {
-        console.log(error);
-      });
-    } else {
-      this.toaster.error('Не верно указан город. Обратитесь пожалуйста в поддержку, или попробуйте ещё раз');
-    }
+      this.$state.go('dashboard.moderation', {}, {reload: true});
+    }, error => {
+      console.log(error);
+    });
   }
 }
