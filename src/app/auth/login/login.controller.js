@@ -22,7 +22,8 @@ export default class {
         this.CONSTANT.OneSignal.push(['sendTags', {
           city: userData.city.short_name,
           name: userData.user_name,
-          phone: userData.phone
+          phone: userData.phone,
+          user: userData.type
         }]);
 
         this.AuthData.set(userData);
