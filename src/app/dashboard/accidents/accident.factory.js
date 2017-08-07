@@ -32,6 +32,10 @@ export default function ($resource, $filter, CONSTANT) {
     },
     update: {
       method: 'PUT'
+    },
+    save: {
+      method: 'POST',
+      url: `${CONSTANT.API_URL}/events`
     }
   });
 }
