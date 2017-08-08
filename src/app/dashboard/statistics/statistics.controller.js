@@ -35,7 +35,8 @@ export default class StatisticsCtrl {
   getStats() {
     this.Statistics.get({
       startTime: this.startDate.format('X'),
-      endTime: this.endDate.format('X')
+      endTime: this.endDate.format('X'),
+      type: 'general'
     }, response => {
       console.log('general', response);
       this.general = response.general_data;
