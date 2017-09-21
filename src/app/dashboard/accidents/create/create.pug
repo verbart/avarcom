@@ -41,6 +41,7 @@ include /src/components/icon/icon
         ng-model='createCtrl.newAccident.address'
         uib-typeahead='address for address in createCtrl.getLocations($viewValue)'
         typeahead-popup-template-url='views/components/uib-typeahead/uib-typeahead.html'
+        typeahead-on-select='createCtrl.onSelectAddress($item, $model, $label, $event)'
         autocomplete='off'
         name='address'
         placeholder='Адрес'

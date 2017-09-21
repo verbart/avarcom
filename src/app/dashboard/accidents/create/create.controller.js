@@ -100,8 +100,21 @@ export default class {
       console.info('modal-component dismissed at: ' + new Date());
     });
   }
+  onSelectAddress($item, $model, $label, $event) {
+    console.log($label);
+
+    this.Geocoding.getLocation($label, response => {
+      console.log(response);
+      this.newAccident.latitude = response.lat;
+      this.newAccident.longitude = response.lng;
+    });
+  }
   sendAccident() {
     this.newAccident.crash_date = this.newAccident.date.format('DD.MM.YYYY');
+
+    if (this.newAccident.longitude) {
+
+    }
 
     this.Accident.save(this.newAccident, response => {
       console.log('Created accident:', response);

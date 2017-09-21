@@ -38,8 +38,8 @@ export default class {
       }}).then(function(response) {
         console.log('qw', response);
         if (response.data.status == 'OK') {
-            const location = response.data.results[0].geometry.location;
-            cb(location);
+          const location = response.data.results[0].geometry.location;
+          cb(location);
         }
     });
   }
